@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(vendor/bin/pint --dirty app/Http/Controllers/Jugador/DashboardController.php resources/views/jugador/inscripciones.blade.php)",
+      "Bash(grep -n \"implements ShouldQueue\\\\|ShouldQueue\\\\|via\\(\" app/Jobs/*.php app/Notifications/*.php)",
+      "Read(//var/www/puntodeoro-webapp/**)"
+    ]
+  }
+}
