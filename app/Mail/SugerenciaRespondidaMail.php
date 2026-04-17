@@ -30,7 +30,7 @@ class SugerenciaRespondidaMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Respuesta a tu '.ucfirst($this->sugerencia->tipo).' - Punto de Oro',
+            subject: 'Respuesta a tu '.ucfirst($this->sugerencia->tipo).' - PickleTorneos',
         );
     }
 

@@ -8,23 +8,23 @@
     <!-- Progress Bar -->
     <div class="mb-6 sm:mb-8">
         <div class="flex items-center justify-between mb-2">
-            <span class="text-sm font-medium text-indigo-600">Paso 2 de 2</span>
+            <span class="text-sm font-medium text-brand-600">Paso 2 de 2</span>
             <span class="text-sm text-gray-500">Formato del Torneo</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-2">
-            <div class="bg-indigo-600 h-2 rounded-full transition-all duration-500" style="width: 100%"></div>
+            <div class="bg-brand-600 h-2 rounded-full transition-all duration-500" style="width: 100%"></div>
         </div>
     </div>
 
     <!-- Información del torneo -->
-    <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 mb-6">
+    <div class="bg-brand-50 border border-brand-200 rounded-lg p-4 mb-6">
         <div class="flex items-start">
-            <svg class="w-5 h-5 text-indigo-600 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 text-brand-600 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
             </svg>
             <div class="flex-1">
-                <h3 class="text-sm font-semibold text-indigo-900 mb-1">{{ $torneo->nombre }}</h3>
-                <p class="text-xs text-indigo-700">
+                <h3 class="text-sm font-semibold text-brand-900 mb-1">{{ $torneo->nombre }}</h3>
+                <p class="text-xs text-brand-700">
                     {{ $torneo->deporte->nombre }} • {{ $torneo->complejo->nombre }} •
                     {{ $torneo->fecha_inicio->format('d/m/Y') }} al {{ $torneo->fecha_fin->format('d/m/Y') }}
                 </p>
@@ -45,7 +45,7 @@
                 </label>
                 <div class="space-y-3">
                     @foreach($formatos as $formato)
-                        <label class="relative flex items-start p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition formato-option {{ old('formato_id') == $formato->id ? 'border-indigo-600 bg-indigo-50' : 'border-gray-300' }}"
+                        <label class="relative flex items-start p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition formato-option {{ old('formato_id') == $formato->id ? 'border-brand-600 bg-brand-50' : 'border-gray-300' }}"
                                data-tiene-grupos="{{ $formato->tiene_grupos ? 'true' : 'false' }}">
                             <input
                                 type="radio"
@@ -94,7 +94,7 @@
                 @foreach($torneo->categorias as $index => $categoria)
                 <div class="border border-gray-300 rounded-lg p-4 sm:p-6 bg-gray-50">
                     <h4 class="text-base font-semibold text-gray-800 mb-4 flex items-center">
-                        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold mr-2">
+                        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-600 text-white text-xs font-bold mr-2">
                             {{ $index + 1 }}
                         </span>
                         Categoría: {{ $categoria->nombre }}
@@ -113,7 +113,7 @@
                             min="2"
                             max="32"
                             value="{{ old('categorias.'.$index.'.cupos_categoria', 8) }}"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 cupos-input @error('categorias.'.$index.'.cupos_categoria') border-red-500 @enderror"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 cupos-input @error('categorias.'.$index.'.cupos_categoria') border-red-500 @enderror"
                             placeholder="Ej: 8"
                             data-index="{{ $index }}"
                         >
@@ -138,7 +138,7 @@
                                     min="1" max="99"
                                     value="{{ old('categorias.'.$index.'.edad_minima') }}"
                                     placeholder="Ej: 18"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm @error('categorias.'.$index.'.edad_minima') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 text-sm @error('categorias.'.$index.'.edad_minima') border-red-500 @enderror"
                                 >
                                 @error('categorias.'.$index.'.edad_minima')
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -153,7 +153,7 @@
                                     min="1" max="99"
                                     value="{{ old('categorias.'.$index.'.edad_maxima') }}"
                                     placeholder="Ej: 45"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm @error('categorias.'.$index.'.edad_maxima') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 text-sm @error('categorias.'.$index.'.edad_maxima') border-red-500 @enderror"
                                 >
                                 @error('categorias.'.$index.'.edad_maxima')
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -164,7 +164,7 @@
                                 <select
                                     id="genero_{{ $index }}"
                                     name="categorias[{{ $index }}][genero_permitido]"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm bg-white @error('categorias.'.$index.'.genero_permitido') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 text-sm bg-white @error('categorias.'.$index.'.genero_permitido') border-red-500 @enderror"
                                 >
                                     <option value="">Sin restricción</option>
                                     <option value="masculino" {{ old('categorias.'.$index.'.genero_permitido') == 'masculino' ? 'selected' : '' }}>Masculino</option>
@@ -207,7 +207,7 @@
                 @foreach($torneo->categorias as $index => $categoria)
                 <div class="border border-gray-300 rounded-lg p-4 sm:p-6 bg-gray-50">
                     <h4 class="text-base font-semibold text-gray-800 mb-4 flex items-center">
-                        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold mr-2">
+                        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-600 text-white text-xs font-bold mr-2">
                             {{ $index + 1 }}
                         </span>
                         Categoría: {{ $categoria->nombre }}
@@ -229,7 +229,7 @@
                                 min="2"
                                 max="8"
                                 value="{{ old('categorias.'.$index.'.numero_grupos') }}"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 @error('categorias.'.$index.'.numero_grupos') border-red-500 @enderror"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 @error('categorias.'.$index.'.numero_grupos') border-red-500 @enderror"
                                 placeholder="Ej: 4"
                             >
                             @error('categorias.'.$index.'.numero_grupos')
@@ -245,7 +245,7 @@
                             <select
                                 id="tamanio_grupo_{{ $index }}"
                                 name="categorias[{{ $index }}][tamanio_grupo_id]"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 @error('categorias.'.$index.'.tamanio_grupo_id') border-red-500 @enderror"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 @error('categorias.'.$index.'.tamanio_grupo_id') border-red-500 @enderror"
                             >
                                 <option value="">Seleccionar</option>
                                 @foreach($tamanios as $tamanio)
@@ -267,7 +267,7 @@
                             <select
                                 id="avance_grupos_{{ $index }}"
                                 name="categorias[{{ $index }}][avance_grupos_id]"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 @error('categorias.'.$index.'.avance_grupos_id') border-red-500 @enderror"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 @error('categorias.'.$index.'.avance_grupos_id') border-red-500 @enderror"
                             >
                                 <option value="">Seleccionar</option>
                                 @foreach($avances as $avance)
@@ -295,7 +295,7 @@
                                     min="1" max="99"
                                     value="{{ old('categorias.'.$index.'.edad_minima') }}"
                                     placeholder="Ej: 18"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm @error('categorias.'.$index.'.edad_minima') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 text-sm @error('categorias.'.$index.'.edad_minima') border-red-500 @enderror"
                                 >
                                 @error('categorias.'.$index.'.edad_minima')
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -310,7 +310,7 @@
                                     min="1" max="99"
                                     value="{{ old('categorias.'.$index.'.edad_maxima') }}"
                                     placeholder="Ej: 45"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm @error('categorias.'.$index.'.edad_maxima') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 text-sm @error('categorias.'.$index.'.edad_maxima') border-red-500 @enderror"
                                 >
                                 @error('categorias.'.$index.'.edad_maxima')
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
@@ -321,7 +321,7 @@
                                 <select
                                     id="genero_{{ $index }}"
                                     name="categorias[{{ $index }}][genero_permitido]"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 text-sm bg-white @error('categorias.'.$index.'.genero_permitido') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 text-sm bg-white @error('categorias.'.$index.'.genero_permitido') border-red-500 @enderror"
                                 >
                                     <option value="">Sin restricción</option>
                                     <option value="masculino" {{ old('categorias.'.$index.'.genero_permitido') == 'masculino' ? 'selected' : '' }}>Masculino</option>
@@ -406,11 +406,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Actualizar estilos visuales
             document.querySelectorAll('.formato-option').forEach(opt => {
-                opt.classList.remove('border-indigo-600', 'bg-indigo-50');
+                opt.classList.remove('border-brand-600', 'bg-brand-50');
                 opt.classList.add('border-gray-300');
             });
             option.classList.remove('border-gray-300');
-            option.classList.add('border-indigo-600', 'bg-indigo-50');
+            option.classList.add('border-brand-600', 'bg-brand-50');
 
             // Mostrar/ocultar configuración según formato, habilitando solo la sección visible
             if (tieneGrupos) {

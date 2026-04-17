@@ -1,4 +1,4 @@
-# Sistema de Gestión de Torneos - Punto de Oro
+# Sistema de Gestión de Torneos - PickleTorneos
 
 ## Índice
 - [Resumen General](#resumen-general)

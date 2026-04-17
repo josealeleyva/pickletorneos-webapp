@@ -8,11 +8,11 @@
     <!-- Progress Bar -->
     <div class="mb-6 sm:mb-8">
         <div class="flex items-center justify-between mb-2">
-            <span class="text-sm font-medium text-indigo-600">Paso 1 de 2</span>
+            <span class="text-sm font-medium text-brand-600">Paso 1 de 2</span>
             <span class="text-sm text-gray-500">Información General</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full h-2">
-            <div class="bg-indigo-600 h-2 rounded-full" style="width: 50%"></div>
+            <div class="bg-brand-600 h-2 rounded-full" style="width: 50%"></div>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
                     name="nombre"
                     value="{{ old('nombre') }}"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('nombre') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('nombre') border-red-500 @enderror"
                     placeholder="Ej: Torneo de Padel Primavera 2025"
                 >
                 @error('nombre')
@@ -50,7 +50,7 @@
                     id="deporte_id"
                     name="deporte_id"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
                 >
                     <option value="">Seleccionar deporte</option>
                     @foreach($deportes as $deporte)
@@ -96,7 +96,7 @@
                     id="complejo_id"
                     name="complejo_id"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('complejo_id') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('complejo_id') border-red-500 @enderror"
                 >
                     <option value="">Seleccionar complejo</option>
                     @foreach($complejos as $complejo)
@@ -109,9 +109,9 @@
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                 @enderror
                 @if($complejos->count() === 0)
-                    <p class="mt-1 text-sm text-amber-600">
+                    <p class="mt-1 text-sm text-accent-600">
                         No tienes complejos creados.
-                        <a href="{{ route('complejos.create') }}" class="underline hover:text-amber-700">Crear complejo</a>
+                        <a href="{{ route('complejos.create') }}" class="underline hover:text-accent-700">Crear complejo</a>
                     </p>
                 @endif
             </div>
@@ -129,7 +129,7 @@
                         value="{{ old('fecha_inicio') }}"
                         required
                         min="{{ date('Y-m-d') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('fecha_inicio') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('fecha_inicio') border-red-500 @enderror"
                     >
                     @error('fecha_inicio')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -147,7 +147,7 @@
                         value="{{ old('fecha_fin') }}"
                         required
                         min="{{ date('Y-m-d') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('fecha_fin') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('fecha_fin') border-red-500 @enderror"
                     >
                     @error('fecha_fin')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -164,7 +164,7 @@
                         id="fecha_limite_inscripcion"
                         name="fecha_limite_inscripcion"
                         value="{{ old('fecha_limite_inscripcion') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('fecha_limite_inscripcion') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('fecha_limite_inscripcion') border-red-500 @enderror"
                     >
                     @error('fecha_limite_inscripcion')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -182,7 +182,7 @@
                     id="descripcion"
                     name="descripcion"
                     rows="4"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('descripcion') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('descripcion') border-red-500 @enderror"
                     placeholder="Describe tu torneo, reglas especiales, información importante..."
                 >{{ old('descripcion') }}</textarea>
                 @error('descripcion')
@@ -218,7 +218,7 @@
                         id="reglamento_texto"
                         name="reglamento_texto"
                         rows="6"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm @error('reglamento_texto') border-red-500 @enderror"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm @error('reglamento_texto') border-red-500 @enderror"
                         placeholder="Escribí aquí las reglas del torneo: modalidad de juego, criterios de desempate, normas de conducta, etc."
                     >{{ old('reglamento_texto') }}</textarea>
                     @error('reglamento_texto')
@@ -247,12 +247,12 @@
 
                     {{-- Área de upload --}}
                     <div id="pdf-upload-area"
-                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-indigo-400 transition cursor-pointer"
+                        class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-brand-400 transition cursor-pointer"
                         onclick="document.getElementById('reglamento_pdf').click()">
                         <svg class="mx-auto h-10 w-10 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
-                        <p class="text-sm font-semibold text-indigo-600 mb-1">Tocá para seleccionar un PDF</p>
+                        <p class="text-sm font-semibold text-brand-600 mb-1">Tocá para seleccionar un PDF</p>
                         <p class="text-xs text-gray-500">o arrastrá el archivo aquí</p>
                         <p class="text-xs text-gray-400 mt-2">Solo PDF · Máximo 20MB</p>
                         <input type="file" id="reglamento_pdf" name="reglamento_pdf"
@@ -280,7 +280,7 @@
                             value="{{ old('precio_inscripcion') }}"
                             step="0.01"
                             min="0"
-                            class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent no-spinners @error('precio_inscripcion') border-red-500 @enderror"
+                            class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent no-spinners @error('precio_inscripcion') border-red-500 @enderror"
                             placeholder="0.00"
                         >
                     </div>
@@ -299,7 +299,7 @@
                         id="premios"
                         name="premios"
                         rows="3"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('premios') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('premios') border-red-500 @enderror"
                         placeholder="Ej: 1er puesto: $10,000&#10;2do puesto: $5,000&#10;3er puesto: $2,000"
                     >{{ old('premios') }}</textarea>
                     @error('premios')
@@ -318,7 +318,7 @@
                 <!-- Preview de imagen -->
                 <div id="image-preview" class="hidden mb-4">
                     <div class="relative inline-block">
-                        <img id="preview-img" src="" alt="Preview" class="max-w-full h-48 rounded-lg border-2 border-indigo-400">
+                        <img id="preview-img" src="" alt="Preview" class="max-w-full h-48 rounded-lg border-2 border-brand-400">
                         <button type="button" id="remove-image" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -329,13 +329,13 @@
                 </div>
 
                 <!-- Upload area -->
-                <div id="upload-area" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-indigo-400 transition">
+                <div id="upload-area" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:border-brand-400 transition">
                     <div class="space-y-1 text-center">
                         <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
                             <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <div class="flex text-sm text-gray-600 justify-center">
-                            <label for="imagen_banner" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none">
+                            <label for="imagen_banner" class="relative cursor-pointer bg-white rounded-md font-medium text-brand-600 hover:text-brand-500 focus-within:outline-none">
                                 <span>Subir imagen</span>
                                 <input id="imagen_banner" name="imagen_banner" type="file" accept="image/*" class="sr-only">
                             </label>
@@ -354,7 +354,7 @@
                 <a href="{{ route('torneos.index') }}" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-200 text-center text-sm sm:text-base order-2 sm:order-1">
                     Cancelar
                 </a>
-                <button type="submit" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base order-1 sm:order-2">
+                <button type="submit" class="px-6 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base order-1 sm:order-2">
                     Siguiente: Formato del Torneo
                     <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -467,14 +467,14 @@ function actualizarContador() {
             if (!cb.checked) {
                 cb.disabled = true;
                 cb.closest('label').classList.add('opacity-50', 'cursor-not-allowed');
-                cb.closest('label').classList.remove('hover:bg-indigo-50', 'cursor-pointer');
+                cb.closest('label').classList.remove('hover:bg-brand-50', 'cursor-pointer');
             }
         });
     } else {
         checkboxes.forEach(cb => {
             cb.disabled = false;
             cb.closest('label').classList.remove('opacity-50', 'cursor-not-allowed');
-            cb.closest('label').classList.add('hover:bg-indigo-50', 'cursor-pointer');
+            cb.closest('label').classList.add('hover:bg-brand-50', 'cursor-pointer');
         });
     }
 }
@@ -502,13 +502,13 @@ deporteSelect.addEventListener('change', function() {
     categorias.forEach(categoria => {
         const checked = @json(old('categorias', [])).includes(categoria.id.toString()) ? 'checked' : '';
         html += `
-            <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-indigo-50 cursor-pointer transition">
+            <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-brand-50 cursor-pointer transition">
                 <input
                     type="checkbox"
                     name="categorias[]"
                     value="${categoria.id}"
                     ${checked}
-                    class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 categoria-checkbox"
+                    class="w-4 h-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500 categoria-checkbox"
                 >
                 <span class="text-sm font-medium text-gray-700">${categoria.nombre}</span>
             </label>
@@ -538,7 +538,7 @@ function setModoReglamento(modo) {
     const btnPdf     = document.getElementById('btn-modo-pdf');
     const areaTexto  = document.getElementById('reglamento-texto-area');
     const areaPdf    = document.getElementById('reglamento-pdf-area');
-    const activeClasses  = ['bg-white', 'text-indigo-700', 'shadow'];
+    const activeClasses  = ['bg-white', 'text-brand-700', 'shadow'];
     const inactiveClasses = ['text-gray-500'];
 
     if (modo === 'texto') {
@@ -571,8 +571,8 @@ const btnQuitarPdf   = document.getElementById('btn-quitar-pdf');
 
 // Drag & drop
 const pdfDropArea = document.getElementById('pdf-upload-area');
-['dragenter', 'dragover'].forEach(e => pdfDropArea.addEventListener(e, ev => { ev.preventDefault(); pdfDropArea.classList.add('border-indigo-500', 'bg-indigo-50'); }));
-['dragleave', 'drop'].forEach(e => pdfDropArea.addEventListener(e, ev => { ev.preventDefault(); pdfDropArea.classList.remove('border-indigo-500', 'bg-indigo-50'); }));
+['dragenter', 'dragover'].forEach(e => pdfDropArea.addEventListener(e, ev => { ev.preventDefault(); pdfDropArea.classList.add('border-brand-500', 'bg-brand-50'); }));
+['dragleave', 'drop'].forEach(e => pdfDropArea.addEventListener(e, ev => { ev.preventDefault(); pdfDropArea.classList.remove('border-brand-500', 'bg-brand-50'); }));
 pdfDropArea.addEventListener('drop', ev => {
     const file = ev.dataTransfer.files[0];
     if (file && file.type === 'application/pdf') { mostrarPdfPreview(file); }

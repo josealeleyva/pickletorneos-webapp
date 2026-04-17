@@ -28,11 +28,11 @@
 
         <div class="flex flex-col gap-3">
             <a href="{{ route('torneos.index') }}"
-               class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200">
+               class="bg-brand-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-700 transition duration-200">
                 Volver a mis torneos
             </a>
             <a href="{{ route('pagos.checkout', $torneo) }}"
-               class="text-indigo-600 hover:text-indigo-700 font-medium">
+               class="text-brand-600 hover:text-brand-700 font-medium">
                 Ver estado del pago
             </a>
         </div>

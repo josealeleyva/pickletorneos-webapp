@@ -4,7 +4,7 @@ Este archivo proporciona orientación a Claude Code (claude.ai/code) cuando trab
 
 ## Descripción del Proyecto
 
-**Punto de Oro** es una plataforma integral de gestión de torneos deportivos construida con Laravel 10. El sistema permite a los organizadores crear y administrar torneos deportivos (principalmente Padel, Fútbol y Tenis) con diferentes formatos de competencia, incluyendo eliminación directa, fase de grupos + eliminación, y formato de liga.
+**PickleTorneos** es una plataforma integral de gestión de torneos deportivos construida con Laravel 10. El sistema permite a los organizadores crear y administrar torneos deportivos (principalmente Padel, Fútbol y Tenis) con diferentes formatos de competencia, incluyendo eliminación directa, fase de grupos + eliminación, y formato de liga.
 
 ## Stack Tecnológico
 
@@ -394,7 +394,7 @@ Las notificaciones se envían a los jugadores antes de los partidos vía email c
 
 ## Sistema de Referidos
 
-**Punto de Oro** cuenta con un sistema completo de referidos que incentiva a los organizadores a invitar a otros organizadores a la plataforma.
+**PickleTorneos** cuenta con un sistema completo de referidos que incentiva a los organizadores a invitar a otros organizadores a la plataforma.
 
 ### Modelos del Sistema de Referidos
 
@@ -580,9 +580,9 @@ El `DatabaseSeeder` crea datos demo para desarrollo:
 
 - **Deportes**: Padel, Futbol, Tenis
 - **Usuarios**:
-  - Superadmin: `superadmin@puntodeoro.com` / `1234`
-  - Organizador 1: `organizador1@puntodeoro.com` / `1234` (Padel Center Rosario)
-  - Organizador 2: `organizador2@puntodeoro.com` / `1234` (Complejo La Cancha)
+  - Superadmin: `superadmin@pickletorneos.com` / `1234`
+  - Organizador 1: `organizador1@pickletorneos.com` / `1234` (Padel Center Rosario)
+  - Organizador 2: `organizador2@pickletorneos.com` / `1234` (Complejo La Cancha)
 - **Formatos**: Eliminación Directa, Fase de Grupos + Eliminación, Liga
 - **Categorías**: Categorías específicas por deporte (Masculino, Femenino, Mixto, etc.)
 - **Tamaños de Grupo**: 3, 4, 5, 6 equipos por grupo

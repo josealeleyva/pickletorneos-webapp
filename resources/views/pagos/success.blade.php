@@ -47,7 +47,7 @@
         </div>
 
         <a href="{{ route('torneos.show', $torneo) }}"
-           class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-200 shadow-lg">
+           class="inline-block bg-gradient-to-r from-brand-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-purple-700 transition duration-200 shadow-lg">
             Ir a mi torneo
         </a>
     </div>

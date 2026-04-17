@@ -43,7 +43,7 @@
 
             <div class="flex items-center gap-3">
                 <div class="text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-indigo-600">{{ $equiposTotales }}</div>
+                    <div class="text-2xl sm:text-3xl font-bold text-brand-600">{{ $equiposTotales }}</div>
                     <div class="text-xs text-gray-500">Equipos</div>
                 </div>
                 <div class="text-gray-400">/</div>
@@ -71,7 +71,7 @@
             @else
                 <form action="{{ route('torneos.grupos.resetear', $torneo) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de resetear los grupos? Esto eliminará la configuración actual.')">
                     @csrf
-                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-accent-600 hover:bg-accent-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                         </svg>
@@ -88,7 +88,7 @@
             </div>
         @endif
 
-        <a href="{{ route('torneos.equipos.index', $torneo) }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+        <a href="{{ route('torneos.equipos.index', $torneo) }}" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
@@ -105,19 +105,19 @@
 
     <!-- Alerta de cupos incompletos -->
     @if($equiposTotales < $cuposTotales)
-        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+        <div class="bg-accent-50 border border-accent-200 rounded-lg p-4">
             <div class="flex items-start">
-                <svg class="w-5 h-5 text-amber-600 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="w-5 h-5 text-accent-600 mr-3 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                 </svg>
                 <div>
-                    <h3 class="text-sm font-semibold text-amber-900">Equipos Incompletos</h3>
-                    <p class="text-sm text-amber-800 mt-1">
+                    <h3 class="text-sm font-semibold text-accent-900">Equipos Incompletos</h3>
+                    <p class="text-sm text-accent-800 mt-1">
                         El torneo requiere {{ $cuposTotales }} equipos en total.
                         Actualmente hay {{ $equiposTotales }} equipo{{ $equiposTotales === 1 ? '' : 's' }}.
                         <strong>Faltan {{ $cuposTotales - $equiposTotales }} equipo{{ ($cuposTotales - $equiposTotales) === 1 ? '' : 's' }}.</strong>
                     </p>
-                    <div class="mt-2 text-xs text-amber-700 space-y-1">
+                    <div class="mt-2 text-xs text-accent-700 space-y-1">
                         @foreach($torneo->categorias as $categoria)
                             @php
                                 $numeroGrupos = $categoria->pivot->numero_grupos;
@@ -143,14 +143,14 @@
 
     <!-- Aviso de fixture generado -->
     @if($tienePartidos && $gruposConfigurados)
-        <div class="bg-amber-50 border-l-4 border-amber-400 p-4">
+        <div class="bg-accent-50 border-l-4 border-accent-400 p-4">
             <div class="flex">
-                <svg class="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg class="h-5 w-5 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                 </svg>
                 <div class="ml-3">
-                    <h3 class="text-sm font-medium text-amber-800">¡Atención! Ya hay un fixture generado</h3>
-                    <div class="mt-2 text-sm text-amber-700">
+                    <h3 class="text-sm font-medium text-accent-800">¡Atención! Ya hay un fixture generado</h3>
+                    <div class="mt-2 text-sm text-accent-700">
                         <p>El torneo ya tiene <strong>{{ $torneo->partidos()->count() }} partidos</strong> generados en el fixture.</p>
                         <p class="mt-2 font-semibold text-red-700">
                             Si reseteas los grupos, se eliminarán todos los partidos y la configuración del fixture. Esta acción no se puede deshacer.
@@ -176,7 +176,7 @@
         <!-- Desktop: Tabs horizontales -->
         <div class="hidden sm:block border-b border-gray-200 mb-4">
             <nav class="flex overflow-x-auto" aria-label="Tabs">
-                <button type="button" data-categoria="all" class="categoria-tab whitespace-nowrap py-4 px-6 border-b-2 border-indigo-600 font-medium text-sm text-indigo-600">
+                <button type="button" data-categoria="all" class="categoria-tab whitespace-nowrap py-4 px-6 border-b-2 border-brand-600 font-medium text-sm text-brand-600">
                     Todas ({{ $grupos->count() }})
                 </button>
                 @foreach($torneo->categorias as $categoria)
@@ -192,7 +192,7 @@
 
         <!-- Mobile: Selector dropdown -->
         <div class="sm:hidden mb-4">
-            <select id="categoria-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+            <select id="categoria-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500">
                 <option value="all">Todas las Categorías ({{ $grupos->count() }})</option>
                 @foreach($torneo->categorias as $categoria)
                     @php
@@ -215,9 +215,9 @@
                     }
                 @endphp
                 <div class="grupo-card bg-white rounded-lg shadow-sm overflow-hidden" data-categoria="categoria-{{ $grupo->categoria_id }}">
-                    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3">
+                    <div class="bg-gradient-to-r from-brand-600 to-purple-600 text-white px-4 py-3">
                         <h3 class="font-bold text-lg">{{ $grupo->nombre }}</h3>
-                        <p class="text-xs text-indigo-100">
+                        <p class="text-xs text-brand-100">
                             {{ $grupo->equipos->count() }}/{{ $tamanioGrupoCategoria ? $tamanioGrupoCategoria->tamanio : '?' }} equipos
                         </p>
                     </div>
@@ -249,7 +249,7 @@
                                                 data-grupo-nombre="{{ $grupo->nombre }}"
                                                 data-categoria-id="{{ $equipo->categoria_id }}"
                                                 onclick="abrirModalIntercambio(this)"
-                                                class="flex-shrink-0 p-1.5 text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 rounded transition"
+                                                class="flex-shrink-0 p-1.5 text-brand-600 hover:text-brand-800 hover:bg-brand-50 rounded transition"
                                                 title="Intercambiar con otro equipo">
                                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
@@ -373,9 +373,9 @@ function filtrarPorCategoria(categoriaId) {
     tabs.forEach(tab => {
         if (tab.dataset.categoria === categoriaId) {
             tab.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
-            tab.classList.add('border-indigo-600', 'text-indigo-600');
+            tab.classList.add('border-brand-600', 'text-brand-600');
         } else {
-            tab.classList.remove('border-indigo-600', 'text-indigo-600');
+            tab.classList.remove('border-brand-600', 'text-brand-600');
             tab.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
         }
     });
@@ -426,7 +426,7 @@ function abrirModalIntercambio(button) {
                 html += `
                     <button
                         onclick="intercambiarEquipos(${equipo.id}, '${equipo.nombre.replace(/'/g, "\\'")}')"
-                        class="w-full text-left p-3 bg-gray-50 hover:bg-indigo-50 border border-gray-200 hover:border-indigo-300 rounded-lg transition">
+                        class="w-full text-left p-3 bg-gray-50 hover:bg-brand-50 border border-gray-200 hover:border-brand-300 rounded-lg transition">
                         <div class="font-medium text-gray-800 text-sm">${equipo.nombre}</div>
                         <div class="text-xs text-gray-500 mt-1">${equipo.jugadores}</div>
                     </button>

@@ -9,7 +9,7 @@
     <nav class="mb-4 sm:mb-6">
         <ol class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
             <li>
-                <a href="{{ route('categorias.index') }}" class="hover:text-indigo-600">Categorías</a>
+                <a href="{{ route('categorias.index') }}" class="hover:text-brand-600">Categorías</a>
             </li>
             <li>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -33,7 +33,7 @@
                     id="deporte_id"
                     name="deporte_id"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
                 >
                     <option value="">Seleccionar deporte</option>
                     @foreach($deportes as $deporte)
@@ -58,7 +58,7 @@
                     name="nombre"
                     value="{{ old('nombre') }}"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('nombre') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('nombre') border-red-500 @enderror"
                     placeholder="Ej: 8va, +30, Libre, Primera"
                 >
                 @error('nombre')
@@ -74,7 +74,7 @@
                 <a href="{{ route('categorias.index') }}" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-200 text-center text-sm sm:text-base order-2 sm:order-1">
                     Cancelar
                 </a>
-                <button type="submit" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base order-1 sm:order-2">
+                <button type="submit" class="px-6 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base order-1 sm:order-2">
                     Crear Categoría
                 </button>
             </div>

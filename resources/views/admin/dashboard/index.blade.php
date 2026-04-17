@@ -33,8 +33,8 @@
                         <i class="fas fa-fire"></i> {{ $torneosActivos }} activos
                     </p>
                 </div>
-                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-trophy text-yellow-600 text-xl"></i>
+                <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-trophy text-accent-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
     <!-- Actividad Reciente -->
     <div class="bg-white rounded-lg shadow p-6">
         <h3 class="text-lg font-semibold text-gray-800 mb-4">
-            <i class="fas fa-clock-rotate-left text-indigo-600 mr-2"></i>
+            <i class="fas fa-clock-rotate-left text-brand-600 mr-2"></i>
             Actividad Reciente
         </h3>
         <div class="space-y-4">
@@ -131,16 +131,16 @@
 
     @if($sugerenciasPendientes > 0)
         <!-- Alert de Sugerencias Pendientes -->
-        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+        <div class="bg-accent-50 border-l-4 border-accent-400 p-4 rounded">
             <div class="flex items-center">
-                <i class="fas fa-exclamation-triangle text-yellow-600 text-xl mr-3"></i>
+                <i class="fas fa-exclamation-triangle text-accent-600 text-xl mr-3"></i>
                 <div class="flex-1">
-                    <p class="text-yellow-800 font-medium">
+                    <p class="text-accent-800 font-medium">
                         Tienes {{ $sugerenciasPendientes }} {{ $sugerenciasPendientes == 1 ? 'sugerencia pendiente' : 'sugerencias pendientes' }}
                     </p>
-                    <p class="text-yellow-700 text-sm mt-1">Revisa las sugerencias de los organizadores</p>
+                    <p class="text-accent-700 text-sm mt-1">Revisa las sugerencias de los organizadores</p>
                 </div>
-                <a href="{{ route('admin.sugerencias.index') }}" class="ml-4 bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded font-medium transition">
+                <a href="{{ route('admin.sugerencias.index') }}" class="ml-4 bg-accent-500 hover:bg-accent-600 text-white px-4 py-2 rounded font-medium transition">
                     Ver Sugerencias
                 </a>
             </div>

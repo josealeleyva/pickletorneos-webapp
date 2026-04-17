@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Punto de oro')
+@section('title', 'PickleTorneos')
 
 @section('content')
     <!-- Header Navbar -->
@@ -10,21 +10,21 @@
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo -->
                     <div class="flex items-center">
-                        <img src="{{ asset('images/logo-color.png') }}" alt="Punto de Oro" class="h-8 sm:h-9">
+                        <img src="{{ asset('images/logo-color.png') }}" alt="PickleTorneos" class="h-8 sm:h-9">
                     </div>
 
                     <!-- Desktop Navigation -->
                     <div class="hidden sm:flex items-center gap-2">
                         <a href="{{ route('tutoriales') }}"
-                            class="text-gray-600 hover:text-indigo-600 font-medium text-sm px-3 py-2 rounded-lg hover:bg-indigo-50 transition duration-150">
+                            class="text-gray-600 hover:text-brand-600 font-medium text-sm px-3 py-2 rounded-lg hover:bg-brand-50 transition duration-150">
                             Tutoriales
                         </a>
                         <a href="{{ route('login') }}"
-                            class="text-gray-600 hover:text-indigo-600 font-medium text-sm px-3 py-2 rounded-lg hover:bg-indigo-50 transition duration-150">
+                            class="text-gray-600 hover:text-brand-600 font-medium text-sm px-3 py-2 rounded-lg hover:bg-brand-50 transition duration-150">
                             Iniciar Sesión
                         </a>
                         <a href="{{ route('register') }}"
-                            class="bg-indigo-600 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-indigo-700 transition duration-150 shadow-md shadow-indigo-100 ml-1">
+                            class="bg-brand-600 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-brand-700 transition duration-150 shadow-md shadow-brand-100 ml-1">
                             Registrarse gratis
                         </a>
                     </div>
@@ -32,7 +32,7 @@
                     <!-- Mobile Menu Button -->
                     <div class="sm:hidden">
                         <button id="mobile-menu-button" type="button"
-                            class="text-gray-600 hover:text-indigo-600 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition">
+                            class="text-gray-600 hover:text-brand-600 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition">
                             <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
@@ -55,7 +55,7 @@
                             Iniciar Sesión
                         </a>
                         <a href="{{ route('register') }}"
-                            class="bg-indigo-600 text-white px-4 py-3 rounded-xl font-semibold text-sm hover:bg-indigo-700 transition text-center mt-2 shadow-md shadow-indigo-100">
+                            class="bg-brand-600 text-white px-4 py-3 rounded-xl font-semibold text-sm hover:bg-brand-700 transition text-center mt-2 shadow-md shadow-brand-100">
                             Registrarse gratis
                         </a>
                     </div>
@@ -100,14 +100,14 @@
                         <br class="hidden lg:block">y profesional
                     </h1>
 
-                    <p class="text-base sm:text-lg text-indigo-100/80 mb-9 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    <p class="text-base sm:text-lg text-brand-100/80 mb-9 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                         Olvídate de las planillas de Excel y los grupos de WhatsApp. Organiza torneos de pádel, fútbol y más deportes con una plataforma todo-en-uno.
                     </p>
 
                     <!-- CTAs -->
                     <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-9">
                         <a href="{{ route('register') }}"
-                            class="inline-flex items-center justify-center gap-2 bg-white text-indigo-700 px-7 py-4 rounded-xl font-bold text-[0.95rem] hover:bg-amber-50 hover:text-indigo-800 transition-all duration-200 shadow-2xl shadow-indigo-950/60 hover:scale-[1.02]">
+                            class="inline-flex items-center justify-center gap-2 bg-white text-brand-700 px-7 py-4 rounded-xl font-bold text-[0.95rem] hover:bg-accent-50 hover:text-brand-800 transition-all duration-200 shadow-2xl shadow-brand-950/60 hover:scale-[1.02]">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
                             </svg>
@@ -172,8 +172,8 @@
                         <!-- Floating: Players badge -->
                         <div class="absolute -right-8 bottom-14 bg-white rounded-2xl shadow-xl px-4 py-3 border border-gray-100/80">
                             <div class="flex items-center gap-2.5">
-                                <div class="w-9 h-9 bg-indigo-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4.5 h-4.5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20" style="width:18px;height:18px;">
+                                <div class="w-9 h-9 bg-brand-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4.5 h-4.5 text-brand-600" fill="currentColor" viewBox="0 0 20 20" style="width:18px;height:18px;">
                                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                                     </svg>
                                 </div>
@@ -202,7 +202,7 @@
     <section class="bg-gray-50 py-16 sm:py-20 lg:py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-14">
-                <span class="inline-block bg-indigo-50 text-indigo-600 border border-indigo-100 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-4">Precios</span>
+                <span class="inline-block bg-brand-50 text-brand-600 border border-brand-100 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-4">Precios</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-gray-900 mb-3 tracking-tight">
                     Precio simple y transparente
                 </h2>
@@ -213,7 +213,7 @@
 
             <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-6 md:gap-4 items-stretch">
                 <!-- Free Plan -->
-                <div class="bg-white rounded-3xl p-7 sm:p-8 border border-gray-200 hover:border-indigo-200 hover:shadow-lg transition-all duration-300 flex flex-col">
+                <div class="bg-white rounded-3xl p-7 sm:p-8 border border-gray-200 hover:border-brand-200 hover:shadow-lg transition-all duration-300 flex flex-col">
                     <div class="mb-7">
                         <span class="inline-flex items-center gap-1.5 bg-green-50 text-green-700 border border-green-100 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-5">
                             <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
@@ -269,10 +269,10 @@
                 @php
                     $precioTorneo = \App\Models\ConfiguracionSistema::get('precio_torneo', 25000);
                 @endphp
-                <div class="relative bg-indigo-700 rounded-3xl p-7 sm:p-8 border border-indigo-600/30 shadow-2xl shadow-indigo-200/50 md:scale-[1.03] flex flex-col">
+                <div class="relative bg-brand-700 rounded-3xl p-7 sm:p-8 border border-brand-600/30 shadow-2xl shadow-brand-200/50 md:scale-[1.03] flex flex-col">
                     <!-- Top badge breaking out -->
                     <div class="absolute -top-4 inset-x-0 flex justify-center pointer-events-none">
-                        <span class="bg-amber-400 text-gray-900 px-5 py-1.5 rounded-full text-[0.7rem] font-black tracking-widest uppercase shadow-lg">
+                        <span class="bg-accent-400 text-gray-900 px-5 py-1.5 rounded-full text-[0.7rem] font-black tracking-widest uppercase shadow-lg">
                             Más popular
                         </span>
                     </div>
@@ -282,44 +282,44 @@
                         <div class="flex items-baseline gap-1">
                             <span class="text-5xl font-black text-white">${{ number_format($precioTorneo, 0, ',', '.') }}</span>
                         </div>
-                        <p class="text-indigo-200/80 text-sm mt-1.5">por cada torneo adicional</p>
+                        <p class="text-brand-200/80 text-sm mt-1.5">por cada torneo adicional</p>
                     </div>
 
                     <ul class="space-y-3 mb-8 flex-1">
                         <li class="flex items-center gap-3 text-sm text-white/90 font-semibold">
                             <span class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-2.5 h-2.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                <svg class="w-2.5 h-2.5 text-accent-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </span>
                             Todo lo del plan gratis
                         </li>
                         <li class="flex items-center gap-3 text-sm text-white/80">
                             <span class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-2.5 h-2.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                <svg class="w-2.5 h-2.5 text-accent-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </span>
                             Pago único por torneo
                         </li>
                         <li class="flex items-center gap-3 text-sm text-white/80">
                             <span class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-2.5 h-2.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                <svg class="w-2.5 h-2.5 text-accent-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </span>
                             Sin suscripciones mensuales
                         </li>
                         <li class="flex items-center gap-3 text-sm text-white/80">
                             <span class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-2.5 h-2.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                <svg class="w-2.5 h-2.5 text-accent-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </span>
                             Soporte prioritario
                         </li>
                         <li class="flex items-center gap-3 text-sm text-white/80">
                             <span class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
-                                <svg class="w-2.5 h-2.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                <svg class="w-2.5 h-2.5 text-accent-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                             </span>
                             Historial ilimitado de torneos
                         </li>
                     </ul>
 
                     <a href="{{ route('register') }}"
-                        class="block w-full bg-white text-indigo-700 text-center px-6 py-3.5 rounded-xl font-bold text-sm hover:bg-amber-50 transition duration-200 shadow-lg shadow-indigo-900/40">
+                        class="block w-full bg-white text-brand-700 text-center px-6 py-3.5 rounded-xl font-bold text-sm hover:bg-accent-50 transition duration-200 shadow-lg shadow-brand-900/40">
                         Comenzar Ahora
                     </a>
                 </div>
@@ -346,7 +346,7 @@
                     Gana torneos gratis invitando colegas
                 </h2>
                 <p class="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">
-                    Comparte Punto de Oro con otros organizadores y obtén beneficios increíbles
+                    Comparte PickleTorneos con otros organizadores y obtén beneficios increíbles
                 </p>
             </div>
 
@@ -453,16 +453,16 @@
             </div>
 
             <!-- CTA referidos -->
-            <div class="bg-indigo-800 rounded-3xl p-8 sm:p-12 text-center shadow-2xl shadow-indigo-100 max-w-4xl mx-auto">
+            <div class="bg-brand-800 rounded-3xl p-8 sm:p-12 text-center shadow-2xl shadow-brand-100 max-w-4xl mx-auto">
                 <h3 class="text-2xl sm:text-3xl font-black text-white mb-3 tracking-tight">
                     ¿Listo para ganar torneos gratis?
                 </h3>
-                <p class="text-indigo-100/80 text-base mb-8 max-w-xl mx-auto">
+                <p class="text-brand-100/80 text-base mb-8 max-w-xl mx-auto">
                     Regístrate ahora y obtén tu código de referido único. Compártelo con tus colegas y empieza a acumular beneficios.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
                     <a href="{{ route('register') }}"
-                       class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-indigo-700 font-bold rounded-xl hover:bg-amber-50 transition duration-200 shadow-lg text-sm">
+                       class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-brand-700 font-bold rounded-xl hover:bg-accent-50 transition duration-200 shadow-lg text-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
                         </svg>
@@ -498,9 +498,9 @@
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <!-- Feature 1 -->
-                <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-indigo-100 hover:shadow-md transition-all duration-200 group">
-                    <div class="w-11 h-11 bg-indigo-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-100 transition-colors duration-200">
-                        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-brand-100 hover:shadow-md transition-all duration-200 group">
+                    <div class="w-11 h-11 bg-brand-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-brand-100 transition-colors duration-200">
+                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
                     </div>
@@ -537,9 +537,9 @@
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-amber-100 hover:shadow-md transition-all duration-200 group">
-                    <div class="w-11 h-11 bg-amber-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-100 transition-colors duration-200">
-                        <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-accent-100 hover:shadow-md transition-all duration-200 group">
+                    <div class="w-11 h-11 bg-accent-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-100 transition-colors duration-200">
+                        <svg class="w-5 h-5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
@@ -599,12 +599,12 @@
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black mb-5 tracking-tight leading-tight">
                 ¿Listo para profesionalizar tus torneos?
             </h2>
-            <p class="text-lg text-indigo-100/80 mb-10 max-w-xl mx-auto">
-                Únete a los organizadores que ya confían en Punto de Oro para gestionar sus eventos deportivos.
+            <p class="text-lg text-brand-100/80 mb-10 max-w-xl mx-auto">
+                Únete a los organizadores que ya confían en PickleTorneos para gestionar sus eventos deportivos.
             </p>
             <div class="flex flex-col sm:flex-row gap-3 justify-center">
                 <a href="{{ route('register') }}"
-                    class="inline-flex items-center justify-center gap-2 bg-white text-indigo-700 px-8 py-4 rounded-xl font-bold text-base hover:bg-amber-50 transition-all duration-200 shadow-2xl shadow-indigo-950/60 hover:scale-[1.02]">
+                    class="inline-flex items-center justify-center gap-2 bg-white text-brand-700 px-8 py-4 rounded-xl font-bold text-base hover:bg-accent-50 transition-all duration-200 shadow-2xl shadow-brand-950/60 hover:scale-[1.02]">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
                     </svg>
@@ -615,7 +615,7 @@
                     Ya tengo cuenta
                 </a>
             </div>
-            <p class="mt-8 text-xs text-indigo-200/60">
+            <p class="mt-8 text-xs text-brand-200/60">
                 Primer torneo completamente gratis &nbsp;·&nbsp; Sin pagos mensuales &nbsp;·&nbsp; Soporte incluido
             </p>
         </div>
@@ -625,14 +625,14 @@
     <footer class="bg-gray-950 text-gray-400 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col items-center gap-6">
-                <img src="{{ asset('images/logo-blanco.png') }}" alt="Punto de Oro" class="h-9 opacity-80">
+                <img src="{{ asset('images/logo-blanco.png') }}" alt="PickleTorneos" class="h-9 opacity-80">
                 <p class="text-gray-500 text-sm">Sistema profesional de gestión de torneos deportivos</p>
 
                 <!-- Redes sociales -->
                 <div class="flex items-center gap-4">
                     <!-- Email -->
-                    <a href="mailto:puntodeorosde@gmail.com"
-                        class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-lg flex items-center justify-center transition-colors duration-200 group" title="puntodeorosde@gmail.com">
+                    <a href="mailto:pickletorneossde@gmail.com"
+                        class="w-9 h-9 bg-gray-800 hover:bg-brand-600 rounded-lg flex items-center justify-center transition-colors duration-200 group" title="pickletorneossde@gmail.com">
                         <svg class="w-4 h-4 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
@@ -645,8 +645,8 @@
                         </svg>
                     </a>
                     <!-- Instagram -->
-                    <a href="https://instagram.com/puntodeorosde" target="_blank"
-                        class="w-9 h-9 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors duration-200 group" title="@puntodeorosde">
+                    <a href="https://instagram.com/pickletorneossde" target="_blank"
+                        class="w-9 h-9 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors duration-200 group" title="@pickletorneossde">
                         <svg class="w-4 h-4 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
@@ -657,7 +657,7 @@
                     <a href="{{ route('tyc') }}" class="hover:text-gray-400 transition duration-200">Términos y Condiciones</a>
                 </div>
                 <p class="text-xs text-gray-700 pt-2 border-t border-gray-800/60 w-full text-center">
-                    © {{date('Y')}} Punto de Oro. Todos los derechos reservados.
+                    © {{date('Y')}} PickleTorneos. Todos los derechos reservados.
                 </p>
             </div>
         </div>

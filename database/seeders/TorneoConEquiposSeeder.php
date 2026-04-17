@@ -125,8 +125,8 @@ class TorneoConEquiposSeeder extends Seeder
 
             // Reemplazar los primeros dos jugadores con los que tienen cuenta vinculada en la app
             // Esto permite probar el panel de jugador con datos reales del seeder
-            $jugadorUser1 = User::where('email', 'jugador1@puntodeoro.com')->first();
-            $jugadorUser2 = User::where('email', 'jugador2@puntodeoro.com')->first();
+            $jugadorUser1 = User::where('email', 'jugador1@pickletorneos.com')->first();
+            $jugadorUser2 = User::where('email', 'jugador2@pickletorneos.com')->first();
             if ($jugadorUser1?->jugador) {
                 $jugadores[0] = $jugadorUser1->jugador;
                 $this->command->info("✓ jugador1 (Carlos Rodríguez) vinculado al seeder de equipos");

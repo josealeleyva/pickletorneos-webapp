@@ -117,7 +117,7 @@
                                 <p class="text-xs text-gray-500 mt-1">Primer torneo gratis</p>
                             @endif
                         @else
-                            <p class="text-lg font-bold text-yellow-600">{{ ucfirst($torneo->pago->estado) }}</p>
+                            <p class="text-lg font-bold text-accent-600">{{ ucfirst($torneo->pago->estado) }}</p>
                         @endif
                     @else
                         <p class="text-lg text-gray-400">Sin información de pago</p>
@@ -169,10 +169,10 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-gray-500 text-xs font-medium">PENDIENTES</p>
-                    <p class="text-2xl font-bold text-yellow-600 mt-1">{{ $stats['partidos_pendientes'] }}</p>
+                    <p class="text-2xl font-bold text-accent-600 mt-1">{{ $stats['partidos_pendientes'] }}</p>
                 </div>
-                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-clock text-yellow-600"></i>
+                <div class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-clock text-accent-600"></i>
                 </div>
             </div>
         </div>

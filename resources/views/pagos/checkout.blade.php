@@ -53,7 +53,7 @@
 
             <div class="flex justify-between items-center">
                 <span class="text-lg font-bold text-gray-900">Total a pagar:</span>
-                <span class="text-2xl font-bold text-indigo-600">${{ number_format($precioFinal, 0, ',', '.') }}</span>
+                <span class="text-2xl font-bold text-brand-600">${{ number_format($precioFinal, 0, ',', '.') }}</span>
             </div>
         </div>
 

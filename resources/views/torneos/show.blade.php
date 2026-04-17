@@ -6,7 +6,7 @@
 @section('content')
 <div class="max-w-6xl mx-auto space-y-4 sm:space-y-6">
     <!-- Banner del Torneo -->
-    <div class="relative h-48 sm:h-64 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg overflow-hidden">
+    <div class="relative h-48 sm:h-64 bg-gradient-to-r from-brand-500 to-purple-600 rounded-lg overflow-hidden">
         @if($torneo->imagen_banner)
             <img src="{{ asset('storage/' . $torneo->imagen_banner) }}" alt="{{ $torneo->nombre }}" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -93,7 +93,7 @@
     <div class="flex flex-wrap gap-2 sm:gap-3">
         @if($torneo->estado === 'borrador')
             {{-- Borrador: solo editar datos básicos --}}
-            <a href="{{ route('torneos.edit', $torneo) }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+            <a href="{{ route('torneos.edit', $torneo) }}" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                 </svg>
@@ -229,7 +229,7 @@
             @if($torneo->formato && ($torneo->formato->tiene_grupos || $esEliminacionDirecta))
                 @if($puedeVerLlavesMobile)
                     <a href="{{ route('torneos.llaves.index', $torneo) }}"
-                       class="flex items-center gap-3 w-full px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">
+                       class="flex items-center gap-3 w-full px-4 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 17a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zM14 17a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z"></path>
                         </svg>
@@ -260,7 +260,7 @@
                 <button type="button" onclick="toggleSection('info-general-body', 'info-general-icon')"
                         class="w-full flex items-center justify-between p-4 sm:p-6 text-left">
                     <h2 class="text-lg sm:text-xl font-bold text-gray-800 flex items-center">
-                        <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 mr-2 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         Información General
@@ -288,7 +288,7 @@
                             <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Categorías</h3>
                             <div class="flex flex-wrap gap-1.5 mt-1">
                                 @forelse($torneo->categorias as $categoria)
-                                    <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-indigo-100 text-indigo-800">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-brand-100 text-brand-800">
                                         {{ $categoria->nombre }}
                                     </span>
                                     @include('partials.categoria-restricciones', ['categoria' => $categoria])
@@ -344,7 +344,7 @@
                     <button type="button" onclick="toggleSection('reglamento-body', 'reglamento-icon')"
                             class="w-full flex items-center justify-between p-4 sm:p-6 text-left">
                         <h2 class="text-lg sm:text-xl font-bold text-gray-800 flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 mr-2 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                             </svg>
                             Reglamento
@@ -377,7 +377,7 @@
                     <button type="button" onclick="toggleSection('formato-body', 'formato-icon')"
                             class="w-full flex items-center justify-between p-4 sm:p-6 text-left">
                         <h2 class="text-lg sm:text-xl font-bold text-gray-800 flex items-center">
-                            <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5 mr-2 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                             </svg>
                             Formato del Torneo
@@ -439,7 +439,7 @@
                                 $esEliminacionDirectaFormato = $torneo->formato->esEliminacionDirecta();
                                 $esLigaFormato = $torneo->formato->esLiga();
                             @endphp
-                            <div class="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg">
+                            <div class="p-3 bg-gradient-to-r from-blue-50 to-brand-50 border border-blue-200 rounded-lg">
                                 <p class="text-xs text-blue-900 mb-2">
                                     <strong>Sistema:</strong>
                                     @if($esEliminacionDirectaFormato)
@@ -501,14 +501,14 @@
 
             <!-- Próximos Pasos — oculto en mobile -->
             @if($torneo->estado === 'activo')
-                <div class="hidden lg:block bg-amber-50 border border-amber-200 rounded-lg p-4">
-                    <h3 class="text-sm font-semibold text-amber-900 mb-2 flex items-center">
+                <div class="hidden lg:block bg-accent-50 border border-accent-200 rounded-lg p-4">
+                    <h3 class="text-sm font-semibold text-accent-900 mb-2 flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
                         </svg>
                         Próximos Pasos
                     </h3>
-                    <ul class="text-xs text-amber-800 space-y-2">
+                    <ul class="text-xs text-accent-800 space-y-2">
                         @if($torneo->formato && $torneo->formato->tiene_grupos)
                             <li class="flex items-start"><span class="mr-2">1.</span><span>Agregar equipos al torneo ({{ $torneo->equipos()->count() }} agregados)</span></li>
                             <li class="flex items-start"><span class="mr-2">2.</span><span>Configurar grupos</span></li>
@@ -580,7 +580,7 @@
                         @endphp
 
                         @if($puedeVerLlaves2)
-                            <a href="{{ route('torneos.llaves.index', $torneo) }}" class="w-full text-left px-3 py-2 text-sm bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg transition flex items-center">
+                            <a href="{{ route('torneos.llaves.index', $torneo) }}" class="w-full text-left px-3 py-2 text-sm bg-brand-50 hover:bg-brand-100 text-brand-700 rounded-lg transition flex items-center">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 17a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zM14 17a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z"></path>
                                 </svg>

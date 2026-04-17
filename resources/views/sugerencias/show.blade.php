@@ -7,7 +7,7 @@
 <div class="max-w-4xl mx-auto">
     <!-- Botón volver -->
     <div class="mb-4">
-        <a href="{{ route('sugerencias.index') }}" class="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium text-sm">
+        <a href="{{ route('sugerencias.index') }}" class="inline-flex items-center text-brand-600 hover:text-brand-800 font-medium text-sm">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
@@ -18,7 +18,7 @@
     <!-- Card principal -->
     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
         <!-- Header con gradiente -->
-        <div class="px-6 py-4 bg-gradient-to-r from-indigo-500 to-purple-600">
+        <div class="px-6 py-4 bg-gradient-to-r from-brand-500 to-purple-600">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div class="flex-1">
                     <div class="flex items-center gap-2 mb-2">
@@ -87,7 +87,7 @@
             <!-- Mensaje del usuario -->
             <div>
                 <h3 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                    <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 mr-2 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                     </svg>
                     Tu mensaje
@@ -118,7 +118,7 @@
                             <div class="flex-1">
                                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                                     <p class="font-semibold text-gray-900">
-                                        {{ $sugerencia->respondidoPor->name ?? 'Equipo de Punto de Oro' }}
+                                        {{ $sugerencia->respondidoPor->name ?? 'Equipo de PickleTorneos' }}
                                     </p>
                                     @if($sugerencia->fecha_respuesta)
                                         <p class="text-sm text-gray-600">
@@ -158,7 +158,7 @@
             <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
                 <p class="text-sm text-gray-600">
                     ¿Tienes algo más que agregar?
-                    <a href="{{ route('sugerencias.create') }}" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                    <a href="{{ route('sugerencias.create') }}" class="text-brand-600 hover:text-brand-800 font-medium">
                         Envía otra sugerencia
                     </a>
                 </p>

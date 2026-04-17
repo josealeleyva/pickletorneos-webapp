@@ -1,14 +1,14 @@
-# **Términos y Condiciones de Uso de Punto de Oro (Web App)**
+# **Términos y Condiciones de Uso de PickleTorneos (Web App)**
 
-Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utilizar la plataforma web **Punto de Oro**. Si está en desacuerdo con alguna parte o en su totalidad con estos Términos y Condiciones, no debe hacer uso de la misma.
+Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utilizar la plataforma web **PickleTorneos**. Si está en desacuerdo con alguna parte o en su totalidad con estos Términos y Condiciones, no debe hacer uso de la misma.
 
-**Punto de Oro** es una plataforma web desarrollada para la gestión y seguimiento de torneos deportivos. Permite la creación de torneos y el seguimiento de cada etapa generada, así como la interacción entre organizadores y participantes.
+**PickleTorneos** es una plataforma web desarrollada para la gestión y seguimiento de torneos deportivos. Permite la creación de torneos y el seguimiento de cada etapa generada, así como la interacción entre organizadores y participantes.
 
 ---
 
 ## **1\. Objeto del Servicio**
 
-1.1. **Objeto de la Plataforma**: Punto de Oro es una herramienta software que facilita la gestión de torneos deportivos. Permite a los Usuarios:
+1.1. **Objeto de la Plataforma**: PickleTorneos es una herramienta software que facilita la gestión de torneos deportivos. Permite a los Usuarios:
 
 * Crear torneos.
 
@@ -24,7 +24,7 @@ Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utiliza
 
 * Enviar y recibir notificaciones dentro de la plataforma.
 
-1.2. **Alcance del Servicio**: Punto de Oro se limita a proporcionar la plataforma de gestión. La responsabilidad sobre la información cargada o publicada, así como el cumplimiento de plazos y la veracidad de los datos, recae exclusivamente en la organización o usuario administrador y en los usuarios registrados.
+1.2. **Alcance del Servicio**: PickleTorneos se limita a proporcionar la plataforma de gestión. La responsabilidad sobre la información cargada o publicada, así como el cumplimiento de plazos y la veracidad de los datos, recae exclusivamente en la organización o usuario administrador y en los usuarios registrados.
 
 ---
 
@@ -38,7 +38,7 @@ Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utiliza
 
 * Introducir código malicioso (virus, malware, etc.).
 
-* Dañar, sobrecargar o perjudicar los servidores o redes de Punto de Oro.
+* Dañar, sobrecargar o perjudicar los servidores o redes de PickleTorneos.
 
 * Intentar obtener acceso no autorizado a sistemas o datos.
 
@@ -48,7 +48,7 @@ Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utiliza
 
 ## **3\. Responsabilidad del Proveedor**
 
-3.1. **Limitación de Responsabilidad**: El proveedor de Punto de Oro se limita a la operación y mantenimiento técnico de la plataforma. No es responsable de:
+3.1. **Limitación de Responsabilidad**: El proveedor de PickleTorneos se limita a la operación y mantenimiento técnico de la plataforma. No es responsable de:
 
 * Pérdidas o daños derivados del uso o imposibilidad de uso de la Plataforma.
 
@@ -64,7 +64,7 @@ Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utiliza
 
 ## **4\. Propiedad Intelectual**
 
-4.1. **Propiedad de Punto de Oro**: Todos los derechos de propiedad intelectual sobre diseño, código fuente, gráficos, textos, bases de datos, marcas y logotipos son exclusivos del Administrador o sus licenciantes.
+4.1. **Propiedad de PickleTorneos**: Todos los derechos de propiedad intelectual sobre diseño, código fuente, gráficos, textos, bases de datos, marcas y logotipos son exclusivos del Administrador o sus licenciantes.
 
 4.2. **Restricciones de Uso**: Queda prohibida cualquier reproducción, modificación, distribución o explotación del contenido sin autorización previa y por escrito.
 

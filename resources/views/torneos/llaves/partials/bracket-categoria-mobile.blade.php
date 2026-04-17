@@ -294,7 +294,7 @@
                                                         Cargar
                                                     </button>
                                                     <button onclick="enviarNotificacionesLlave({{ $llave->id }})"
-                                                            class="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
+                                                            class="text-xs text-brand-600 hover:text-brand-800 font-medium"
                                                             title="Enviar notificaciones">
                                                         Notificar
                                                     </button>

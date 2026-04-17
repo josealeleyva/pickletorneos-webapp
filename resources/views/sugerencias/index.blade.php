@@ -10,7 +10,7 @@
         <div>
             <p class="text-gray-600 text-sm sm:text-base">Envía tus sugerencias, reporta bugs o solicita soporte técnico</p>
         </div>
-        <a href="{{ route('sugerencias.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 w-full sm:w-auto justify-center text-sm sm:text-base">
+        <a href="{{ route('sugerencias.create') }}" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 w-full sm:w-auto justify-center text-sm sm:text-base">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
             </svg>
@@ -91,7 +91,7 @@
                                 </svg>
                                 {{ $sugerencia->created_at->format('d/m/Y') }}
                             </div>
-                            <a href="{{ route('sugerencias.show', $sugerencia) }}" class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700">
+                            <a href="{{ route('sugerencias.show', $sugerencia) }}" class="inline-flex items-center text-sm font-medium text-brand-600 hover:text-brand-700">
                                 Ver detalles
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -125,8 +125,8 @@
         <!-- Estado vacío -->
         <div class="bg-white rounded-lg shadow-sm p-8 sm:p-12 text-center">
             <div class="max-w-md mx-auto">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-brand-100 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                     </svg>
                 </div>
@@ -134,7 +134,7 @@
                 <p class="text-gray-600 text-sm sm:text-base mb-6">
                     Nos encantaría escuchar tus ideas para mejorar la plataforma, resolver dudas o reportar problemas.
                 </p>
-                <a href="{{ route('sugerencias.create') }}" class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
+                <a href="{{ route('sugerencias.create') }}" class="inline-flex items-center px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>

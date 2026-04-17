@@ -125,7 +125,7 @@
         <div class="header">
             <div class="icon">✉️</div>
             <h1>¡Tu sugerencia ha sido respondida!</h1>
-            <p>El equipo de Punto de Oro ha revisado tu mensaje</p>
+            <p>El equipo de PickleTorneos ha revisado tu mensaje</p>
         </div>
 
         <!-- Content -->
@@ -135,7 +135,7 @@
             </div>
 
             <div class="message">
-                <p>Hemos revisado tu {{ $sugerencia->tipo === 'sugerencia' ? 'sugerencia' : 'mensaje' }} y queremos agradecerte por tomarte el tiempo de contactarnos. Tu opinión es muy importante para nosotros y nos ayuda a mejorar Punto de Oro cada día.</p>
+                <p>Hemos revisado tu {{ $sugerencia->tipo === 'sugerencia' ? 'sugerencia' : 'mensaje' }} y queremos agradecerte por tomarte el tiempo de contactarnos. Tu opinión es muy importante para nosotros y nos ayuda a mejorar PickleTorneos cada día.</p>
             </div>
 
             <!-- Sugerencia Original -->
@@ -174,7 +174,7 @@
 
         <!-- Footer -->
         <div class="footer">
-            <p><strong>Punto de Oro</strong> - Plataforma de Gestión de Torneos Deportivos</p>
+            <p><strong>PickleTorneos</strong> - Plataforma de Gestión de Torneos Deportivos</p>
             <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
             <p>Si necesitas ayuda adicional, envíanos una nueva sugerencia desde tu dashboard.</p>
             <p style="margin-top: 15px;">
@@ -182,7 +182,7 @@
                 <a href="{{ route('login') }}">Iniciar sesión</a>
             </p>
             <p style="margin-top: 10px; color: #9ca3af;">
-                © {{ date('Y') }} Punto de Oro. Todos los derechos reservados.
+                © {{ date('Y') }} PickleTorneos. Todos los derechos reservados.
             </p>
         </div>
     </div>

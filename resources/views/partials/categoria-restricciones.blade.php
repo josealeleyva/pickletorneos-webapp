@@ -26,15 +26,15 @@
         @endif
 
         @if($edadMin && $edadMax)
-            <span class="inline-flex items-center text-xs bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full font-medium">
+            <span class="inline-flex items-center text-xs bg-accent-50 text-accent-700 border border-accent-200 px-2 py-0.5 rounded-full font-medium">
                 {{ $edadMin }}–{{ $edadMax }} años
             </span>
         @elseif($edadMin)
-            <span class="inline-flex items-center text-xs bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full font-medium">
+            <span class="inline-flex items-center text-xs bg-accent-50 text-accent-700 border border-accent-200 px-2 py-0.5 rounded-full font-medium">
                 +{{ $edadMin }} años
             </span>
         @elseif($edadMax)
-            <span class="inline-flex items-center text-xs bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-full font-medium">
+            <span class="inline-flex items-center text-xs bg-accent-50 text-accent-700 border border-accent-200 px-2 py-0.5 rounded-full font-medium">
                 Hasta {{ $edadMax }} años
             </span>
         @endif

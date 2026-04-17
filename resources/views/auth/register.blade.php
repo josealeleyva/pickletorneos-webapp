@@ -13,12 +13,12 @@
     <div class="max-w-2xl w-full">
         <div class="bg-white rounded-lg shadow-2xl overflow-hidden">
             <!-- Header -->
-            <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 text-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+            <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 text-center bg-gradient-to-r from-brand-600 to-purple-600 text-white">
                 <div class="mb-4">
-                    <img src="{{ asset('images/logo-blanco.png') }}" alt="Punto de Oro" class="h-16 mx-auto">
+                    <img src="{{ asset('images/logo-blanco.png') }}" alt="PickleTorneos" class="h-16 mx-auto">
                 </div>
                 <h1 id="register-title" class="text-2xl sm:text-3xl font-bold">Crear Cuenta</h1>
-                <p id="register-subtitle" class="text-indigo-100 mt-2 text-sm sm:text-base">Elegí tu tipo de cuenta</p>
+                <p id="register-subtitle" class="text-brand-100 mt-2 text-sm sm:text-base">Elegí tu tipo de cuenta</p>
             </div>
 
             <!-- Switch Jugador / Organizador -->
@@ -100,7 +100,7 @@
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nombre *</label>
                             <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="Juan">
                         </div>
 
@@ -108,7 +108,7 @@
                         <div>
                             <label for="apellido" class="block text-sm font-medium text-gray-700 mb-2">Apellido *</label>
                             <input type="text" id="apellido" name="apellido" value="{{ old('apellido') }}" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="Pérez">
                         </div>
 
@@ -116,7 +116,7 @@
                         <div class="sm:col-span-2">
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
                             <input type="email" id="email" name="email" value="{{ old('email') }}" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="tu@email.com">
                         </div>
 
@@ -126,7 +126,7 @@
                                 Teléfono <span id="telefono-req">*</span>
                             </label>
                             <input type="text" id="telefono" name="telefono" value="{{ old('telefono') }}"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="3416123456">
                         </div>
 
@@ -134,7 +134,7 @@
                         <div id="field-deporte" class="hidden">
                             <label for="deporte_principal_id" class="block text-sm font-medium text-gray-700 mb-2">Deporte Principal</label>
                             <select id="deporte_principal_id" name="deporte_principal_id"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white">
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
                                 <option value="">Seleccionar deporte</option>
                                 @foreach(\App\Models\Deporte::orderBy('nombre')->get() as $deporte)
                                     <option value="{{ $deporte->id }}" {{ old('deporte_principal_id') == $deporte->id ? 'selected' : '' }}>
@@ -150,7 +150,7 @@
         DNI / CI <span class="text-red-500">*</span>
     </label>
     <input type="text" id="dni" name="dni" value="{{ old('dni') }}"
-        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('dni') border-red-500 @enderror"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('dni') border-red-500 @enderror"
         placeholder="12345678">
     @error('dni')
         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -168,7 +168,7 @@
                                 maxlength="10"
                                 placeholder="DD/MM/AAAA"
                                 autocomplete="off"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('fecha_nacimiento') border-red-500 @enderror">
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('fecha_nacimiento') border-red-500 @enderror">
                             @error('fecha_nacimiento')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -180,7 +180,7 @@
                                 Género <span class="text-red-500">*</span>
                             </label>
                             <select id="genero" name="genero"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white @error('genero') border-red-500 @enderror">
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white @error('genero') border-red-500 @enderror">
                                 <option value="">Seleccionar...</option>
                                 <option value="masculino" {{ old('genero') == 'masculino' ? 'selected' : '' }}>Masculino</option>
                                 <option value="femenino" {{ old('genero') == 'femenino' ? 'selected' : '' }}>Femenino</option>
@@ -195,7 +195,7 @@
                         <div id="field-organizacion">
                             <label for="organizacion" class="block text-sm font-medium text-gray-700 mb-2">Organización</label>
                             <input type="text" id="organizacion" name="organizacion" value="{{ old('organizacion') }}"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="Nombre de tu organización (opcional)">
                         </div>
 
@@ -204,7 +204,7 @@
                             <label for="codigo_referido" class="block text-sm font-medium text-gray-700 mb-2">Código de Referido (Opcional)</label>
                             <input type="text" id="codigo_referido" name="codigo_referido"
                                 value="{{ old('codigo_referido', request()->get('ref')) }}"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent uppercase"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent uppercase"
                                 placeholder="Ej: PO123ABC" maxlength="10">
                             @php
                                 $porcentajeDescuento = \App\Models\ConfiguracionSistema::get('porcentaje_descuento_referido', 20);
@@ -242,7 +242,7 @@
                         <div>
                             <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Contraseña *</label>
                             <input type="password" id="password" name="password" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="Mínimo 8 caracteres">
                         </div>
 
@@ -250,7 +250,7 @@
                         <div>
                             <label for="password_confirmation" class="block text-sm font-medium text-gray-700 mb-2">Confirmar Contraseña *</label>
                             <input type="password" id="password_confirmation" name="password_confirmation" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="Repite tu contraseña">
                         </div>
                     </div>
@@ -268,14 +268,14 @@
                         </div>
                     </div>
 
-                    <div id="info-organizador" class="mt-6 bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                    <div id="info-organizador" class="mt-6 bg-brand-50 border border-brand-200 rounded-lg p-4">
                         <div class="flex items-start">
-                            <svg class="w-5 h-5 text-indigo-600 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-5 h-5 text-brand-600 mt-0.5 mr-3" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
                             </svg>
                             <div>
-                                <p class="text-sm font-semibold text-indigo-900">¡Tu primer torneo es GRATIS!</p>
-                                <p class="text-xs text-indigo-700 mt-1">Crea tu cuenta y organizá tu primer torneo sin costo alguno.</p>
+                                <p class="text-sm font-semibold text-brand-900">¡Tu primer torneo es GRATIS!</p>
+                                <p class="text-xs text-brand-700 mt-1">Crea tu cuenta y organizá tu primer torneo sin costo alguno.</p>
                             </div>
                         </div>
                     </div>
@@ -284,10 +284,10 @@
                     <div class="mt-6">
                         <label class="flex items-start cursor-pointer">
                             <input type="checkbox" id="accept_terms" name="accept_terms" required
-                                class="mt-1 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                                class="mt-1 h-4 w-4 text-brand-600 focus:ring-brand-500 border-gray-300 rounded">
                             <span class="ml-3 text-sm text-gray-700">
                                 Acepto los
-                                <button type="button" onclick="openModal()" class="text-indigo-600 hover:text-indigo-700 font-semibold underline">
+                                <button type="button" onclick="openModal()" class="text-brand-600 hover:text-brand-700 font-semibold underline">
                                     Términos y Condiciones
                                 </button> *
                             </span>
@@ -296,14 +296,14 @@
 
                     <!-- Submit Button -->
                     <button type="submit" id="submit-btn"
-                        class="w-full mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-200 shadow-lg text-sm sm:text-base">
+                        class="w-full mt-6 bg-gradient-to-r from-brand-600 to-purple-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-purple-700 transition duration-200 shadow-lg text-sm sm:text-base">
                         Crear Cuenta
                     </button>
 
                     <p class="text-xs text-gray-500 text-center mt-4">
                         Este sitio está protegido por reCAPTCHA y se aplican las
-                        <a href="https://policies.google.com/privacy" target="_blank" class="text-indigo-600 hover:underline">Políticas de Privacidad</a> y
-                        <a href="https://policies.google.com/terms" target="_blank" class="text-indigo-600 hover:underline">Términos de Servicio</a> de Google.
+                        <a href="https://policies.google.com/privacy" target="_blank" class="text-brand-600 hover:underline">Políticas de Privacidad</a> y
+                        <a href="https://policies.google.com/terms" target="_blank" class="text-brand-600 hover:underline">Términos de Servicio</a> de Google.
                     </p>
                 </form>
 
@@ -311,7 +311,7 @@
                 <div id="termsModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 z-50 overflow-y-auto">
                     <div class="flex items-center justify-center min-h-screen px-4 py-8">
                         <div class="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-                            <div class="sticky top-0 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-4 flex justify-between items-center">
+                            <div class="sticky top-0 bg-gradient-to-r from-brand-600 to-purple-600 text-white px-6 py-4 flex justify-between items-center">
                                 <h2 class="text-xl sm:text-2xl font-bold">Términos y Condiciones</h2>
                                 <button type="button" onclick="closeModal()" class="text-white hover:text-gray-200 transition">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -322,12 +322,12 @@
                             <div class="overflow-y-auto max-h-[calc(90vh-140px)] px-6 py-6">
                                 <div class="prose prose-sm max-w-none">
                                     <p class="text-gray-600 text-xs mb-4">Última actualización: 13 de octubre de 2025</p>
-                                    <p class="text-gray-700 mb-4">Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utilizar la plataforma web <strong>Punto de Oro</strong>. Si está en desacuerdo con alguna parte o en su totalidad con estos Términos y Condiciones, no debe hacer uso de la misma.</p>
-                                    <p class="text-gray-700 mb-6"><strong>Punto de Oro</strong> es una plataforma web desarrollada para la gestión y seguimiento de torneos deportivos. Permite la creación de torneos y el seguimiento de cada etapa generada, así como la interacción entre organizadores y participantes.</p>
+                                    <p class="text-gray-700 mb-4">Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utilizar la plataforma web <strong>PickleTorneos</strong>. Si está en desacuerdo con alguna parte o en su totalidad con estos Términos y Condiciones, no debe hacer uso de la misma.</p>
+                                    <p class="text-gray-700 mb-6"><strong>PickleTorneos</strong> es una plataforma web desarrollada para la gestión y seguimiento de torneos deportivos. Permite la creación de torneos y el seguimiento de cada etapa generada, así como la interacción entre organizadores y participantes.</p>
                                     <div class="mb-6">
                                         <h3 class="text-lg font-bold text-gray-900 mb-2">1. Objeto del Servicio</h3>
                                         <h4 class="text-base font-semibold text-gray-800 mb-2">1.1. Objeto de la Plataforma</h4>
-                                        <p class="text-gray-700 mb-2"><strong>Punto de Oro</strong> es una herramienta software que facilita la gestión de torneos deportivos. Permite a los Usuarios:</p>
+                                        <p class="text-gray-700 mb-2"><strong>PickleTorneos</strong> es una herramienta software que facilita la gestión de torneos deportivos. Permite a los Usuarios:</p>
                                         <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4 mb-3">
                                             <li>Crear torneos.</li>
                                             <li>Hacer un seguimiento del avance de los mismos.</li>
@@ -338,7 +338,7 @@
                                             <li>Enviar y recibir notificaciones dentro de la plataforma.</li>
                                         </ul>
                                         <h4 class="text-base font-semibold text-gray-800 mb-2">1.2. Alcance del Servicio</h4>
-                                        <p class="text-gray-700 mb-4"><strong>Punto de Oro</strong> se limita a proporcionar la plataforma de gestión. La responsabilidad sobre la información cargada o publicada, así como el cumplimiento de plazos y la veracidad de los datos, recae exclusivamente en la organización o usuario administrador y en los usuarios registrados.</p>
+                                        <p class="text-gray-700 mb-4"><strong>PickleTorneos</strong> se limita a proporcionar la plataforma de gestión. La responsabilidad sobre la información cargada o publicada, así como el cumplimiento de plazos y la veracidad de los datos, recae exclusivamente en la organización o usuario administrador y en los usuarios registrados.</p>
                                     </div>
                                     <div class="mb-6">
                                         <h3 class="text-lg font-bold text-gray-900 mb-2">2. Uso de la Plataforma</h3>
@@ -349,7 +349,7 @@
                                         <ul class="list-disc list-inside space-y-1 text-gray-700 ml-4 mb-4">
                                             <li>Usar la Plataforma con fines ilegales o fraudulentos.</li>
                                             <li>Introducir código malicioso (virus, malware, etc.).</li>
-                                            <li>Dañar, sobrecargar o perjudicar los servidores o redes de <strong>Punto de Oro</strong>.</li>
+                                            <li>Dañar, sobrecargar o perjudicar los servidores o redes de <strong>PickleTorneos</strong>.</li>
                                             <li>Intentar obtener acceso no autorizado a sistemas o datos.</li>
                                             <li>Manipular la información de forma malintencionada.</li>
                                         </ul>
@@ -365,7 +365,7 @@
                                 </div>
                             </div>
                             <div class="sticky bottom-0 bg-gray-50 px-6 py-4 border-t border-gray-200">
-                                <button type="button" onclick="closeModal()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-200">
+                                <button type="button" onclick="closeModal()" class="w-full bg-gradient-to-r from-brand-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-purple-700 transition duration-200">
                                     Cerrar
                                 </button>
                             </div>
@@ -380,7 +380,7 @@
 
                         const btnJugador = document.getElementById('btn-jugador');
                         const btnOrganizador = document.getElementById('btn-organizador');
-                        const activeClass = ['bg-white', 'text-indigo-700', 'shadow'];
+                        const activeClass = ['bg-white', 'text-brand-700', 'shadow'];
                         const inactiveClass = ['text-gray-500'];
 
                         if (tipo === 'jugador') {
@@ -516,7 +516,7 @@
                 <div class="mt-6 text-center">
                     <p class="text-sm text-gray-600">
                         ¿Ya tienes cuenta?
-                        <a href="{{ route('login') }}" class="text-indigo-600 hover:text-indigo-700 font-semibold">
+                        <a href="{{ route('login') }}" class="text-brand-600 hover:text-brand-700 font-semibold">
                             Inicia sesión aquí
                         </a>
                     </p>

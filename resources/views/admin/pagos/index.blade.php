@@ -61,8 +61,8 @@
                         <i class="fas fa-gift"></i> {{ now()->locale('es')->isoFormat('MMMM') }}
                     </p>
                 </div>
-                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-ticket text-yellow-600 text-xl"></i>
+                <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-ticket text-accent-600 text-xl"></i>
                 </div>
             </div>
         </div>

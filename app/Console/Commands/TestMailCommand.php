@@ -18,14 +18,14 @@ class TestMailCommand extends Command
         $this->info("Enviando email de prueba a: {$email}");
 
         Mail::raw(
-            "Este es un email de prueba de Punto de Oro.\n\n"
+            "Este es un email de prueba de PickleTorneos.\n\n"
             . "Si recibís este mensaje, la configuración de mail está funcionando correctamente.\n\n"
             . "Fecha/hora: " . now()->format('d/m/Y H:i:s') . "\n"
             . "Driver: " . config('mail.default') . "\n"
             . "Queue: " . config('queue.default'),
             function ($message) use ($email) {
                 $message->to($email)
-                    ->subject('[Punto de Oro] Email de prueba');
+                    ->subject('[PickleTorneos] Email de prueba');
             }
         );
 

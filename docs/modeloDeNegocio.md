@@ -1,8 +1,8 @@
-# Modelo de Negocio - Punto de Oro
+# Modelo de Negocio - PickleTorneos
 
 ## 1. Resumen Ejecutivo
 
-**Punto de Oro** es una plataforma integral de gestión de torneos deportivos (inicialmente enfocada en pádel) que conecta a organizadores con jugadores, facilitando la administración completa de eventos deportivos desde la creación hasta la finalización del torneo.
+**PickleTorneos** es una plataforma integral de gestión de torneos deportivos (inicialmente enfocada en pádel) que conecta a organizadores con jugadores, facilitando la administración completa de eventos deportivos desde la creación hasta la finalización del torneo.
 
 ### Propuesta de Valor
 
@@ -55,7 +55,7 @@ Cada torneo incluye:
 #### Plan Premium con Web Personalizada
 - **Precio sugerido:** $15.000 - $20.000 adicionales por torneo o suscripción mensual de $40.000
 - **Incluye:**
-  - Subdominio personalizado (ej: `tuclub.puntodeoro.com`)
+  - Subdominio personalizado (ej: `tuclub.pickletorneos.com`)
   - Página web con información del torneo
   - Galería de fotos
   - Sección de noticias/comunicados
@@ -237,7 +237,7 @@ Cada torneo incluye:
 
 **Referencia:** Padel Organizer (padelorganizer.com.ar)
 
-**Ventajas competitivas de Punto de Oro:**
+**Ventajas competitivas de PickleTorneos:**
 - Modelo de pago por uso (vs suscripciones)
 - Primer torneo gratis
 - App móvil moderna para jugadores
@@ -255,7 +255,7 @@ Cada torneo incluye:
 **Comparativa con alternativas:**
 - Gestión manual (Excel + WhatsApp): Gratis pero consume 10+ horas
 - Software de suscripción: $20.000-50.000/mes (más caro si organiza pocos torneos)
-- **Punto de Oro:** Paga solo cuando organiza, precio justo por torneo
+- **PickleTorneos:** Paga solo cuando organiza, precio justo por torneo
 
 ---
 

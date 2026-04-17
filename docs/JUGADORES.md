@@ -98,9 +98,9 @@ Para testear el panel de jugador con datos reales, el seeder crea los siguientes
 
 | Email | Nombre | Deporte | Torneos en los que aparece |
 |---|---|---|---|
-| `jugador1@puntodeoro.com` | Carlos Rodríguez | Padel | Torneo 1 (Grupos+Elim.), Torneo 2 (Liga), Torneo 3 (Elim. Directa) |
-| `jugador2@puntodeoro.com` | Ana Martínez | Padel | Torneo 1 (Grupos+Elim.), Torneo 2 (Liga), Torneo 3 (Elim. Directa) |
-| `jugador3@puntodeoro.com` | Diego Fernández | Fútbol | Sin torneos (para probar empty state) |
+| `jugador1@pickletorneos.com` | Carlos Rodríguez | Padel | Torneo 1 (Grupos+Elim.), Torneo 2 (Liga), Torneo 3 (Elim. Directa) |
+| `jugador2@pickletorneos.com` | Ana Martínez | Padel | Torneo 1 (Grupos+Elim.), Torneo 2 (Liga), Torneo 3 (Elim. Directa) |
+| `jugador3@pickletorneos.com` | Diego Fernández | Fútbol | Sin torneos (para probar empty state) |
 
 **Password:** `1234` para todos.
 
@@ -242,7 +242,7 @@ Para testear el panel de jugador con datos reales, el seeder crea los siguientes
 
 ### Compartir Perfil
 
-- [ ] Generar imagen compartible con estética de Punto de Oro: foto + nombre + ranking + deporte + logros destacados
+- [ ] Generar imagen compartible con estética de PickleTorneos: foto + nombre + ranking + deporte + logros destacados
 - [ ] Generar video/GIF animado compartible *(a definir — posiblemente generado con IA)*
 - [ ] Botones de compartir: WhatsApp, Instagram, descarga directa
 

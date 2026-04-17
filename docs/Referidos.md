@@ -1,4 +1,4 @@
-# Sistema de Referidos - Punto de Oro
+# Sistema de Referidos - PickleTorneos
 
 ## Índice
 - [Resumen Ejecutivo](#resumen-ejecutivo)
@@ -14,7 +14,7 @@
 
 ## Resumen Ejecutivo
 
-El **Sistema de Referidos de Punto de Oro** es un programa simple y efectivo de crecimiento orgánico que permite a los organizadores actuales invitar a colegas y recibir beneficios concretos.
+El **Sistema de Referidos de PickleTorneos** es un programa simple y efectivo de crecimiento orgánico que permite a los organizadores actuales invitar a colegas y recibir beneficios concretos.
 
 ### ¿Por qué un sistema de referidos?
 
@@ -47,7 +47,7 @@ El **Sistema de Referidos de Punto de Oro** es un programa simple y efectivo de 
 
 ### Ejemplo Práctico
 
-**Juan** es organizador activo de Punto de Oro y decide invitar a su colega **María**:
+**Juan** es organizador activo de PickleTorneos y decide invitar a su colega **María**:
 
 | Paso | Acción | Beneficio |
 |------|--------|-----------|
@@ -61,7 +61,7 @@ El **Sistema de Referidos de Punto de Oro** es un programa simple y efectivo de 
 **Resultado:**
 - ✅ María ahorra $5.000
 - ✅ Juan gana 1 torneo gratis ($25.000)
-- ✅ Punto de Oro gana un cliente validado (ya pagó un torneo)
+- ✅ PickleTorneos gana un cliente validado (ya pagó un torneo)
 
 ---
 
@@ -80,7 +80,7 @@ El **Sistema de Referidos de Punto de Oro** es un programa simple y efectivo de 
 - Fortalece relación con la comunidad de organizadores
 
 **¿Quién puede ser referidor?**
-- Cualquier organizador registrado en Punto de Oro
+- Cualquier organizador registrado en PickleTorneos
 - No requiere haber creado torneos pagos previamente
 - Código de referido se genera automáticamente al registrarse
 
@@ -95,7 +95,7 @@ El **Sistema de Referidos de Punto de Oro** es un programa simple y efectivo de 
 - Acceso a una comunidad de organizadores
 - Conoce la plataforma de alguien que confía en ella
 
-### Para Punto de Oro
+### Para PickleTorneos
 
 **Crecimiento:**
 - Adquisición de clientes validados (ya pagaron un torneo)
@@ -966,21 +966,21 @@ class DescuentoReferidoNotification extends Notification
 
 ## Términos y Condiciones
 
-### Programa de Referidos - Punto de Oro
+### Programa de Referidos - PickleTorneos
 
 **Versión 1.0 - Vigencia: A partir del [FECHA]**
 
 #### 1. Elegibilidad
 
 **¿Quién puede ser referidor?**
-- Cualquier usuario registrado en Punto de Oro
+- Cualquier usuario registrado en PickleTorneos
 - No se requiere haber creado torneos pagos previamente
 - Cada usuario recibe un código de referido único al registrarse
 
 **¿Quién puede ser referido?**
 - Cualquier nuevo organizador que se registre en la plataforma
 - No puede ser la misma persona que el referidor (mismo DNI/CUIT)
-- No puede tener una cuenta previa en Punto de Oro
+- No puede tener una cuenta previa en PickleTorneos
 
 #### 2. Beneficios para el Referidor
 
@@ -1046,7 +1046,7 @@ Están expresamente prohibidas las siguientes prácticas:
 
 #### 6. Modificación y Cancelación del Programa
 
-**Punto de Oro se reserva el derecho de:**
+**PickleTorneos se reserva el derecho de:**
 - Modificar los términos del programa con 30 días de aviso previo
 - Cancelar el programa con 60 días de aviso previo
 - Suspender temporalmente el programa por motivos de mantenimiento o ajustes
@@ -1058,7 +1058,7 @@ Están expresamente prohibidas las siguientes prácticas:
 
 #### 7. Responsabilidades
 
-**Punto de Oro NO es responsable por:**
+**PickleTorneos NO es responsable por:**
 - Relaciones o conflictos entre referidor y referido
 - Uso indebido del código de referido por terceros
 - Problemas técnicos que impidan el uso temporal del programa
@@ -1074,13 +1074,13 @@ Están expresamente prohibidas las siguientes prácticas:
 - Los torneos gratis recibidos por referidos NO constituyen ingreso gravable para el referidor
 - Son considerados descuentos promocionales
 - El referidor NO debe emitir factura por los créditos recibidos
-- Punto de Oro NO retiene impuestos sobre estos beneficios
+- PickleTorneos NO retiene impuestos sobre estos beneficios
 
 **Nota:** Consulte con su contador ante cualquier duda fiscal.
 
 #### 9. Privacidad
 
-- Los datos del referidor y referido se manejan según la Política de Privacidad de Punto de Oro
+- Los datos del referidor y referido se manejan según la Política de Privacidad de PickleTorneos
 - El referidor podrá ver nombre y organización de sus referidos
 - El referido podrá ver nombre y organización de quien lo refirió
 - Ninguna de las partes tendrá acceso a datos financieros de la otra
@@ -1088,7 +1088,7 @@ Están expresamente prohibidas las siguientes prácticas:
 #### 10. Soporte y Consultas
 
 **Para consultas sobre el programa:**
-- Email: referidos@puntodeoro.com
+- Email: referidos@pickletorneos.com
 - WhatsApp: [NÚMERO]
 - Sección de ayuda: [URL]
 
@@ -1099,7 +1099,7 @@ Están expresamente prohibidas las siguientes prácticas:
 
 #### 11. Aceptación de Términos
 
-Al participar en el Programa de Referidos de Punto de Oro, ya sea como referidor o referido, el usuario acepta automáticamente estos términos y condiciones en su totalidad.
+Al participar en el Programa de Referidos de PickleTorneos, ya sea como referidor o referido, el usuario acepta automáticamente estos términos y condiciones en su totalidad.
 
 ---
 
@@ -1264,7 +1264,7 @@ Al participar en el Programa de Referidos de Punto de Oro, ya sea como referidor
 **Documento creado:** 2025-10-21
 **Versión:** 1.0
 **Estado:** Propuesta lista para implementación
-**Autor:** Equipo Punto de Oro
+**Autor:** Equipo PickleTorneos
 
 ---
 
@@ -1275,7 +1275,7 @@ Al participar en el Programa de Referidos de Punto de Oro, ya sea como referidor
 1. **Simplicidad:** Cualquier organizador puede explicarlo en 30 segundos
 2. **Beneficio concreto:** $25.000 en torneo gratis es tangible y significativo
 3. **Validación:** Solo se paga cuando el referido demuestra compromiso
-4. **Win-Win-Win:** Beneficio para referidor, referido y Punto de Oro
+4. **Win-Win-Win:** Beneficio para referidor, referido y PickleTorneos
 5. **Sostenible:** ROI positivo desde el tercer torneo del referido
 6. **Escalable:** No hay límites artificiales que frenen el crecimiento
 

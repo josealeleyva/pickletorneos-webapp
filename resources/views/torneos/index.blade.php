@@ -10,7 +10,7 @@
         <div>
             <p class="text-gray-600 text-sm sm:text-base">Gestiona todos tus torneos desde un solo lugar</p>
         </div>
-        <a href="{{ route('torneos.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 w-full sm:w-auto justify-center text-sm sm:text-base">
+        <a href="{{ route('torneos.create') }}" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 w-full sm:w-auto justify-center text-sm sm:text-base">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
             </svg>
@@ -24,7 +24,7 @@
             @foreach($torneos as $torneo)
                 <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
                     <!-- Banner o placeholder -->
-                    <div class="h-32 sm:h-40 bg-gradient-to-r from-indigo-500 to-purple-600 relative">
+                    <div class="h-32 sm:h-40 bg-gradient-to-r from-brand-500 to-purple-600 relative">
                         @if($torneo->imagen_banner)
                             <img src="{{ asset('storage/' . $torneo->imagen_banner) }}" alt="{{ $torneo->nombre }}" class="w-full h-full object-cover">
                         @else
@@ -120,7 +120,7 @@
                     <div class="px-4 sm:px-5 py-3 bg-gray-50 border-t border-gray-200 flex flex-wrap gap-2 justify-between items-center">
                         @if($torneo->pago && $torneo->pago->estado === 'pendiente')
                             <!-- Si el pago está pendiente, solo mostrar botón de pagar -->
-                            <a href="{{ route('pagos.checkout', $torneo) }}" class="flex-1 text-center bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded font-medium text-xs sm:text-sm flex items-center justify-center">
+                            <a href="{{ route('pagos.checkout', $torneo) }}" class="flex-1 text-center bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded font-medium text-xs sm:text-sm flex items-center justify-center">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
                                 </svg>
@@ -128,7 +128,7 @@
                             </a>
                         @else
                             <!-- Si el pago está completo o es gratuito, mostrar botones normales -->
-                            <a href="{{ route('torneos.show', $torneo) }}" class="text-indigo-600 hover:text-indigo-700 font-medium text-xs sm:text-sm flex items-center">
+                            <a href="{{ route('torneos.show', $torneo) }}" class="text-brand-600 hover:text-brand-700 font-medium text-xs sm:text-sm flex items-center">
                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -168,8 +168,8 @@
         <!-- Estado vacío -->
         <div class="bg-white rounded-lg shadow-sm p-8 sm:p-12 text-center">
             <div class="max-w-md mx-auto">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-brand-100 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                     </svg>
                 </div>
@@ -177,7 +177,7 @@
                 <p class="text-gray-600 text-sm sm:text-base mb-6">
                     Crea tu primer torneo y comienza a gestionar tus eventos deportivos de manera profesional.
                 </p>
-                <a href="{{ route('torneos.create') }}" class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
+                <a href="{{ route('torneos.create') }}" class="inline-flex items-center px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>

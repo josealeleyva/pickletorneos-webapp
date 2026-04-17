@@ -78,8 +78,8 @@
                     <p class="text-gray-500 text-sm font-medium">Total Torneos</p>
                     <p class="text-3xl font-bold text-gray-800 mt-2">{{ $totalTorneos }}</p>
                 </div>
-                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-trophy text-yellow-600 text-xl"></i>
+                <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-trophy text-accent-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@
     <div class="bg-white rounded-lg shadow overflow-hidden">
         <div class="px-6 py-4 border-b border-gray-200">
             <h3 class="text-lg font-semibold text-gray-800">
-                <i class="fas fa-trophy text-yellow-600 mr-2"></i>
+                <i class="fas fa-trophy text-accent-600 mr-2"></i>
                 Torneos Creados
             </h3>
         </div>

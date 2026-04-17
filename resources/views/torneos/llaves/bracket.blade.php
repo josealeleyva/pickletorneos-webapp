@@ -68,7 +68,7 @@
             <form method="POST" action="{{ route('torneos.llaves.reset', $torneo) }}" class="inline"
                   onsubmit="return confirm('¿Estás seguro de resetear las llaves? Esto eliminará todos los brackets generados.')">
                 @csrf
-                <button type="submit" class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+                <button type="submit" class="inline-flex items-center px-4 py-2 bg-accent-600 hover:bg-accent-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
@@ -139,7 +139,7 @@
             <nav class="flex overflow-x-auto" aria-label="Categorías">
                 @foreach($llavesPorCategoria as $catId => $data)
                     <button type="button"
-                            class="tab-button whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm {{ $loop->first ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}"
+                            class="tab-button whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm {{ $loop->first ? 'border-brand-600 text-brand-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}"
                             data-tab="bracket-{{ $catId }}">
                         {{ $data['categoria']->nombre }}
                     </button>
@@ -166,7 +166,7 @@
     <div class="sm:hidden">
         <div class="bg-white rounded-lg shadow-sm">
             <div class="p-4 border-b border-gray-200">
-                <select id="categoria-filter-select-mobile" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                <select id="categoria-filter-select-mobile" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500">
                     @foreach($llavesPorCategoria as $catId => $data)
                         <option value="categoria-mobile-{{ $catId }}">{{ $data['categoria']->nombre }}</option>
                     @endforeach
@@ -344,7 +344,7 @@
                     <button
                         type="submit"
                         id="btn-agregar-juego"
-                        class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition text-sm">
+                        class="w-full px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-lg transition text-sm">
                         Agregar
                     </button>
                 </div>
@@ -882,7 +882,7 @@
             }
 
             // Obtener nombre de la categoría del tab activo
-            const activeTab = document.querySelector('.tab-button.border-indigo-600');
+            const activeTab = document.querySelector('.tab-button.border-brand-600');
             const catNombre = activeTab?.textContent.trim() || '';
 
             if (catNombre) {
@@ -1011,11 +1011,11 @@
 
             // Update active tab button
             tabButtons.forEach(btn => {
-                btn.classList.remove('border-indigo-600', 'text-indigo-600');
+                btn.classList.remove('border-brand-600', 'text-brand-600');
                 btn.classList.add('border-transparent', 'text-gray-500');
             });
             this.classList.remove('border-transparent', 'text-gray-500');
-            this.classList.add('border-indigo-600', 'text-indigo-600');
+            this.classList.add('border-brand-600', 'text-brand-600');
 
             // Show/hide tab content
             tabContents.forEach(content => {

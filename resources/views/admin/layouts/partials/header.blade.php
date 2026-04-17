@@ -16,7 +16,7 @@
                             @if($loop->last)
                                 <span class="text-gray-400">{{ $label }}</span>
                             @else
-                                <a href="{{ $url }}" class="hover:text-yellow-600">{{ $label }}</a>
+                                <a href="{{ $url }}" class="hover:text-accent-600">{{ $label }}</a>
                                 <span class="mx-2">/</span>
                             @endif
                         @endforeach

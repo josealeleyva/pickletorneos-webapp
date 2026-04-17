@@ -31,19 +31,19 @@
             ])->filter(fn($label, $campo) => empty($jugador->$campo))->values();
         @endphp
         @if($camposFaltantes->isNotEmpty())
-            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+            <div class="bg-accent-50 border border-accent-200 rounded-lg p-4 mb-6">
                 <div class="flex items-start gap-3">
-                    <svg class="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 text-accent-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                     </svg>
                     <div class="flex-1">
-                        <p class="text-sm font-semibold text-amber-800">Tu perfil está incompleto</p>
-                        <p class="text-xs text-amber-700 mt-1">
+                        <p class="text-sm font-semibold text-accent-800">Tu perfil está incompleto</p>
+                        <p class="text-xs text-accent-700 mt-1">
                             Falta completar:
                             <span class="font-semibold">{{ $camposFaltantes->implode(', ') }}</span>.
                         </p>
-                        <p class="text-xs text-amber-600 mt-0.5">Completar estos datos te permite usar el filtro de inscripción en torneos.</p>
-                        <a href="{{ route('jugador.perfil') }}" class="inline-block mt-2 text-xs font-semibold text-amber-800 underline">
+                        <p class="text-xs text-accent-600 mt-0.5">Completar estos datos te permite usar el filtro de inscripción en torneos.</p>
+                        <a href="{{ route('jugador.perfil') }}" class="inline-block mt-2 text-xs font-semibold text-accent-800 underline">
                             Ir a mi perfil →
                         </a>
                     </div>
@@ -59,7 +59,7 @@
         <div class="flex-1 min-w-0">
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                     Próximos Partidos
@@ -68,8 +68,8 @@
 
             @if($proximosPartidos->isEmpty())
                 <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-8 text-center">
-                    <div class="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
                     </div>
@@ -89,7 +89,7 @@
                         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md transition">
                             {{-- Torneo y badge de tiempo --}}
                             <div class="flex items-center justify-between mb-3">
-                                <span class="text-xs font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full truncate max-w-[60%]">
+                                <span class="text-xs font-medium text-brand-600 bg-brand-50 px-2 py-0.5 rounded-full truncate max-w-[60%]">
                                     {{ $torneo?->nombre ?? 'Torneo' }}
                                 </span>
                                 @if($diasRestantes !== null)
@@ -106,11 +106,11 @@
                             {{-- Equipos --}}
                             <div class="flex items-center gap-3">
                                 <div class="flex-1 text-center">
-                                    <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-1">
-                                        <span class="text-xs font-bold text-indigo-700">{{ substr($miEquipo?->nombre ?? 'Yo', 0, 2) }}</span>
+                                    <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-1">
+                                        <span class="text-xs font-bold text-brand-700">{{ substr($miEquipo?->nombre ?? 'Yo', 0, 2) }}</span>
                                     </div>
                                     <p class="text-xs font-semibold text-gray-800 truncate">{{ $miEquipo?->nombre ?? 'Mi equipo' }}</p>
-                                    <p class="text-xs text-indigo-500 font-medium">Vos</p>
+                                    <p class="text-xs text-brand-500 font-medium">Vos</p>
                                 </div>
 
                                 <div class="text-center flex-shrink-0">
@@ -151,7 +151,7 @@
                                 <div class="mt-3 pt-3 border-t border-gray-50">
                                     @if(!$partido->resultadoTentativo)
                                         <a href="{{ route('jugador.partidos') }}"
-                                           class="block text-center text-xs font-semibold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 py-2 rounded-lg transition">
+                                           class="block text-center text-xs font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 py-2 rounded-lg transition">
                                             Cargar resultado →
                                         </a>
                                     @elseif($partido->resultadoTentativo->propuesto_por_equipo_id === $miEquipo?->id)
@@ -175,7 +175,7 @@
             <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden sticky top-4">
                 <div class="p-4 border-b border-gray-100">
                     <h3 class="text-sm font-bold text-gray-800 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                         </svg>
                         Mis Torneos
@@ -188,7 +188,7 @@
                         class="flex-1 py-2.5 text-center transition tab-btn tab-active">
                         Activos
                         @if($torneosActivos->count() > 0)
-                            <span class="ml-1 bg-indigo-600 text-white text-xs rounded-full px-1.5">{{ $torneosActivos->count() }}</span>
+                            <span class="ml-1 bg-brand-600 text-white text-xs rounded-full px-1.5">{{ $torneosActivos->count() }}</span>
                         @endif
                     </button>
                     <button onclick="showTab('historial')" id="tab-historial"
@@ -204,10 +204,10 @@
                 {{-- Tab: Activos --}}
                 <div id="panel-activos" class="p-3 space-y-2 max-h-80 overflow-y-auto">
                     @forelse($torneosActivos as $torneo)
-                        <a href="{{ route('torneos.public', $torneo->id) }}" class="block p-3 rounded-lg hover:bg-indigo-50 border border-transparent hover:border-indigo-100 transition group">
+                        <a href="{{ route('torneos.public', $torneo->id) }}" class="block p-3 rounded-lg hover:bg-brand-50 border border-transparent hover:border-brand-100 transition group">
                             <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-200 transition">
-                                    <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div class="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-brand-200 transition">
+                                    <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                                     </svg>
                                 </div>
@@ -260,7 +260,7 @@
                     </div>
                     <div class="p-3">
                         <a href="{{ route('jugador.torneos') }}?tab=explorar"
-                            class="block w-full text-center text-xs font-semibold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 py-2 rounded-lg transition">
+                            class="block w-full text-center text-xs font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 py-2 rounded-lg transition">
                             Ver todos los torneos →
                         </a>
                     </div>
@@ -268,7 +268,7 @@
 
                 {{-- Ver todos --}}
                 <div class="p-3 border-t border-gray-100">
-                    <a href="{{ route('jugador.torneos') }}" class="block text-center text-xs font-medium text-indigo-600 hover:text-indigo-700">
+                    <a href="{{ route('jugador.torneos') }}" class="block text-center text-xs font-medium text-brand-600 hover:text-brand-700">
                         Ver sección completa de torneos →
                     </a>
                 </div>
@@ -285,14 +285,14 @@
         panels.forEach(p => {
             document.getElementById('panel-' + p).classList.add('hidden');
             const tab = document.getElementById('tab-' + p);
-            tab.classList.remove('tab-active', 'text-indigo-700', 'border-b-2', 'border-indigo-600');
+            tab.classList.remove('tab-active', 'text-brand-700', 'border-b-2', 'border-brand-600');
             tab.classList.add('text-gray-500');
         });
 
         document.getElementById('panel-' + nombre).classList.remove('hidden');
         const activeTab = document.getElementById('tab-' + nombre);
         activeTab.classList.remove('text-gray-500');
-        activeTab.classList.add('text-indigo-700', 'border-b-2', 'border-indigo-600');
+        activeTab.classList.add('text-brand-700', 'border-b-2', 'border-brand-600');
     }
 
     // Inicializar tab activo

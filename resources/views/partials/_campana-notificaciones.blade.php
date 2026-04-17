@@ -66,7 +66,7 @@
     <!-- Botón campana -->
     <button
         @click="abrir()"
-        class="relative p-2 rounded-lg text-white hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition"
+        class="relative p-2 rounded-lg text-white hover:bg-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-400 transition"
         aria-label="Notificaciones"
     >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +101,7 @@
             <button
                 x-show="noLeidas > 0"
                 @click="marcarTodas()"
-                class="text-xs text-indigo-600 hover:text-indigo-800 font-medium"
+                class="text-xs text-brand-600 hover:text-brand-800 font-medium"
             >
                 Marcar todas como leídas
             </button>
@@ -111,7 +111,7 @@
         <div class="max-h-80 overflow-y-auto divide-y divide-gray-50">
             <template x-if="cargando">
                 <div class="flex items-center justify-center py-8">
-                    <svg class="animate-spin h-5 w-5 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg class="animate-spin h-5 w-5 text-brand-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
                     </svg>
@@ -127,7 +127,7 @@
             <template x-for="n in notificaciones" :key="n.id">
                 <div
                     @click="handleClick(n)"
-                    :class="n.leida && !['invitacion_torneo','resultado_tentativo','resultado_confirmado'].includes(n.tipo) ? 'bg-white' : 'bg-indigo-50 cursor-pointer hover:bg-indigo-100'"
+                    :class="n.leida && !['invitacion_torneo','resultado_tentativo','resultado_confirmado'].includes(n.tipo) ? 'bg-white' : 'bg-brand-50 cursor-pointer hover:bg-brand-100'"
                     class="px-4 py-3 transition"
                 >
                     <div class="flex items-start gap-3">
@@ -137,7 +137,7 @@
                             'bg-blue-100 text-blue-600': n.tipo === 'invitacion_torneo',
                             'bg-red-100 text-red-600': n.tipo === 'inscripcion_cancelada',
                             'bg-yellow-100 text-yellow-600': n.tipo === 'nuevo_equipo',
-                            'bg-indigo-100 text-indigo-600': !['inscripcion_confirmada','invitacion_torneo','inscripcion_cancelada','nuevo_equipo'].includes(n.tipo)
+                            'bg-brand-100 text-brand-600': !['inscripcion_confirmada','invitacion_torneo','inscripcion_cancelada','nuevo_equipo'].includes(n.tipo)
                         }" class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center mt-0.5">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -148,7 +148,7 @@
                             <p class="text-xs text-gray-400 mt-1" x-text="n.fecha"></p>
                         </div>
                         <!-- Punto no leída -->
-                        <div x-show="!n.leida" class="flex-shrink-0 w-2 h-2 bg-indigo-500 rounded-full mt-1.5"></div>
+                        <div x-show="!n.leida" class="flex-shrink-0 w-2 h-2 bg-brand-500 rounded-full mt-1.5"></div>
                     </div>
                 </div>
             </template>

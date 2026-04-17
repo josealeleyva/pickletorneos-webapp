@@ -9,7 +9,7 @@
     <nav class="mb-4 sm:mb-6">
         <ol class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
             <li>
-                <a href="{{ route('profile.show') }}" class="hover:text-indigo-600">Mi Perfil</a>
+                <a href="{{ route('profile.show') }}" class="hover:text-brand-600">Mi Perfil</a>
             </li>
             <li>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -53,7 +53,7 @@
                     id="current_password"
                     name="current_password"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('current_password') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('current_password') border-red-500 @enderror"
                     placeholder="Tu contraseña actual"
                 >
                 @error('current_password')
@@ -71,7 +71,7 @@
                     id="password"
                     name="password"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('password') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('password') border-red-500 @enderror"
                     placeholder="Mínimo 8 caracteres"
                 >
                 @error('password')
@@ -89,7 +89,7 @@
                     id="password_confirmation"
                     name="password_confirmation"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                     placeholder="Repite tu nueva contraseña"
                 >
             </div>
@@ -99,7 +99,7 @@
                 <a href="{{ route('profile.show') }}" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-200 text-center text-sm sm:text-base">
                     Cancelar
                 </a>
-                <button type="submit" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
+                <button type="submit" class="px-6 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
                     Cambiar Contraseña
                 </button>
             </div>

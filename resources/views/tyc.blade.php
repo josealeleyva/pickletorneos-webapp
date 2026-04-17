@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800 text-white overflow-hidden">
+    <section class="relative bg-gradient-to-br from-brand-600 via-purple-600 to-brand-800 text-white overflow-hidden">
         <!-- Decorative Elements -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -15,13 +15,13 @@
             <div class="text-center">
                 <!-- Logo -->
                 <div class="mb-6">
-                    <img src="{{ asset('images/logo-blanco.png') }}" alt="Punto de Oro" class="h-16 sm:h-20 mx-auto">
+                    <img src="{{ asset('images/logo-blanco.png') }}" alt="PickleTorneos" class="h-16 sm:h-20 mx-auto">
                 </div>
 
                 <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-4">
                     Términos y Condiciones
                 </h1>
-                <p class="text-lg sm:text-xl text-indigo-100">
+                <p class="text-lg sm:text-xl text-brand-100">
                     Última actualización: 13 de octubre de 2025
                 </p>
             </div>
@@ -41,10 +41,10 @@
             <!-- Introducción -->
             <div class="prose prose-lg max-w-none mb-8">
                 <p class="text-gray-700 leading-relaxed">
-                    Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utilizar la plataforma web <strong>Punto de Oro</strong>. Si está en desacuerdo con alguna parte o en su totalidad con estos Términos y Condiciones, no debe hacer uso de la misma.
+                    Por favor, lea atentamente estos Términos y Condiciones de Uso antes de utilizar la plataforma web <strong>PickleTorneos</strong>. Si está en desacuerdo con alguna parte o en su totalidad con estos Términos y Condiciones, no debe hacer uso de la misma.
                 </p>
                 <p class="text-gray-700 leading-relaxed mt-4">
-                    <strong>Punto de Oro</strong> es una plataforma web desarrollada para la gestión y seguimiento de torneos deportivos. Permite la creación de torneos y el seguimiento de cada etapa generada, así como la interacción entre organizadores y participantes.
+                    <strong>PickleTorneos</strong> es una plataforma web desarrollada para la gestión y seguimiento de torneos deportivos. Permite la creación de torneos y el seguimiento de cada etapa generada, así como la interacción entre organizadores y participantes.
                 </p>
             </div>
 
@@ -53,14 +53,14 @@
                 <!-- Sección 1 -->
                 <div class="bg-gray-50 rounded-xl p-6 sm:p-8">
                     <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                        <span class="flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-lg flex items-center justify-center text-lg font-bold">1</span>
+                        <span class="flex-shrink-0 w-10 h-10 bg-brand-600 text-white rounded-lg flex items-center justify-center text-lg font-bold">1</span>
                         Objeto del Servicio
                     </h2>
 
                     <div class="space-y-4">
                         <div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2">1.1. Objeto de la Plataforma</h3>
-                            <p class="text-gray-700 mb-3"><strong>Punto de Oro</strong> es una herramienta software que facilita la gestión de torneos deportivos. Permite a los Usuarios:</p>
+                            <p class="text-gray-700 mb-3"><strong>PickleTorneos</strong> es una herramienta software que facilita la gestión de torneos deportivos. Permite a los Usuarios:</p>
                             <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
                                 <li>Crear torneos.</li>
                                 <li>Hacer un seguimiento del avance de los mismos.</li>
@@ -74,7 +74,7 @@
 
                         <div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2">1.2. Alcance del Servicio</h3>
-                            <p class="text-gray-700"><strong>Punto de Oro</strong> se limita a proporcionar la plataforma de gestión. La responsabilidad sobre la información cargada o publicada, así como el cumplimiento de plazos y la veracidad de los datos, recae exclusivamente en la organización o usuario administrador y en los usuarios registrados.</p>
+                            <p class="text-gray-700"><strong>PickleTorneos</strong> se limita a proporcionar la plataforma de gestión. La responsabilidad sobre la información cargada o publicada, así como el cumplimiento de plazos y la veracidad de los datos, recae exclusivamente en la organización o usuario administrador y en los usuarios registrados.</p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                             <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
                                 <li>Usar la Plataforma con fines ilegales o fraudulentos.</li>
                                 <li>Introducir código malicioso (virus, malware, etc.).</li>
-                                <li>Dañar, sobrecargar o perjudicar los servidores o redes de <strong>Punto de Oro</strong>.</li>
+                                <li>Dañar, sobrecargar o perjudicar los servidores o redes de <strong>PickleTorneos</strong>.</li>
                                 <li>Intentar obtener acceso no autorizado a sistemas o datos.</li>
                                 <li>Manipular la información de forma malintencionada.</li>
                             </ul>
@@ -116,7 +116,7 @@
                     <div class="space-y-4">
                         <div>
                             <h3 class="text-xl font-bold text-gray-900 mb-2">3.1. Limitación de Responsabilidad</h3>
-                            <p class="text-gray-700 mb-3">El proveedor de <strong>Punto de Oro</strong> se limita a la operación y mantenimiento técnico de la plataforma. No es responsable de:</p>
+                            <p class="text-gray-700 mb-3">El proveedor de <strong>PickleTorneos</strong> se limita a la operación y mantenimiento técnico de la plataforma. No es responsable de:</p>
                             <ul class="list-disc list-inside space-y-2 text-gray-700 ml-4">
                                 <li>Pérdidas o daños derivados del uso o imposibilidad de uso de la Plataforma.</li>
                                 <li>Errores, interrupciones, demoras, virus o fallas de red ajenas al Administrador.</li>
@@ -145,7 +145,7 @@
 
                     <div class="space-y-4">
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">4.1. Propiedad de Punto de Oro</h3>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">4.1. Propiedad de PickleTorneos</h3>
                             <p class="text-gray-700">Todos los derechos de propiedad intelectual sobre diseño, código fuente, gráficos, textos, bases de datos, marcas y logotipos son exclusivos del Administrador o sus licenciantes.</p>
                         </div>
 
@@ -182,7 +182,7 @@
                 <!-- Sección 7 -->
                 <div class="bg-gray-50 rounded-xl p-6 sm:p-8">
                     <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                        <span class="flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-lg flex items-center justify-center text-lg font-bold">7</span>
+                        <span class="flex-shrink-0 w-10 h-10 bg-brand-600 text-white rounded-lg flex items-center justify-center text-lg font-bold">7</span>
                         Violaciones a los Términos
                     </h2>
                     <p class="text-gray-700">El Administrador podrá investigar y sancionar violaciones a estos Términos, incluyendo suspensión o baja de acceso, eliminación de contenidos y denuncias ante autoridades competentes.</p>
@@ -249,7 +249,7 @@
             <!-- Botón de regreso -->
             <div class="mt-12 text-center">
                 <a href="{{ route('landing') }}"
-                    class="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:from-indigo-700 hover:to-purple-700 transition duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-purple-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:from-brand-700 hover:to-purple-700 transition duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                     </svg>
@@ -265,14 +265,14 @@
             <div class="text-center">
                 <!-- Logo en footer -->
                 <div class="mb-4">
-                    <img src="{{ asset('images/logo-blanco.png') }}" alt="Punto de Oro" class="h-12 mx-auto">
+                    <img src="{{ asset('images/logo-blanco.png') }}" alt="PickleTorneos" class="h-12 mx-auto">
                 </div>
                 <p class="text-gray-400 mb-4">Sistema profesional de gestión de torneos deportivos</p>
                 <div class="flex justify-center gap-6 text-sm">
                     <a href="{{ route('tyc') }}" class="hover:text-white transition duration-200">Términos y Condiciones</a>
                 </div>
                 <p class="mt-6 text-sm text-gray-500">
-                    © 2025 Punto de Oro. Todos los derechos reservados.
+                    © 2025 PickleTorneos. Todos los derechos reservados.
                 </p>
             </div>
         </div>

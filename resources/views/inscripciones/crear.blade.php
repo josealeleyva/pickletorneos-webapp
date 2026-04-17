@@ -40,7 +40,7 @@
                     $motivo = $info['motivo'];
                 @endphp
                 @if($esElegible)
-                <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-indigo-400 has-[:checked]:border-indigo-500 has-[:checked]:bg-indigo-50 transition">
+                <label class="flex items-start gap-3 p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-brand-400 has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 transition">
                     <input type="radio" name="categoria_id" value="{{ $cat->id }}" class="mt-1" required>
                     <div>
                         <div class="font-medium text-gray-900 text-sm">{{ $cat->nombre }}</div>
@@ -91,13 +91,13 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del equipo</label>
                 <input type="text" name="nombre_equipo" required
-                       class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                       class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
                        placeholder="Ej: Los Campeones">
             </div>
             @endif
 
             <button type="submit"
-                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 px-4 rounded-lg text-sm transition">
+                    class="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 px-4 rounded-lg text-sm transition">
                 Continuar e invitar compañeros
             </button>
         </form>
@@ -123,7 +123,7 @@
             @foreach($inscripcion->invitaciones as $inv)
             <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                 <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-bold text-indigo-700">
+                    <div class="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-xs font-bold text-brand-700">
                         {{ substr($inv->jugador->apellido, 0, 1) }}
                     </div>
                     <span class="text-sm font-medium text-gray-900">{{ $inv->jugador->nombre_completo }}</span>
@@ -142,10 +142,10 @@
             <label class="block text-sm font-medium text-gray-700 mb-2">Buscar jugador</label>
             <div class="relative">
                 <input type="text" x-model="query" @input.debounce.400ms="buscar()"
-                       class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 pr-8"
+                       class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 pr-8"
                        placeholder="Nombre, apellido, email o teléfono (mín. 2 caracteres)">
                 <div x-show="cargando" class="absolute right-2 top-2.5">
-                    <svg class="animate-spin h-4 w-4 text-indigo-500" fill="none" viewBox="0 0 24 24">
+                    <svg class="animate-spin h-4 w-4 text-brand-500" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
                     </svg>
@@ -155,7 +155,7 @@
                     <template x-for="j in resultados" :key="j.id">
                         <button type="button" @click="seleccionar(j)"
                                 class="w-full flex items-center gap-2 px-3 py-2 hover:bg-gray-50 text-left text-sm">
-                            <div class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-bold text-indigo-700 flex-shrink-0"
+                            <div class="w-7 h-7 rounded-full bg-brand-100 flex items-center justify-center text-xs font-bold text-brand-700 flex-shrink-0"
                                  x-text="j.nombre_completo.charAt(0)"></div>
                             <span x-text="j.nombre_completo"></span>
                         </button>
@@ -165,12 +165,12 @@
                 <p x-show="error" x-text="error" class="mt-1 text-xs text-red-600"></p>
             </div>
 
-            <div x-show="seleccionado" class="mt-3 p-3 bg-indigo-50 rounded-lg flex items-center justify-between">
-                <span class="text-sm font-medium text-indigo-900" x-text="seleccionado?.nombre_completo"></span>
+            <div x-show="seleccionado" class="mt-3 p-3 bg-brand-50 rounded-lg flex items-center justify-between">
+                <span class="text-sm font-medium text-brand-900" x-text="seleccionado?.nombre_completo"></span>
                 <form :action="`/inscripciones/{{ $inscripcion->id }}/invitar`" method="POST">
                     @csrf
                     <input type="hidden" name="jugador_id" :value="seleccionado?.id">
-                    <button type="submit" class="text-xs bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-1.5 rounded-lg font-medium transition">
+                    <button type="submit" class="text-xs bg-brand-600 hover:bg-brand-700 text-white px-3 py-1.5 rounded-lg font-medium transition">
                         Enviar invitación
                     </button>
                 </form>

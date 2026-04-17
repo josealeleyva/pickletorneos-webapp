@@ -8,10 +8,10 @@
     <!-- Tarjeta de Información Personal -->
     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
         <!-- Header -->
-        <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-4 sm:px-6 py-4">
+        <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-4 sm:px-6 py-4">
             <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
                 <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                    <span class="text-3xl sm:text-4xl font-bold text-indigo-600">
+                    <span class="text-3xl sm:text-4xl font-bold text-brand-600">
                         {{ substr(auth()->user()->name, 0, 1) }}{{ substr(auth()->user()->apellido ?? '', 0, 1) }}
                     </span>
                 </div>
@@ -19,7 +19,7 @@
                     <h2 class="text-xl sm:text-2xl font-bold text-white">
                         {{ auth()->user()->name }} {{ auth()->user()->apellido }}
                     </h2>
-                    <p class="text-indigo-100 mt-1 text-sm sm:text-base">{{ auth()->user()->email }}</p>
+                    <p class="text-brand-100 mt-1 text-sm sm:text-base">{{ auth()->user()->email }}</p>
                     @if(auth()->user()->organizacion)
                         <div class="mt-2 inline-flex items-center px-3 py-1 bg-white bg-opacity-20 text-white rounded-full text-xs sm:text-sm">
                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -30,7 +30,7 @@
                     @endif
                 </div>
                 <div class="flex gap-2">
-                    <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-3 sm:px-4 py-2 bg-white text-indigo-600 rounded-lg hover:bg-indigo-50 transition font-semibold text-xs sm:text-sm">
+                    <a href="{{ route('profile.edit') }}" class="inline-flex items-center px-3 sm:px-4 py-2 bg-white text-brand-600 rounded-lg hover:bg-brand-50 transition font-semibold text-xs sm:text-sm">
                         <svg class="w-4 h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                         </svg>
@@ -103,8 +103,8 @@
         @else
             <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-gray-50 rounded-lg gap-3">
                 <div class="flex items-start sm:items-center gap-3">
-                    <div class="p-2 bg-indigo-100 rounded-lg flex-shrink-0">
-                        <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="p-2 bg-brand-100 rounded-lg flex-shrink-0">
+                        <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
                     </div>
@@ -113,7 +113,7 @@
                         <p class="text-xs sm:text-sm text-gray-600">••••••••</p>
                     </div>
                 </div>
-                <a href="{{ route('profile.password.edit') }}" class="inline-flex items-center justify-center px-4 py-2 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition font-semibold text-xs sm:text-sm">
+                <a href="{{ route('profile.password.edit') }}" class="inline-flex items-center justify-center px-4 py-2 border border-brand-600 text-brand-600 rounded-lg hover:bg-brand-50 transition font-semibold text-xs sm:text-sm">
                     Cambiar Contraseña
                 </a>
             </div>
@@ -125,14 +125,14 @@
         <h3 class="text-base sm:text-lg font-semibold text-gray-800 mb-4">Estadísticas</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <!-- Torneos -->
-            <div class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-4">
+            <div class="bg-gradient-to-br from-brand-50 to-brand-100 rounded-lg p-4">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-xs text-indigo-600 font-medium uppercase tracking-wider mb-1">Torneos</p>
-                        <p class="text-2xl sm:text-3xl font-bold text-indigo-900">{{ auth()->user()->torneos_creados }}</p>
+                        <p class="text-xs text-brand-600 font-medium uppercase tracking-wider mb-1">Torneos</p>
+                        <p class="text-2xl sm:text-3xl font-bold text-brand-900">{{ auth()->user()->torneos_creados }}</p>
                     </div>
-                    <div class="p-3 bg-indigo-200 rounded-lg">
-                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="p-3 bg-brand-200 rounded-lg">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                         </svg>
                     </div>

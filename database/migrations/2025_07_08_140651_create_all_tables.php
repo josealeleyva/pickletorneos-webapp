@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Laravel migrations base según tu ER actualizado para Punto de Oro
+        // Laravel migrations base según tu ER actualizado para PickleTorneos
         // Incluye claves foráneas y relaciones preparadas para seeds y factories
 
         // 1. Deportes

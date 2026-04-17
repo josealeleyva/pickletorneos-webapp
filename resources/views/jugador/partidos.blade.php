@@ -68,7 +68,7 @@
                         @csrf
                         <button type="submit"
                                 onclick="return confirm('¿Confirmás este resultado?')"
-                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium py-2 rounded-lg transition">
+                                class="w-full bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium py-2 rounded-lg transition">
                             Confirmar
                         </button>
                     </form>
@@ -94,19 +94,19 @@
                     </div>
 
                     {{-- Totales --}}
-                    <div x-show="juegos.length > 0" class="bg-indigo-50 rounded px-3 py-2 mb-3 text-center text-sm">
+                    <div x-show="juegos.length > 0" class="bg-brand-50 rounded px-3 py-2 mb-3 text-center text-sm">
                         Total: <strong x-text="totalEquipo1"></strong> - <strong x-text="totalEquipo2"></strong>
                     </div>
 
                     {{-- Agregar juego --}}
                     <div class="grid grid-cols-2 gap-2 mb-2">
                         <input type="number" x-model="juego1" min="0" placeholder="{{ $partido->equipo1->nombre }}"
-                               class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                               class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:ring-2 focus:ring-brand-500 focus:outline-none">
                         <input type="number" x-model="juego2" min="0" placeholder="{{ $partido->equipo2->nombre }}"
-                               class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                               class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:ring-2 focus:ring-brand-500 focus:outline-none">
                     </div>
                     <button @click="agregarJuego()"
-                            class="w-full text-sm border border-indigo-300 text-indigo-600 hover:bg-indigo-50 py-1.5 rounded-lg mb-3 transition">
+                            class="w-full text-sm border border-brand-300 text-brand-600 hover:bg-brand-50 py-1.5 rounded-lg mb-3 transition">
                         + Agregar set/juego
                     </button>
 
@@ -191,7 +191,7 @@
                 </div>
 
                 @if(!$rivalTieneUsuarios)
-                    <div class="flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-xs text-amber-700">
+                    <div class="flex items-start gap-2 bg-accent-50 border border-accent-200 rounded-lg px-3 py-2 text-xs text-accent-700">
                         <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
                         </svg>
@@ -200,7 +200,7 @@
                 @else
                 <div x-show="!cargando">
                     <button @click="cargando = true"
-                            class="w-full text-sm text-indigo-600 border border-indigo-300 hover:bg-indigo-50 py-2 rounded-lg transition font-medium">
+                            class="w-full text-sm text-brand-600 border border-brand-300 hover:bg-brand-50 py-2 rounded-lg transition font-medium">
                         Cargar resultado
                     </button>
                 </div>
@@ -217,18 +217,18 @@
                         </template>
                     </div>
 
-                    <div x-show="juegos.length > 0" class="bg-indigo-50 rounded px-3 py-2 mb-3 text-center text-sm">
+                    <div x-show="juegos.length > 0" class="bg-brand-50 rounded px-3 py-2 mb-3 text-center text-sm">
                         Total: <strong x-text="totalEquipo1"></strong> - <strong x-text="totalEquipo2"></strong>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2 mb-2">
                         <input type="number" x-model="juego1" min="0" placeholder="{{ $partido->equipo1->nombre }}"
-                               class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                               class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:ring-2 focus:ring-brand-500 focus:outline-none">
                         <input type="number" x-model="juego2" min="0" placeholder="{{ $partido->equipo2->nombre }}"
-                               class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                               class="border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:ring-2 focus:ring-brand-500 focus:outline-none">
                     </div>
                     <button @click="agregarJuego()"
-                            class="w-full text-sm border border-indigo-300 text-indigo-600 hover:bg-indigo-50 py-1.5 rounded-lg mb-3 transition">
+                            class="w-full text-sm border border-brand-300 text-brand-600 hover:bg-brand-50 py-1.5 rounded-lg mb-3 transition">
                         + Agregar set/juego
                     </button>
 
@@ -241,7 +241,7 @@
                                 Cancelar
                             </button>
                             <button type="submit" :disabled="juegos.length === 0"
-                                    class="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium py-2 rounded-lg transition">
+                                    class="flex-1 bg-brand-600 hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-medium py-2 rounded-lg transition">
                                 Proponer resultado
                             </button>
                         </div>

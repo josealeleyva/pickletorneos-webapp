@@ -39,7 +39,7 @@
     <nav class="mb-4 sm:mb-6">
         <ol class="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
             <li>
-                <a href="{{ route('complejos.index') }}" class="hover:text-indigo-600">Complejos</a>
+                <a href="{{ route('complejos.index') }}" class="hover:text-brand-600">Complejos</a>
             </li>
             <li>
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -65,7 +65,7 @@
                     name="nombre"
                     value="{{ old('nombre') }}"
                     required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('nombre') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('nombre') border-red-500 @enderror"
                     placeholder="Ej: Padel Center Rosario"
                 >
                 @error('nombre')
@@ -86,13 +86,13 @@
                         value="{{ old('direccion') }}"
                         required
                         autocomplete="off"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('direccion') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('direccion') border-red-500 @enderror"
                         placeholder="Ej: Av. Pellegrini 1234, Rosario"
                     >
                     <button
                         type="button"
                         onclick="buscarDireccionEnMapa()"
-                        class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs rounded-md transition"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs rounded-md transition"
                         title="Buscar en el mapa"
                     >
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +148,7 @@
                         id="telefono"
                         name="telefono"
                         value="{{ old('telefono') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('telefono') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('telefono') border-red-500 @enderror"
                         placeholder="3416123456"
                     >
                     @error('telefono')
@@ -165,7 +165,7 @@
                         id="email"
                         name="email"
                         value="{{ old('email') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('email') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('email') border-red-500 @enderror"
                         placeholder="contacto@complejo.com"
                     >
                     @error('email')
@@ -179,7 +179,7 @@
                 <a href="{{ route('complejos.index') }}" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-200 text-center text-sm sm:text-base">
                     Cancelar
                 </a>
-                <button type="submit" class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
+                <button type="submit" class="px-6 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
                     Crear Complejo
                 </button>
             </div>

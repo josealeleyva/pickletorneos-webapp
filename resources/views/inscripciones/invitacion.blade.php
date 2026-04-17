@@ -19,7 +19,7 @@
                 {{ $invitacion->estado === 'aceptada' ? 'aceptada' : 'rechazada' }}.
             </p>
             <a href="{{ route('torneos.public', $torneo->id) }}"
-               class="mt-4 inline-block text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+               class="mt-4 inline-block text-brand-600 hover:text-brand-800 text-sm font-medium">
                 Ver torneo
             </a>
         </div>
@@ -29,7 +29,7 @@
         </div>
     @else
         <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-8 text-center">
+            <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-6 py-8 text-center">
                 <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -76,7 +76,7 @@
                         @foreach($inscripcion->invitaciones as $inv)
                         <div class="flex items-center justify-between text-sm">
                             <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-bold text-indigo-700">
+                                <div class="w-7 h-7 rounded-full bg-brand-100 flex items-center justify-center text-xs font-bold text-brand-700">
                                     {{ substr($inv->jugador->apellido, 0, 1) }}
                                 </div>
                                 <span class="{{ $inv->jugador_id === $lider->id ? 'font-semibold' : '' }} text-gray-900">
@@ -104,7 +104,7 @@
                     <form action="{{ route('inscripciones.invitacion.aceptar', $invitacion->token) }}" method="POST">
                         @csrf
                         <button type="submit"
-                                class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition">
+                                class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-sm font-medium transition">
                             Aceptar
                         </button>
                     </form>

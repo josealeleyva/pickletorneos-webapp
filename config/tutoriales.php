@@ -5,7 +5,7 @@ return [
         'registro' => [
             'title' => 'Registro de Usuario',
             'filename' => 'tutorial_registro.mp4',
-            'description' => 'Aprende a registrarte en la plataforma Punto de Oro',
+            'description' => 'Aprende a registrarte en la plataforma PickleTorneos',
             'category' => 'introduccion',
             'order' => 1,
         ],

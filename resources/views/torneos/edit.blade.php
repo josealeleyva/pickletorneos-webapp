@@ -5,7 +5,7 @@
     <!-- Header -->
     <div class="mb-6">
         <div class="flex items-center text-sm text-gray-600 mb-4">
-            <a href="{{ route('torneos.index') }}" class="hover:text-indigo-600">Torneos</a>
+            <a href="{{ route('torneos.index') }}" class="hover:text-brand-600">Torneos</a>
             <svg class="h-4 w-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
             </svg>
@@ -36,7 +36,7 @@
 
         <!-- Sección 1: Información General -->
         <div class="bg-white shadow rounded-lg overflow-hidden">
-            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4">
+            <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-6 py-4">
                 <h2 class="text-lg font-semibold text-white">Información General</h2>
             </div>
             <div class="p-6 space-y-6">
@@ -51,7 +51,7 @@
                         id="nombre"
                         value="{{ old('nombre', $torneo->nombre) }}"
                         required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('nombre') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('nombre') border-red-500 @enderror"
                         placeholder="Ej: Torneo de Padel Verano 2024"
                     >
                     @error('nombre')
@@ -68,7 +68,7 @@
                         name="deporte_id"
                         id="deporte_id"
                         required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
                     >
                         <option value="">Selecciona un deporte</option>
                         @foreach($deportes as $deporte)
@@ -110,7 +110,7 @@
                         name="complejo_id"
                         id="complejo_id"
                         required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('complejo_id') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('complejo_id') border-red-500 @enderror"
                     >
                         <option value="">Selecciona un complejo</option>
                         @foreach($complejos as $complejo)
@@ -136,7 +136,7 @@
                             id="fecha_inicio"
                             value="{{ old('fecha_inicio', $torneo->fecha_inicio->format('Y-m-d')) }}"
                             required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('fecha_inicio') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('fecha_inicio') border-red-500 @enderror"
                         >
                         @error('fecha_inicio')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -153,7 +153,7 @@
                             id="fecha_fin"
                             value="{{ old('fecha_fin', $torneo->fecha_fin->format('Y-m-d')) }}"
                             required
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('fecha_fin') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('fecha_fin') border-red-500 @enderror"
                         >
                         @error('fecha_fin')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -170,7 +170,7 @@
                             name="fecha_limite_inscripcion"
                             id="fecha_limite_inscripcion"
                             value="{{ old('fecha_limite_inscripcion', $torneo->fecha_limite_inscripcion ? $torneo->fecha_limite_inscripcion->format('Y-m-d') : '') }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('fecha_limite_inscripcion') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('fecha_limite_inscripcion') border-red-500 @enderror"
                         >
                         @error('fecha_limite_inscripcion')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -187,7 +187,7 @@
                         name="descripcion"
                         id="descripcion"
                         rows="4"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('descripcion') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('descripcion') border-red-500 @enderror"
                         placeholder="Describe tu torneo, reglas especiales, premios, etc."
                     >{{ old('descripcion', $torneo->descripcion) }}</textarea>
                     @error('descripcion')
@@ -223,7 +223,7 @@
                             id="reglamento_texto"
                             name="reglamento_texto"
                             rows="6"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-sm @error('reglamento_texto') border-red-500 @enderror"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent text-sm @error('reglamento_texto') border-red-500 @enderror"
                             placeholder="Escribí aquí las reglas del torneo: modalidad de juego, criterios de desempate, normas de conducta, etc."
                         >{{ old('reglamento_texto', $torneo->reglamento_texto) }}</textarea>
                         @error('reglamento_texto')
@@ -242,7 +242,7 @@
                                 <div class="flex-1 min-w-0">
                                     <p class="text-sm font-semibold text-gray-800">PDF actual</p>
                                     <a href="{{ asset('storage/' . $torneo->reglamento_pdf) }}" target="_blank"
-                                        class="text-xs text-indigo-600 hover:underline">Ver PDF</a>
+                                        class="text-xs text-brand-600 hover:underline">Ver PDF</a>
                                 </div>
                                 <button type="button" id="btn-quitar-pdf-actual"
                                     class="flex-shrink-0 p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-100 rounded-full transition">
@@ -273,12 +273,12 @@
 
                         {{-- Área de upload --}}
                         <div id="pdf-upload-area"
-                            class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-indigo-400 transition cursor-pointer {{ $torneo->reglamento_pdf ? 'hidden' : '' }}"
+                            class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-brand-400 transition cursor-pointer {{ $torneo->reglamento_pdf ? 'hidden' : '' }}"
                             onclick="document.getElementById('reglamento_pdf').click()">
                             <svg class="mx-auto h-10 w-10 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                             </svg>
-                            <p class="text-sm font-semibold text-indigo-600 mb-1">Tocá para seleccionar un PDF</p>
+                            <p class="text-sm font-semibold text-brand-600 mb-1">Tocá para seleccionar un PDF</p>
                             <p class="text-xs text-gray-500">o arrastrá el archivo aquí</p>
                             <p class="text-xs text-gray-400 mt-2">Solo PDF · Máximo 20MB</p>
                             <input type="file" id="reglamento_pdf" name="reglamento_pdf"
@@ -305,7 +305,7 @@
                                 value="{{ old('precio_inscripcion', $torneo->precio_inscripcion) }}"
                                 step="0.01"
                                 min="0"
-                                class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent no-spinners @error('precio_inscripcion') border-red-500 @enderror"
+                                class="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent no-spinners @error('precio_inscripcion') border-red-500 @enderror"
                                 placeholder="0.00"
                             >
                         </div>
@@ -323,7 +323,7 @@
                             name="premios"
                             id="premios"
                             value="{{ old('premios', $torneo->premios) }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('premios') border-red-500 @enderror"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('premios') border-red-500 @enderror"
                             placeholder="Ej: Trofeo + $10,000"
                         >
                         @error('premios')
@@ -354,7 +354,7 @@
                         name="imagen_banner"
                         id="imagen_banner"
                         accept="image/*"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('imagen_banner') border-red-500 @enderror"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('imagen_banner') border-red-500 @enderror"
                     >
                     <p class="mt-1 text-sm text-gray-500">Formatos aceptados: JPG, PNG, GIF. Tamaño máximo: 10MB</p>
                     @error('imagen_banner')
@@ -366,14 +366,14 @@
 
         <!-- Aviso de datos dependientes -->
         @if($tieneEquipos || $tieneGrupos || $tienePartidos)
-            <div class="bg-amber-50 border-l-4 border-amber-400 p-4">
+            <div class="bg-accent-50 border-l-4 border-accent-400 p-4">
                 <div class="flex">
-                    <svg class="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="h-5 w-5 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                     </svg>
                     <div class="ml-3">
-                        <h3 class="text-sm font-medium text-amber-800">¡Atención! Este torneo ya tiene datos configurados</h3>
-                        <div class="mt-2 text-sm text-amber-700">
+                        <h3 class="text-sm font-medium text-accent-800">¡Atención! Este torneo ya tiene datos configurados</h3>
+                        <div class="mt-2 text-sm text-accent-700">
                             <p>El torneo actualmente tiene:</p>
                             <ul class="list-disc list-inside mt-1 space-y-1">
                                 @if($tieneEquipos)
@@ -426,7 +426,7 @@
 
         <!-- Sección 2: Configuración del Formato -->
         <div class="bg-white shadow rounded-lg overflow-hidden">
-            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4">
+            <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-6 py-4">
                 <h2 class="text-lg font-semibold text-white">Configuración del Formato</h2>
             </div>
             <div class="p-6 space-y-6">
@@ -437,14 +437,14 @@
                     </label>
                     <div class="space-y-3">
                         @foreach($formatos as $formato)
-                            <label class="flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all hover:border-indigo-500 formato-option {{ old('formato_id', $torneo->formato_id) == $formato->id ? 'border-indigo-500 bg-indigo-50' : 'border-gray-200' }}"
+                            <label class="flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all hover:border-brand-500 formato-option {{ old('formato_id', $torneo->formato_id) == $formato->id ? 'border-brand-500 bg-brand-50' : 'border-gray-200' }}"
                                    data-tiene-grupos="{{ $formato->tiene_grupos ? 'true' : 'false' }}">
                                 <input
                                     type="radio"
                                     name="formato_id"
                                     value="{{ $formato->id }}"
                                     {{ old('formato_id', $torneo->formato_id) == $formato->id ? 'checked' : '' }}
-                                    class="formato-radio mt-1 h-4 w-4 text-indigo-600 focus:ring-indigo-500"
+                                    class="formato-radio mt-1 h-4 w-4 text-brand-600 focus:ring-brand-500"
                                     required
                                 >
                                 <div class="ml-3">
@@ -486,7 +486,7 @@
                     @foreach($torneo->categorias as $index => $categoria)
                     <div class="border border-gray-300 rounded-lg p-4 sm:p-6 bg-gray-50">
                         <h4 class="text-base font-semibold text-gray-800 mb-4 flex items-center">
-                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold mr-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-600 text-white text-xs font-bold mr-2">
                                 {{ $index + 1 }}
                             </span>
                             Categoría: {{ $categoria->nombre }}
@@ -505,7 +505,7 @@
                                 min="2"
                                 max="32"
                                 value="{{ old('categorias.'.$index.'.cupos_categoria', $categoria->pivot->cupos_categoria) }}"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 cupos-input @error('categorias.'.$index.'.cupos_categoria') border-red-500 @enderror"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 cupos-input @error('categorias.'.$index.'.cupos_categoria') border-red-500 @enderror"
                                 placeholder="Ej: 8"
                                 data-index="{{ $index }}"
                             >
@@ -546,7 +546,7 @@
                     @foreach($torneo->categorias as $index => $categoria)
                     <div class="border border-gray-300 rounded-lg p-4 sm:p-6 bg-gray-50">
                         <h4 class="text-base font-semibold text-gray-800 mb-4 flex items-center">
-                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-600 text-white text-xs font-bold mr-2">
+                            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brand-600 text-white text-xs font-bold mr-2">
                                 {{ $index + 1 }}
                             </span>
                             Categoría: {{ $categoria->nombre }}
@@ -568,7 +568,7 @@
                                     min="2"
                                     max="8"
                                     value="{{ old('categorias.'.$index.'.numero_grupos', $categoria->pivot->numero_grupos) }}"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 @error('categorias.'.$index.'.numero_grupos') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 @error('categorias.'.$index.'.numero_grupos') border-red-500 @enderror"
                                     placeholder="Ej: 4"
                                 >
                                 @error('categorias.'.$index.'.numero_grupos')
@@ -584,7 +584,7 @@
                                 <select
                                     id="tamanio_grupo_{{ $index }}"
                                     name="categorias[{{ $index }}][tamanio_grupo_id]"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 @error('categorias.'.$index.'.tamanio_grupo_id') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 @error('categorias.'.$index.'.tamanio_grupo_id') border-red-500 @enderror"
                                 >
                                     <option value="">Seleccionar</option>
                                     @foreach($tamanios as $tamanio)
@@ -606,7 +606,7 @@
                                 <select
                                     id="avance_grupos_{{ $index }}"
                                     name="categorias[{{ $index }}][avance_grupos_id]"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 @error('categorias.'.$index.'.avance_grupos_id') border-red-500 @enderror"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 @error('categorias.'.$index.'.avance_grupos_id') border-red-500 @enderror"
                                 >
                                     <option value="">Seleccionar</option>
                                     @foreach($avances as $avance)
@@ -648,7 +648,7 @@
             </a>
             <button
                 type="submit"
-                class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
+                class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-brand-500 to-purple-600 text-white font-semibold rounded-lg hover:from-brand-600 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
             >
                 Guardar Cambios
             </button>
@@ -682,11 +682,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Actualizar estilos visuales
             document.querySelectorAll('.formato-option').forEach(opt => {
-                opt.classList.remove('border-indigo-500', 'bg-indigo-50');
+                opt.classList.remove('border-brand-500', 'bg-brand-50');
                 opt.classList.add('border-gray-200');
             });
             option.classList.remove('border-gray-200');
-            option.classList.add('border-indigo-500', 'bg-indigo-50');
+            option.classList.add('border-brand-500', 'bg-brand-50');
 
             // Mostrar/ocultar configuración según formato
             if (tieneGrupos) {
@@ -829,13 +829,13 @@ document.addEventListener('DOMContentLoaded', function() {
         categorias.forEach(categoria => {
             const checked = categoriasSeleccionadas.includes(categoria.id) ? 'checked' : '';
             html += `
-                <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-indigo-50 cursor-pointer transition">
+                <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-brand-50 cursor-pointer transition">
                     <input
                         type="checkbox"
                         name="categorias[]"
                         value="${categoria.id}"
                         ${checked}
-                        class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                        class="w-4 h-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500"
                     >
                     <span class="text-sm font-medium text-gray-700">${categoria.nombre}</span>
                 </label>
@@ -857,7 +857,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const btnPdf    = document.getElementById('btn-modo-pdf');
         const areaTexto = document.getElementById('reglamento-texto-area');
         const areaPdf   = document.getElementById('reglamento-pdf-area');
-        const activeClasses   = ['bg-white', 'text-indigo-700', 'shadow'];
+        const activeClasses   = ['bg-white', 'text-brand-700', 'shadow'];
         const inactiveClasses = ['text-gray-500'];
 
         if (modo === 'texto') {
@@ -901,8 +901,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (pdfInput) {
         const pdfDropArea = document.getElementById('pdf-upload-area');
-        ['dragenter', 'dragover'].forEach(e => pdfDropArea.addEventListener(e, ev => { ev.preventDefault(); pdfDropArea.classList.add('border-indigo-500', 'bg-indigo-50'); }));
-        ['dragleave', 'drop'].forEach(e => pdfDropArea.addEventListener(e, ev => { ev.preventDefault(); pdfDropArea.classList.remove('border-indigo-500', 'bg-indigo-50'); }));
+        ['dragenter', 'dragover'].forEach(e => pdfDropArea.addEventListener(e, ev => { ev.preventDefault(); pdfDropArea.classList.add('border-brand-500', 'bg-brand-50'); }));
+        ['dragleave', 'drop'].forEach(e => pdfDropArea.addEventListener(e, ev => { ev.preventDefault(); pdfDropArea.classList.remove('border-brand-500', 'bg-brand-50'); }));
         pdfDropArea.addEventListener('drop', ev => {
             const file = ev.dataTransfer.files[0];
             if (file && file.type === 'application/pdf') { mostrarPdfPreview(file); }

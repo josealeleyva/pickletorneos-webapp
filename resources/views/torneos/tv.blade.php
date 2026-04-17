@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $torneo->nombre }} — Modo TV</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#eef9fa',
+              100: '#d5f0f3',
+              200: '#aee2e8',
+              300: '#78ccd6',
+              400: '#42b0bf',
+              500: '#1f95a6',
+              600: '#147a8a',
+              700: '#0F6B78',
+              800: '#0d5764',
+              900: '#0d4855',
+              950: '#093038',
+            },
+            accent: {
+              50:  '#fff4ec',
+              100: '#ffe8d5',
+              200: '#ffd0aa',
+              300: '#ffb47a',
+              400: '#ff9240',
+              500: '#ff7a1a',
+              600: '#FF6A00',
+              700: '#d95800',
+              800: '#b54800',
+              900: '#8f3900',
+              950: '#5a2200',
+            }
+          }
+        }
+      }
+    }
+    </script>
     <style>
         * { box-sizing: border-box; }
 
@@ -14,8 +50,8 @@
             padding: 0;
             overflow: hidden;
             /* Fondo: mismo que el sidebar de la app */
-            background: #1e1b4b; /* indigo-950 aprox */
-            color: #e0e7ff;      /* indigo-100 */
+            background: #1e1b4b; /* brand-950 aprox */
+            color: #e0e7ff;      /* brand-100 */
             font-family: system-ui, -apple-system, sans-serif;
         }
 
@@ -34,8 +70,8 @@
             justify-content: space-between;
             gap: 1rem;
             padding: 0.65rem 1.5rem;
-            background: linear-gradient(135deg, #312e81 0%, #4c1d95 100%); /* indigo-900 → violet-900 */
-            border-bottom: 2px solid #4f46e5; /* indigo-600 */
+            background: linear-gradient(135deg, #312e81 0%, #4c1d95 100%); /* brand-900 → violet-900 */
+            border-bottom: 2px solid #4f46e5; /* brand-600 */
         }
 
         #tv-header .tournament-info { flex: 1; min-width: 0; }
@@ -53,7 +89,7 @@
 
         #tv-header .subtitle {
             font-size: clamp(0.65rem, 1.1vw, 0.85rem);
-            color: #a5b4fc; /* indigo-300 */
+            color: #a5b4fc; /* brand-300 */
             margin-top: 0.1rem;
         }
 
@@ -67,7 +103,7 @@
         #tv-clock {
             font-size: clamp(1rem, 2vw, 1.6rem);
             font-weight: 700;
-            color: #c7d2fe; /* indigo-200 */
+            color: #c7d2fe; /* brand-200 */
             font-variant-numeric: tabular-nums;
             letter-spacing: 0.05em;
         }
@@ -115,19 +151,19 @@
             letter-spacing: 0.12em;
             background: rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            color: #c7d2fe; /* indigo-200 */
+            color: #c7d2fe; /* brand-200 */
         }
 
         .panel-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #818cf8; /* indigo-400 */
+            background: #818cf8; /* brand-400 */
             animation: pulse-dot 2s infinite;
         }
 
         #panel-resultados .panel-dot { background: #6ee7b7; } /* emerald-300 */
-        #panel-proximos  .panel-dot { background: #818cf8; } /* indigo-400 */
+        #panel-proximos  .panel-dot { background: #818cf8; } /* brand-400 */
 
         @keyframes pulse-dot {
             0%, 100% { opacity: 1; }
@@ -161,7 +197,7 @@
 
         .match-meta {
             font-size: clamp(0.55rem, 0.85vw, 0.7rem);
-            color: #6366f1; /* indigo-500 */
+            color: #6366f1; /* brand-500 */
             margin-bottom: 0.3rem;
             display: flex;
             align-items: center;
@@ -190,7 +226,7 @@
 
         /* Ganador en verde, igual que el badge "activo" de la app */
         .result-team-name.winner { color: #6ee7b7; } /* emerald-300 */
-        .result-team-name.loser  { color: #4338ca; } /* indigo-700 — atenuado */
+        .result-team-name.loser  { color: #4338ca; } /* brand-700 — atenuado */
 
         .result-team-left  { text-align: right; }
         .result-team-right { text-align: left; }
@@ -217,7 +253,7 @@
         .upcoming-team-name {
             font-size: clamp(0.75rem, 1.4vw, 1.05rem);
             font-weight: 700;
-            color: #e0e7ff; /* indigo-100 */
+            color: #e0e7ff; /* brand-100 */
             line-height: 1.2;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -230,7 +266,7 @@
         .upcoming-vs {
             font-size: clamp(0.65rem, 1.1vw, 0.85rem);
             font-weight: 800;
-            color: #4338ca; /* indigo-700 */
+            color: #4338ca; /* brand-700 */
             text-align: center;
             letter-spacing: 0.05em;
         }
@@ -238,7 +274,7 @@
         .upcoming-time {
             font-size: clamp(0.85rem, 1.6vw, 1.2rem);
             font-weight: 800;
-            color: #a5b4fc; /* indigo-300 */
+            color: #a5b4fc; /* brand-300 */
             text-align: center;
             margin-top: 0.3rem;
             letter-spacing: 0.03em;
@@ -246,7 +282,7 @@
 
         .day-badge {
             display: inline-block;
-            background: rgba(99,102,241,0.2); /* indigo-500/20 */
+            background: rgba(99,102,241,0.2); /* brand-500/20 */
             border: 1px solid rgba(99,102,241,0.4);
             border-radius: 0.25rem;
             padding: 0.05rem 0.4rem;
@@ -254,7 +290,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: #818cf8; /* indigo-400 */
+            color: #818cf8; /* brand-400 */
             margin-right: 0.3rem;
         }
 
@@ -265,7 +301,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            color: #3730a3; /* indigo-800 */
+            color: #3730a3; /* brand-800 */
             font-size: clamp(0.75rem, 1.1vw, 0.85rem);
             font-weight: 500;
             text-align: center;
@@ -283,7 +319,7 @@
             align-items: center;
             justify-content: space-between;
             font-size: 0.65rem;
-            color: #4338ca; /* indigo-700 */
+            color: #4338ca; /* brand-700 */
         }
 
         .refresh-dot {
@@ -621,7 +657,7 @@
     {{-- FOOTER --}}
     <div id="tv-footer">
         <span><span class="refresh-dot"></span>Actualizando cada minuto</span>
-        <span>Punto de Oro &bull; {{ $torneo->nombre }}</span>
+        <span>PickleTorneos &bull; {{ $torneo->nombre }}</span>
         <span id="footer-last-update"></span>
     </div>
 

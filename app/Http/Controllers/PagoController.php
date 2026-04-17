@@ -82,7 +82,7 @@ class PagoController extends Controller
                 "items" => [
                     [
                         "title" => "Torneo: {$torneo->nombre}",
-                        "description" => "Pago por creación de torneo en Punto de Oro",
+                        "description" => "Pago por creación de torneo en PickleTorneos",
                         "quantity" => 1,
                         "unit_price" => (float) $precioFinal,
                     ]

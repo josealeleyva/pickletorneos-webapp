@@ -12,7 +12,7 @@
             class="flex-1 py-2.5 rounded-lg text-sm font-semibold transition text-center">
             Activos
             @if($torneosActivos->count() > 0)
-                <span class="ml-1 bg-indigo-600 text-white text-xs rounded-full px-1.5">{{ $torneosActivos->count() }}</span>
+                <span class="ml-1 bg-brand-600 text-white text-xs rounded-full px-1.5">{{ $torneosActivos->count() }}</span>
             @endif
         </button>
         <button onclick="showTab('historial')" id="tab-historial"
@@ -32,14 +32,14 @@
     <div id="panel-activos">
         @if($torneosActivos->isEmpty())
             <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-10 text-center">
-                <div class="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg class="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                     </svg>
                 </div>
                 <p class="text-gray-500 font-medium">No estás en ningún torneo activo</p>
                 <p class="text-gray-400 text-sm mt-1">Cuando un organizador te inscriba en un torneo, aparecerá aquí.</p>
-                <button onclick="showTab('explorar')" class="mt-4 text-sm font-semibold text-indigo-600 hover:text-indigo-700">
+                <button onclick="showTab('explorar')" class="mt-4 text-sm font-semibold text-brand-600 hover:text-brand-700">
                     Explorar torneos →
                 </button>
             </div>
@@ -47,7 +47,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 @foreach($torneosActivos as $torneo)
                     <a href="{{ route('torneos.public', $torneo->id) }}"
-                        class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md hover:border-indigo-200 transition block">
+                        class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md hover:border-brand-200 transition block">
                         <div class="flex items-start justify-between mb-3">
                             <h3 class="font-semibold text-gray-800 text-sm leading-snug flex-1 pr-2">{{ $torneo->nombre }}</h3>
                             <span class="flex items-center gap-1 text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full flex-shrink-0">
@@ -128,26 +128,26 @@
         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 mb-4">
             <div class="flex flex-col sm:flex-row gap-3 mb-3">
                 <select id="filtro-deporte"
-                    class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white">
+                    class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
                     <option value="">Todos los deportes</option>
                     @foreach($deportes as $deporte)
                         <option value="{{ $deporte->id }}">{{ $deporte->nombre }}</option>
                     @endforeach
                 </select>
                 <input type="text" id="filtro-nombre" placeholder="Buscar por nombre, complejo o categoría..."
-                    class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent">
             </div>
             <div class="flex items-center justify-between">
                 <label for="filtro-inscribible" class="flex items-center gap-2.5 cursor-pointer select-none">
                     <div class="relative">
                         <input type="checkbox" id="filtro-inscribible" class="sr-only peer">
-                        <div class="w-10 h-5 bg-gray-200 peer-checked:bg-indigo-600 rounded-full transition-colors duration-200"></div>
+                        <div class="w-10 h-5 bg-gray-200 peer-checked:bg-brand-600 rounded-full transition-colors duration-200"></div>
                         <div class="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform duration-200 peer-checked:translate-x-5"></div>
                     </div>
                     <span class="text-sm text-gray-700 font-medium">Solo los que me puedo inscribir</span>
                 </label>
                 @if($jugador && (!$jugador->genero || !$jugador->fecha_nacimiento))
-                    <span id="aviso-perfil-incompleto" class="hidden text-xs text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
+                    <span id="aviso-perfil-incompleto" class="hidden text-xs text-accent-700 bg-accent-50 border border-accent-200 px-2.5 py-1 rounded-full">
                         Completá tu perfil para usar este filtro
                     </span>
                 @endif
@@ -176,7 +176,7 @@
                         data-deporte="{{ $torneo->deporte_id }}"
                         data-busqueda="{{ strtolower($torneo->nombre . ' ' . ($torneo->complejo?->nombre ?? '') . ' ' . $torneo->categorias->pluck('nombre')->implode(' ')) }}"
                         data-categorias="{{ json_encode($categoriasData) }}"
-                        class="torneo-card bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md hover:border-indigo-200 transition block">
+                        class="torneo-card bg-white rounded-lg shadow-sm border border-gray-100 p-4 hover:shadow-md hover:border-brand-200 transition block">
                         <div class="flex items-start justify-between mb-3">
                             <h3 class="font-semibold text-gray-800 text-sm leading-snug flex-1 pr-2">{{ $torneo->nombre }}</h3>
                             <span class="flex items-center gap-1 text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full flex-shrink-0">
@@ -212,13 +212,13 @@
         ['activos', 'historial', 'explorar'].forEach(p => {
             document.getElementById('panel-' + p).classList.add('hidden');
             const tab = document.getElementById('tab-' + p);
-            tab.classList.remove('bg-white', 'text-indigo-700', 'shadow');
+            tab.classList.remove('bg-white', 'text-brand-700', 'shadow');
             tab.classList.add('text-gray-500');
         });
         document.getElementById('panel-' + nombre).classList.remove('hidden');
         const activeTab = document.getElementById('tab-' + nombre);
         activeTab.classList.remove('text-gray-500');
-        activeTab.classList.add('bg-white', 'text-indigo-700', 'shadow');
+        activeTab.classList.add('bg-white', 'text-brand-700', 'shadow');
     }
 
     // Datos del jugador para el filtro de inscripción

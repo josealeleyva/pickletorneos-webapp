@@ -41,7 +41,7 @@
             <!-- Indicador de cupos -->
             <div class="flex items-center gap-4">
                 <div class="text-center">
-                    <div class="text-2xl sm:text-3xl font-bold text-indigo-600">{{ $cuposOcupados }}</div>
+                    <div class="text-2xl sm:text-3xl font-bold text-brand-600">{{ $cuposOcupados }}</div>
                     <div class="text-xs text-gray-500">Equipos</div>
                 </div>
                 <div class="text-gray-400">/</div>
@@ -61,7 +61,7 @@
             <div class="w-full bg-gray-200 rounded-full h-2">
                 @php
                     $porcentaje = $cuposTotales > 0 ? ($cuposOcupados / $cuposTotales) * 100 : 0;
-                    $colorClass = $porcentaje >= 100 ? 'bg-green-600' : 'bg-indigo-600';
+                    $colorClass = $porcentaje >= 100 ? 'bg-green-600' : 'bg-brand-600';
                 @endphp
                 <div class="{{ $colorClass }} h-2 rounded-full transition-all duration-300" style="width: {{ min($porcentaje, 100) }}%"></div>
             </div>
@@ -78,8 +78,8 @@
                 </p>
             </div>
         @elseif($cuposDisponibles <= 3 && $cuposDisponibles > 0)
-            <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                <p class="text-sm text-amber-800 flex items-center">
+            <div class="mt-4 p-3 bg-accent-50 border border-accent-200 rounded-lg">
+                <p class="text-sm text-accent-800 flex items-center">
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                     </svg>
@@ -90,14 +90,14 @@
 
         <!-- Aviso de datos dependientes -->
         @if($tieneGrupos || $tienePartidos)
-            <div class="mt-4 bg-amber-50 border-l-4 border-amber-400 p-4">
+            <div class="mt-4 bg-accent-50 border-l-4 border-accent-400 p-4">
                 <div class="flex">
-                    <svg class="h-5 w-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="h-5 w-5 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                     </svg>
                     <div class="ml-3">
-                        <h3 class="text-sm font-medium text-amber-800">¡Atención! Hay configuraciones posteriores</h3>
-                        <div class="mt-2 text-sm text-amber-700">
+                        <h3 class="text-sm font-medium text-accent-800">¡Atención! Hay configuraciones posteriores</h3>
+                        <div class="mt-2 text-sm text-accent-700">
                             <p>El torneo ya tiene:</p>
                             <ul class="list-disc list-inside mt-1 space-y-1">
                                 @if($tieneGrupos)
@@ -169,7 +169,7 @@
         @if($torneo->estado === 'activo')
         <div class="px-4 py-2.5 bg-gray-50 border-b border-gray-100 flex items-center justify-end">
             <a id="btn-agregar-categoria" href="#"
-               class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg shadow-sm transition">
+               class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold rounded-lg shadow-sm transition">
                 <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
@@ -205,7 +205,7 @@
                             <div class="flex items-center gap-2 mb-1">
                                 <h3 class="font-semibold text-gray-800 text-base">{{ $equipo->nombre }}</h3>
                                 @if($equipo->categoria)
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-brand-100 text-brand-800">
                                         {{ $equipo->categoria->nombre }}
                                     </span>
                                 @endif
@@ -217,7 +217,7 @@
                         <div class="flex gap-2">
                             <!-- Botón de Imprimir Planilla (siempre visible) -->
                             <a href="{{ route('torneos.equipos.planilla', [$torneo, $equipo]) }}"
-                               class="text-indigo-600 hover:text-indigo-800 p-1"
+                               class="text-brand-600 hover:text-brand-800 p-1"
                                title="Descargar planilla en PDF"
                                target="_blank">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -276,15 +276,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Actualizar estilos de tabs
         tabs.forEach(t => {
-            t.classList.remove('border-indigo-600', 'text-indigo-600');
+            t.classList.remove('border-brand-600', 'text-brand-600');
             t.classList.add('border-transparent', 'text-gray-500');
             const count = t.querySelector('.tab-count');
-            if (count) count.classList.remove('text-indigo-400');
+            if (count) count.classList.remove('text-brand-400');
         });
         tab.classList.remove('border-transparent', 'text-gray-500');
-        tab.classList.add('border-indigo-600', 'text-indigo-600');
+        tab.classList.add('border-brand-600', 'text-brand-600');
         const activeCount = tab.querySelector('.tab-count');
-        if (activeCount) activeCount.classList.add('text-indigo-400');
+        if (activeCount) activeCount.classList.add('text-brand-400');
 
         // Filtrar cards
         let hayVisibles = false;

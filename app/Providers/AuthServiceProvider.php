@@ -49,7 +49,7 @@ class AuthServiceProvider extends ServiceProvider
         Role::class => RolePolicy::class,
         User::class => UserPolicy::class,
 
-        // Políticas de Punto de Oro
+        // Políticas de PickleTorneos
         Deporte::class => DeportePolicy::class,
         Categoria::class => CategoriaPolicy::class,
         Jugador::class => JugadorPolicy::class,

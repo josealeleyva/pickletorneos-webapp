@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tutoriales - Punto de Oro')
+@section('title', 'Tutoriales - PickleTorneos')
 
 @section('content')
     <!-- Header Navbar -->
@@ -11,7 +11,7 @@
                     <!-- Logo -->
                     <div class="flex items-center">
                         <a href="{{ route('landing') }}">
-                            <img src="{{ asset('images/logo-color.png') }}" alt="Punto de Oro" class="h-8 sm:h-9">
+                            <img src="{{ asset('images/logo-color.png') }}" alt="PickleTorneos" class="h-8 sm:h-9">
                         </a>
                     </div>
 
@@ -19,16 +19,16 @@
                     <div class="hidden sm:flex items-center gap-2">
                         @auth
                             <a href="{{ route('dashboard') }}"
-                                class="text-gray-600 hover:text-indigo-600 font-medium text-sm px-3 py-2 rounded-lg hover:bg-indigo-50 transition duration-150">
+                                class="text-gray-600 hover:text-brand-600 font-medium text-sm px-3 py-2 rounded-lg hover:bg-brand-50 transition duration-150">
                                 Dashboard
                             </a>
                         @else
                             <a href="{{ route('login') }}"
-                                class="text-gray-600 hover:text-indigo-600 font-medium text-sm px-3 py-2 rounded-lg hover:bg-indigo-50 transition duration-150">
+                                class="text-gray-600 hover:text-brand-600 font-medium text-sm px-3 py-2 rounded-lg hover:bg-brand-50 transition duration-150">
                                 Iniciar Sesión
                             </a>
                             <a href="{{ route('register') }}"
-                                class="bg-indigo-600 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-indigo-700 transition duration-150 shadow-md shadow-indigo-100 ml-1">
+                                class="bg-brand-600 text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-brand-700 transition duration-150 shadow-md shadow-brand-100 ml-1">
                                 Registrarse gratis
                             </a>
                         @endauth
@@ -37,7 +37,7 @@
                     <!-- Mobile Menu Button -->
                     <div class="sm:hidden">
                         <button id="mobile-menu-button" type="button"
-                            class="text-gray-600 hover:text-indigo-600 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition">
+                            class="text-gray-600 hover:text-brand-600 focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition">
                             <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
@@ -62,7 +62,7 @@
                                 Iniciar Sesión
                             </a>
                             <a href="{{ route('register') }}"
-                                class="bg-indigo-600 text-white px-4 py-3 rounded-xl font-semibold text-sm hover:bg-indigo-700 transition text-center mt-2 shadow-md shadow-indigo-100">
+                                class="bg-brand-600 text-white px-4 py-3 rounded-xl font-semibold text-sm hover:bg-brand-700 transition text-center mt-2 shadow-md shadow-brand-100">
                                 Registrarse gratis
                             </a>
                         @endauth
@@ -86,7 +86,7 @@
             </div>
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-4">Centro de Tutoriales</h1>
             <p class="text-base sm:text-lg text-white/75 max-w-xl mx-auto">
-                Aprende a usar Punto de Oro con nuestros videos paso a paso
+                Aprende a usar PickleTorneos con nuestros videos paso a paso
             </p>
         </div>
     </div>
@@ -129,7 +129,7 @@
 
                 $colorClasses = [
                     'blue' => 'bg-blue-100 text-blue-800 border-blue-200',
-                    'indigo' => 'bg-indigo-100 text-indigo-800 border-indigo-200',
+                    'indigo' => 'bg-brand-100 text-brand-800 border-brand-200',
                     'green' => 'bg-green-100 text-green-800 border-green-200',
                 ];
                 $colorClass = $colorClasses[$categoria['color']] ?? $colorClasses['blue'];
@@ -149,7 +149,7 @@
                 <!-- Grid de Videos -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($videosCategoria as $videoKey => $video)
-                        <div class="bg-white rounded-2xl border border-gray-100 hover:border-indigo-100 hover:shadow-lg transition-all duration-200 overflow-hidden">
+                        <div class="bg-white rounded-2xl border border-gray-100 hover:border-brand-100 hover:shadow-lg transition-all duration-200 overflow-hidden">
                             <!-- Video Preview -->
                             <div class="relative bg-gray-900 aspect-video">
                                 <video
@@ -165,12 +165,12 @@
                                 <!-- Play Overlay -->
                                 <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 hover:bg-opacity-30 transition-all cursor-pointer" onclick="toggleVideo('{{ $videoKey }}')">
                                     <div id="play-button-{{ $videoKey }}" class="w-16 h-16 rounded-full bg-white bg-opacity-90 flex items-center justify-center">
-                                        <svg class="w-8 h-8 text-indigo-600 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                        <svg class="w-8 h-8 text-brand-600 ml-1" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
                                         </svg>
                                     </div>
                                     <div id="pause-button-{{ $videoKey }}" class="w-16 h-16 rounded-full bg-white bg-opacity-90 flex items-center justify-center hidden">
-                                        <svg class="w-8 h-8 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <svg class="w-8 h-8 text-brand-600" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M5 4a2 2 0 012-2h2a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V4zM13 4a2 2 0 012-2h2a2 2 0 012 2v12a2 2 0 01-2 2h-2a2 2 0 01-2-2V4z"></path>
                                         </svg>
                                     </div>
@@ -186,7 +186,7 @@
                                 <div class="flex gap-2">
                                     <button
                                         onclick="toggleVideo('{{ $videoKey }}')"
-                                        class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold transition text-sm flex items-center justify-center gap-2"
+                                        class="flex-1 bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg font-semibold transition text-sm flex items-center justify-center gap-2"
                                     >
                                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
@@ -212,18 +212,18 @@
         @endforeach
 
         <!-- CTA Section -->
-        <div class="mt-16 bg-indigo-800 rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl shadow-indigo-100">
+        <div class="mt-16 bg-brand-800 rounded-3xl p-8 sm:p-12 text-center text-white shadow-2xl shadow-brand-100">
             <h2 class="text-2xl sm:text-3xl font-black tracking-tight mb-3">¿Listo para comenzar?</h2>
-            <p class="text-base text-indigo-100/80 mb-8 max-w-xl mx-auto">
+            <p class="text-base text-brand-100/80 mb-8 max-w-xl mx-auto">
                 Ahora que conoces cómo funciona la plataforma, crea tu cuenta y comienza a organizar torneos profesionales
             </p>
             <div class="flex flex-col sm:flex-row gap-3 justify-center">
                 @auth
-                    <a href="{{ route('dashboard') }}" class="inline-flex items-center justify-center bg-white text-indigo-700 px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-amber-50 transition shadow-lg">
+                    <a href="{{ route('dashboard') }}" class="inline-flex items-center justify-center bg-white text-brand-700 px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-accent-50 transition shadow-lg">
                         Ir al Dashboard
                     </a>
                 @else
-                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center bg-white text-indigo-700 px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-amber-50 transition shadow-lg">
+                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center bg-white text-brand-700 px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-accent-50 transition shadow-lg">
                         Registrarse Gratis
                     </a>
                     <a href="{{ route('login') }}" class="inline-flex items-center justify-center bg-white/15 backdrop-blur-sm border border-white/25 text-white px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-white/25 transition">
@@ -238,13 +238,13 @@
     <footer class="bg-gray-950 text-gray-400 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col items-center gap-6">
-                <img src="{{ asset('images/logo-blanco.png') }}" alt="Punto de Oro" class="h-9 opacity-80">
+                <img src="{{ asset('images/logo-blanco.png') }}" alt="PickleTorneos" class="h-9 opacity-80">
                 <p class="text-gray-500 text-sm">Sistema profesional de gestión de torneos deportivos</p>
 
                 <!-- Redes sociales -->
                 <div class="flex items-center gap-4">
-                    <a href="mailto:puntodeorosde@gmail.com"
-                        class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-lg flex items-center justify-center transition-colors duration-200 group" title="puntodeorosde@gmail.com">
+                    <a href="mailto:pickletorneossde@gmail.com"
+                        class="w-9 h-9 bg-gray-800 hover:bg-brand-600 rounded-lg flex items-center justify-center transition-colors duration-200 group" title="pickletorneossde@gmail.com">
                         <svg class="w-4 h-4 text-gray-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
@@ -255,8 +255,8 @@
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                         </svg>
                     </a>
-                    <a href="https://instagram.com/puntodeorosde" target="_blank"
-                        class="w-9 h-9 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors duration-200 group" title="@puntodeorosde">
+                    <a href="https://instagram.com/pickletorneossde" target="_blank"
+                        class="w-9 h-9 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors duration-200 group" title="@pickletorneossde">
                         <svg class="w-4 h-4 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
@@ -268,7 +268,7 @@
                     <a href="{{ route('tyc') }}" class="hover:text-gray-400 transition duration-200">Términos y Condiciones</a>
                 </div>
                 <p class="text-xs text-gray-700 pt-2 border-t border-gray-800/60 w-full text-center">
-                    © {{ date('Y') }} Punto de Oro. Todos los derechos reservados.
+                    © {{ date('Y') }} PickleTorneos. Todos los derechos reservados.
                 </p>
             </div>
         </div>

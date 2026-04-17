@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Invitación a Punto de Oro')
+@section('title', 'Invitación a PickleTorneos')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+<div class="min-h-screen bg-gradient-to-br from-brand-50 via-white to-purple-50">
     <div class="container mx-auto px-4 py-12">
         <!-- Header -->
         <div class="text-center mb-12">
-            <img src="{{ asset('images/logo.png') }}" alt="Punto de Oro" class="h-16 mx-auto mb-6">
+            <img src="{{ asset('images/logo.png') }}" alt="PickleTorneos" class="h-16 mx-auto mb-6">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 ¡Has sido invitado! 🎉
             </h1>
             <p class="text-xl text-gray-600">
-                <strong>{{ $referidor->name }} {{ $referidor->apellido }}</strong> te invita a unirte a Punto de Oro
+                <strong>{{ $referidor->name }} {{ $referidor->apellido }}</strong> te invita a unirte a PickleTorneos
             </p>
         </div>
 
@@ -20,7 +20,7 @@
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
                 <!-- Banner del Referidor -->
-                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-8 text-white">
+                <div class="bg-gradient-to-r from-brand-600 to-purple-600 p-8 text-white">
                     <div class="flex items-center gap-6">
                         <div class="bg-white/20 backdrop-blur-sm rounded-full p-6">
                             <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -28,10 +28,10 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="text-indigo-100 text-sm mb-1">Te invita:</p>
+                            <p class="text-brand-100 text-sm mb-1">Te invita:</p>
                             <h2 class="text-3xl font-bold">{{ $referidor->name }} {{ $referidor->apellido }}</h2>
                             @if($referidor->organizacion)
-                                <p class="text-indigo-100 mt-2">{{ $referidor->organizacion }}</p>
+                                <p class="text-brand-100 mt-2">{{ $referidor->organizacion }}</p>
                             @endif
                         </div>
                     </div>
@@ -61,9 +61,9 @@
                         </div>
                     </div>
 
-                    <!-- Qué es Punto de Oro -->
+                    <!-- Qué es PickleTorneos -->
                     <div class="mb-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Qué es Punto de Oro?</h3>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Qué es PickleTorneos?</h3>
                         <p class="text-gray-600 text-lg mb-4">
                             Es la plataforma líder para gestionar torneos deportivos de Padel, Fútbol y Tenis. Simplifica la organización de tus eventos deportivos con herramientas profesionales.
                         </p>
@@ -72,8 +72,8 @@
                     <!-- Características -->
                     <div class="grid md:grid-cols-2 gap-6 mb-8">
                         <div class="flex items-start gap-3">
-                            <div class="bg-indigo-100 rounded-lg p-2 flex-shrink-0">
-                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-100 rounded-lg p-2 flex-shrink-0">
+                                <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                                 </svg>
                             </div>
@@ -84,8 +84,8 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <div class="bg-indigo-100 rounded-lg p-2 flex-shrink-0">
-                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-100 rounded-lg p-2 flex-shrink-0">
+                                <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
@@ -96,8 +96,8 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <div class="bg-indigo-100 rounded-lg p-2 flex-shrink-0">
-                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-100 rounded-lg p-2 flex-shrink-0">
+                                <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
                                 </svg>
                             </div>
@@ -108,8 +108,8 @@
                         </div>
 
                         <div class="flex items-start gap-3">
-                            <div class="bg-indigo-100 rounded-lg p-2 flex-shrink-0">
-                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-brand-100 rounded-lg p-2 flex-shrink-0">
+                                <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                                 </svg>
                             </div>
@@ -132,7 +132,7 @@
                             <p class="text-gray-600 mb-2">Precio por torneo:</p>
                             <div class="flex items-center justify-center gap-4">
                                 <span class="text-3xl font-bold text-gray-400 line-through">${{ number_format($precioTorneo, 0, ',', '.') }}</span>
-                                <span class="text-5xl font-bold text-indigo-600">${{ number_format($precioConDescuento, 0, ',', '.') }}</span>
+                                <span class="text-5xl font-bold text-brand-600">${{ number_format($precioConDescuento, 0, ',', '.') }}</span>
                             </div>
                             <p class="text-green-600 font-semibold mt-2">¡Ahorras ${{ number_format($montoDescuento, 0, ',', '.') }} con el código de {{ $referidor->name }}!</p>
                             <p class="text-gray-500 text-sm mt-3">* Tu primer torneo es GRATIS. Este precio aplica a partir del segundo torneo.</p>
@@ -141,7 +141,7 @@
 
                     <!-- CTA -->
                     <div class="text-center">
-                        <a href="{{ route('register', ['ref' => $codigo]) }}" class="inline-block bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-indigo-700 hover:to-purple-700 transition transform hover:scale-105 shadow-xl">
+                        <a href="{{ route('register', ['ref' => $codigo]) }}" class="inline-block bg-gradient-to-r from-brand-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-brand-700 hover:to-purple-700 transition transform hover:scale-105 shadow-xl">
                             Crear mi cuenta GRATIS
                         </a>
                         <p class="text-gray-500 text-sm mt-4">
@@ -165,7 +165,7 @@
         <!-- Testimonios o info adicional -->
         <div class="max-w-4xl mx-auto mt-12 text-center">
             <p class="text-gray-600">
-                ¿Tienes preguntas? Contáctanos en <a href="mailto:info@puntodeoro.com" class="text-indigo-600 hover:underline">info@puntodeoro.com</a>
+                ¿Tienes preguntas? Contáctanos en <a href="mailto:info@pickletorneos.com" class="text-brand-600 hover:underline">info@pickletorneos.com</a>
             </p>
         </div>
     </div>

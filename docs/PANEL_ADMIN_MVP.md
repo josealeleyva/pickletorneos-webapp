@@ -2,7 +2,7 @@
 
 ## 🎉 Implementación Completada
 
-Se ha implementado exitosamente el panel de administración MVP para el rol Superadministrador en Punto de Oro.
+Se ha implementado exitosamente el panel de administración MVP para el rol Superadministrador en PickleTorneos.
 
 ---
 
@@ -162,7 +162,7 @@ resources/views/emails/
 
 1. **Iniciar sesión** con el usuario superadmin:
    ```
-   Email: superadmin@puntodeoro.com
+   Email: superadmin@pickletorneos.com
    Password: 1234
    ```
 
@@ -181,7 +181,7 @@ resources/views/emails/
 
 4. **Probar como Organizador**:
    ```
-   Email: organizador1@puntodeoro.com
+   Email: organizador1@pickletorneos.com
    Password: 1234
    ```
    - Ir a `/sugerencias`

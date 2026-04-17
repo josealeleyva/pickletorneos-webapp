@@ -3,22 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $torneo->nombre }} - Punto de Oro</title>
+    <title>{{ $torneo->nombre }} - PickleTorneos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#eef9fa',
+              100: '#d5f0f3',
+              200: '#aee2e8',
+              300: '#78ccd6',
+              400: '#42b0bf',
+              500: '#1f95a6',
+              600: '#147a8a',
+              700: '#0F6B78',
+              800: '#0d5764',
+              900: '#0d4855',
+              950: '#093038',
+            },
+            accent: {
+              50:  '#fff4ec',
+              100: '#ffe8d5',
+              200: '#ffd0aa',
+              300: '#ffb47a',
+              400: '#ff9240',
+              500: '#ff7a1a',
+              600: '#FF6A00',
+              700: '#d95800',
+              800: '#b54800',
+              900: '#8f3900',
+              950: '#5a2200',
+            }
+          }
+        }
+      }
+    }
+    </script>
 </head>
 <body class="bg-gray-50">
     @auth
         @if(auth()->user()->hasRole('Jugador'))
         <!-- Barra de navegación del panel de jugador -->
-        <div class="bg-indigo-900 text-white px-4 py-2 flex items-center justify-between">
-            <a href="{{ route('jugador.torneos') }}" class="flex items-center gap-2 text-sm text-indigo-200 hover:text-white transition">
+        <div class="bg-brand-900 text-white px-4 py-2 flex items-center justify-between">
+            <a href="{{ route('jugador.torneos') }}" class="flex items-center gap-2 text-sm text-brand-200 hover:text-white transition">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                 </svg>
                 Volver a mis torneos
             </a>
             @if($misEquipoIds->isNotEmpty())
-                <span class="text-xs bg-indigo-700 text-indigo-200 px-2 py-1 rounded-full">
+                <span class="text-xs bg-brand-700 text-brand-200 px-2 py-1 rounded-full">
                     Tu equipo está resaltado
                 </span>
             @endif
@@ -58,12 +94,12 @@
         </div>
     @else
         <!-- Sin banner: header con gradiente -->
-        <header class="bg-gradient-to-r from-indigo-600 to-purple-700 shadow-md">
+        <header class="bg-gradient-to-r from-brand-600 to-purple-700 shadow-md">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
                 <div class="flex items-start sm:items-center justify-between gap-3">
                     <div>
                         <h1 class="text-2xl sm:text-3xl font-bold text-white">{{ $torneo->nombre }}</h1>
-                        <p class="text-sm sm:text-base text-indigo-100 mt-1">{{ $torneo->deporte->nombre }} • {{ $torneo->complejo->nombre }}</p>
+                        <p class="text-sm sm:text-base text-brand-100 mt-1">{{ $torneo->deporte->nombre }} • {{ $torneo->complejo->nombre }}</p>
                     </div>
                     <div class="flex items-center gap-2 flex-shrink-0">
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium
@@ -112,7 +148,7 @@
         @if($torneo->estado === 'activo')
             @auth
                 @if(auth()->user()->hasRole('Jugador') && auth()->user()->jugador)
-                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 sm:p-6 mb-6">
+                <div class="bg-brand-50 border border-brand-200 rounded-lg p-4 sm:p-6 mb-6">
                     @if($yaInscripto)
                         <div class="flex items-center gap-2 text-green-700">
                             <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -124,10 +160,10 @@
                             </div>
                         </div>
                     @else
-                        <h3 class="text-base font-semibold text-indigo-900 mb-1">¿Querés participar?</h3>
-                        <p class="text-sm text-indigo-700 mb-3">Inscribite con tu equipo en este torneo.</p>
+                        <h3 class="text-base font-semibold text-brand-900 mb-1">¿Querés participar?</h3>
+                        <p class="text-sm text-brand-700 mb-3">Inscribite con tu equipo en este torneo.</p>
                         <a href="{{ route('torneos.inscripciones.crear', $torneo->id) }}"
-                           class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 rounded-lg text-sm transition">
+                           class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-medium px-4 py-2 rounded-lg text-sm transition">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
                             </svg>
@@ -137,8 +173,8 @@
                 </div>
                 @endif
             @else
-                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4 sm:p-6 mb-6">
-                    <p class="text-sm text-indigo-700 mb-3">
+                <div class="bg-brand-50 border border-brand-200 rounded-lg p-4 sm:p-6 mb-6">
+                    <p class="text-sm text-brand-700 mb-3">
                         <a href="{{ route('login') }}" class="font-semibold underline">Iniciá sesión</a>
                         o
                         <a href="{{ route('register') }}" class="font-semibold underline">registrate</a>
@@ -155,7 +191,7 @@
                 onclick="toggleReglamento()"
                 class="w-full flex items-center justify-between p-4 sm:p-6 text-left">
                 <h2 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-indigo-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-brand-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                     </svg>
                     Reglamento
@@ -188,7 +224,7 @@
             <!-- Desktop: Tabs horizontales -->
             <div class="hidden sm:block border-b border-gray-200">
                 <nav class="flex overflow-x-auto" aria-label="Categorías">
-                    <button type="button" data-categoria-filter="all" class="categoria-filter-tab whitespace-nowrap py-4 px-6 border-b-2 border-indigo-600 font-medium text-sm text-indigo-600">
+                    <button type="button" data-categoria-filter="all" class="categoria-filter-tab whitespace-nowrap py-4 px-6 border-b-2 border-brand-600 font-medium text-sm text-brand-600">
                         Todas las Categorías
                     </button>
                     @foreach($torneo->categorias as $categoria)
@@ -203,7 +239,7 @@
             <!-- Mobile: Selector dropdown -->
             <div class="sm:hidden p-4 border-b border-gray-200">
                 <label class="block text-sm font-medium text-gray-700 mb-2">Filtrar por categoría:</label>
-                <select id="categoria-filter-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+                <select id="categoria-filter-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500">
                     <option value="all">Todas las Categorías</option>
                     @foreach($torneo->categorias as $categoria)
                         @php
@@ -237,7 +273,7 @@
                 </div>
                 <input type="text" id="buscar-partidos"
                        placeholder="Buscar por equipo o jugador..."
-                       class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl text-base focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-gray-50">
+                       class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl text-base focus:ring-2 focus:ring-brand-500 focus:border-brand-500 bg-gray-50">
                 <button id="limpiar-busqueda" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center">
                     <svg class="h-5 w-5 text-gray-400 hover:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -256,7 +292,7 @@
                         $esEliminacionDirecta = $torneo->formato && $torneo->formato->esEliminacionDirecta();
                     @endphp
                     @if($esEliminacionDirecta)
-                    <button onclick="switchTab('grupos')" id="tab-grupos" class="tab-button active px-6 py-3 text-sm font-medium border-b-2 border-indigo-600 text-indigo-600">
+                    <button onclick="switchTab('grupos')" id="tab-grupos" class="tab-button active px-6 py-3 text-sm font-medium border-b-2 border-brand-600 text-brand-600">
                         Equipos
                     </button>
                     @if(!empty($llavesPorCategoria))
@@ -265,7 +301,7 @@
                         </button>
                     @endif
                     @else
-                    <button onclick="switchTab('grupos')" id="tab-grupos" class="tab-button active px-6 py-3 text-sm font-medium border-b-2 border-indigo-600 text-indigo-600">
+                    <button onclick="switchTab('grupos')" id="tab-grupos" class="tab-button active px-6 py-3 text-sm font-medium border-b-2 border-brand-600 text-brand-600">
                         {{ $esLiga ? 'Equipos' : 'Grupos' }}
                     </button>
                     <button onclick="switchTab('fixture')" id="tab-fixture" class="tab-button px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
@@ -294,7 +330,7 @@
                         @if($equiposCategoria->isNotEmpty())
                             <div class="grupo-section mb-6 last:mb-0" data-categoria="categoria-{{ $categoria->id }}">
                                 <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-                                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg">{{ $categoria->nombre }}</span>
+                                    <span class="bg-brand-100 text-brand-700 px-4 py-2 rounded-lg">{{ $categoria->nombre }}</span>
                                     @include('partials.categoria-restricciones', ['categoria' => $categoria])
                                     <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">{{ $equiposCategoria->count() }} equipos</span>
                                 </h3>
@@ -318,7 +354,7 @@
                     @forelse($torneo->grupos->sortBy('orden') as $grupo)
                         <div class="grupo-section mb-6 last:mb-0" data-categoria="categoria-{{ $grupo->categoria_id }}">
                             <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-                                <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg">{{ $grupo->nombre }}</span>
+                                <span class="bg-brand-100 text-brand-700 px-4 py-2 rounded-lg">{{ $grupo->nombre }}</span>
                                 @if($grupo->categoria)
                                     <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">{{ $grupo->categoria->nombre }}</span>
                                 @endif
@@ -361,11 +397,11 @@
                                         $esMiPartido = isset($misEquipoIds) && $misEquipoIds->isNotEmpty() &&
                                             ($misEquipoIds->contains($partido->equipo1_id) || $misEquipoIds->contains($partido->equipo2_id));
                                     @endphp
-                                    <div class="{{ $esMiPartido ? 'bg-indigo-50 border-indigo-300 ring-1 ring-indigo-300' : 'bg-white border-gray-200' }} rounded-xl overflow-hidden hover:shadow-md transition partido-item"
+                                    <div class="{{ $esMiPartido ? 'bg-brand-50 border-brand-300 ring-1 ring-brand-300' : 'bg-white border-gray-200' }} rounded-xl overflow-hidden hover:shadow-md transition partido-item"
                                          data-categoria="categoria-{{ $partidoCategoria }}"
                                          data-equipos="{{ $equiposSearch }}">
                                         @if($esMiPartido)
-                                            <div class="bg-indigo-600 text-white text-xs font-semibold px-3 py-1 flex items-center gap-1">
+                                            <div class="bg-brand-600 text-white text-xs font-semibold px-3 py-1 flex items-center gap-1">
                                                 <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
                                                 Tu partido
                                             </div>
@@ -373,18 +409,18 @@
 
                                         <!-- Fecha/hora/cancha prominente -->
                                         @if($partido->fecha_hora || $partido->cancha)
-                                        <div class="bg-indigo-50 px-4 py-2.5 border-b border-indigo-100 flex flex-wrap items-center gap-x-4 gap-y-1">
+                                        <div class="bg-brand-50 px-4 py-2.5 border-b border-brand-100 flex flex-wrap items-center gap-x-4 gap-y-1">
                                             @if($partido->fecha_hora)
                                             <div class="flex items-center gap-1.5">
-                                                <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                 </svg>
-                                                <span class="text-base font-bold text-indigo-700">{{ $partido->fecha_hora->format('H:i') }}</span>
+                                                <span class="text-base font-bold text-brand-700">{{ $partido->fecha_hora->format('H:i') }}</span>
                                             </div>
                                             @endif
                                             @if($partido->cancha)
                                             <div class="flex items-center gap-1.5">
-                                                <svg class="w-4 h-4 text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="w-4 h-4 text-brand-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                                 </svg>
@@ -393,7 +429,7 @@
                                             </div>
                                             @endif
                                             @if($partido->grupo)
-                                                <span class="ml-auto text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-medium">{{ $partido->grupo->nombre }}</span>
+                                                <span class="ml-auto text-xs bg-brand-100 text-brand-700 px-2 py-0.5 rounded-full font-medium">{{ $partido->grupo->nombre }}</span>
                                             @endif
                                         </div>
                                         @endif
@@ -445,9 +481,9 @@
                                 $categoriaNombre = $primerGrupo['categoria_nombre'];
                                 $campeonId = $primerGrupo['campeon_id'] ?? null;
                             @endphp
-                            <div class="mb-4 pb-2 border-b-2 border-indigo-200">
+                            <div class="mb-4 pb-2 border-b-2 border-brand-200">
                                 <div class="flex items-center justify-between flex-wrap gap-3">
-                                    <h2 class="text-xl font-bold text-indigo-700">Categoría {{ $categoriaNombre }}</h2>
+                                    <h2 class="text-xl font-bold text-brand-700">Categoría {{ $categoriaNombre }}</h2>
 
                                     {{-- Mostrar campeón si existe (Liga) --}}
                                     @if($esLiga && $campeonId)
@@ -474,7 +510,7 @@
                                 <div class="mb-6 last:mb-0">
                                     @if(!$esLiga)
                                         <h3 class="text-lg font-bold text-gray-800 mb-4">
-                                            <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg inline-block">{{ $grupoData['grupo_nombre'] }}</span>
+                                            <span class="bg-brand-100 text-brand-700 px-4 py-2 rounded-lg inline-block">{{ $grupoData['grupo_nombre'] }}</span>
                                         </h3>
                                     @endif
 
@@ -543,7 +579,7 @@
                                                                 {{ $pos['diferencia_puntos'] > 0 ? '+' : '' }}{{ $pos['diferencia_puntos'] }}
                                                             </span>
                                                         </td>
-                                                        <td class="px-3 py-3 text-sm font-bold text-indigo-600 text-center">{{ $pos['puntos'] }}</td>
+                                                        <td class="px-3 py-3 text-sm font-bold text-brand-600 text-center">{{ $pos['puntos'] }}</td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -564,9 +600,9 @@
                     @foreach($llavesPorCategoria as $catId => $data)
                         <div class="llaves-categoria mb-8 last:mb-0" data-categoria="categoria-{{ $catId }}">
                             <!-- Título de categoría con campeón -->
-                            <div class="mb-6 pb-2 border-b-2 border-indigo-200">
+                            <div class="mb-6 pb-2 border-b-2 border-brand-200">
                                 <div class="flex items-center justify-between flex-wrap gap-3">
-                                    <h2 class="text-xl font-bold text-indigo-700">{{ $data['categoria']->nombre }}</h2>
+                                    <h2 class="text-xl font-bold text-brand-700">{{ $data['categoria']->nombre }}</h2>
 
                                     @php
                                         // Buscar la llave de final y verificar si tiene ganador
@@ -666,7 +702,7 @@
 
                                         <div class="ronda-section">
                                             <h3 class="text-lg font-bold text-gray-800 mb-4">
-                                                <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-lg inline-block">
+                                                <span class="bg-brand-100 text-brand-700 px-4 py-2 rounded-lg inline-block">
                                                     {{ $rondaNombre }}
                                                 </span>
                                             </h3>
@@ -678,24 +714,24 @@
                                                     @endphp
                                                     <div class="bg-white border-2 border-gray-200 rounded-xl overflow-hidden llave-item" data-equipos="{{ $llaveBusqueda }}">
                                                         <!-- Header -->
-                                                        <div class="bg-indigo-50 px-4 py-3 border-b border-indigo-100">
+                                                        <div class="bg-brand-50 px-4 py-3 border-b border-brand-100">
                                                             <div class="flex items-center justify-between mb-1">
-                                                                <span class="text-xs font-semibold text-indigo-500 uppercase tracking-wide">Llave #{{ $llave->orden }}</span>
+                                                                <span class="text-xs font-semibold text-brand-500 uppercase tracking-wide">Llave #{{ $llave->orden }}</span>
                                                             </div>
                                                             @if($llave->partido)
                                                                 @if($llave->partido->fecha_hora)
                                                                     <div class="flex items-center gap-1.5 mt-1">
-                                                                        <svg class="w-4 h-4 text-indigo-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <svg class="w-4 h-4 text-brand-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                                                         </svg>
                                                                         <span class="text-sm font-bold text-gray-900">{{ $llave->partido->fecha_hora->format('d/m/Y') }}</span>
-                                                                        <span class="text-base font-bold text-indigo-700">{{ $llave->partido->fecha_hora->format('H:i') }}</span>
+                                                                        <span class="text-base font-bold text-brand-700">{{ $llave->partido->fecha_hora->format('H:i') }}</span>
                                                                     </div>
                                                                 @endif
 
                                                                 @if($llave->partido->cancha)
                                                                     <div class="flex items-center gap-1.5 mt-1">
-                                                                        <svg class="w-4 h-4 text-indigo-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <svg class="w-4 h-4 text-brand-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                                                         </svg>
@@ -905,9 +941,9 @@
         categoriaFilterTabs.forEach(tab => {
             if (tab.dataset.categoriaFilter === categoriaId) {
                 tab.classList.remove('border-transparent', 'text-gray-500');
-                tab.classList.add('border-indigo-600', 'text-indigo-600');
+                tab.classList.add('border-brand-600', 'text-brand-600');
             } else {
-                tab.classList.remove('border-indigo-600', 'text-indigo-600');
+                tab.classList.remove('border-brand-600', 'text-brand-600');
                 tab.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
             }
         });
@@ -934,7 +970,7 @@
 
     function switchTab(tab) {
         document.querySelectorAll('.tab-button').forEach(btn => {
-            btn.classList.remove('active', 'border-indigo-600', 'text-indigo-600');
+            btn.classList.remove('active', 'border-brand-600', 'text-brand-600');
             btn.classList.add('border-transparent', 'text-gray-500');
         });
 
@@ -942,7 +978,7 @@
             content.classList.add('hidden');
         });
 
-        document.getElementById('tab-' + tab).classList.add('active', 'border-indigo-600', 'text-indigo-600');
+        document.getElementById('tab-' + tab).classList.add('active', 'border-brand-600', 'text-brand-600');
         document.getElementById('tab-' + tab).classList.remove('border-transparent', 'text-gray-500');
         document.getElementById('content-' + tab).classList.remove('hidden');
 

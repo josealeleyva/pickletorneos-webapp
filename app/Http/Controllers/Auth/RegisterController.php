@@ -89,7 +89,7 @@ class RegisterController extends Controller
         event(new Registered($user));
         Auth::login($user);
 
-        return redirect()->route('jugador.dashboard')->with('success', '¡Bienvenido a Punto de Oro! Ya podés seguir tus partidos y torneos.');
+        return redirect()->route('jugador.dashboard')->with('success', '¡Bienvenido a PickleTorneos! Ya podés seguir tus partidos y torneos.');
     }
 
     private function registrarOrganizador(Request $request)

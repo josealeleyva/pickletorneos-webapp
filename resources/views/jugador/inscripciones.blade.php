@@ -9,7 +9,7 @@
     {{-- Tabs --}}
     <div class="flex border-b border-gray-200 mb-6">
         <button @click="tab = 'recibidas'"
-                :class="tab === 'recibidas' ? 'border-b-2 border-indigo-600 text-indigo-600 font-semibold' : 'text-gray-500 hover:text-gray-700'"
+                :class="tab === 'recibidas' ? 'border-b-2 border-brand-600 text-brand-600 font-semibold' : 'text-gray-500 hover:text-gray-700'"
                 class="px-4 py-3 text-sm transition flex items-center gap-2">
             Invitaciones recibidas
             @if($invitacionesPendientes->count() > 0)
@@ -19,7 +19,7 @@
             @endif
         </button>
         <button @click="tab = 'lideradas'"
-                :class="tab === 'lideradas' ? 'border-b-2 border-indigo-600 text-indigo-600 font-semibold' : 'text-gray-500 hover:text-gray-700'"
+                :class="tab === 'lideradas' ? 'border-b-2 border-brand-600 text-brand-600 font-semibold' : 'text-gray-500 hover:text-gray-700'"
                 class="px-4 py-3 text-sm transition flex items-center gap-2">
             Inscripciones que lidero
             @if($inscripcionesPendientes->count() > 0)
@@ -38,7 +38,7 @@
 
         @forelse($invitacionesPendientes as $inv)
             @php $insc = $inv->inscripcionEquipo; @endphp
-            <div class="bg-white rounded-lg shadow-sm border border-indigo-200 p-4 mb-3">
+            <div class="bg-white rounded-lg shadow-sm border border-brand-200 p-4 mb-3">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <div>
                         <p class="font-semibold text-gray-900 text-sm">{{ $insc->torneo?->nombre }}</p>
@@ -56,7 +56,7 @@
                         <form action="{{ route('inscripciones.invitacion.aceptar', $inv->token) }}" method="POST">
                             @csrf
                             <button type="submit"
-                                    class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
+                                    class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition">
                                 Aceptar
                             </button>
                         </form>
@@ -122,7 +122,7 @@
                         <p class="font-semibold text-gray-900 text-sm">{{ $insc->torneo->nombre }}</p>
                         <p class="text-xs text-gray-500 mt-0.5">{{ $insc->categoria->nombre }}</p>
                         <p class="text-xs text-gray-500 mt-1">
-                            <span class="font-medium text-indigo-700">{{ $confirmados }}/{{ $totalInvitados }}</span>
+                            <span class="font-medium text-brand-700">{{ $confirmados }}/{{ $totalInvitados }}</span>
                             jugadores confirmados
                         </p>
                         @if($minutosRestantes > 0)
@@ -135,7 +135,7 @@
                     </div>
                     <div class="flex gap-2 flex-shrink-0">
                         <a href="{{ route('inscripciones.invitar', $insc) }}"
-                           class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition text-center">
+                           class="bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition text-center">
                             Gestionar equipo
                         </a>
                         <form action="{{ route('inscripciones.cancelar', $insc) }}" method="POST">
@@ -169,7 +169,7 @@
                             <p class="text-xs text-gray-400 mt-0.5">{{ $insc->categoria->nombre }}</p>
                         </div>
                         <a href="{{ route('torneos.public', $insc->torneo_id) }}"
-                           class="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex-shrink-0">
+                           class="text-xs text-brand-600 hover:text-brand-800 font-medium flex-shrink-0">
                             Ver torneo →
                         </a>
                     </div>

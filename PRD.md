@@ -1,4 +1,4 @@
-# PRD — Punto de Oro
+# PRD — PickleTorneos
 ## Product Requirements Document
 
 **Versión:** 1.0
@@ -9,7 +9,7 @@
 
 ## 1. Resumen Ejecutivo
 
-**Punto de Oro** es una plataforma integral de gestión de torneos deportivos que conecta organizadores con jugadores, facilitando la administración completa de eventos deportivos desde la creación hasta la finalización.
+**PickleTorneos** es una plataforma integral de gestión de torneos deportivos que conecta organizadores con jugadores, facilitando la administración completa de eventos deportivos desde la creación hasta la finalización.
 
 ### Propuesta de valor
 
@@ -55,7 +55,7 @@
 - Accede principalmente desde el celular
 
 ### 3.3 Superadministrador
-- Equipo interno de Punto de Oro
+- Equipo interno de PickleTorneos
 - Gestiona usuarios, configuraciones del sistema y métricas
 
 ---

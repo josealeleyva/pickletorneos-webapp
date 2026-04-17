@@ -41,7 +41,7 @@
             </div>
 
             <div class="text-center">
-                <div class="text-2xl sm:text-3xl font-bold text-indigo-600">{{ $partidos->count() }}</div>
+                <div class="text-2xl sm:text-3xl font-bold text-brand-600">{{ $partidos->count() }}</div>
                 <div class="text-xs text-gray-500">Partidos totales</div>
             </div>
         </div>
@@ -75,7 +75,7 @@
 
         <form action="{{ route('torneos.fixture.resetear', $torneo) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de resetear el fixture? Se eliminarán todos los partidos.')">
             @csrf
-            <button type="submit" class="inline-flex items-center px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+            <button type="submit" class="inline-flex items-center px-4 py-2 bg-accent-600 hover:bg-accent-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                 </svg>
@@ -106,7 +106,7 @@
         </button>
         @endif
         @if($torneo->formato && $torneo->formato->tiene_grupos && $torneo->formato->tipo == 'borrador')
-        <a href="{{ route('torneos.grupos.index', $torneo) }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+        <a href="{{ route('torneos.grupos.index', $torneo) }}" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
             </svg>
@@ -139,7 +139,7 @@
         <!-- Desktop: Tabs horizontales -->
         <div class="hidden sm:block border-b border-gray-200">
             <nav class="flex overflow-x-auto" aria-label="Categorías">
-                <button type="button" data-categoria-filter="all" class="categoria-filter-tab whitespace-nowrap py-4 px-6 border-b-2 border-indigo-600 font-medium text-sm text-indigo-600">
+                <button type="button" data-categoria-filter="all" class="categoria-filter-tab whitespace-nowrap py-4 px-6 border-b-2 border-brand-600 font-medium text-sm text-brand-600">
                     Todas ({{ $partidos->count() }})
                 </button>
                 @foreach($torneo->categorias as $categoria)
@@ -163,7 +163,7 @@
 
         <!-- Mobile: Selector dropdown -->
         <div class="sm:hidden p-4 border-b border-gray-200">
-            <select id="categoria-filter-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500">
+            <select id="categoria-filter-select" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-brand-500 focus:border-brand-500">
                 <option value="all">Todas las Categorías ({{ $partidos->count() }})</option>
                 @foreach($torneo->categorias as $categoria)
                 @php
@@ -188,7 +188,7 @@
     <div class="bg-white rounded-lg shadow-sm">
         <div class="border-b border-gray-200">
             <nav class="flex -mb-px overflow-x-auto" aria-label="Tabs">
-                <button onclick="switchTab('grupos')" id="tab-grupos" class="tab-button active px-4 sm:px-6 py-3 text-sm font-medium border-b-2 border-indigo-600 text-indigo-600 whitespace-nowrap">
+                <button onclick="switchTab('grupos')" id="tab-grupos" class="tab-button active px-4 sm:px-6 py-3 text-sm font-medium border-b-2 border-brand-600 text-brand-600 whitespace-nowrap">
                     @if($torneo->formato && $torneo->formato->tiene_grupos)
                         Por Grupo
                     @else
@@ -215,7 +215,7 @@
 
             <div class="grupo-section mb-6 last:mb-0" data-categoria="categoria-{{ $grupo->categoria_id }}">
                 <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-                    <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg">{{ $grupo->nombre }}</span>
+                    <span class="bg-brand-100 text-brand-700 px-3 py-1 rounded-lg">{{ $grupo->nombre }}</span>
                     @if($grupo->categoria)
                     <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">{{ $grupo->categoria->nombre }}</span>
                     @endif
@@ -272,7 +272,7 @@
                                     @if($torneo->estado === 'borrador' && $partido->fecha_hora)
                                     <button
                                         onclick="abrirModalEditar({{ $partido->id }}, '{{ $partido->fecha_hora->format('Y-m-d\TH:i') }}', {{ $partido->cancha_id }})"
-                                        class="flex items-center text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 px-2 py-1 rounded transition text-xs sm:text-sm"
+                                        class="flex items-center text-brand-600 hover:text-brand-800 hover:bg-brand-50 px-2 py-1 rounded transition text-xs sm:text-sm"
                                         title="Editar partido">
                                         <svg class="w-4 h-4 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
@@ -373,7 +373,7 @@
                                             @if($torneo->estado === 'borrador' && $partido->fecha_hora)
                                             <button
                                                 onclick="abrirModalEditar({{ $partido->id }}, '{{ $partido->fecha_hora->format('Y-m-d\TH:i') }}', {{ $partido->cancha_id }})"
-                                                class="flex items-center text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 px-2 py-1 rounded transition text-xs sm:text-sm"
+                                                class="flex items-center text-brand-600 hover:text-brand-800 hover:bg-brand-50 px-2 py-1 rounded transition text-xs sm:text-sm"
                                                 title="Editar partido">
                                                 <svg class="w-4 h-4 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
@@ -460,7 +460,7 @@
                                 @endif
 
                                 @if($partido->grupo)
-                                <span class="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded text-xs">{{ $partido->grupo->nombre }}</span>
+                                <span class="bg-brand-100 text-brand-700 px-2 py-0.5 rounded text-xs">{{ $partido->grupo->nombre }}</span>
                                 @endif
 
                                 <!-- Resultado si ya está finalizado -->
@@ -479,7 +479,7 @@
                                     @if($torneo->estado === 'borrador' && $partido->fecha_hora)
                                     <button
                                         onclick="abrirModalEditar({{ $partido->id }}, '{{ $partido->fecha_hora->format('Y-m-d\TH:i') }}', {{ $partido->cancha_id }})"
-                                        class="flex items-center text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 px-2 py-1 rounded transition text-xs sm:text-sm"
+                                        class="flex items-center text-brand-600 hover:text-brand-800 hover:bg-brand-50 px-2 py-1 rounded transition text-xs sm:text-sm"
                                         title="Editar partido">
                                         <svg class="w-4 h-4 sm:mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
@@ -536,9 +536,9 @@
                 $categoriaNombre = $primerGrupo['categoria_nombre'];
                 $campeonId = $primerGrupo['campeon_id'] ?? null;
                 @endphp
-                <div class="mb-4 pb-2 border-b-2 border-indigo-200">
+                <div class="mb-4 pb-2 border-b-2 border-brand-200">
                     <div class="flex items-center justify-between">
-                        <h2 class="text-xl font-bold text-indigo-700">Categoría {{ $categoriaNombre }}</h2>
+                        <h2 class="text-xl font-bold text-brand-700">Categoría {{ $categoriaNombre }}</h2>
 
                         @if($esLiga && $campeonId)
                             @php
@@ -559,7 +559,7 @@
                 <div class="mb-6 last:mb-0">
                     @if(!$esLiga)
                     <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
-                        <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg">{{ $grupoData['grupo_nombre'] }}</span>
+                        <span class="bg-brand-100 text-brand-700 px-3 py-1 rounded-lg">{{ $grupoData['grupo_nombre'] }}</span>
                     </h3>
                     @endif
 
@@ -694,7 +694,7 @@
                         id="fecha_hora"
                         name="fecha_hora"
                         required
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
                 </div>
 
                 <div>
@@ -703,7 +703,7 @@
                         id="cancha_id"
                         name="cancha_id"
                         required
-                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
                         <option value="">Seleccionar cancha</option>
                         @foreach($canchas as $cancha)
                         <option value="{{ $cancha->id }}">{{ $cancha->nombre }}</option>
@@ -721,7 +721,7 @@
                 </button>
                 <button
                     type="submit"
-                    class="flex-1 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition">
+                    class="flex-1 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-lg transition">
                     Guardar
                 </button>
             </div>
@@ -801,7 +801,7 @@
                 </div>
                 <button
                     type="submit"
-                    class="w-full px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition text-sm">
+                    class="w-full px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-lg transition text-sm">
                     Agregar
                 </button>
             </div>
@@ -863,9 +863,9 @@
         categoriaFilterTabs.forEach(tab => {
             if (tab.dataset.categoriaFilter === categoriaId) {
                 tab.classList.remove('border-transparent', 'text-gray-500');
-                tab.classList.add('border-indigo-600', 'text-indigo-600');
+                tab.classList.add('border-brand-600', 'text-brand-600');
             } else {
-                tab.classList.remove('border-indigo-600', 'text-indigo-600');
+                tab.classList.remove('border-brand-600', 'text-brand-600');
                 tab.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
             }
         });
@@ -893,7 +893,7 @@
     function switchTab(tab) {
         // Remover active de todos los tabs
         document.querySelectorAll('.tab-button').forEach(btn => {
-            btn.classList.remove('active', 'border-indigo-600', 'text-indigo-600');
+            btn.classList.remove('active', 'border-brand-600', 'text-brand-600');
             btn.classList.add('border-transparent', 'text-gray-500');
         });
 
@@ -903,7 +903,7 @@
         });
 
         // Activar tab seleccionado
-        document.getElementById('tab-' + tab).classList.add('active', 'border-indigo-600', 'text-indigo-600');
+        document.getElementById('tab-' + tab).classList.add('active', 'border-brand-600', 'text-brand-600');
         document.getElementById('tab-' + tab).classList.remove('border-transparent', 'text-gray-500');
 
         // Mostrar contenido seleccionado
@@ -1208,7 +1208,7 @@
             // Vista por grupos
             const gruposSections = vistaActiva.querySelectorAll('.grupo-section:not(.hidden)');
             gruposSections.forEach(grupoSection => {
-                const grupoNombre = grupoSection.querySelector('h3 .bg-indigo-100')?.textContent.trim();
+                const grupoNombre = grupoSection.querySelector('h3 .bg-brand-100')?.textContent.trim();
                 const categoriaNombre = grupoSection.querySelector('.bg-purple-100')?.textContent.trim() || '';
 
                 const partidosContainer = grupoSection.querySelector('.space-y-2');
@@ -1348,7 +1348,7 @@
                         });
 
                         // Grupo está en un span
-                        const grupoSpan = detallesDiv.querySelector('.bg-indigo-100.text-indigo-700');
+                        const grupoSpan = detallesDiv.querySelector('.bg-brand-100.text-brand-700');
                         if (grupoSpan) {
                             grupo = grupoSpan.textContent.trim();
                         }

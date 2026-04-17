@@ -6,7 +6,7 @@
 @section('content')
 <div class="space-y-4 sm:space-y-6">
     <!-- Welcome Card -->
-    <div class="bg-white rounded-lg shadow-sm p-4 sm:p-6 border-l-4 border-indigo-600">
+    <div class="bg-white rounded-lg shadow-sm p-4 sm:p-6 border-l-4 border-brand-600">
         <h3 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">
             ¡Hola, {{ auth()->user()->name }}! 👋
         </h3>
@@ -21,7 +21,7 @@
             </div>
 
             @if(auth()->user()->organizacion)
-                <div class="inline-flex items-center px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs">
+                <div class="inline-flex items-center px-3 py-1 bg-brand-100 text-brand-800 rounded-full text-xs">
                     <svg class="w-3 h-3 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"></path>
                     </svg>
@@ -40,8 +40,8 @@
                     <p class="text-sm text-gray-600 mb-1">Mis Torneos</p>
                     <p class="text-2xl sm:text-3xl font-bold text-gray-800">{{ $torneosBorrador + $torneosActivos + $torneosFinalizados }}</p>
                 </div>
-                <div class="p-3 bg-indigo-100 rounded-full">
-                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="p-3 bg-brand-100 rounded-full">
+                    <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
                     </svg>
                 </div>
@@ -72,9 +72,9 @@
 
                 <!-- Finalizados -->
                 <div class="relative group flex-1 text-center cursor-help">
-                    <div class="flex flex-col items-center p-2 rounded-lg hover:bg-indigo-50 transition">
-                        <p class="text-xl sm:text-2xl font-bold text-indigo-600">{{ $torneosFinalizados }}</p>
-                        <div class="w-2 h-2 bg-indigo-400 rounded-full mt-1"></div>
+                    <div class="flex flex-col items-center p-2 rounded-lg hover:bg-brand-50 transition">
+                        <p class="text-xl sm:text-2xl font-bold text-brand-600">{{ $torneosFinalizados }}</p>
+                        <div class="w-2 h-2 bg-brand-400 rounded-full mt-1"></div>
                     </div>
                     <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 group-active:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-10">
                         Finalizados

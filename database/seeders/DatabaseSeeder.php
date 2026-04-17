@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         // SUPERADMINISTRADOR
         // ===================================
         $superadmin = User::firstOrCreate(
-            ['email' => 'superadmin@puntodeoro.com.ar'],
+            ['email' => 'superadmin@pickletorneos.com.ar'],
             [
                 'name' => 'Super',
                 'apellido' => 'Admin',
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
         // ORGANIZADORES
         // ===================================
         $organizador1 = User::firstOrCreate(
-            ['email' => 'organizador1@puntodeoro.com'],
+            ['email' => 'organizador1@pickletorneos.com'],
             [
                 'name' => 'Juan',
                 'apellido' => 'Pérez',
@@ -88,7 +88,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $organizador2 = User::firstOrCreate(
-            ['email' => 'organizador2@puntodeoro.com'],
+            ['email' => 'organizador2@pickletorneos.com'],
             [
                 'name' => 'María',
                 'apellido' => 'González',
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
         // JUGADORES CON CUENTA EN LA APP
         // ===================================
         $jugador1User = User::firstOrCreate(
-            ['email' => 'jugador1@puntodeoro.com'],
+            ['email' => 'jugador1@pickletorneos.com'],
             [
                 'name' => 'Carlos',
                 'apellido' => 'Rodríguez',
@@ -118,7 +118,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $jugador2User = User::firstOrCreate(
-            ['email' => 'jugador2@puntodeoro.com'],
+            ['email' => 'jugador2@pickletorneos.com'],
             [
                 'name' => 'Ana',
                 'apellido' => 'Martínez',
@@ -131,7 +131,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $jugador3User = User::firstOrCreate(
-            ['email' => 'jugador3@puntodeoro.com'],
+            ['email' => 'jugador3@pickletorneos.com'],
             [
                 'name' => 'Diego',
                 'apellido' => 'Fernández',
@@ -264,19 +264,19 @@ class DatabaseSeeder extends Seeder
         $this->command->info('📧 Credenciales de acceso:');
         $this->command->info('');
         $this->command->info('SUPERADMINISTRADOR:');
-        $this->command->info('  Email: superadmin@puntodeoro.com');
+        $this->command->info('  Email: superadmin@pickletorneos.com');
         $this->command->info('  Password: 1234');
         $this->command->info('');
         $this->command->info('ORGANIZADORES:');
-        $this->command->info('  Email: organizador1@puntodeoro.com (Padel Center Rosario)');
+        $this->command->info('  Email: organizador1@pickletorneos.com (Padel Center Rosario)');
         $this->command->info('  Código de Referido: ' . $organizador1->codigo_referido);
-        $this->command->info('  Email: organizador2@puntodeoro.com (Complejo La Cancha)');
+        $this->command->info('  Email: organizador2@pickletorneos.com (Complejo La Cancha)');
         $this->command->info('  Password: 1234');
         $this->command->info('');
         $this->command->info('JUGADORES (panel de jugador):');
-        $this->command->info('  Email: jugador1@puntodeoro.com (Carlos Rodríguez - Padel)');
-        $this->command->info('  Email: jugador2@puntodeoro.com (Ana Martínez - Padel)');
-        $this->command->info('  Email: jugador3@puntodeoro.com (Diego Fernández - Fútbol)');
+        $this->command->info('  Email: jugador1@pickletorneos.com (Carlos Rodríguez - Padel)');
+        $this->command->info('  Email: jugador2@pickletorneos.com (Ana Martínez - Padel)');
+        $this->command->info('  Email: jugador3@pickletorneos.com (Diego Fernández - Fútbol)');
         $this->command->info('  Password: 1234');
         $this->command->info('  jugador1 y jugador2 están en torneos de padel generados por TorneoConEquiposSeeder');
         $this->command->info('');

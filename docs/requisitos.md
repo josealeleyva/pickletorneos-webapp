@@ -1,4 +1,4 @@
-**PROYECTO “Punto de Oro”/ GESTIÓN DE TORNEOS**
+**PROYECTO “PickleTorneos”/ GESTIÓN DE TORNEOS**
 
 **Para el organizador:**
 

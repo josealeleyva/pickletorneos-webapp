@@ -151,7 +151,7 @@ class User extends Authenticatable
         }
 
         do {
-            $codigo = 'PO'.strtoupper(\Illuminate\Support\Str::random(6));
+            $codigo = 'PT'.strtoupper(\Illuminate\Support\Str::random(6));
         } while (User::where('codigo_referido', $codigo)->exists());
 
         $this->update(['codigo_referido' => $codigo]);

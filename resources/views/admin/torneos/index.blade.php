@@ -141,7 +141,7 @@
                                     @elseif($torneo->pago->estado === 'gratuito')
                                         <span class="text-blue-600">GRATIS</span>
                                     @elseif($torneo->pago->estado === 'pendiente')
-                                        <span class="text-yellow-600">Pendiente</span>
+                                        <span class="text-accent-600">Pendiente</span>
                                     @else
                                         <span class="text-gray-400">{{ ucfirst($torneo->pago->estado) }}</span>
                                     @endif

@@ -13,8 +13,8 @@
                     <p class="text-gray-500 text-sm font-medium">Nuevas</p>
                     <p class="text-3xl font-bold text-gray-800 mt-2">{{ $totalNuevas }}</p>
                 </div>
-                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-bell text-yellow-600 text-xl"></i>
+                <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-bell text-accent-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @forelse($sugerencias as $sugerencia)
-                        <tr class="hover:bg-gray-50 {{ $sugerencia->estado === 'nueva' ? 'bg-yellow-50' : '' }}">
+                        <tr class="hover:bg-gray-50 {{ $sugerencia->estado === 'nueva' ? 'bg-accent-50' : '' }}">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-bold">

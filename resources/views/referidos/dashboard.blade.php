@@ -20,8 +20,8 @@
                     <p class="text-sm font-medium text-gray-600">Total Referidos</p>
                     <p class="text-3xl font-bold text-gray-900 mt-2">{{ $stats['total_referidos'] }}</p>
                 </div>
-                <div class="bg-indigo-100 rounded-full p-3">
-                    <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-brand-100 rounded-full p-3">
+                    <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                 </div>
@@ -75,20 +75,20 @@
     </div>
 
     <!-- Código de Referido -->
-    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg shadow-lg p-8 mb-8 text-white">
+    <div class="bg-gradient-to-r from-brand-600 to-purple-600 rounded-lg shadow-lg p-8 mb-8 text-white">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
                 <h2 class="text-2xl font-bold mb-4">Tu Código de Referido</h2>
-                <p class="text-indigo-100 mb-6">Comparte este código con otros organizadores y gana 1 torneo gratis por cada uno que se active.</p>
+                <p class="text-brand-100 mb-6">Comparte este código con otros organizadores y gana 1 torneo gratis por cada uno que se active.</p>
 
                 <!-- Código -->
                 <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-4">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-sm text-indigo-100 mb-1">Tu código único:</p>
+                            <p class="text-sm text-brand-100 mb-1">Tu código único:</p>
                             <p class="text-3xl font-mono font-bold tracking-wider">{{ $stats['codigo'] }}</p>
                         </div>
-                        <button onclick="copiarCodigo()" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition">
+                        <button onclick="copiarCodigo()" class="bg-white text-brand-600 px-4 py-2 rounded-lg font-semibold hover:bg-brand-50 transition">
                             Copiar
                         </button>
                     </div>
@@ -102,7 +102,7 @@
                         $montoDescuento = $precioTorneo * ($porcentajeDescuento / 100);
                     @endphp
                     <p class="text-sm font-semibold mb-2">Beneficios para el referido:</p>
-                    <p class="text-indigo-100">✓ {{ $porcentajeDescuento }}% de descuento en su primer torneo pago (${{ number_format($montoDescuento, 0, ',', '.') }} de ahorro)</p>
+                    <p class="text-brand-100">✓ {{ $porcentajeDescuento }}% de descuento en su primer torneo pago (${{ number_format($montoDescuento, 0, ',', '.') }} de ahorro)</p>
                 </div>
             </div>
 
@@ -110,7 +110,7 @@
                 <h3 class="text-xl font-bold mb-4">Compartir por:</h3>
                 <div class="space-y-3">
                     <!-- WhatsApp -->
-                    <a href="https://wa.me/?text={{ urlencode('¡Únete a Punto de Oro! Usa mi código de referido ' . $stats['codigo'] . ' y obtén ' . $porcentajeDescuento . '% de descuento en tu primer torneo. Regístrate aquí: ' . route('referidos.invitacion', $stats['codigo'])) }}"
+                    <a href="https://wa.me/?text={{ urlencode('¡Únete a PickleTorneos! Usa mi código de referido ' . $stats['codigo'] . ' y obtén ' . $porcentajeDescuento . '% de descuento en tu primer torneo. Regístrate aquí: ' . route('referidos.invitacion', $stats['codigo'])) }}"
                        target="_blank"
                        class="flex items-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition rounded-lg p-4">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -120,7 +120,7 @@
                     </a>
 
                     <!-- Email -->
-                    <a href="mailto:?subject={{ urlencode('Únete a Punto de Oro') }}&body={{ urlencode('Hola! Te invito a unirte a Punto de Oro, una plataforma para gestionar torneos deportivos. Usa mi código de referido ' . $stats['codigo'] . ' para obtener ' . $porcentajeDescuento . '% de descuento en tu primer torneo. Regístrate aquí: ' . route('referidos.invitacion', $stats['codigo'])) }}"
+                    <a href="mailto:?subject={{ urlencode('Únete a PickleTorneos') }}&body={{ urlencode('Hola! Te invito a unirte a PickleTorneos, una plataforma para gestionar torneos deportivos. Usa mi código de referido ' . $stats['codigo'] . ' para obtener ' . $porcentajeDescuento . '% de descuento en tu primer torneo. Regístrate aquí: ' . route('referidos.invitacion', $stats['codigo'])) }}"
                        class="flex items-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition rounded-lg p-4">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -158,11 +158,11 @@
             @if($referidos->count() > 0)
                 <div class="space-y-4">
                     @foreach($referidos as $referido)
-                        <div class="border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition">
+                        <div class="border border-gray-200 rounded-lg p-4 hover:border-brand-300 transition">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-4">
-                                    <div class="bg-indigo-100 rounded-full p-3">
-                                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div class="bg-brand-100 rounded-full p-3">
+                                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                         </svg>
                                     </div>
@@ -208,7 +208,7 @@
                     </svg>
                     <h3 class="text-lg font-medium text-gray-900 mb-2">Aún no tienes referidos</h3>
                     <p class="text-gray-600 mb-6">Comparte tu código con otros organizadores y comienza a ganar torneos gratis.</p>
-                    <button onclick="copiarCodigo()" class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition">
+                    <button onclick="copiarCodigo()" class="inline-flex items-center px-6 py-3 bg-brand-600 text-white rounded-lg font-semibold hover:bg-brand-700 transition">
                         Copiar mi código
                     </button>
                 </div>
@@ -258,7 +258,7 @@
                                     </p>
                                 </div>
                                 @if($credito->estado === 'disponible')
-                                    <a href="{{ route('torneos.create') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition text-sm">
+                                    <a href="{{ route('torneos.create') }}" class="inline-flex items-center px-4 py-2 bg-brand-600 text-white rounded-lg font-semibold hover:bg-brand-700 transition text-sm">
                                         Usar ahora
                                     </a>
                                 @endif
@@ -302,7 +302,7 @@ function cambiarTab(tab) {
 
     // Remover clase active de todos los botones
     document.querySelectorAll('.tab-button').forEach(button => {
-        button.classList.remove('active', 'border-indigo-600', 'text-indigo-600');
+        button.classList.remove('active', 'border-brand-600', 'text-brand-600');
         button.classList.add('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
     });
 
@@ -311,7 +311,7 @@ function cambiarTab(tab) {
 
     // Activar botón seleccionado
     const activeButton = document.getElementById('tab-' + tab);
-    activeButton.classList.add('active', 'border-indigo-600', 'text-indigo-600');
+    activeButton.classList.add('active', 'border-brand-600', 'text-brand-600');
     activeButton.classList.remove('border-transparent', 'text-gray-500', 'hover:text-gray-700', 'hover:border-gray-300');
 }
 

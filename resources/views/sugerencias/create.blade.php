@@ -7,14 +7,14 @@
 <div class="max-w-3xl mx-auto">
     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
         <!-- Header -->
-        <div class="px-6 py-4 bg-gradient-to-r from-indigo-500 to-purple-600">
+        <div class="px-6 py-4 bg-gradient-to-r from-brand-500 to-purple-600">
             <h2 class="text-xl font-semibold text-white flex items-center">
                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                 </svg>
                 Comparte tu feedback con nosotros
             </h2>
-            <p class="text-indigo-100 text-sm mt-1">Nos ayudas a mejorar la plataforma</p>
+            <p class="text-brand-100 text-sm mt-1">Nos ayudas a mejorar la plataforma</p>
         </div>
 
         <!-- Formulario -->
@@ -27,7 +27,7 @@
                     Tipo de mensaje
                     <span class="text-red-500">*</span>
                 </label>
-                <select name="tipo" id="tipo" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('tipo') border-red-500 @enderror">
+                <select name="tipo" id="tipo" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('tipo') border-red-500 @enderror">
                     <option value="">Selecciona un tipo</option>
                     <option value="sugerencia" {{ old('tipo') === 'sugerencia' ? 'selected' : '' }}>
                         Sugerencia - Tengo una idea para mejorar la plataforma
@@ -77,7 +77,7 @@
                     maxlength="255"
                     required
                     placeholder="Ejemplo: Agregar opción de exportar fixture a PDF"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('asunto') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('asunto') border-red-500 @enderror"
                 >
                 @error('asunto')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -98,7 +98,7 @@
                     required
                     minlength="10"
                     placeholder="Describe tu sugerencia, problema o consulta con el mayor detalle posible..."
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent @error('mensaje') border-red-500 @enderror"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('mensaje') border-red-500 @enderror"
                 >{{ old('mensaje') }}</textarea>
                 @error('mensaje')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -130,7 +130,7 @@
                     </svg>
                     Cancelar
                 </a>
-                <button type="submit" class="flex-1 inline-flex justify-center items-center px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
+                <button type="submit" class="flex-1 inline-flex justify-center items-center px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow-md transition duration-200 text-sm sm:text-base">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                     </svg>

@@ -7,12 +7,12 @@
         <div class="max-w-md w-full">
             <div class="bg-white rounded-lg shadow-2xl overflow-hidden">
                 <!-- Header -->
-                <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 text-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+                <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 text-center bg-gradient-to-r from-brand-600 to-purple-600 text-white">
                     <!-- Logo -->
                     <div class="mb-4">
-                        <img src="{{ asset('images/logo-blanco.png') }}" alt="Punto de Oro" class="h-16 mx-auto">
+                        <img src="{{ asset('images/logo-blanco.png') }}" alt="PickleTorneos" class="h-16 mx-auto">
                     </div>
-                    <p class="text-indigo-100 mt-2">Sistema de Gestión de Torneos</p>
+                    <p class="text-brand-100 mt-2">Sistema de Gestión de Torneos</p>
                 </div>
 
                 <!-- Form -->
@@ -61,7 +61,7 @@
                             </label>
                             <input type="email" id="email" name="email" value="{{ old('email') }}" required
                                 autofocus
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="tu@email.com">
                         </div>
 
@@ -71,7 +71,7 @@
                                 Contraseña
                             </label>
                             <input type="password" id="password" name="password" required
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                 placeholder="••••••••">
                         </div>
 
@@ -79,14 +79,14 @@
                         <div class="flex items-center justify-between mb-6">
                             <label class="flex items-center">
                                 <input type="checkbox" name="remember"
-                                    class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                    class="rounded border-gray-300 text-brand-600 focus:ring-brand-500">
                                 <span class="ml-2 text-sm text-gray-600">Recordarme</span>
                             </label>
                         </div>
 
                         <!-- Submit Button -->
                         <button type="submit"
-                            class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition duration-200 shadow-lg text-sm sm:text-base">
+                            class="w-full bg-gradient-to-r from-brand-600 to-purple-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-purple-700 transition duration-200 shadow-lg text-sm sm:text-base">
                             Ingresar
                         </button>
                     </form>
@@ -95,7 +95,7 @@
                     <div class="mt-6 text-center">
                         <p class="text-sm text-gray-600">
                             ¿No tienes cuenta?
-                            <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-700 font-semibold">
+                            <a href="{{ route('register') }}" class="text-brand-600 hover:text-brand-700 font-semibold">
                                 Regístrate aquí
                             </a>
                         </p>

@@ -34,7 +34,7 @@
 
         <div class="flex flex-col gap-3">
             <a href="{{ route('pagos.checkout', $torneo) }}"
-               class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition duration-200">
+               class="bg-brand-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-700 transition duration-200">
                 Intentar nuevamente
             </a>
             <a href="{{ route('torneos.index') }}"
