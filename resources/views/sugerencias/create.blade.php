@@ -7,7 +7,7 @@
 <div class="max-w-3xl mx-auto">
     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
         <!-- Header -->
-        <div class="px-6 py-4 bg-gradient-to-r from-brand-500 to-purple-600">
+        <div class="px-6 py-4 bg-gradient-to-r from-brand-700 to-brand-500">
             <h2 class="text-xl font-semibold text-white flex items-center">
                 <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>

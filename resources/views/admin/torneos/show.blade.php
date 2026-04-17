@@ -11,7 +11,7 @@
             <i class="fas fa-arrow-left"></i>
             <span>Volver a Torneos</span>
         </a>
-        <a href="{{ route('torneos.public', $torneo->id) }}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition flex items-center gap-2">
+        <a href="{{ route('torneos.public', $torneo->id) }}" target="_blank" class="bg-brand-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition flex items-center gap-2">
             <i class="fas fa-external-link-alt"></i>
             <span>Vista Pública</span>
         </a>
@@ -23,7 +23,7 @@
         @if($torneo->banner)
             <div class="h-48 bg-cover bg-center" style="background-image: url('{{ asset('storage/' . $torneo->banner) }}')"></div>
         @else
-            <div class="h-48 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+            <div class="h-48 bg-gradient-to-r from-brand-700 to-brand-500 flex items-center justify-center">
                 <i class="fas fa-trophy text-white text-6xl opacity-50"></i>
             </div>
         @endif
@@ -82,7 +82,7 @@
                             <p class="text-xs text-gray-500">{{ $torneo->organizador->email }}</p>
                         </div>
                     </div>
-                    <a href="{{ route('admin.organizadores.show', $torneo->organizador) }}" class="mt-3 block text-sm text-blue-600 hover:text-blue-900">
+                    <a href="{{ route('admin.organizadores.show', $torneo->organizador) }}" class="mt-3 block text-sm text-brand-600 hover:text-blue-900">
                         Ver perfil completo <i class="fas fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -110,7 +110,7 @@
                             <p class="text-lg font-bold text-green-600">${{ number_format($torneo->pago->monto, 0, ',', '.') }}</p>
                             <p class="text-xs text-gray-500 mt-1">Pagado el {{ $torneo->pago->created_at->format('d/m/Y') }}</p>
                         @elseif($torneo->pago->estado === 'gratuito')
-                            <p class="text-lg font-bold text-blue-600">GRATUITO</p>
+                            <p class="text-lg font-bold text-brand-600">GRATUITO</p>
                             @if($torneo->pago->credito_referido_id)
                                 <p class="text-xs text-gray-500 mt-1">Crédito de referido usado</p>
                             @else
@@ -136,7 +136,7 @@
                     <p class="text-2xl font-bold text-gray-800 mt-1">{{ $stats['total_equipos'] }}</p>
                 </div>
                 <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-users text-blue-600"></i>
+                    <i class="fas fa-users text-brand-600"></i>
                 </div>
             </div>
         </div>
@@ -148,7 +148,7 @@
                     <p class="text-2xl font-bold text-gray-800 mt-1">{{ $stats['total_partidos'] }}</p>
                 </div>
                 <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-calendar-check text-purple-600"></i>
+                    <i class="fas fa-calendar-check text-brand-600"></i>
                 </div>
             </div>
         </div>
@@ -183,7 +183,7 @@
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <div class="px-4 md:px-6 py-4 border-b border-gray-200 bg-gray-50">
                 <h3 class="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                    <i class="fas fa-users text-blue-600"></i>
+                    <i class="fas fa-users text-brand-600"></i>
                     Equipos Inscritos ({{ $torneo->equipos->count() }})
                 </h3>
             </div>
@@ -223,7 +223,7 @@
     @if($torneo->descripcion)
         <div class="bg-white rounded-lg shadow p-4 md:p-6">
             <h3 class="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                <i class="fas fa-info-circle text-blue-600"></i>
+                <i class="fas fa-info-circle text-brand-600"></i>
                 Descripción
             </h3>
             <p class="text-gray-700 leading-relaxed">{{ $torneo->descripcion }}</p>

@@ -3,7 +3,7 @@
 @section('title', 'Invitación a PickleTorneos')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-brand-50 via-white to-purple-50">
+<div class="min-h-screen bg-gradient-to-br from-brand-50 via-white to-brand-50">
     <div class="container mx-auto px-4 py-12">
         <!-- Header -->
         <div class="text-center mb-12">
@@ -20,7 +20,7 @@
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
                 <!-- Banner del Referidor -->
-                <div class="bg-gradient-to-r from-brand-600 to-purple-600 p-8 text-white">
+                <div class="bg-gradient-to-r from-brand-600 to-brand-500 p-8 text-white">
                     <div class="flex items-center gap-6">
                         <div class="bg-white/20 backdrop-blur-sm rounded-full p-6">
                             <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,7 +141,7 @@
 
                     <!-- CTA -->
                     <div class="text-center">
-                        <a href="{{ route('register', ['ref' => $codigo]) }}" class="inline-block bg-gradient-to-r from-brand-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-brand-700 hover:to-purple-700 transition transform hover:scale-105 shadow-xl">
+                        <a href="{{ route('register', ['ref' => $codigo]) }}" class="inline-block bg-gradient-to-r from-brand-600 to-brand-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-brand-700 hover:to-brand-600 transition transform hover:scale-105 shadow-xl">
                             Crear mi cuenta GRATIS
                         </a>
                         <p class="text-gray-500 text-sm mt-4">

@@ -302,8 +302,8 @@
 </script>
 <style>
     .tab-active {
-        color: #4338ca;
-        border-bottom: 2px solid #4f46e5;
+        color: #0F6B78;
+        border-bottom: 2px solid #147a8a;
     }
 </style>
 @endpush

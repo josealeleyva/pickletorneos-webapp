@@ -106,7 +106,7 @@
                                                                    value="1"
                                                                    {{ $config->valor_parsed ? 'checked' : '' }}
                                                                    class="sr-only peer">
-                                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                                                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600"></div>
                                                         </label>
                                                         <span class="text-sm text-gray-600">
                                                             {{ $config->valor_parsed ? 'Activado' : 'Desactivado' }}
@@ -197,7 +197,7 @@
     <!-- Información adicional -->
     <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
         <div class="flex items-start">
-            <i class="fas fa-info-circle text-blue-600 text-xl mr-3 mt-0.5"></i>
+            <i class="fas fa-info-circle text-brand-600 text-xl mr-3 mt-0.5"></i>
             <div class="text-sm text-blue-800">
                 <p class="font-medium mb-1">Información importante:</p>
                 <ul class="list-disc list-inside space-y-1 text-blue-700">

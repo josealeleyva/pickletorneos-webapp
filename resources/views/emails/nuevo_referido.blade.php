@@ -11,7 +11,7 @@
 
         <!-- Header -->
         <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #6366f1; margin: 0;">¡Felicidades! 🎉</h1>
+            <h1 style="color: #1f95a6; margin: 0;">¡Felicidades! 🎉</h1>
         </div>
 
         <!-- Saludo -->
@@ -23,7 +23,7 @@
         </p>
 
         <!-- Info del referido -->
-        <div style="background: #f3f4f6; border-left: 4px solid #6366f1; padding: 15px; margin: 20px 0; border-radius: 4px;">
+        <div style="background: #f3f4f6; border-left: 4px solid #1f95a6; padding: 15px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0; color: #374151;">
                 <strong>📧 Email:</strong> {{ $referido->email }}<br>
                 @if($referido->organizacion)
@@ -55,7 +55,7 @@
         <!-- Botón de acción -->
         <div style="text-align: center; margin: 30px 0;">
             <a href="{{ url('/referidos/dashboard') }}"
-               style="display: inline-block; background: linear-gradient(to right, #6366f1, #8b5cf6); color: white; padding: 14px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 6px rgba(99, 102, 241, 0.3);">
+               style="display: inline-block; background: linear-gradient(to right, #1f95a6, #1f95a6); color: white; padding: 14px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 6px rgba(15, 107, 120, 0.3);">
                 Ver mis referidos
             </a>
         </div>

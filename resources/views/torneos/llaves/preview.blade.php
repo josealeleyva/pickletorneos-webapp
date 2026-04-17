@@ -68,7 +68,7 @@
         <!-- Checkbox para 3er puesto -->
         <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
             <label class="flex items-center space-x-2">
-                <input type="checkbox" name="tercer_puesto" value="1" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                <input type="checkbox" name="tercer_puesto" value="1" class="rounded border-gray-300 text-brand-600 focus:ring-blue-500">
                 <span class="text-gray-700 font-medium">Incluir partido por el 3er y 4to puesto</span>
             </label>
         </div>
@@ -79,10 +79,10 @@
                 <nav class="-mb-px flex space-x-8">
                     @foreach($clasificadosPorCategoria as $catId => $data)
                         <button type="button"
-                                class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm {{ $loop->first ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}"
+                                class="tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm {{ $loop->first ? 'border-blue-500 text-brand-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300' }}"
                                 data-tab="categoria-{{ $catId }}">
                             {{ $data['categoria']->nombre }}
-                            <span class="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
+                            <span class="ml-2 text-xs bg-blue-100 text-brand-600 px-2 py-1 rounded-full">
                                 {{ $data['total'] }} equipos
                             </span>
                         </button>
@@ -113,7 +113,7 @@
                             data-accordion="accordion-{{ $catId }}">
                         <div>
                             <span class="font-medium text-gray-800">{{ $data['categoria']->nombre }}</span>
-                            <span class="ml-2 text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded-full">
+                            <span class="ml-2 text-xs bg-blue-100 text-brand-600 px-2 py-1 rounded-full">
                                 {{ $data['total'] }} equipos
                             </span>
                         </div>
@@ -180,11 +180,11 @@
 
             // Actualizar botones
             document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('border-blue-500', 'text-blue-600');
+                btn.classList.remove('border-blue-500', 'text-brand-600');
                 btn.classList.add('border-transparent', 'text-gray-500');
             });
             this.classList.remove('border-transparent', 'text-gray-500');
-            this.classList.add('border-blue-500', 'text-blue-600');
+            this.classList.add('border-blue-500', 'text-brand-600');
 
             // Mostrar contenido
             document.querySelectorAll('.tab-content').forEach(content => {

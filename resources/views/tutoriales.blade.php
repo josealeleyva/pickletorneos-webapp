@@ -75,7 +75,7 @@
     <!-- Hero Section -->
     <div class="relative text-white pt-24 pb-16 sm:pt-28 sm:pb-20 overflow-hidden"
         style="background-image: url('{{ asset('images/banner2.png') }}'); background-size: cover; background-position: center;">
-        <div class="absolute inset-0" style="background-color: rgba(30, 27, 75, 0.82);"></div>
+        <div class="absolute inset-0" style="background-color: rgba(10, 56, 66, 0.82);"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="flex justify-center mb-6">
                 <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl flex items-center justify-center">
@@ -128,7 +128,7 @@
                 if (!$categoria) continue;
 
                 $colorClasses = [
-                    'blue' => 'bg-blue-100 text-blue-800 border-blue-200',
+                    'blue' => 'bg-blue-100 text-blue-800 border-brand-200',
                     'indigo' => 'bg-brand-100 text-brand-800 border-brand-200',
                     'green' => 'bg-green-100 text-green-800 border-green-200',
                 ];

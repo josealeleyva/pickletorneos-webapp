@@ -94,7 +94,7 @@
         </div>
     @else
         <!-- Sin banner: header con gradiente -->
-        <header class="bg-gradient-to-r from-brand-600 to-purple-700 shadow-md">
+        <header class="bg-gradient-to-r from-brand-600 to-brand-600 shadow-md">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
                 <div class="flex items-start sm:items-center justify-between gap-3">
                     <div>
@@ -332,7 +332,7 @@
                                 <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
                                     <span class="bg-brand-100 text-brand-700 px-4 py-2 rounded-lg">{{ $categoria->nombre }}</span>
                                     @include('partials.categoria-restricciones', ['categoria' => $categoria])
-                                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">{{ $equiposCategoria->count() }} equipos</span>
+                                    <span class="text-xs bg-purple-100 text-brand-700 px-2 py-1 rounded">{{ $equiposCategoria->count() }} equipos</span>
                                 </h3>
 
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
@@ -356,7 +356,7 @@
                             <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
                                 <span class="bg-brand-100 text-brand-700 px-4 py-2 rounded-lg">{{ $grupo->nombre }}</span>
                                 @if($grupo->categoria)
-                                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">{{ $grupo->categoria->nombre }}</span>
+                                    <span class="text-xs bg-purple-100 text-brand-700 px-2 py-1 rounded">{{ $grupo->categoria->nombre }}</span>
                                 @endif
                             </h3>
 
@@ -854,7 +854,7 @@
                                                             @if(!$llave->partido)
                                                                 <span class="text-xs text-gray-500">Esperando equipos</span>
                                                             @elseif($llave->partido->estado === 'programado')
-                                                                <span class="text-xs text-blue-600">Programado</span>
+                                                                <span class="text-xs text-brand-600">Programado</span>
                                                                 @if($llave->partido->cancha)
                                                                     <span class="text-xs text-gray-500">{{ $llave->partido->cancha->nombre }}</span>
                                                                 @endif

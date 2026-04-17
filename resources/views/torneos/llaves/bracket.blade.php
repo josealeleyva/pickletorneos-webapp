@@ -221,7 +221,7 @@
                     Cancelar
                 </button>
                 <button type="submit"
-                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        class="px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-blue-700">
                     Programar
                 </button>
             </div>
@@ -256,12 +256,12 @@
                 <div class="text-center mb-2 text-sm text-gray-600">{{ $torneo->deporte->esFutbol() ? 'Goles' : 'Games' }} Acumulados</div>
                 <div class="flex items-center justify-center gap-4">
                     <div class="text-center">
-                        <div id="llave-puntos-acum-equipo1" class="text-3xl font-bold text-blue-600">0</div>
+                        <div id="llave-puntos-acum-equipo1" class="text-3xl font-bold text-brand-600">0</div>
                         <div class="text-xs text-gray-500" id="llave-puntos-label1"></div>
                     </div>
                     <div class="text-2xl text-gray-400">-</div>
                     <div class="text-center">
-                        <div id="llave-puntos-acum-equipo2" class="text-3xl font-bold text-blue-600">0</div>
+                        <div id="llave-puntos-acum-equipo2" class="text-3xl font-bold text-brand-600">0</div>
                         <div class="text-xs text-gray-500" id="llave-puntos-label2"></div>
                     </div>
                 </div>
@@ -380,11 +380,11 @@
 
             // Actualizar botones
             document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('border-blue-500', 'text-blue-600');
+                btn.classList.remove('border-blue-500', 'text-brand-600');
                 btn.classList.add('border-transparent', 'text-gray-500');
             });
             this.classList.remove('border-transparent', 'text-gray-500');
-            this.classList.add('border-blue-500', 'text-blue-600');
+            this.classList.add('border-blue-500', 'text-brand-600');
 
             // Mostrar contenido
             document.querySelectorAll('.tab-content').forEach(content => {

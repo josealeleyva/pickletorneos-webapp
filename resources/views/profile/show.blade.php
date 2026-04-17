@@ -8,7 +8,7 @@
     <!-- Tarjeta de Información Personal -->
     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
         <!-- Header -->
-        <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-4 sm:px-6 py-4">
+        <div class="bg-gradient-to-r from-brand-700 to-brand-500 px-4 sm:px-6 py-4">
             <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
                 <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white flex items-center justify-center flex-shrink-0">
                     <span class="text-3xl sm:text-4xl font-bold text-brand-600">
@@ -88,7 +88,7 @@
         </div>
 
         @if(auth()->user()->google_id)
-            <div class="flex items-center gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div class="flex items-center gap-3 p-4 bg-blue-50 border border-brand-200 rounded-lg">
                 <svg class="w-8 h-8 flex-shrink-0" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                     <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -140,14 +140,14 @@
             </div>
 
             <!-- Complejos -->
-            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4">
+            <div class="bg-gradient-to-br from-brand-50 to-brand-100 rounded-lg p-4">
                 <div class="flex items-center justify-between">
                     <div>
-                        <p class="text-xs text-purple-600 font-medium uppercase tracking-wider mb-1">Complejos</p>
+                        <p class="text-xs text-brand-600 font-medium uppercase tracking-wider mb-1">Complejos</p>
                         <p class="text-2xl sm:text-3xl font-bold text-purple-900">{{ auth()->user()->complejos->count() }}</p>
                     </div>
                     <div class="p-3 bg-purple-200 rounded-lg">
-                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                         </svg>
                     </div>

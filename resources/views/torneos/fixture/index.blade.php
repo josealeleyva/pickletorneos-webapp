@@ -64,7 +64,7 @@
         @if($partidos->whereNull('fecha_hora')->isNotEmpty())
         <form action="{{ route('torneos.fixture.programar', $torneo) }}" method="POST" class="inline">
             @csrf
-            <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+            <button type="submit" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
@@ -217,7 +217,7 @@
                 <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
                     <span class="bg-brand-100 text-brand-700 px-3 py-1 rounded-lg">{{ $grupo->nombre }}</span>
                     @if($grupo->categoria)
-                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded">{{ $grupo->categoria->nombre }}</span>
+                    <span class="text-xs bg-purple-100 text-brand-700 px-2 py-1 rounded">{{ $grupo->categoria->nombre }}</span>
                     @endif
                 </h3>
 
@@ -294,7 +294,7 @@
                                     @if($partido->fecha_hora && in_array($torneo->estado, ['en_curso', 'finalizado']) && $partido->estado !== 'finalizado')
                                     <button
                                         onclick="enviarNotificaciones({{ $partido->id }})"
-                                        class="flex items-center text-blue-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition text-xs whitespace-nowrap"
+                                        class="flex items-center text-brand-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition text-xs whitespace-nowrap"
                                         title="Enviar notificaciones">
                                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -324,7 +324,7 @@
                     @if($partidosCategoria->isNotEmpty())
                     <div class="grupo-section mb-6 last:mb-0" data-categoria="categoria-{{ $categoria->id }}">
                         <h3 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-lg">{{ $categoria->nombre }}</span>
+                            <span class="bg-purple-100 text-brand-700 px-3 py-1 rounded-lg">{{ $categoria->nombre }}</span>
                         </h3>
 
                         <div class="space-y-2">
@@ -395,7 +395,7 @@
                                             @if($partido->fecha_hora && in_array($torneo->estado, ['en_curso', 'finalizado']) && $partido->estado !== 'finalizado')
                                             <button
                                                 onclick="enviarNotificaciones({{ $partido->id }})"
-                                                class="flex items-center text-blue-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition text-xs whitespace-nowrap"
+                                                class="flex items-center text-brand-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition text-xs whitespace-nowrap"
                                                 title="Enviar notificaciones">
                                                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -501,7 +501,7 @@
                                     @if($partido->fecha_hora && in_array($torneo->estado, ['en_curso', 'finalizado']) && $partido->estado !== 'finalizado')
                                     <button
                                         onclick="enviarNotificaciones({{ $partido->id }})"
-                                        class="flex items-center text-blue-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition text-xs whitespace-nowrap"
+                                        class="flex items-center text-brand-600 hover:text-blue-800 hover:bg-blue-50 px-2 py-1 rounded transition text-xs whitespace-nowrap"
                                         title="Enviar notificaciones">
                                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -756,12 +756,12 @@
             <div class="text-center mb-2 text-sm text-gray-600">{{ $torneo->deporte->esFutbol() ? 'Goles' : 'Games' }} Acumulados</div>
             <div class="flex items-center justify-center gap-4">
                 <div class="text-center">
-                    <div id="puntos_acum_equipo1" class="text-3xl font-bold text-blue-600">0</div>
+                    <div id="puntos_acum_equipo1" class="text-3xl font-bold text-brand-600">0</div>
                     <div class="text-xs text-gray-500" id="puntos_label1"></div>
                 </div>
                 <div class="text-2xl text-gray-400">-</div>
                 <div class="text-center">
-                    <div id="puntos_acum_equipo2" class="text-3xl font-bold text-blue-600">0</div>
+                    <div id="puntos_acum_equipo2" class="text-3xl font-bold text-brand-600">0</div>
                     <div class="text-xs text-gray-500" id="puntos_label2"></div>
                 </div>
             </div>

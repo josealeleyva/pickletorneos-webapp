@@ -29,7 +29,7 @@
         </div>
     @else
         <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-6 py-8 text-center">
+            <div class="bg-gradient-to-r from-brand-700 to-brand-500 px-6 py-8 text-center">
                 <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-3">
                     <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

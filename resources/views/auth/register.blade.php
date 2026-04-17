@@ -13,7 +13,7 @@
     <div class="max-w-2xl w-full">
         <div class="bg-white rounded-lg shadow-2xl overflow-hidden">
             <!-- Header -->
-            <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 text-center bg-gradient-to-r from-brand-600 to-purple-600 text-white">
+            <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 text-center bg-gradient-to-r from-brand-600 to-brand-500 text-white">
                 <div class="mb-4">
                     <img src="{{ asset('images/logo-blanco.png') }}" alt="PickleTorneos" class="h-16 mx-auto">
                 </div>
@@ -296,7 +296,7 @@
 
                     <!-- Submit Button -->
                     <button type="submit" id="submit-btn"
-                        class="w-full mt-6 bg-gradient-to-r from-brand-600 to-purple-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-purple-700 transition duration-200 shadow-lg text-sm sm:text-base">
+                        class="w-full mt-6 bg-gradient-to-r from-brand-600 to-brand-500 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-brand-600 transition duration-200 shadow-lg text-sm sm:text-base">
                         Crear Cuenta
                     </button>
 
@@ -311,7 +311,7 @@
                 <div id="termsModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 z-50 overflow-y-auto">
                     <div class="flex items-center justify-center min-h-screen px-4 py-8">
                         <div class="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-                            <div class="sticky top-0 bg-gradient-to-r from-brand-600 to-purple-600 text-white px-6 py-4 flex justify-between items-center">
+                            <div class="sticky top-0 bg-gradient-to-r from-brand-600 to-brand-500 text-white px-6 py-4 flex justify-between items-center">
                                 <h2 class="text-xl sm:text-2xl font-bold">Términos y Condiciones</h2>
                                 <button type="button" onclick="closeModal()" class="text-white hover:text-gray-200 transition">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -365,7 +365,7 @@
                                 </div>
                             </div>
                             <div class="sticky bottom-0 bg-gray-50 px-6 py-4 border-t border-gray-200">
-                                <button type="button" onclick="closeModal()" class="w-full bg-gradient-to-r from-brand-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-purple-700 transition duration-200">
+                                <button type="button" onclick="closeModal()" class="w-full bg-gradient-to-r from-brand-600 to-brand-500 text-white py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-brand-600 transition duration-200">
                                     Cerrar
                                 </button>
                             </div>

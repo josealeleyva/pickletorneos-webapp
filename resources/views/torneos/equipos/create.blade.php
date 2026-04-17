@@ -18,21 +18,21 @@
         padding: 4px;
     }
     .select2-container--default.select2-container--focus .select2-selection--multiple {
-        border-color: #6366f1;
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        border-color: #0F6B78;
+        box-shadow: 0 0 0 3px rgba(15, 107, 120, 0.1);
     }
     .select2-container--default .select2-selection--multiple .select2-selection__choice {
         background-color: #eef2ff !important;
         border: 1px solid #c7d2fe !important;
         border-radius: 0.375rem !important;
         padding: 5px 10px 5px 30px !important;
-        color: #4338ca !important;
+        color: #0F6B78 !important;
         font-weight: 500 !important;
         margin: 4px 4px 4px 0 !important;
         position: relative !important;
     }
     .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
-        color: #4338ca !important;
+        color: #0F6B78 !important;
         font-size: 18px !important;
         font-weight: bold !important;
         position: absolute !important;
@@ -55,7 +55,7 @@
         padding: 8px 12px;
     }
     .select2-results__option--highlighted {
-        background-color: #6366f1 !important;
+        background-color: #0F6B78 !important;
     }
     .select2-results__option[aria-disabled="true"] {
         color: #9ca3af !important;
@@ -87,7 +87,7 @@
     .ui-menu-item-wrapper:hover,
     .ui-state-active {
         background-color: #eef2ff !important;
-        border-left-color: #6366f1 !important;
+        border-left-color: #0F6B78 !important;
         color: #1e293b !important;
         border: none;
         margin: 0;
@@ -145,7 +145,7 @@
     </nav>
 
     <!-- Header -->
-    <div class="bg-gradient-to-r from-brand-500 to-purple-600 rounded-lg p-4 sm:p-6 text-white">
+    <div class="bg-gradient-to-r from-brand-700 to-brand-500 rounded-lg p-4 sm:p-6 text-white">
         <h2 class="text-xl sm:text-2xl font-bold">{{ $torneo->nombre }}</h2>
         <p class="text-sm mt-1 text-brand-100">{{ $torneo->deporte->nombre }}</p>
     </div>
@@ -281,7 +281,7 @@
             @enderror
 
             <!-- Info -->
-            <div class="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <div class="mt-4 p-3 bg-blue-50 border border-brand-200 rounded-lg">
                 <p class="text-xs text-blue-800">
                     <strong>{{ $torneo->deporte->nombre }}:</strong>
                     Este deporte permite hasta {{ $maxJugadores }} {{ $maxJugadores === 1 ? 'jugador' : 'jugadores' }} por equipo.

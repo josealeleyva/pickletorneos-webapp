@@ -18,7 +18,7 @@
     <!-- Card principal -->
     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
         <!-- Header con gradiente -->
-        <div class="px-6 py-4 bg-gradient-to-r from-brand-500 to-purple-600">
+        <div class="px-6 py-4 bg-gradient-to-r from-brand-700 to-brand-500">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                 <div class="flex-1">
                     <div class="flex items-center gap-2 mb-2">

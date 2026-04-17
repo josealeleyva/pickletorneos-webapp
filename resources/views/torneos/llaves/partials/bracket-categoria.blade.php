@@ -275,7 +275,7 @@
                                                 <!-- Ambos equipos definidos, se puede programar -->
                                                 @can('update', $torneo)
                                                     <button onclick="programarPartidoLlave({{ $llave->id }})"
-                                                            class="text-xs text-blue-600 hover:text-blue-800 font-medium">
+                                                            class="text-xs text-brand-600 hover:text-blue-800 font-medium">
                                                         + Programar partido
                                                     </button>
                                                 @else
@@ -304,7 +304,7 @@
                                                         </button>
                                                         @endif
                                                         <button onclick="programarPartidoLlave({{ $llave->id }}, {{ $llave->partido->id }})"
-                                                                class="text-xs text-blue-600 hover:text-blue-800">
+                                                                class="text-xs text-brand-600 hover:text-blue-800">
                                                             Editar
                                                         </button>
                                                     </div>
@@ -372,7 +372,7 @@
 
                             <div class="bg-gray-50 px-3 py-2 border-t border-gray-200">
                                 @if($tercerPuesto->partido)
-                                    <span class="text-xs {{ $tercerPuesto->partido->estado === 'finalizado' ? 'text-green-600' : 'text-blue-600' }}">
+                                    <span class="text-xs {{ $tercerPuesto->partido->estado === 'finalizado' ? 'text-green-600' : 'text-brand-600' }}">
                                         {{ ucfirst($tercerPuesto->partido->estado) }}
                                     </span>
                                 @else

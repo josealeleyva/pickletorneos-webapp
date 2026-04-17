@@ -7,7 +7,7 @@
         <div class="max-w-md w-full">
             <div class="bg-white rounded-lg shadow-2xl overflow-hidden">
                 <!-- Header -->
-                <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 text-center bg-gradient-to-r from-brand-600 to-purple-600 text-white">
+                <div class="px-6 sm:px-8 pt-6 sm:pt-8 pb-6 text-center bg-gradient-to-r from-brand-600 to-brand-500 text-white">
                     <!-- Logo -->
                     <div class="mb-4">
                         <img src="{{ asset('images/logo-blanco.png') }}" alt="PickleTorneos" class="h-16 mx-auto">
@@ -86,7 +86,7 @@
 
                         <!-- Submit Button -->
                         <button type="submit"
-                            class="w-full bg-gradient-to-r from-brand-600 to-purple-600 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-purple-700 transition duration-200 shadow-lg text-sm sm:text-base">
+                            class="w-full bg-gradient-to-r from-brand-600 to-brand-500 text-white py-2.5 sm:py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-brand-600 transition duration-200 shadow-lg text-sm sm:text-base">
                             Ingresar
                         </button>
                     </form>

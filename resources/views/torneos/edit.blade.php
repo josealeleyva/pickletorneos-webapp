@@ -16,7 +16,7 @@
     </div>
 
     <!-- Alert de borrador -->
-    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+    <div class="bg-blue-50 border border-brand-200 rounded-lg p-4 mb-6">
         <div class="flex">
             <svg class="h-5 w-5 text-blue-400 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
@@ -36,7 +36,7 @@
 
         <!-- Sección 1: Información General -->
         <div class="bg-white shadow rounded-lg overflow-hidden">
-            <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-6 py-4">
+            <div class="bg-gradient-to-r from-brand-700 to-brand-500 px-6 py-4">
                 <h2 class="text-lg font-semibold text-white">Información General</h2>
             </div>
             <div class="p-6 space-y-6">
@@ -426,7 +426,7 @@
 
         <!-- Sección 2: Configuración del Formato -->
         <div class="bg-white shadow rounded-lg overflow-hidden">
-            <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-6 py-4">
+            <div class="bg-gradient-to-r from-brand-700 to-brand-500 px-6 py-4">
                 <h2 class="text-lg font-semibold text-white">Configuración del Formato</h2>
             </div>
             <div class="p-6 space-y-6">
@@ -471,7 +471,7 @@
 
                 <!-- Configuración de Cupos por Categoría (Liga/Eliminación Directa) -->
                 <div id="configuracion-cupos" class="hidden space-y-6">
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div class="bg-blue-50 border border-brand-200 rounded-lg p-4">
                         <h3 class="text-sm font-semibold text-blue-900 mb-2 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -530,7 +530,7 @@
 
                 <!-- Configuración de Grupos por Categoría (solo si tiene grupos) -->
                 <div id="configuracion-grupos" class="hidden space-y-6">
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div class="bg-blue-50 border border-brand-200 rounded-lg p-4">
                         <h3 class="text-sm font-semibold text-blue-900 mb-2 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
@@ -648,7 +648,7 @@
             </a>
             <button
                 type="submit"
-                class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-brand-500 to-purple-600 text-white font-semibold rounded-lg hover:from-brand-600 hover:to-purple-700 transition-all shadow-md hover:shadow-lg"
+                class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-brand-700 to-brand-500 text-white font-semibold rounded-lg hover:from-brand-600 hover:to-brand-600 transition-all shadow-md hover:shadow-lg"
             >
                 Guardar Cambios
             </button>

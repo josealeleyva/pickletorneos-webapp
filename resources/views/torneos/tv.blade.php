@@ -70,8 +70,8 @@
             justify-content: space-between;
             gap: 1rem;
             padding: 0.65rem 1.5rem;
-            background: linear-gradient(135deg, #312e81 0%, #4c1d95 100%); /* brand-900 → violet-900 */
-            border-bottom: 2px solid #4f46e5; /* brand-600 */
+            background: linear-gradient(135deg, #0d4855 0%, #093038 100%);
+            border-bottom: 2px solid #FF6A00;
         }
 
         #tv-header .tournament-info { flex: 1; min-width: 0; }
@@ -158,12 +158,12 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #818cf8; /* brand-400 */
+            background: #42b0bf; /* brand-400 */
             animation: pulse-dot 2s infinite;
         }
 
         #panel-resultados .panel-dot { background: #6ee7b7; } /* emerald-300 */
-        #panel-proximos  .panel-dot { background: #818cf8; } /* brand-400 */
+        #panel-proximos  .panel-dot { background: #42b0bf; } /* brand-400 */
 
         @keyframes pulse-dot {
             0%, 100% { opacity: 1; }
@@ -197,7 +197,7 @@
 
         .match-meta {
             font-size: clamp(0.55rem, 0.85vw, 0.7rem);
-            color: #6366f1; /* brand-500 */
+            color: #1f95a6; /* brand-500 */
             margin-bottom: 0.3rem;
             display: flex;
             align-items: center;
@@ -205,7 +205,7 @@
             flex-wrap: wrap;
         }
 
-        .match-meta .sep { color: #312e81; }
+        .match-meta .sep { color: #0d4855; }
 
         /* Resultado */
         .result-teams {
@@ -226,7 +226,7 @@
 
         /* Ganador en verde, igual que el badge "activo" de la app */
         .result-team-name.winner { color: #6ee7b7; } /* emerald-300 */
-        .result-team-name.loser  { color: #4338ca; } /* brand-700 — atenuado */
+        .result-team-name.loser  { color: #0F6B78; } /* brand-700 — atenuado */
 
         .result-team-left  { text-align: right; }
         .result-team-right { text-align: left; }
@@ -266,7 +266,7 @@
         .upcoming-vs {
             font-size: clamp(0.65rem, 1.1vw, 0.85rem);
             font-weight: 800;
-            color: #4338ca; /* brand-700 */
+            color: #0F6B78; /* brand-700 */
             text-align: center;
             letter-spacing: 0.05em;
         }
@@ -290,7 +290,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            color: #818cf8; /* brand-400 */
+            color: #42b0bf; /* brand-400 */
             margin-right: 0.3rem;
         }
 
@@ -301,7 +301,7 @@
             align-items: center;
             justify-content: center;
             height: 100%;
-            color: #3730a3; /* brand-800 */
+            color: #0d5764; /* brand-800 */
             font-size: clamp(0.75rem, 1.1vw, 0.85rem);
             font-weight: 500;
             text-align: center;
@@ -319,7 +319,7 @@
             align-items: center;
             justify-content: space-between;
             font-size: 0.65rem;
-            color: #4338ca; /* brand-700 */
+            color: #0F6B78; /* brand-700 */
         }
 
         .refresh-dot {
@@ -338,7 +338,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            color: #4338ca;
+            color: #0F6B78;
             text-align: center;
             margin-top: 0.15rem;
         }

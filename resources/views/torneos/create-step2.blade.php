@@ -79,7 +79,7 @@
 
             <!-- Configuración de Cupos por Categoría (Liga/Eliminación Directa) -->
             <div id="configuracion-cupos" class="hidden space-y-6">
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div class="bg-blue-50 border border-brand-200 rounded-lg p-4">
                     <h3 class="text-sm font-semibold text-blue-900 mb-2 flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -191,7 +191,7 @@
 
             <!-- Configuración de Grupos por Categoría (solo si tiene grupos) -->
             <div id="configuracion-grupos" class="hidden space-y-6">
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div class="bg-blue-50 border border-brand-200 rounded-lg p-4">
                     <h3 class="text-sm font-semibold text-blue-900 mb-2 flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>

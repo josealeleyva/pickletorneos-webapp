@@ -12,7 +12,7 @@
         </span>
     @else
         @if($genero === 'masculino')
-            <span class="inline-flex items-center text-xs bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full font-medium">
+            <span class="inline-flex items-center text-xs bg-blue-50 text-blue-700 border border-brand-200 px-2 py-0.5 rounded-full font-medium">
                 ♂ Masculino
             </span>
         @elseif($genero === 'femenino')
@@ -20,7 +20,7 @@
                 ♀ Femenino
             </span>
         @elseif($genero === 'mixto')
-            <span class="inline-flex items-center text-xs bg-purple-50 text-purple-700 border border-purple-200 px-2 py-0.5 rounded-full font-medium">
+            <span class="inline-flex items-center text-xs bg-brand-50 text-brand-700 border border-brand-200 px-2 py-0.5 rounded-full font-medium">
                 ⚥ Mixto
             </span>
         @endif

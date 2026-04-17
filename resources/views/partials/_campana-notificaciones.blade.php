@@ -134,7 +134,7 @@
                         <!-- Ícono según tipo -->
                         <div :class="{
                             'bg-green-100 text-green-600': n.tipo === 'inscripcion_confirmada',
-                            'bg-blue-100 text-blue-600': n.tipo === 'invitacion_torneo',
+                            'bg-blue-100 text-brand-600': n.tipo === 'invitacion_torneo',
                             'bg-red-100 text-red-600': n.tipo === 'inscripcion_cancelada',
                             'bg-yellow-100 text-yellow-600': n.tipo === 'nuevo_equipo',
                             'bg-brand-100 text-brand-600': !['inscripcion_confirmada','invitacion_torneo','inscripcion_cancelada','nuevo_equipo'].includes(n.tipo)

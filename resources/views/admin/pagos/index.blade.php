@@ -32,7 +32,7 @@
                     </p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-wallet text-blue-600 text-xl"></i>
+                    <i class="fas fa-wallet text-brand-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                     </p>
                 </div>
                 <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-trophy text-purple-600 text-xl"></i>
+                    <i class="fas fa-trophy text-brand-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
                 <input type="month" name="mes" value="{{ request('mes') }}" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
             </div>
             <div class="flex items-end">
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                <button type="submit" class="w-full bg-brand-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
                     <i class="fas fa-search mr-2"></i>Buscar
                 </button>
             </div>
@@ -138,7 +138,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                 @if($pago->estado === 'gratuito')
-                                    <span class="text-sm font-bold text-blue-600">GRATIS</span>
+                                    <span class="text-sm font-bold text-brand-600">GRATIS</span>
                                     @if($pago->credito_referido_id)
                                         <div class="text-xs text-gray-500 mt-1">
                                             <i class="fas fa-gift"></i> Crédito usado
@@ -170,14 +170,14 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-600">
                                 @if($pago->credito_referido_id)
-                                    <span class="text-purple-600">
+                                    <span class="text-brand-600">
                                         <i class="fas fa-gift"></i> Crédito
                                     </span>
                                 @elseif($pago->metodo_pago)
                                     <i class="fab fa-cc-{{ strtolower($pago->metodo_pago) }}"></i>
                                     {{ ucfirst($pago->metodo_pago) }}
                                 @elseif($pago->estado === 'gratuito')
-                                    <span class="text-blue-600">
+                                    <span class="text-brand-600">
                                         <i class="fas fa-star"></i> Primer torneo
                                     </span>
                                 @else
@@ -189,7 +189,7 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium space-x-2">
                                 @if($pago->torneo)
-                                    <a href="{{ route('admin.torneos.show', $pago->torneo) }}" class="text-blue-600 hover:text-blue-900" title="Ver torneo">
+                                    <a href="{{ route('admin.torneos.show', $pago->torneo) }}" class="text-brand-600 hover:text-blue-900" title="Ver torneo">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                 @else
@@ -225,7 +225,7 @@
     @if($resumenMetodosPago->isNotEmpty())
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                <i class="fas fa-chart-pie text-blue-600 mr-2"></i>
+                <i class="fas fa-chart-pie text-brand-600 mr-2"></i>
                 Resumen por Método de Pago
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

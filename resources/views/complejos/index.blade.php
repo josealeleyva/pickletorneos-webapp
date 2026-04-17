@@ -24,7 +24,7 @@
             @foreach($complejos as $complejo)
                 <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
                     <!-- Header del card -->
-                    <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-4 sm:px-6 py-3 sm:py-4">
+                    <div class="bg-gradient-to-r from-brand-700 to-brand-500 px-4 sm:px-6 py-3 sm:py-4">
                         <h3 class="text-lg sm:text-xl font-bold text-white">{{ $complejo->nombre }}</h3>
                     </div>
 

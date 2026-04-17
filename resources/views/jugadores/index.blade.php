@@ -122,7 +122,7 @@
         <!-- Tabla de jugadores -->
         <div class="bg-white rounded-lg shadow-sm overflow-hidden">
             <!-- Header -->
-            <div class="bg-gradient-to-r from-brand-500 to-purple-600 px-4 sm:px-6 py-3 sm:py-4">
+            <div class="bg-gradient-to-r from-brand-700 to-brand-500 px-4 sm:px-6 py-3 sm:py-4">
                 <h3 class="text-lg sm:text-xl font-bold text-white">Lista de Jugadores</h3>
             </div>
 
@@ -297,7 +297,7 @@
             <!-- Body -->
             <div class="p-4 sm:p-6 space-y-4">
                 <!-- Instrucciones de formato -->
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
+                <div class="bg-blue-50 border border-brand-200 rounded-lg p-4 text-sm">
                     <p class="font-semibold text-blue-800 mb-1">Formato requerido del archivo:</p>
                     <p class="text-blue-700 mb-3 text-xs">La fila 1 debe tener los encabezados, las siguientes filas los datos. <span class="text-red-600 font-semibold">* Obligatorio</span></p>
                     <div class="overflow-x-auto">
@@ -314,12 +314,12 @@
                             </thead>
                             <tbody>
                                 <tr class="bg-gray-100 text-gray-500 italic">
-                                    <td class="border border-blue-200 px-3 py-1.5">Juan</td>
-                                    <td class="border border-blue-200 px-3 py-1.5">Pérez</td>
-                                    <td class="border border-blue-200 px-3 py-1.5">1500</td>
-                                    <td class="border border-blue-200 px-3 py-1.5">3415001234</td>
-                                    <td class="border border-blue-200 px-3 py-1.5">juan@ej.com</td>
-                                    <td class="border border-blue-200 px-3 py-1.5">30123456</td>
+                                    <td class="border border-brand-200 px-3 py-1.5">Juan</td>
+                                    <td class="border border-brand-200 px-3 py-1.5">Pérez</td>
+                                    <td class="border border-brand-200 px-3 py-1.5">1500</td>
+                                    <td class="border border-brand-200 px-3 py-1.5">3415001234</td>
+                                    <td class="border border-brand-200 px-3 py-1.5">juan@ej.com</td>
+                                    <td class="border border-brand-200 px-3 py-1.5">30123456</td>
                                 </tr>
                             </tbody>
                         </table>

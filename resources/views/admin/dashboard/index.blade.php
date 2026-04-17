@@ -18,7 +18,7 @@
                     </p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-users text-blue-600 text-xl"></i>
+                    <i class="fas fa-users text-brand-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <div>
                     <p class="text-gray-500 text-sm font-medium">Total Torneos</p>
                     <p class="text-3xl font-bold text-gray-800 mt-2">{{ $totalTorneos }}</p>
-                    <p class="text-sm text-blue-600 mt-1">
+                    <p class="text-sm text-brand-600 mt-1">
                         <i class="fas fa-fire"></i> {{ $torneosActivos }} activos
                     </p>
                 </div>
@@ -66,7 +66,7 @@
                     </p>
                 </div>
                 <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-wallet text-purple-600 text-xl"></i>
+                    <i class="fas fa-wallet text-brand-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
         <!-- Gráfico de Ingresos -->
         <div class="lg:col-span-2 bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                <i class="fas fa-chart-bar text-blue-600 mr-2"></i>
+                <i class="fas fa-chart-bar text-brand-600 mr-2"></i>
                 Ingresos por Mes (Últimos 6 meses)
             </h3>
             <canvas id="ingresosChart" height="100"></canvas>
@@ -85,7 +85,7 @@
         <!-- Torneos por Estado -->
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                <i class="fas fa-list-check text-purple-600 mr-2"></i>
+                <i class="fas fa-list-check text-brand-600 mr-2"></i>
                 Torneos por Estado
             </h3>
             <div class="space-y-3">

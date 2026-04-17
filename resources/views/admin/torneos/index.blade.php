@@ -35,7 +35,7 @@
                 </select>
             </div>
             <div class="flex items-end">
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                <button type="submit" class="w-full bg-brand-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
                     <i class="fas fa-search mr-2"></i>Buscar
                 </button>
             </div>
@@ -53,16 +53,16 @@
             <p class="text-2xl font-bold text-gray-600 mt-1">{{ $estadisticas['borrador'] ?? 0 }}</p>
         </div>
         <div class="bg-white rounded-lg shadow p-4">
-            <p class="text-blue-600 text-xs font-medium">ACTIVOS</p>
-            <p class="text-2xl font-bold text-blue-600 mt-1">{{ $estadisticas['activo'] ?? 0 }}</p>
+            <p class="text-brand-600 text-xs font-medium">ACTIVOS</p>
+            <p class="text-2xl font-bold text-brand-600 mt-1">{{ $estadisticas['activo'] ?? 0 }}</p>
         </div>
         <div class="bg-white rounded-lg shadow p-4">
             <p class="text-green-600 text-xs font-medium">EN CURSO</p>
             <p class="text-2xl font-bold text-green-600 mt-1">{{ $estadisticas['en_curso'] ?? 0 }}</p>
         </div>
         <div class="bg-white rounded-lg shadow p-4">
-            <p class="text-purple-600 text-xs font-medium">FINALIZADOS</p>
-            <p class="text-2xl font-bold text-purple-600 mt-1">{{ $estadisticas['finalizado'] ?? 0 }}</p>
+            <p class="text-brand-600 text-xs font-medium">FINALIZADOS</p>
+            <p class="text-2xl font-bold text-brand-600 mt-1">{{ $estadisticas['finalizado'] ?? 0 }}</p>
         </div>
     </div>
 
@@ -139,7 +139,7 @@
                                     @if($torneo->pago->estado === 'pagado')
                                         <span class="text-green-600">${{ number_format($torneo->pago->monto, 0, ',', '.') }}</span>
                                     @elseif($torneo->pago->estado === 'gratuito')
-                                        <span class="text-blue-600">GRATIS</span>
+                                        <span class="text-brand-600">GRATIS</span>
                                     @elseif($torneo->pago->estado === 'pendiente')
                                         <span class="text-accent-600">Pendiente</span>
                                     @else
@@ -150,7 +150,7 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                <a href="{{ route('admin.torneos.show', $torneo) }}" class="text-blue-600 hover:text-blue-900" title="Ver torneo">
+                                <a href="{{ route('admin.torneos.show', $torneo) }}" class="text-brand-600 hover:text-blue-900" title="Ver torneo">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>

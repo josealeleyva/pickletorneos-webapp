@@ -21,7 +21,7 @@
                 </select>
             </div>
             <div class="flex items-end">
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                <button type="submit" class="w-full bg-brand-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
                     <i class="fas fa-search mr-2"></i>Buscar
                 </button>
             </div>
@@ -68,7 +68,7 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium space-x-2">
-                                <a href="{{ route('admin.organizadores.show', $org) }}" class="text-blue-600 hover:text-blue-900" title="Ver detalle">
+                                <a href="{{ route('admin.organizadores.show', $org) }}" class="text-brand-600 hover:text-blue-900" title="Ver detalle">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <form action="{{ route('admin.organizadores.toggle-estado', $org) }}" method="POST" class="inline">

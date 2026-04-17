@@ -40,14 +40,14 @@
             </div>
         </div>
 
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+        <div class="bg-blue-50 border border-brand-200 rounded-lg p-4 mb-6">
             <p class="text-sm text-blue-800">
                 Ya puedes continuar con la configuración de tu torneo. Podrás agregar equipos, configurar grupos, generar el fixture y publicar el torneo.
             </p>
         </div>
 
         <a href="{{ route('torneos.show', $torneo) }}"
-           class="inline-block bg-gradient-to-r from-brand-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-purple-700 transition duration-200 shadow-lg">
+           class="inline-block bg-gradient-to-r from-brand-600 to-brand-500 text-white px-8 py-3 rounded-lg font-semibold hover:from-brand-700 hover:to-brand-600 transition duration-200 shadow-lg">
             Ir a mi torneo
         </a>
     </div>

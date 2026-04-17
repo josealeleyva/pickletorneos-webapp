@@ -7,7 +7,7 @@
 <div class="space-y-6">
     <!-- Botón Volver -->
     <div>
-        <a href="{{ route('admin.sugerencias.index') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+        <a href="{{ route('admin.sugerencias.index') }}" class="inline-flex items-center text-brand-600 hover:text-blue-800 font-medium">
             <i class="fas fa-arrow-left mr-2"></i>
             Volver a Sugerencias
         </a>
@@ -95,7 +95,7 @@
             @if(!$sugerencia->respuesta)
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                        <i class="fas fa-reply text-blue-600 mr-2"></i>
+                        <i class="fas fa-reply text-brand-600 mr-2"></i>
                         Responder Sugerencia
                     </h3>
                     <form action="{{ route('admin.sugerencias.responder', $sugerencia) }}" method="POST">
@@ -107,7 +107,7 @@
                             <textarea name="respuesta" rows="6" required placeholder="Escribe tu respuesta al usuario..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                         </div>
                         <div class="flex justify-end">
-                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                            <button type="submit" class="bg-brand-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
                                 <i class="fas fa-paper-plane mr-2"></i>
                                 Enviar Respuesta
                             </button>
@@ -122,7 +122,7 @@
             <!-- Información del Usuario -->
             <div class="bg-white rounded-lg shadow p-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                    <i class="fas fa-user text-blue-600 mr-2"></i>
+                    <i class="fas fa-user text-brand-600 mr-2"></i>
                     Usuario
                 </h3>
                 <div class="flex items-center mb-4">
@@ -151,7 +151,7 @@
             <!-- Cambiar Estado -->
             <div class="bg-white rounded-lg shadow p-6">
                 <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                    <i class="fas fa-exchange-alt text-purple-600 mr-2"></i>
+                    <i class="fas fa-exchange-alt text-brand-600 mr-2"></i>
                     Cambiar Estado
                 </h3>
                 <form action="{{ route('admin.sugerencias.cambiar-estado', $sugerencia) }}" method="POST">

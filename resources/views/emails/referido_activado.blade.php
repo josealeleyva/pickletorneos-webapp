@@ -86,7 +86,7 @@
             </p>
             <div style="text-align: center; margin-top: 15px;">
                 <a href="{{ url('/referidos/dashboard') }}"
-                   style="color: #6366f1; text-decoration: none; font-weight: bold; font-size: 14px;">
+                   style="color: #1f95a6; text-decoration: none; font-weight: bold; font-size: 14px;">
                     Ver mi Dashboard de Referidos →
                 </a>
             </div>

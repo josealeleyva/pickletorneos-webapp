@@ -7,7 +7,7 @@
 <div class="space-y-6">
     <!-- Botón Volver -->
     <div>
-        <a href="{{ route('admin.organizadores.index') }}" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+        <a href="{{ route('admin.organizadores.index') }}" class="inline-flex items-center text-brand-600 hover:text-blue-800 font-medium">
             <i class="fas fa-arrow-left mr-2"></i>
             Volver a Organizadores
         </a>
@@ -61,7 +61,7 @@
 
         <!-- Código de Referido -->
         @if($user->codigo_referido)
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div class="bg-blue-50 border border-brand-200 rounded-lg p-4">
                 <p class="text-sm text-gray-700 mb-2">
                     <i class="fas fa-link mr-2"></i><strong>Código de Referido:</strong>
                 </p>
@@ -103,7 +103,7 @@
                     <p class="text-3xl font-bold text-gray-800 mt-2">{{ $referidosActivos }}</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-users text-blue-600 text-xl"></i>
+                    <i class="fas fa-users text-brand-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -115,7 +115,7 @@
                     <p class="text-3xl font-bold text-gray-800 mt-2">${{ number_format($creditosDisponibles, 0, ',', '.') }}</p>
                 </div>
                 <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-gift text-purple-600 text-xl"></i>
+                    <i class="fas fa-gift text-brand-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -171,7 +171,7 @@
                                     @if($torneo->pago->estado === 'pagado')
                                         ${{ number_format($torneo->pago->monto, 0, ',', '.') }}
                                     @elseif($torneo->pago->estado === 'gratuito')
-                                        <span class="text-blue-600">GRATIS</span>
+                                        <span class="text-brand-600">GRATIS</span>
                                     @else
                                         <span class="text-gray-400">Pendiente</span>
                                     @endif
@@ -183,7 +183,7 @@
                                 {{ $torneo->fecha_inicio->format('d/m/Y') }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                <a href="{{ route('admin.torneos.show', $torneo) }}" class="text-blue-600 hover:text-blue-900" title="Ver torneo">
+                                <a href="{{ route('admin.torneos.show', $torneo) }}" class="text-brand-600 hover:text-blue-900" title="Ver torneo">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>
@@ -205,7 +205,7 @@
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <div class="px-6 py-4 border-b border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-800">
-                    <i class="fas fa-users text-blue-600 mr-2"></i>
+                    <i class="fas fa-users text-brand-600 mr-2"></i>
                     Referidos Activos
                 </h3>
             </div>
@@ -299,7 +299,7 @@
                 <textarea name="motivo" rows="3" required placeholder="Ej: Compensación por error en el sistema, premio por promoción, etc." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"></textarea>
             </div>
 
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+            <div class="bg-blue-50 border border-brand-200 rounded-lg p-3">
                 <p class="text-sm text-blue-800">
                     <i class="fas fa-info-circle mr-2"></i>
                     Este crédito estará disponible para que el organizador lo use en su próximo torneo.

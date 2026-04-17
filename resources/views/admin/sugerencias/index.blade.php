@@ -26,7 +26,7 @@
                     <p class="text-3xl font-bold text-gray-800 mt-2">{{ $totalEnRevision }}</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-eye text-blue-600 text-xl"></i>
+                    <i class="fas fa-eye text-brand-600 text-xl"></i>
                 </div>
             </div>
         </div>
@@ -80,7 +80,7 @@
                 </select>
             </div>
             <div class="flex items-end">
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
+                <button type="submit" class="w-full bg-brand-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition">
                     <i class="fas fa-search mr-2"></i>Filtrar
                 </button>
             </div>
@@ -156,7 +156,7 @@
                                 <div class="text-xs text-gray-500">{{ $sugerencia->created_at->format('H:i') }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                <a href="{{ route('admin.sugerencias.show', $sugerencia) }}" class="text-blue-600 hover:text-blue-900" title="Ver detalle">
+                                <a href="{{ route('admin.sugerencias.show', $sugerencia) }}" class="text-brand-600 hover:text-blue-900" title="Ver detalle">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>
@@ -182,7 +182,7 @@
     @if($distribucionTipo->isNotEmpty())
         <div class="bg-white rounded-lg shadow p-6">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                <i class="fas fa-chart-bar text-purple-600 mr-2"></i>
+                <i class="fas fa-chart-bar text-brand-600 mr-2"></i>
                 Distribución por Tipo
             </h3>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">

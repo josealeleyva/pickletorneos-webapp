@@ -4,7 +4,7 @@
 
 @section('content')
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-brand-600 via-purple-600 to-brand-800 text-white overflow-hidden">
+    <section class="relative bg-gradient-to-br from-brand-600 via-brand-600 to-brand-800 text-white overflow-hidden">
         <!-- Decorative Elements -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
@@ -173,7 +173,7 @@
                 <!-- Sección 6 -->
                 <div class="bg-gray-50 rounded-xl p-6 sm:p-8">
                     <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                        <span class="flex-shrink-0 w-10 h-10 bg-blue-600 text-white rounded-lg flex items-center justify-center text-lg font-bold">6</span>
+                        <span class="flex-shrink-0 w-10 h-10 bg-brand-600 text-white rounded-lg flex items-center justify-center text-lg font-bold">6</span>
                         Errores y Mantenimiento
                     </h2>
                     <p class="text-gray-700">El Administrador no se hace responsable de errores, virus u otros componentes dañinos ajenos a la plataforma. Podrá realizar cambios y mejoras técnicas en cualquier momento.</p>
@@ -249,7 +249,7 @@
             <!-- Botón de regreso -->
             <div class="mt-12 text-center">
                 <a href="{{ route('landing') }}"
-                    class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-purple-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:from-brand-700 hover:to-purple-700 transition duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+                    class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-600 to-brand-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:from-brand-700 hover:to-brand-600 transition duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                     </svg>

@@ -42,7 +42,7 @@
         @endphp
 
         @if($byes > 0)
-        <div class="bg-blue-50 border border-blue-200 rounded p-3">
+        <div class="bg-blue-50 border border-brand-200 rounded p-3">
             <p class="text-sm text-blue-800">
                 <strong>Nota:</strong> {{ $equiposConByeDirecto }} {{ $equiposConByeDirecto == 1 ? 'equipo recibe' : 'equipos reciben' }} BYE y {{ $equiposConByeDirecto == 1 ? 'avanza' : 'avanzan' }} automáticamente a la siguiente ronda ({{ $equiposQueJuegan }} equipos juegan en primera ronda).
             </p>
@@ -55,7 +55,7 @@
                 <h4 class="font-semibold text-gray-800">Cruces de Primera Ronda</h4>
                 <div id="swap-indicator-{{ $categoria->id }}" class="hidden">
                     <div class="flex items-center space-x-2">
-                        <span class="text-xs text-blue-600 font-medium">Equipo seleccionado - Click en otro para intercambiar</span>
+                        <span class="text-xs text-brand-600 font-medium">Equipo seleccionado - Click en otro para intercambiar</span>
                         <button type="button"
                             onclick="cancelSwap({{ $categoria->id }})"
                             class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded hover:bg-red-200">

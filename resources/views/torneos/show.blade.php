@@ -6,7 +6,7 @@
 @section('content')
 <div class="max-w-6xl mx-auto space-y-4 sm:space-y-6">
     <!-- Banner del Torneo -->
-    <div class="relative h-48 sm:h-64 bg-gradient-to-r from-brand-500 to-purple-600 rounded-lg overflow-hidden">
+    <div class="relative h-48 sm:h-64 bg-gradient-to-r from-brand-700 to-brand-500 rounded-lg overflow-hidden">
         @if($torneo->imagen_banner)
             <img src="{{ asset('storage/' . $torneo->imagen_banner) }}" alt="{{ $torneo->nombre }}" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -37,7 +37,7 @@
                     $estadoClasses = [
                         'borrador' => 'bg-gray-600',
                         'activo' => 'bg-green-600',
-                        'en_curso' => 'bg-blue-600',
+                        'en_curso' => 'bg-brand-600',
                         'finalizado' => 'bg-purple-600',
                         'cancelado' => 'bg-red-600',
                     ];
@@ -129,7 +129,7 @@
                 </form>
             @endif
 
-            <a href="{{ route('torneos.public', $torneo->id) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+            <a href="{{ route('torneos.public', $torneo->id) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -139,7 +139,7 @@
 
         @elseif($torneo->estado === 'en_curso')
             {{-- En curso: ver pública + finalizar (automático próximamente) --}}
-            <a href="{{ route('torneos.public', $torneo->id) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+            <a href="{{ route('torneos.public', $torneo->id) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -149,7 +149,7 @@
 
         @elseif($torneo->estado === 'finalizado')
             {{-- Finalizado: solo ver pública --}}
-            <a href="{{ route('torneos.public', $torneo->id) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
+            <a href="{{ route('torneos.public', $torneo->id) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-brand-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition text-sm">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -218,7 +218,7 @@
 
             @if($torneo->formato && ($torneo->formato->tiene_grupos || $torneo->formato->esLiga()))
                 <a href="{{ route('torneos.fixture.index', $torneo) }}"
-                   class="flex items-center gap-3 w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">
+                   class="flex items-center gap-3 w-full px-4 py-3 bg-brand-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition">
                     <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                     </svg>
@@ -439,7 +439,7 @@
                                 $esEliminacionDirectaFormato = $torneo->formato->esEliminacionDirecta();
                                 $esLigaFormato = $torneo->formato->esLiga();
                             @endphp
-                            <div class="p-3 bg-gradient-to-r from-blue-50 to-brand-50 border border-blue-200 rounded-lg">
+                            <div class="p-3 bg-gradient-to-r from-brand-50 to-brand-100 border border-brand-200 rounded-lg">
                                 <p class="text-xs text-blue-900 mb-2">
                                     <strong>Sistema:</strong>
                                     @if($esEliminacionDirectaFormato)
@@ -484,16 +484,16 @@
                 <div class="space-y-3">
                     <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
                         <span class="text-sm text-blue-900 font-medium">Equipos</span>
-                        <span class="text-xl font-bold text-blue-600">{{ $totalEquipos }}</span>
+                        <span class="text-xl font-bold text-brand-600">{{ $totalEquipos }}</span>
                     </div>
                     <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
                         <span class="text-sm text-green-900 font-medium">Partidos</span>
                         <span class="text-xl font-bold text-green-600">{{ $totalPartidos }}</span>
                     </div>
                     @if($totalGrupos !== null)
-                        <div class="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
+                        <div class="flex items-center justify-between p-3 bg-brand-50 rounded-lg">
                             <span class="text-sm text-purple-900 font-medium">Grupos</span>
-                            <span class="text-xl font-bold text-purple-600">{{ $totalGrupos }}</span>
+                            <span class="text-xl font-bold text-brand-600">{{ $totalGrupos }}</span>
                         </div>
                     @endif
                 </div>
@@ -549,7 +549,7 @@
                     </a>
 
                     @if($torneo->estado === 'activo' && $torneo->formato && $torneo->formato->tiene_grupos)
-                        <a href="{{ route('torneos.grupos.index', $torneo) }}" class="w-full text-left px-3 py-2 text-sm bg-purple-50 hover:bg-purple-100 text-purple-700 rounded-lg transition flex items-center">
+                        <a href="{{ route('torneos.grupos.index', $torneo) }}" class="w-full text-left px-3 py-2 text-sm bg-brand-50 hover:bg-purple-100 text-brand-700 rounded-lg transition flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                             </svg>

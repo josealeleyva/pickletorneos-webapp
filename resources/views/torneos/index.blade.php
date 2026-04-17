@@ -24,7 +24,7 @@
             @foreach($torneos as $torneo)
                 <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
                     <!-- Banner o placeholder -->
-                    <div class="h-32 sm:h-40 bg-gradient-to-r from-brand-500 to-purple-600 relative">
+                    <div class="h-32 sm:h-40 bg-gradient-to-r from-brand-700 to-brand-500 relative">
                         @if($torneo->imagen_banner)
                             <img src="{{ asset('storage/' . $torneo->imagen_banner) }}" alt="{{ $torneo->nombre }}" class="w-full h-full object-cover">
                         @else
@@ -42,7 +42,7 @@
                                     'borrador' => 'bg-gray-500',
                                     'activo' => 'bg-green-500',
                                     'en_curso' => 'bg-blue-500',
-                                    'finalizado' => 'bg-purple-500',
+                                    'finalizado' => 'bg-brand-500',
                                     'cancelado' => 'bg-red-500',
                                 ];
                                 $estadoTextos = [
@@ -138,7 +138,7 @@
 
                             <div class="flex gap-2">
                                 @if($torneo->estado === 'borrador')
-                                    <a href="{{ route('torneos.edit', $torneo) }}" class="text-blue-600 hover:text-blue-700 font-medium text-xs sm:text-sm flex items-center">
+                                    <a href="{{ route('torneos.edit', $torneo) }}" class="text-brand-600 hover:text-blue-700 font-medium text-xs sm:text-sm flex items-center">
                                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                         </svg>
