@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Jugador;
 
 use App\Http\Controllers\Controller;
-use App\Models\Deporte;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,9 +15,8 @@ class PerfilController extends Controller
     public function show(): View
     {
         $jugador = auth()->user()->jugador;
-        $deportes = Deporte::orderBy('nombre')->get();
 
-        return view('jugador.perfil', compact('jugador', 'deportes'));
+        return view('jugador.perfil', compact('jugador'));
     }
 
     public function update(Request $request): RedirectResponse
@@ -34,7 +32,6 @@ class PerfilController extends Controller
             'dni' => ['nullable', 'string', 'max:20'],
             'fecha_nacimiento' => ['nullable', 'date_format:d/m/Y'],
             'genero' => ['nullable', 'in:masculino,femenino,otro'],
-            'deporte_principal_id' => ['nullable', 'integer', 'exists:deportes,id'],
             'auto_aceptar_invitaciones' => ['boolean'],
         ]);
 
@@ -43,7 +40,6 @@ class PerfilController extends Controller
             'apellido' => $validated['apellido'],
             'email' => $validated['email'],
             'telefono' => $validated['telefono'] ?? null,
-            'deporte_principal_id' => $validated['deporte_principal_id'] ?? null,
         ]);
 
         if ($jugador) {

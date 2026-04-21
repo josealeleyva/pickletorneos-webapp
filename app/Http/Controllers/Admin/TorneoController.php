@@ -29,7 +29,6 @@ class TorneoController extends Controller
         }
 
         $torneos = $query->latest()->paginate(15);
-        $deportes = Deporte::all();
 
         // Calcular estadísticas por estado
         $estadisticas = [
@@ -40,7 +39,7 @@ class TorneoController extends Controller
             'finalizado' => Torneo::where('estado', 'finalizado')->count(),
         ];
 
-        return view('admin.torneos.index', compact('torneos', 'deportes', 'estadisticas'));
+        return view('admin.torneos.index', compact('torneos', 'estadisticas'));
     }
 
     /**

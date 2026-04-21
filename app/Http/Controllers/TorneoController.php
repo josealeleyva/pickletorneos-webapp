@@ -42,15 +42,14 @@ class TorneoController extends Controller
      */
     public function create()
     {
-        $deportes = Deporte::all();
+        $pickleball = Deporte::where('nombre', 'Pickleball')->first();
         $complejos = Auth::user()->complejos;
 
-        // Cargar solo las categorías del organizador autenticado agrupadas por deporte
-        $categoriasPorDeporte = Categoria::where('organizador_id', Auth::id())
-            ->get()
-            ->groupBy('deporte_id');
+        $categorias = Categoria::where('organizador_id', Auth::id())
+            ->orderBy('nombre')
+            ->get();
 
-        return view('torneos.create-step1', compact('deportes', 'complejos', 'categoriasPorDeporte'));
+        return view('torneos.create-step1', compact('pickleball', 'complejos', 'categorias'));
     }
 
     /**
@@ -60,7 +59,6 @@ class TorneoController extends Controller
     {
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
-            'deporte_id' => 'required|exists:deportes,id',
             'categorias' => 'required|array|min:1|max:10',
             'categorias.*' => 'required|exists:categorias,id',
             'complejo_id' => 'required|exists:complejos_deportivos,id',
@@ -75,22 +73,25 @@ class TorneoController extends Controller
             'reglamento_pdf' => 'nullable|file|mimes:pdf|max:20480', // 20MB max
         ]);
 
+        // Hardcode Pickleball como único deporte
+        $pickleball = Deporte::where('nombre', 'Pickleball')->firstOrFail();
+        $validated['deporte_id'] = $pickleball->id;
+
         // Verificar que el complejo pertenece al organizador
         $complejo = ComplejoDeportivo::findOrFail($validated['complejo_id']);
         if ($complejo->organizador_id !== Auth::id()) {
             abort(403, 'No puedes usar un complejo que no te pertenece.');
         }
 
-        // Verificar que las categorías pertenecen al deporte seleccionado y al organizador
-        $categoriasValidas = Categoria::where('deporte_id', $validated['deporte_id'])
-            ->where('organizador_id', Auth::id())
+        // Verificar que las categorías pertenecen al organizador
+        $categoriasValidas = Categoria::where('organizador_id', Auth::id())
             ->whereIn('id', $validated['categorias'])
             ->count();
 
         if ($categoriasValidas !== count($validated['categorias'])) {
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Las categorías seleccionadas no corresponden al deporte elegido o no te pertenecen.');
+                ->with('error', 'Las categorías seleccionadas no te pertenecen.');
         }
 
         // Manejar la imagen si existe
@@ -333,16 +334,14 @@ class TorneoController extends Controller
                 ->with('error', 'Solo puedes editar torneos en estado borrador.');
         }
 
-        $deportes = Deporte::all();
         $complejos = Auth::user()->complejos;
         $formatos = FormatoTorneo::all();
         $tamanios = TamanioGrupo::all();
         $avances = AvanceGrupo::all();
 
-        // Cargar solo las categorías del organizador autenticado agrupadas por deporte
-        $categoriasPorDeporte = Categoria::where('organizador_id', Auth::id())
-            ->get()
-            ->groupBy('deporte_id');
+        $categorias = Categoria::where('organizador_id', Auth::id())
+            ->orderBy('nombre')
+            ->get();
 
         // Detectar datos dependientes
         $tieneEquipos = $torneo->equipos()->count() > 0;
@@ -351,8 +350,7 @@ class TorneoController extends Controller
 
         return view('torneos.edit', compact(
             'torneo',
-            'deportes',
-            'categoriasPorDeporte',
+            'categorias',
             'complejos',
             'formatos',
             'tamanios',
@@ -376,7 +374,6 @@ class TorneoController extends Controller
 
         $validated = $request->validate([
             'nombre' => 'required|string|max:255',
-            'deporte_id' => 'required|exists:deportes,id',
             'categorias' => 'required|array|min:1|max:10',
             'categorias.*.categoria_id' => 'required|exists:categorias,id',
             'categorias.*.numero_grupos' => 'nullable|integer|min:2|max:8',
@@ -608,7 +605,7 @@ class TorneoController extends Controller
                     if ($equipo) {
                         $campeones->push([
                             'categoria' => $categoria,
-                            'equipo'    => $equipo,
+                            'equipo' => $equipo,
                         ]);
                     }
                 }
@@ -1268,10 +1265,10 @@ class TorneoController extends Controller
             // Crear nuevo borrador desde paso 1
             $validated = $request->validate([
                 'nombre' => 'required|string|max:255',
-                'deporte_id' => 'required|exists:deportes,id',
                 'complejo_id' => 'required|exists:complejos_deportivos,id',
             ]);
 
+            $validated['deporte_id'] = Deporte::where('nombre', 'Pickleball')->firstOrFail()->id;
             $validated['organizador_id'] = Auth::id();
             $validated['estado'] = 'borrador';
 

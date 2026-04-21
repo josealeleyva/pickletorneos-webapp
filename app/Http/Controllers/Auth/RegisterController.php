@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Enums\Roles;
 use App\Http\Controllers\Controller;
+use App\Models\Deporte;
 use App\Models\Jugador;
 use App\Models\Referido;
 use App\Models\User;
@@ -42,7 +43,6 @@ class RegisterController extends Controller
         if ($tipo === 'jugador') {
             $rules['telefono'] = ['nullable', 'string', 'max:20'];
             $rules['dni'] = ['required', 'string', 'max:20'];
-            $rules['deporte_principal_id'] = ['nullable', 'integer', 'exists:deportes,id'];
             $rules['fecha_nacimiento'] = ['required', 'date_format:d/m/Y'];
             $rules['genero'] = ['required', 'in:masculino,femenino,otro'];
         } else {
@@ -62,12 +62,14 @@ class RegisterController extends Controller
 
     private function registrarJugador(Request $request)
     {
+        $pickleball = Deporte::where('nombre', 'Pickleball')->first();
+
         $user = User::create([
             'name' => $request->name,
             'apellido' => $request->apellido,
             'email' => $request->email,
             'telefono' => $request->telefono,
-            'deporte_principal_id' => $request->deporte_principal_id,
+            'deporte_principal_id' => $pickleball?->id,
             'password' => Hash::make($request->password),
             'cuenta_activa' => true,
         ]);

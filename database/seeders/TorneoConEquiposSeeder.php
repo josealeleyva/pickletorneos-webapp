@@ -34,7 +34,7 @@ class TorneoConEquiposSeeder extends Seeder
             }
 
             // 2. Obtener datos necesarios
-            $deporte = Deporte::where('nombre', 'Padel')->first();
+            $deporte = Deporte::where('nombre', 'Pickleball')->first();
             $complejo = $organizador->complejos()->first();
 
             if (!$complejo) {
@@ -55,9 +55,9 @@ class TorneoConEquiposSeeder extends Seeder
 
             // 3. Crear torneo (sin configuración de grupos a nivel torneo)
             $torneo = Torneo::create([
-                'nombre' => 'Torneo de Padel Multicategoría - Apertura 2025',
+                'nombre' => 'Torneo de Pickleball Multicategoría - Apertura 2025',
                 'deporte_id' => $deporte->id,
-                'descripcion' => 'Torneo de apertura de la temporada 2025 con múltiples categorías. ¡Todos los niveles bienvenidos!',
+                'descripcion' => 'Torneo de apertura de la temporada 2025 con múltiples categorías de Pickleball. ¡Todos los niveles bienvenidos!',
                 'fecha_inicio' => now()->subDays(5),
                 'fecha_fin' => now()->addDays(10),
                 'fecha_limite_inscripcion' => now()->subDays(10),
@@ -88,26 +88,26 @@ class TorneoConEquiposSeeder extends Seeder
             $this->command->info("✓ Pago gratuito registrado (primer torneo)");
 
             // 3.2. Asignar categorías al torneo con configuración DIFERENTE para cada una
-            $categoria7ma = Categoria::where('deporte_id', $deporte->id)->where('nombre', '7ma')->first();
-            $categoria6ta = Categoria::where('deporte_id', $deporte->id)->where('nombre', '6ta')->first();
-            $categoria5ta = Categoria::where('deporte_id', $deporte->id)->where('nombre', '5ta')->first();
+            $categoriaMasculino = Categoria::where('deporte_id', $deporte->id)->where('nombre', 'Masculino')->first();
+            $categoriaFemenino = Categoria::where('deporte_id', $deporte->id)->where('nombre', 'Femenino')->first();
+            $categoriaMixto = Categoria::where('deporte_id', $deporte->id)->where('nombre', 'Mixto')->first();
 
             // Configuración diferenciada por categoría:
             // - 7ma: 4 grupos de 3 equipos, avanzan 1ros y 2dos
             // - 6ta: 3 grupos de 4 equipos, avanzan 1ros + mejores 2dos
             // - 5ta: 2 grupos de 5 equipos, avanzan solo 1ros
             $torneo->categorias()->attach([
-                $categoria7ma->id => [
+                $categoriaMasculino->id => [
                     'numero_grupos' => 4,
                     'tamanio_grupo_id' => $tamanio3->id,  // 3 equipos por grupo
                     'avance_grupos_id' => $avance1y2->id,  // 1ros y 2dos de cada grupo
                 ],
-                $categoria6ta->id => [
+                $categoriaFemenino->id => [
                     'numero_grupos' => 3,
                     'tamanio_grupo_id' => $tamanio4->id,  // 4 equipos por grupo
                     'avance_grupos_id' => $avance1ymejor2->id,  // 1ros + mejores 2dos
                 ],
-                $categoria5ta->id => [
+                $categoriaMixto->id => [
                     'numero_grupos' => 2,
                     'tamanio_grupo_id' => $tamanio5->id,  // 5 equipos por grupo
                     'avance_grupos_id' => $avanceSolo1ros->id,  // Solo 1ros
@@ -115,9 +115,9 @@ class TorneoConEquiposSeeder extends Seeder
             ]);
 
             $this->command->info("✓ Categorías asignadas:");
-            $this->command->info("  - 7ma: 4 grupos × 3 equipos = 12 equipos (avanzan 1ros y 2dos)");
-            $this->command->info("  - 6ta: 3 grupos × 4 equipos = 12 equipos (avanzan 1ros + mejores 2dos)");
-            $this->command->info("  - 5ta: 2 grupos × 5 equipos = 10 equipos (avanzan solo 1ros)");
+            $this->command->info("  - Masculino: 4 grupos × 3 equipos = 12 equipos (avanzan 1ros y 2dos)");
+            $this->command->info("  - Femenino: 3 grupos × 4 equipos = 12 equipos (avanzan 1ros + mejores 2dos)");
+            $this->command->info("  - Mixto: 2 grupos × 5 equipos = 10 equipos (avanzan solo 1ros)");
 
             // 4. Crear jugadores de ejemplo
             $jugadores = $this->crearJugadores();
@@ -140,52 +140,52 @@ class TorneoConEquiposSeeder extends Seeder
             // Total: 12 (7ma) + 12 (6ta) + 10 (5ta) = 34 equipos
             $equiposData = [
                 // CATEGORÍA 7MA: 12 equipos (4 grupos × 3)
-                ['González / Martínez', [$jugadores[0], $jugadores[1]], '7ma'],
-                ['Fernández / López', [$jugadores[2], $jugadores[3]], '7ma'],
-                ['Rodríguez / Pérez', [$jugadores[4], $jugadores[5]], '7ma'],
-                ['García / Sánchez', [$jugadores[6], $jugadores[7]], '7ma'],
-                ['Romero / Torres', [$jugadores[8], $jugadores[9]], '7ma'],
-                ['Díaz / Ramírez', [$jugadores[10], $jugadores[11]], '7ma'],
-                ['Vega / Castro', [$jugadores[12], $jugadores[13]], '7ma'],
-                ['Morales / Ruiz', [$jugadores[14], $jugadores[15]], '7ma'],
-                ['Herrera / Molina', [$jugadores[16], $jugadores[17]], '7ma'],
-                ['Ortiz / Silva', [$jugadores[18], $jugadores[19]], '7ma'],
-                ['Méndez / Navarro', [$jugadores[20], $jugadores[21]], '7ma'],
-                ['Campos / Ramos', [$jugadores[22], $jugadores[23]], '7ma'],
+                ['González / Martínez', [$jugadores[0], $jugadores[1]], 'Masculino'],
+                ['Fernández / López', [$jugadores[2], $jugadores[3]], 'Masculino'],
+                ['Rodríguez / Pérez', [$jugadores[4], $jugadores[5]], 'Masculino'],
+                ['García / Sánchez', [$jugadores[6], $jugadores[7]], 'Masculino'],
+                ['Romero / Torres', [$jugadores[8], $jugadores[9]], 'Masculino'],
+                ['Díaz / Ramírez', [$jugadores[10], $jugadores[11]], 'Masculino'],
+                ['Vega / Castro', [$jugadores[12], $jugadores[13]], 'Masculino'],
+                ['Morales / Ruiz', [$jugadores[14], $jugadores[15]], 'Masculino'],
+                ['Herrera / Molina', [$jugadores[16], $jugadores[17]], 'Masculino'],
+                ['Ortiz / Silva', [$jugadores[18], $jugadores[19]], 'Masculino'],
+                ['Méndez / Navarro', [$jugadores[20], $jugadores[21]], 'Masculino'],
+                ['Campos / Ramos', [$jugadores[22], $jugadores[23]], 'Masculino'],
 
                 // CATEGORÍA 6TA: 12 equipos (3 grupos × 4)
-                ['Vargas / Luna', [$jugadores[24], $jugadores[25]], '6ta'],
-                ['Flores / Guzmán', [$jugadores[26], $jugadores[27]], '6ta'],
-                ['Cabrera / Ríos', [$jugadores[28], $jugadores[29]], '6ta'],
-                ['Domínguez / Aguilar', [$jugadores[30], $jugadores[31]], '6ta'],
-                ['Blanco / Mendoza', [$jugadores[32], $jugadores[33]], '6ta'],
-                ['Suárez / Giménez', [$jugadores[34], $jugadores[35]], '6ta'],
-                ['Medina / Benítez', [$jugadores[36], $jugadores[37]], '6ta'],
-                ['Acosta / Ponce', [$jugadores[38], $jugadores[39]], '6ta'],
-                ['Rojas / Carrillo', [$jugadores[40], $jugadores[41]], '6ta'],
-                ['Cortés / Fuentes', [$jugadores[42], $jugadores[43]], '6ta'],
-                ['Paredes / Salazar', [$jugadores[44], $jugadores[45]], '6ta'],
-                ['Bravo / Ibáñez', [$jugadores[46], $jugadores[47]], '6ta'],
+                ['Vargas / Luna', [$jugadores[24], $jugadores[25]], 'Femenino'],
+                ['Flores / Guzmán', [$jugadores[26], $jugadores[27]], 'Femenino'],
+                ['Cabrera / Ríos', [$jugadores[28], $jugadores[29]], 'Femenino'],
+                ['Domínguez / Aguilar', [$jugadores[30], $jugadores[31]], 'Femenino'],
+                ['Blanco / Mendoza', [$jugadores[32], $jugadores[33]], 'Femenino'],
+                ['Suárez / Giménez', [$jugadores[34], $jugadores[35]], 'Femenino'],
+                ['Medina / Benítez', [$jugadores[36], $jugadores[37]], 'Femenino'],
+                ['Acosta / Ponce', [$jugadores[38], $jugadores[39]], 'Femenino'],
+                ['Rojas / Carrillo', [$jugadores[40], $jugadores[41]], 'Femenino'],
+                ['Cortés / Fuentes', [$jugadores[42], $jugadores[43]], 'Femenino'],
+                ['Paredes / Salazar', [$jugadores[44], $jugadores[45]], 'Femenino'],
+                ['Bravo / Ibáñez', [$jugadores[46], $jugadores[47]], 'Femenino'],
 
                 // CATEGORÍA 5TA: 10 equipos (2 grupos × 5)
-                ['Lara / Maldonado', [$jugadores[48], $jugadores[49]], '5ta'],
-                ['Núñez / Estrada', [$jugadores[50], $jugadores[51]], '5ta'],
-                ['Sandoval / Leyva', [$jugadores[52], $jugadores[53]], '5ta'],
-                ['Cárdenas / Montoya', [$jugadores[54], $jugadores[55]], '5ta'],
-                ['Guerrero / Mejía', [$jugadores[56], $jugadores[57]], '5ta'],
-                ['Espinoza / León', [$jugadores[58], $jugadores[59]], '5ta'],
-                ['Reyes / Pacheco', [$jugadores[60], $jugadores[61]], '5ta'],
-                ['Cervantes / Duarte', [$jugadores[62], $jugadores[63]], '5ta'],
-                ['Galván / Ochoa', [$jugadores[64], $jugadores[65]], '5ta'],
-                ['Villarreal / Sosa', [$jugadores[66], $jugadores[67]], '5ta'],
+                ['Lara / Maldonado', [$jugadores[48], $jugadores[49]], 'Mixto'],
+                ['Núñez / Estrada', [$jugadores[50], $jugadores[51]], 'Mixto'],
+                ['Sandoval / Leyva', [$jugadores[52], $jugadores[53]], 'Mixto'],
+                ['Cárdenas / Montoya', [$jugadores[54], $jugadores[55]], 'Mixto'],
+                ['Guerrero / Mejía', [$jugadores[56], $jugadores[57]], 'Mixto'],
+                ['Espinoza / León', [$jugadores[58], $jugadores[59]], 'Mixto'],
+                ['Reyes / Pacheco', [$jugadores[60], $jugadores[61]], 'Mixto'],
+                ['Cervantes / Duarte', [$jugadores[62], $jugadores[63]], 'Mixto'],
+                ['Galván / Ochoa', [$jugadores[64], $jugadores[65]], 'Mixto'],
+                ['Villarreal / Sosa', [$jugadores[66], $jugadores[67]], 'Mixto'],
             ];
 
             foreach ($equiposData as [$nombreEquipo, $jugadoresEquipo, $categoriaNombre]) {
                 // Determinar categoría ID
                 $categoriaId = match($categoriaNombre) {
-                    '7ma' => $categoria7ma->id,
-                    '6ta' => $categoria6ta->id,
-                    '5ta' => $categoria5ta->id,
+                    'Masculino' => $categoriaMasculino->id,
+                    'Femenino' => $categoriaFemenino->id,
+                    'Mixto' => $categoriaMixto->id,
                 };
 
                 $equipo = $torneo->equipos()->create([
@@ -210,7 +210,7 @@ class TorneoConEquiposSeeder extends Seeder
             $formatoLiga = FormatoTorneo::where('nombre', 'Liga')->first();
 
             $torneoRR = Torneo::create([
-                'nombre' => 'Torneo de Padel Liga - Clausura 2025',
+                'nombre' => 'Torneo de Pickleball Liga - Clausura 2025',
                 'deporte_id' => $deporte->id,
                 'descripcion' => 'Torneo de clausura en formato Liga: todos contra todos.',
                 'fecha_inicio' => now()->addDays(5),
@@ -250,19 +250,19 @@ class TorneoConEquiposSeeder extends Seeder
             // - 6ta: 8 equipos
             // - 5ta: 6 equipos
             $torneoRR->categorias()->attach([
-                $categoria7ma->id => [
+                $categoriaMasculino->id => [
                     'cupos_categoria' => 6,
                     'numero_grupos' => null,
                     'tamanio_grupo_id' => null,
                     'avance_grupos_id' => null,
                 ],
-                $categoria6ta->id => [
+                $categoriaFemenino->id => [
                     'cupos_categoria' => 8,
                     'numero_grupos' => null,
                     'tamanio_grupo_id' => null,
                     'avance_grupos_id' => null,
                 ],
-                $categoria5ta->id => [
+                $categoriaMixto->id => [
                     'cupos_categoria' => 6,
                     'numero_grupos' => null,
                     'tamanio_grupo_id' => null,
@@ -271,46 +271,46 @@ class TorneoConEquiposSeeder extends Seeder
             ]);
 
             $this->command->info("✓ Categorías asignadas:");
-            $this->command->info("  - 7ma: 6 equipos (15 partidos)");
-            $this->command->info("  - 6ta: 8 equipos (28 partidos)");
-            $this->command->info("  - 5ta: 6 equipos (15 partidos)");
+            $this->command->info("  - Masculino: 6 equipos (15 partidos)");
+            $this->command->info("  - Femenino: 8 equipos (28 partidos)");
+            $this->command->info("  - Mixto: 6 equipos (15 partidos)");
 
             // 6.2. Crear equipos para Liga (reutilizando algunos jugadores)
             $equiposRRData = [
                 // CATEGORÍA 7MA: 6 equipos
-                [[$jugadores[0], $jugadores[1]], '7ma'],
-                [[$jugadores[2], $jugadores[3]], '7ma'],
-                [[$jugadores[4], $jugadores[5]], '7ma'],
-                [[$jugadores[6], $jugadores[7]], '7ma'],
-                [[$jugadores[8], $jugadores[9]], '7ma'],
-                [[$jugadores[10], $jugadores[11]], '7ma'],
+                [[$jugadores[0], $jugadores[1]], 'Masculino'],
+                [[$jugadores[2], $jugadores[3]], 'Masculino'],
+                [[$jugadores[4], $jugadores[5]], 'Masculino'],
+                [[$jugadores[6], $jugadores[7]], 'Masculino'],
+                [[$jugadores[8], $jugadores[9]], 'Masculino'],
+                [[$jugadores[10], $jugadores[11]], 'Masculino'],
 
                 // CATEGORÍA 6TA: 8 equipos
-                [[$jugadores[24], $jugadores[25]], '6ta'],
-                [[$jugadores[26], $jugadores[27]], '6ta'],
-                [[$jugadores[28], $jugadores[29]], '6ta'],
-                [[$jugadores[30], $jugadores[31]], '6ta'],
-                [[$jugadores[32], $jugadores[33]], '6ta'],
-                [[$jugadores[34], $jugadores[35]], '6ta'],
-                [[$jugadores[36], $jugadores[37]], '6ta'],
-                [[$jugadores[38], $jugadores[39]], '6ta'],
+                [[$jugadores[24], $jugadores[25]], 'Femenino'],
+                [[$jugadores[26], $jugadores[27]], 'Femenino'],
+                [[$jugadores[28], $jugadores[29]], 'Femenino'],
+                [[$jugadores[30], $jugadores[31]], 'Femenino'],
+                [[$jugadores[32], $jugadores[33]], 'Femenino'],
+                [[$jugadores[34], $jugadores[35]], 'Femenino'],
+                [[$jugadores[36], $jugadores[37]], 'Femenino'],
+                [[$jugadores[38], $jugadores[39]], 'Femenino'],
 
                 // CATEGORÍA 5TA: 6 equipos
-                [[$jugadores[48], $jugadores[49]], '5ta'],
-                [[$jugadores[50], $jugadores[51]], '5ta'],
-                [[$jugadores[52], $jugadores[53]], '5ta'],
-                [[$jugadores[54], $jugadores[55]], '5ta'],
-                [[$jugadores[56], $jugadores[57]], '5ta'],
-                [[$jugadores[58], $jugadores[59]], '5ta'],
+                [[$jugadores[48], $jugadores[49]], 'Mixto'],
+                [[$jugadores[50], $jugadores[51]], 'Mixto'],
+                [[$jugadores[52], $jugadores[53]], 'Mixto'],
+                [[$jugadores[54], $jugadores[55]], 'Mixto'],
+                [[$jugadores[56], $jugadores[57]], 'Mixto'],
+                [[$jugadores[58], $jugadores[59]], 'Mixto'],
             ];
 
             foreach ($equiposRRData as [$jugadoresEquipo, $categoriaNombre]) {
                 // Generar nombre automáticamente con apellidos
                 $nombreEquipo = $this->generarNombreEquipo($jugadoresEquipo);
                 $categoriaId = match($categoriaNombre) {
-                    '7ma' => $categoria7ma->id,
-                    '6ta' => $categoria6ta->id,
-                    '5ta' => $categoria5ta->id,
+                    'Masculino' => $categoriaMasculino->id,
+                    'Femenino' => $categoriaFemenino->id,
+                    'Mixto' => $categoriaMixto->id,
                 };
 
                 $equipo = $torneoRR->equipos()->create([
@@ -373,19 +373,19 @@ class TorneoConEquiposSeeder extends Seeder
             // - 6ta: 16 equipos (4 rondas)
             // - 5ta: 4 equipos (2 rondas)
             $torneoED->categorias()->attach([
-                $categoria7ma->id => [
+                $categoriaMasculino->id => [
                     'cupos_categoria' => 8,
                     'numero_grupos' => null,
                     'tamanio_grupo_id' => null,
                     'avance_grupos_id' => null,
                 ],
-                $categoria6ta->id => [
+                $categoriaFemenino->id => [
                     'cupos_categoria' => 16,
                     'numero_grupos' => null,
                     'tamanio_grupo_id' => null,
                     'avance_grupos_id' => null,
                 ],
-                $categoria5ta->id => [
+                $categoriaMixto->id => [
                     'cupos_categoria' => 4,
                     'numero_grupos' => null,
                     'tamanio_grupo_id' => null,
@@ -394,54 +394,54 @@ class TorneoConEquiposSeeder extends Seeder
             ]);
 
             $this->command->info("✓ Categorías asignadas:");
-            $this->command->info("  - 7ma: 8 equipos (3 rondas)");
-            $this->command->info("  - 6ta: 16 equipos (4 rondas)");
-            $this->command->info("  - 5ta: 4 equipos (2 rondas)");
+            $this->command->info("  - Masculino: 8 equipos (3 rondas)");
+            $this->command->info("  - Femenino: 16 equipos (4 rondas)");
+            $this->command->info("  - Mixto: 4 equipos (2 rondas)");
 
             // 7.2. Crear equipos para Eliminación Directa (reutilizando algunos jugadores)
             $equiposEDData = [
                 // CATEGORÍA 7MA: 8 equipos
-                [[$jugadores[12], $jugadores[13]], '7ma'],
-                [[$jugadores[14], $jugadores[15]], '7ma'],
-                [[$jugadores[16], $jugadores[17]], '7ma'],
-                [[$jugadores[18], $jugadores[19]], '7ma'],
-                [[$jugadores[20], $jugadores[21]], '7ma'],
-                [[$jugadores[22], $jugadores[23]], '7ma'],
-                [[$jugadores[0], $jugadores[1]], '7ma'],
-                [[$jugadores[2], $jugadores[3]], '7ma'],
+                [[$jugadores[12], $jugadores[13]], 'Masculino'],
+                [[$jugadores[14], $jugadores[15]], 'Masculino'],
+                [[$jugadores[16], $jugadores[17]], 'Masculino'],
+                [[$jugadores[18], $jugadores[19]], 'Masculino'],
+                [[$jugadores[20], $jugadores[21]], 'Masculino'],
+                [[$jugadores[22], $jugadores[23]], 'Masculino'],
+                [[$jugadores[0], $jugadores[1]], 'Masculino'],
+                [[$jugadores[2], $jugadores[3]], 'Masculino'],
 
                 // CATEGORÍA 6TA: 16 equipos
-                [[$jugadores[40], $jugadores[41]], '6ta'],
-                [[$jugadores[42], $jugadores[43]], '6ta'],
-                [[$jugadores[44], $jugadores[45]], '6ta'],
-                [[$jugadores[46], $jugadores[47]], '6ta'],
-                [[$jugadores[24], $jugadores[25]], '6ta'],
-                [[$jugadores[26], $jugadores[27]], '6ta'],
-                [[$jugadores[28], $jugadores[29]], '6ta'],
-                [[$jugadores[30], $jugadores[31]], '6ta'],
-                [[$jugadores[32], $jugadores[33]], '6ta'],
-                [[$jugadores[34], $jugadores[35]], '6ta'],
-                [[$jugadores[36], $jugadores[37]], '6ta'],
-                [[$jugadores[38], $jugadores[39]], '6ta'],
-                [[$jugadores[40], $jugadores[41]], '6ta'],
-                [[$jugadores[42], $jugadores[43]], '6ta'],
-                [[$jugadores[44], $jugadores[45]], '6ta'],
-                [[$jugadores[46], $jugadores[47]], '6ta'],
+                [[$jugadores[40], $jugadores[41]], 'Femenino'],
+                [[$jugadores[42], $jugadores[43]], 'Femenino'],
+                [[$jugadores[44], $jugadores[45]], 'Femenino'],
+                [[$jugadores[46], $jugadores[47]], 'Femenino'],
+                [[$jugadores[24], $jugadores[25]], 'Femenino'],
+                [[$jugadores[26], $jugadores[27]], 'Femenino'],
+                [[$jugadores[28], $jugadores[29]], 'Femenino'],
+                [[$jugadores[30], $jugadores[31]], 'Femenino'],
+                [[$jugadores[32], $jugadores[33]], 'Femenino'],
+                [[$jugadores[34], $jugadores[35]], 'Femenino'],
+                [[$jugadores[36], $jugadores[37]], 'Femenino'],
+                [[$jugadores[38], $jugadores[39]], 'Femenino'],
+                [[$jugadores[40], $jugadores[41]], 'Femenino'],
+                [[$jugadores[42], $jugadores[43]], 'Femenino'],
+                [[$jugadores[44], $jugadores[45]], 'Femenino'],
+                [[$jugadores[46], $jugadores[47]], 'Femenino'],
 
                 // CATEGORÍA 5TA: 4 equipos
-                [[$jugadores[60], $jugadores[61]], '5ta'],
-                [[$jugadores[62], $jugadores[63]], '5ta'],
-                [[$jugadores[64], $jugadores[65]], '5ta'],
-                [[$jugadores[66], $jugadores[67]], '5ta'],
+                [[$jugadores[60], $jugadores[61]], 'Mixto'],
+                [[$jugadores[62], $jugadores[63]], 'Mixto'],
+                [[$jugadores[64], $jugadores[65]], 'Mixto'],
+                [[$jugadores[66], $jugadores[67]], 'Mixto'],
             ];
 
             foreach ($equiposEDData as [$jugadoresEquipo, $categoriaNombre]) {
                 // Generar nombre automáticamente con apellidos
                 $nombreEquipo = $this->generarNombreEquipo($jugadoresEquipo);
                 $categoriaId = match($categoriaNombre) {
-                    '7ma' => $categoria7ma->id,
-                    '6ta' => $categoria6ta->id,
-                    '5ta' => $categoria5ta->id,
+                    'Masculino' => $categoriaMasculino->id,
+                    'Femenino' => $categoriaFemenino->id,
+                    'Mixto' => $categoriaMixto->id,
                 };
 
                 $equipo = $torneoED->equipos()->create([
@@ -459,16 +459,15 @@ class TorneoConEquiposSeeder extends Seeder
             // 8. Crear cuarto torneo: FÚTBOL - Liga
             $this->command->info('');
             $this->command->info('===========================================');
-            $this->command->info('Creando cuarto torneo: FÚTBOL - Liga');
+            $this->command->info('Creando cuarto torneo: PICKLEBALL - Liga (Categorías)');
             $this->command->info('===========================================');
 
-            $deporteFutbol = Deporte::where('nombre', 'Futbol')->first();
-            $categoriasFutbol = Categoria::where('deporte_id', $deporteFutbol->id)->get();
+            $categoriasPickleball = Categoria::where('deporte_id', $deporte->id)->get();
 
             $torneoFutbolLiga = Torneo::create([
-                'nombre' => 'Liga de Fútbol Amateur - Apertura 2025',
-                'deporte_id' => $deporteFutbol->id,
-                'descripcion' => 'Liga de fútbol amateur todos contra todos. ¡La tabla nunca miente!',
+                'nombre' => 'Torneo de Pickleball Categorías - Apertura 2025',
+                'deporte_id' => $deporte->id,
+                'descripcion' => 'Liga de Pickleball todos contra todos. ¡La tabla nunca miente!',
                 'fecha_inicio' => now()->addDays(50),
                 'fecha_fin' => now()->addDays(80),
                 'fecha_limite_inscripcion' => now()->addDays(45),
@@ -501,10 +500,10 @@ class TorneoConEquiposSeeder extends Seeder
             $this->command->info("✓ Pago registrado como pagado (\${$precioTorneo})");
 
             // Asignar categoría Libre con 8 equipos
-            $categoriaFutbolLibre = $categoriasFutbol->where('nombre', 'Libre')->first();
+            $categoriaLibre = $categoriasPickleball->where('nombre', 'Libre')->first();
 
             $torneoFutbolLiga->categorias()->attach([
-                $categoriaFutbolLibre->id => [
+                $categoriaLibre->id => [
                     'cupos_categoria' => 8,
                     'numero_grupos' => null,
                     'tamanio_grupo_id' => null,
@@ -530,7 +529,7 @@ class TorneoConEquiposSeeder extends Seeder
             foreach ($equiposFutbolLiga as $nombreEquipo) {
                 $equipo = $torneoFutbolLiga->equipos()->create([
                     'nombre' => $nombreEquipo,
-                    'categoria_id' => $categoriaFutbolLibre->id,
+                    'categoria_id' => $categoriaLibre->id,
                 ]);
 
                 // Crear 11 jugadores por equipo (formación básica)
@@ -552,13 +551,13 @@ class TorneoConEquiposSeeder extends Seeder
             // 9. Crear quinto torneo: FÚTBOL - Eliminación Directa
             $this->command->info('');
             $this->command->info('===========================================');
-            $this->command->info('Creando quinto torneo: FÚTBOL - Eliminación Directa');
+            $this->command->info('Creando quinto torneo: PICKLEBALL - Eliminación Directa');
             $this->command->info('===========================================');
 
             $torneoFutbolED = Torneo::create([
-                'nombre' => 'Copa Knockout - Eliminación Directa 2025',
-                'deporte_id' => $deporteFutbol->id,
-                'descripcion' => 'Copa de fútbol en formato eliminación directa. ¡Ganas o te vas!',
+                'nombre' => 'Copa Pickleball Knockout - Eliminación Directa 2025',
+                'deporte_id' => $deporte->id,
+                'descripcion' => 'Copa de Pickleball en formato eliminación directa. ¡Ganas o te vas!',
                 'fecha_inicio' => now()->addDays(60),
                 'fecha_fin' => now()->addDays(70),
                 'fecha_limite_inscripcion' => now()->addDays(55),
@@ -592,7 +591,7 @@ class TorneoConEquiposSeeder extends Seeder
 
             // Asignar categoría Libre con 8 equipos (para tener 3 rondas)
             $torneoFutbolED->categorias()->attach([
-                $categoriaFutbolLibre->id => [
+                $categoriaLibre->id => [
                     'cupos_categoria' => 8,
                     'numero_grupos' => null,
                     'tamanio_grupo_id' => null,
@@ -618,7 +617,7 @@ class TorneoConEquiposSeeder extends Seeder
             foreach ($equiposFutbolED as $nombreEquipo) {
                 $equipo = $torneoFutbolED->equipos()->create([
                     'nombre' => $nombreEquipo,
-                    'categoria_id' => $categoriaFutbolLibre->id,
+                    'categoria_id' => $categoriaLibre->id,
                 ]);
 
                 // Crear 11 jugadores por equipo
@@ -644,43 +643,43 @@ class TorneoConEquiposSeeder extends Seeder
             $this->command->info('✓ Seeder completado exitosamente');
             $this->command->info('===========================================');
             $this->command->info('');
-            $this->command->info('TORNEO 1 (PADEL - Fase de Grupos + Eliminación):');
+            $this->command->info('TORNEO 1 (PICKLEBALL - Fase de Grupos + Eliminación):');
             $this->command->info("  Nombre: {$torneo->nombre}");
             $this->command->info("  Total Equipos: {$torneo->equipos()->count()}");
             $this->command->info('  Distribución por categoría:');
-            $this->command->info('    - 7ma: 12 equipos en 4 grupos de 3');
-            $this->command->info('    - 6ta: 12 equipos en 3 grupos de 4');
-            $this->command->info('    - 5ta: 10 equipos en 2 grupos de 5');
+            $this->command->info('    - Masculino: 12 equipos en 4 grupos de 3');
+            $this->command->info('    - Femenino: 12 equipos en 3 grupos de 4');
+            $this->command->info('    - Mixto: 10 equipos en 2 grupos de 5');
             $this->command->info('  Total grupos: 9 (4 + 3 + 2)');
             $this->command->info('  Total cupos: 34 (12 + 12 + 10)');
             $this->command->info('  💰 PAGO: GRATUITO (primer torneo)');
             $this->command->info('  🏆 ESTADO: activo');
             $this->command->info('');
-            $this->command->info('TORNEO 2 (PADEL - Liga):');
+            $this->command->info('TORNEO 2 (PICKLEBALL - Liga):');
             $this->command->info("  Nombre: {$torneoRR->nombre}");
             $this->command->info("  Total Equipos: {$torneoRR->equipos()->count()}");
             $this->command->info('  Distribución por categoría:');
-            $this->command->info('    - 7ma: 6 equipos (15 partidos)');
-            $this->command->info('    - 6ta: 8 equipos (28 partidos)');
-            $this->command->info('    - 5ta: 6 equipos (15 partidos)');
+            $this->command->info('    - Masculino: 6 equipos (15 partidos)');
+            $this->command->info('    - Femenino: 8 equipos (28 partidos)');
+            $this->command->info('    - Mixto: 6 equipos (15 partidos)');
             $this->command->info('  Total cupos: 20 (6 + 8 + 6)');
             $this->command->info('  Total partidos: 58 (15 + 28 + 15)');
             $this->command->info("  💰 PAGO: PAGADO (\${$precioTorneo})");
             $this->command->info('  🏆 ESTADO: activo');
             $this->command->info('');
-            $this->command->info('TORNEO 3 (PADEL - Eliminación Directa):');
+            $this->command->info('TORNEO 3 (PICKLEBALL - Eliminación Directa):');
             $this->command->info("  Nombre: {$torneoED->nombre}");
             $this->command->info("  Total Equipos: {$torneoED->equipos()->count()}");
             $this->command->info('  Distribución por categoría:');
-            $this->command->info('    - 7ma: 8 equipos (3 rondas)');
-            $this->command->info('    - 6ta: 16 equipos (4 rondas)');
-            $this->command->info('    - 5ta: 4 equipos (2 rondas)');
+            $this->command->info('    - Masculino: 8 equipos (3 rondas)');
+            $this->command->info('    - Femenino: 16 equipos (4 rondas)');
+            $this->command->info('    - Mixto: 4 equipos (2 rondas)');
             $this->command->info('  Total cupos: 28 (8 + 16 + 4)');
             $this->command->info('  Total rondas máximas: 9 (3 + 4 + 2)');
             $this->command->info("  💰 PAGO: PAGADO (\${$precioTorneo})");
             $this->command->info('  🏆 ESTADO: activo');
             $this->command->info('');
-            $this->command->info('TORNEO 4 (FÚTBOL - Liga):');
+            $this->command->info('TORNEO 4 (PICKLEBALL - Liga Categorías):');
             $this->command->info("  Nombre: {$torneoFutbolLiga->nombre}");
             $this->command->info("  Total Equipos: {$torneoFutbolLiga->equipos()->count()}");
             $this->command->info('  Distribución:');
@@ -690,7 +689,7 @@ class TorneoConEquiposSeeder extends Seeder
             $this->command->info("  💰 PAGO: PAGADO (\${$precioTorneo})");
             $this->command->info('  🏆 ESTADO: activo');
             $this->command->info('');
-            $this->command->info('TORNEO 5 (FÚTBOL - Eliminación Directa):');
+            $this->command->info('TORNEO 5 (PICKLEBALL - Eliminación Directa Categorías):');
             $this->command->info("  Nombre: {$torneoFutbolED->nombre}");
             $this->command->info("  Total Equipos: {$torneoFutbolED->equipos()->count()}");
             $this->command->info('  Distribución:');
@@ -700,8 +699,8 @@ class TorneoConEquiposSeeder extends Seeder
             $this->command->info("  💰 PAGO: PAGADO (\${$precioTorneo})");
             $this->command->info('  🏆 ESTADO: activo');
             $this->command->info('');
-            $this->command->info("Total Jugadores de Padel: {$jugadores->count()}");
-            $this->command->info("Total Jugadores de Fútbol: 176");
+            $this->command->info("Total Jugadores de Pickleball: {$jugadores->count()}");
+            $this->command->info("Total Jugadores adicionales: 176");
             $this->command->info("Torneos creados por organizador: {$organizador->fresh()->torneos_creados}");
             $this->command->info('===========================================');
 

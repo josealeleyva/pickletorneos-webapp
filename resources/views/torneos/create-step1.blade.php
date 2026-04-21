@@ -41,28 +41,8 @@
                 @enderror
             </div>
 
-            <!-- Deporte -->
-            <div class="mb-6">
-                <label for="deporte_id" class="block text-sm font-medium text-gray-700 mb-2">
-                    Deporte <span class="text-red-500">*</span>
-                </label>
-                <select
-                    id="deporte_id"
-                    name="deporte_id"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
-                >
-                    <option value="">Seleccionar deporte</option>
-                    @foreach($deportes as $deporte)
-                        <option value="{{ $deporte->id }}" {{ old('deporte_id') == $deporte->id ? 'selected' : '' }}>
-                            {{ $deporte->nombre }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('deporte_id')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
+            <!-- Deporte (oculto, hardcodeado como Pickleball) -->
+            <input type="hidden" name="deporte_id" value="{{ $pickleball->id }}">
 
             <!-- Categorías -->
             <div class="mb-6">
@@ -72,7 +52,24 @@
                 <p class="text-xs text-gray-500 mb-3">Selecciona una o más categorías para este torneo (máximo 10)</p>
 
                 <div id="categorias-container" class="space-y-2 p-4 border border-gray-200 rounded-lg bg-gray-50">
-                    <p class="text-sm text-gray-400 italic">Selecciona un deporte primero</p>
+                    @if($categorias->count() > 0)
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                            @foreach($categorias as $categoria)
+                                <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-brand-50 cursor-pointer transition">
+                                    <input
+                                        type="checkbox"
+                                        name="categorias[]"
+                                        value="{{ $categoria->id }}"
+                                        {{ in_array($categoria->id, old('categorias', [])) ? 'checked' : '' }}
+                                        class="w-4 h-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500 categoria-checkbox"
+                                    >
+                                    <span class="text-sm font-medium text-gray-700">{{ $categoria->nombre }}</span>
+                                </label>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="text-sm text-gray-400 italic">No tienes categorías creadas. <a href="{{ route('categorias.create') }}" class="text-brand-600 underline">Crear categoría</a></p>
+                    @endif
                 </div>
 
                 <p id="categorias-counter" class="mt-2 text-xs text-gray-600 hidden">
@@ -430,15 +427,10 @@ document.getElementById('fecha_inicio').addEventListener('change', function() {
     document.getElementById('fecha_limite_inscripcion').setAttribute('max', fechaInicio);
 });
 
-// Manejar selección de deporte y mostrar categorías
-const deporteSelect = document.getElementById('deporte_id');
-const categoriasContainer = document.getElementById('categorias-container');
+// Categorías - contador y límite
 const categoriasCounter = document.getElementById('categorias-counter');
 const categoriasCount = document.getElementById('categorias-count');
 const MAX_CATEGORIAS = 10;
-
-// Categorías por deporte (desde el backend)
-const categoriasPorDeporte = @json($categoriasPorDeporte);
 
 function actualizarContador() {
     const checkboxes = document.querySelectorAll('input[name="categorias[]"]');
@@ -448,8 +440,6 @@ function actualizarContador() {
 
     if (seleccionados > 0) {
         categoriasCounter.classList.remove('hidden');
-
-        // Cambiar color si se alcanza el límite
         if (seleccionados >= MAX_CATEGORIAS) {
             categoriasCounter.classList.remove('text-gray-600');
             categoriasCounter.classList.add('text-red-600', 'font-semibold');
@@ -461,7 +451,6 @@ function actualizarContador() {
         categoriasCounter.classList.add('hidden');
     }
 
-    // Deshabilitar checkboxes no seleccionados si se alcanza el límite
     if (seleccionados >= MAX_CATEGORIAS) {
         checkboxes.forEach(cb => {
             if (!cb.checked) {
@@ -479,58 +468,11 @@ function actualizarContador() {
     }
 }
 
-deporteSelect.addEventListener('change', function() {
-    const deporteId = this.value;
-
-    if (!deporteId) {
-        categoriasContainer.innerHTML = '<p class="text-sm text-gray-400 italic">Selecciona un deporte primero</p>';
-        categoriasCounter.classList.add('hidden');
-        return;
-    }
-
-    const categorias = categoriasPorDeporte[deporteId] || [];
-
-    if (categorias.length === 0) {
-        categoriasContainer.innerHTML = '<p class="text-sm text-gray-400 italic">No hay categorías disponibles para este deporte</p>';
-        categoriasCounter.classList.add('hidden');
-        return;
-    }
-
-    // Generar checkboxes para cada categoría
-    let html = '<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">';
-
-    categorias.forEach(categoria => {
-        const checked = @json(old('categorias', [])).includes(categoria.id.toString()) ? 'checked' : '';
-        html += `
-            <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-brand-50 cursor-pointer transition">
-                <input
-                    type="checkbox"
-                    name="categorias[]"
-                    value="${categoria.id}"
-                    ${checked}
-                    class="w-4 h-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500 categoria-checkbox"
-                >
-                <span class="text-sm font-medium text-gray-700">${categoria.nombre}</span>
-            </label>
-        `;
-    });
-
-    html += '</div>';
-    categoriasContainer.innerHTML = html;
-
-    // Agregar event listeners a los checkboxes
-    document.querySelectorAll('.categoria-checkbox').forEach(checkbox => {
-        checkbox.addEventListener('change', actualizarContador);
-    });
-
-    // Actualizar contador inicial
-    actualizarContador();
+document.querySelectorAll('.categoria-checkbox').forEach(checkbox => {
+    checkbox.addEventListener('change', actualizarContador);
 });
 
-// Trigger al cargar si hay un deporte seleccionado (old input)
-if (deporteSelect.value) {
-    deporteSelect.dispatchEvent(new Event('change'));
-}
+actualizarContador();
 
 // ── Reglamento: toggle texto/PDF ──────────────────────────────────
 function setModoReglamento(modo) {

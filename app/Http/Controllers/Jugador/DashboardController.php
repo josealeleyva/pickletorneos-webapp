@@ -103,14 +103,11 @@ class DashboardController extends Controller
             ->orderByDesc('created_at')
             ->get();
 
-        $deportes = \App\Models\Deporte::orderBy('nombre')->get();
-
         return view('jugador.torneos', compact(
             'jugador',
             'torneosActivos',
             'torneosHistorial',
             'torneosExplorar',
-            'deportes',
             'posicionesFinal'
         ));
     }

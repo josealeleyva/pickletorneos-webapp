@@ -20,15 +20,10 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Auth::user()->categorias()
-            ->with('deporte')
-            ->orderBy('deporte_id')
             ->orderBy('nombre')
             ->get();
 
-        // Agrupar por deporte
-        $categoriasPorDeporte = $categorias->groupBy('deporte.nombre');
-
-        return view('categorias.index', compact('categoriasPorDeporte'));
+        return view('categorias.index', compact('categorias'));
     }
 
     /**
@@ -36,9 +31,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        $deportes = Deporte::all();
-
-        return view('categorias.create', compact('deportes'));
+        return view('categorias.create');
     }
 
     /**
@@ -47,13 +40,14 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'deporte_id' => 'required|exists:deportes,id',
             'nombre' => 'required|string|max:255',
         ]);
 
-        // Verificar que no exista una categoría con el mismo nombre para este deporte del organizador
+        // Hardcode Pickleball como único deporte
+        $validated['deporte_id'] = Deporte::where('nombre', 'Pickleball')->firstOrFail()->id;
+
+        // Verificar que no exista una categoría con el mismo nombre para el organizador
         $existe = Categoria::where('organizador_id', Auth::id())
-            ->where('deporte_id', $validated['deporte_id'])
             ->where('nombre', $validated['nombre'])
             ->exists();
 
@@ -61,7 +55,7 @@ class CategoriaController extends Controller
             return redirect()
                 ->back()
                 ->withInput()
-                ->with('error', 'Ya tienes una categoría con ese nombre para este deporte.');
+                ->with('error', 'Ya tienes una categoría con ese nombre.');
         }
 
         $validated['organizador_id'] = Auth::id();
@@ -88,9 +82,7 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        $deportes = Deporte::all();
-
-        return view('categorias.edit', compact('categoria', 'deportes'));
+        return view('categorias.edit', compact('categoria'));
     }
 
     /**
@@ -99,13 +91,14 @@ class CategoriaController extends Controller
     public function update(Request $request, Categoria $categoria)
     {
         $validated = $request->validate([
-            'deporte_id' => 'required|exists:deportes,id',
             'nombre' => 'required|string|max:255',
         ]);
 
-        // Verificar que no exista otra categoría con el mismo nombre para este deporte del organizador
+        // Hardcode Pickleball como único deporte
+        $validated['deporte_id'] = Deporte::where('nombre', 'Pickleball')->firstOrFail()->id;
+
+        // Verificar que no exista otra categoría con el mismo nombre para el organizador
         $existe = Categoria::where('organizador_id', Auth::id())
-            ->where('deporte_id', $validated['deporte_id'])
             ->where('nombre', $validated['nombre'])
             ->where('id', '!=', $categoria->id)
             ->exists();
@@ -114,7 +107,7 @@ class CategoriaController extends Controller
             return redirect()
                 ->back()
                 ->withInput()
-                ->with('error', 'Ya tienes una categoría con ese nombre para este deporte.');
+                ->with('error', 'Ya tienes una categoría con ese nombre.');
         }
 
         $categoria->update($validated);

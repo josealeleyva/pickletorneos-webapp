@@ -180,20 +180,7 @@
                     </select>
                 </div>
 
-                {{-- Deporte principal --}}
-                <div>
-                    <label for="deporte_principal_id" class="block text-xs font-medium text-gray-500 mb-1">Deporte principal</label>
-                    <select id="deporte_principal_id" name="deporte_principal_id"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
-                        <option value="">Sin especificar</option>
-                        @foreach($deportes as $deporte)
-                            <option value="{{ $deporte->id }}"
-                                    @selected(old('deporte_principal_id', auth()->user()->deporte_principal_id) == $deporte->id)>
-                                {{ $deporte->nombre }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
+                {{-- Deporte principal (oculto, Pickleball) --}}
 
             </div>
 

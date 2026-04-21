@@ -109,20 +109,6 @@
                                 placeholder="3416123456">
                         </div>
 
-                        <!-- Deporte Principal (solo jugador) -->
-                        <div id="field-deporte" class="hidden">
-                            <label for="deporte_principal_id" class="block text-sm font-medium text-gray-700 mb-2">Deporte Principal</label>
-                            <select id="deporte_principal_id" name="deporte_principal_id"
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
-                                <option value="">Seleccionar deporte</option>
-                                @foreach($deportes as $deporte)
-                                    <option value="{{ $deporte->id }}" {{ old('deporte_principal_id') == $deporte->id ? 'selected' : '' }}>
-                                        {{ $deporte->nombre }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
                         <!-- DNI (solo jugador) -->
                         <div id="field-dni" class="hidden">
                             <label for="dni" class="block text-sm font-medium text-gray-700 mb-2">
@@ -286,7 +272,6 @@
                             btnOrganizador.classList.remove(...activeClass);
                             btnOrganizador.classList.add(...inactiveClass);
 
-                            document.getElementById('field-deporte').classList.remove('hidden');
                             document.getElementById('field-dni').classList.remove('hidden');
                             document.getElementById('field-fecha-nacimiento').classList.remove('hidden');
                             document.getElementById('field-genero').classList.remove('hidden');
@@ -305,7 +290,6 @@
                             btnJugador.classList.remove(...activeClass);
                             btnJugador.classList.add(...inactiveClass);
 
-                            document.getElementById('field-deporte').classList.add('hidden');
                             document.getElementById('field-dni').classList.add('hidden');
                             document.getElementById('field-fecha-nacimiento').classList.add('hidden');
                             document.getElementById('field-genero').classList.add('hidden');

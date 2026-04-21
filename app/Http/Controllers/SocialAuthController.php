@@ -89,9 +89,7 @@ class SocialAuthController extends Controller
                 ->with('error', 'No hay datos de Google pendientes.');
         }
 
-        $deportes = Deporte::orderBy('nombre')->get();
-
-        return view('auth.completar-perfil', compact('pending', 'deportes'));
+        return view('auth.completar-perfil', compact('pending'));
     }
 
     /**
@@ -126,7 +124,6 @@ class SocialAuthController extends Controller
             $rules['dni'] = 'required|string|max:20';
             $rules['fecha_nacimiento'] = 'required|string';
             $rules['genero'] = 'required|in:masculino,femenino,otro';
-            $rules['deporte_principal_id'] = 'nullable|exists:deportes,id';
         }
 
         $validated = $request->validate($rules, [
@@ -156,7 +153,7 @@ class SocialAuthController extends Controller
             if ($rol === 'organizador') {
                 $userData['organizacion'] = $validated['organizacion'] ?? null;
             } else {
-                $userData['deporte_principal_id'] = $validated['deporte_principal_id'] ?? null;
+                $userData['deporte_principal_id'] = Deporte::where('nombre', 'Pickleball')->first()?->id;
             }
 
             $user = User::create($userData);

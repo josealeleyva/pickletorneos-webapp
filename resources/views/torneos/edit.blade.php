@@ -59,28 +59,8 @@
                     @enderror
                 </div>
 
-                <!-- Deporte -->
-                <div>
-                    <label for="deporte_id" class="block text-sm font-medium text-gray-700 mb-2">
-                        Deporte <span class="text-red-500">*</span>
-                    </label>
-                    <select
-                        name="deporte_id"
-                        id="deporte_id"
-                        required
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
-                    >
-                        <option value="">Selecciona un deporte</option>
-                        @foreach($deportes as $deporte)
-                            <option value="{{ $deporte->id }}" {{ old('deporte_id', $torneo->deporte_id) == $deporte->id ? 'selected' : '' }}>
-                                {{ $deporte->nombre }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('deporte_id')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                <!-- Deporte (oculto, hardcodeado como Pickleball) -->
+                <input type="hidden" name="deporte_id" value="{{ $torneo->deporte_id }}">
 
                 <!-- Categorías -->
                 <div>
@@ -90,7 +70,24 @@
                     <p class="text-xs text-gray-500 mb-3">Selecciona una o más categorías para este torneo</p>
 
                     <div id="categorias-container" class="space-y-2 p-4 border border-gray-200 rounded-lg bg-gray-50">
-                        <p class="text-sm text-gray-400 italic">Cargando categorías...</p>
+                        @if($categorias->count() > 0)
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                                @foreach($categorias as $categoria)
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-brand-50 cursor-pointer transition">
+                                        <input
+                                            type="checkbox"
+                                            name="categorias[]"
+                                            value="{{ $categoria->id }}"
+                                            {{ in_array($categoria->id, old('categorias', $torneo->categorias->pluck('id')->toArray())) ? 'checked' : '' }}
+                                            class="w-4 h-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500"
+                                        >
+                                        <span class="text-sm font-medium text-gray-700">{{ $categoria->nombre }}</span>
+                                    </label>
+                                @endforeach
+                            </div>
+                        @else
+                            <p class="text-sm text-gray-400 italic">No tienes categorías creadas. <a href="{{ route('categorias.create') }}" class="text-brand-600 underline">Crear categoría</a></p>
+                        @endif
                     </div>
 
                     @error('categorias')
@@ -798,58 +795,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Manejar selección de deporte y mostrar categorías
-    const deporteSelect = document.getElementById('deporte_id');
-    const categoriasContainer = document.getElementById('categorias-container');
-
-    // Categorías por deporte (desde el backend)
-    const categoriasPorDeporte = @json($categoriasPorDeporte);
-
-    // Categorías ya seleccionadas en el torneo
-    const categoriasSeleccionadas = @json(old('categorias', $torneo->categorias->pluck('id')->toArray()));
-
-    function cargarCategorias() {
-        const deporteId = deporteSelect.value;
-
-        if (!deporteId) {
-            categoriasContainer.innerHTML = '<p class="text-sm text-gray-400 italic">Selecciona un deporte primero</p>';
-            return;
-        }
-
-        const categorias = categoriasPorDeporte[deporteId] || [];
-
-        if (categorias.length === 0) {
-            categoriasContainer.innerHTML = '<p class="text-sm text-gray-400 italic">No hay categorías disponibles para este deporte</p>';
-            return;
-        }
-
-        // Generar checkboxes para cada categoría
-        let html = '<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">';
-
-        categorias.forEach(categoria => {
-            const checked = categoriasSeleccionadas.includes(categoria.id) ? 'checked' : '';
-            html += `
-                <label class="flex items-center space-x-2 p-2 border border-gray-200 rounded hover:bg-brand-50 cursor-pointer transition">
-                    <input
-                        type="checkbox"
-                        name="categorias[]"
-                        value="${categoria.id}"
-                        ${checked}
-                        class="w-4 h-4 text-brand-600 border-gray-300 rounded focus:ring-brand-500"
-                    >
-                    <span class="text-sm font-medium text-gray-700">${categoria.nombre}</span>
-                </label>
-            `;
-        });
-
-        html += '</div>';
-        categoriasContainer.innerHTML = html;
-    }
-
-    deporteSelect.addEventListener('change', cargarCategorias);
-
-    // Cargar categorías al inicio
-    cargarCategorias();
+    // Las categorías se renderizan directamente desde Blade
 
     // ── Reglamento: toggle texto/PDF ──────────────────────────────────
     window.setModoReglamento = function(modo) {

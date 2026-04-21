@@ -3,13 +3,13 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
-use App\Models\Deporte;
-use App\Models\Jugador;
 use App\Enums\Roles;
 use App\Models\ComplejoDeportivo;
+use App\Models\Deporte;
+use App\Models\Jugador;
+use App\Models\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,11 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Crear deportes primero
-        $padel = Deporte::firstOrCreate(['nombre' => 'Padel']);
-        $futbol = Deporte::firstOrCreate(['nombre' => 'Futbol']);
-        $tenis = Deporte::firstOrCreate(['nombre' => 'Tenis']);
-        Deporte::firstOrCreate(['nombre' => 'Pickleball']);
+        // Solo Pickleball
+        $pickleball = Deporte::firstOrCreate(['nombre' => 'Pickleball']);
 
         // ===================================
         // SUPERADMINISTRADOR
@@ -49,25 +46,25 @@ class DatabaseSeeder extends Seeder
                 'apellido' => 'Pérez',
                 'password' => Hash::make('1234'),
                 'telefono' => '3416234567',
-                'deporte_principal_id' => $padel->id,
-                'organizacion' => 'Padel Center Rosario',
+                'deporte_principal_id' => $pickleball->id,
+                'organizacion' => 'Pickle Center Rosario',
                 'cuenta_activa' => true,
                 'torneos_creados' => 0,
             ]
         );
 
         // Generar código de referido para organizador1
-        if (!$organizador1->codigo_referido) {
+        if (! $organizador1->codigo_referido) {
             $organizador1->generarCodigoReferido();
         }
 
         $complejo1 = ComplejoDeportivo::firstOrCreate(
-            ['nombre' => 'Padel Center Rosario'],
+            ['nombre' => 'Pickle Center Rosario'],
             [
                 'organizador_id' => $organizador1->id,
                 'direccion' => 'Calle Falsa 123, Rosario, Santa Fe',
                 'telefono' => '3416234567',
-                'email' => 'info@padelcenterrosario.com',
+                'email' => 'info@picklecenterrosario.com',
             ]
         );
 
@@ -94,7 +91,7 @@ class DatabaseSeeder extends Seeder
                 'apellido' => 'González',
                 'password' => Hash::make('1234'),
                 'telefono' => '3416345678',
-                'deporte_principal_id' => $futbol->id,
+                'deporte_principal_id' => $pickleball->id,
                 'organizacion' => 'Complejo La Cancha',
                 'cuenta_activa' => true,
                 'torneos_creados' => 0,
@@ -111,7 +108,7 @@ class DatabaseSeeder extends Seeder
                 'apellido' => 'Rodríguez',
                 'password' => Hash::make('1234'),
                 'telefono' => '3416456789',
-                'deporte_principal_id' => $padel->id,
+                'deporte_principal_id' => $pickleball->id,
                 'cuenta_activa' => true,
                 'torneos_creados' => 0,
             ]
@@ -124,7 +121,7 @@ class DatabaseSeeder extends Seeder
                 'apellido' => 'Martínez',
                 'password' => Hash::make('1234'),
                 'telefono' => '3416567890',
-                'deporte_principal_id' => $padel->id,
+                'deporte_principal_id' => $pickleball->id,
                 'cuenta_activa' => true,
                 'torneos_creados' => 0,
             ]
@@ -137,7 +134,7 @@ class DatabaseSeeder extends Seeder
                 'apellido' => 'Fernández',
                 'password' => Hash::make('1234'),
                 'telefono' => '3416678901',
-                'deporte_principal_id' => $futbol->id,
+                'deporte_principal_id' => $pickleball->id,
                 'cuenta_activa' => true,
                 'torneos_creados' => 0,
             ]
@@ -232,27 +229,27 @@ class DatabaseSeeder extends Seeder
         // ASIGNAR ROLES A USUARIOS
         // (debe hacerse antes de TorneoConEquiposSeeder que busca por rol)
         // ===================================
-        if (!$superadmin->hasRole(Roles::Superadmin->value)) {
+        if (! $superadmin->hasRole(Roles::Superadmin->value)) {
             $superadmin->assignRole(Roles::Superadmin->value);
         }
 
-        if (!$organizador1->hasRole(Roles::Organizador->value)) {
+        if (! $organizador1->hasRole(Roles::Organizador->value)) {
             $organizador1->assignRole(Roles::Organizador->value);
         }
 
-        if (!$organizador2->hasRole(Roles::Organizador->value)) {
+        if (! $organizador2->hasRole(Roles::Organizador->value)) {
             $organizador2->assignRole(Roles::Organizador->value);
         }
 
-        if (!$jugador1User->hasRole(Roles::Jugador->value)) {
+        if (! $jugador1User->hasRole(Roles::Jugador->value)) {
             $jugador1User->assignRole(Roles::Jugador->value);
         }
 
-        if (!$jugador2User->hasRole(Roles::Jugador->value)) {
+        if (! $jugador2User->hasRole(Roles::Jugador->value)) {
             $jugador2User->assignRole(Roles::Jugador->value);
         }
 
-        if (!$jugador3User->hasRole(Roles::Jugador->value)) {
+        if (! $jugador3User->hasRole(Roles::Jugador->value)) {
             $jugador3User->assignRole(Roles::Jugador->value);
         }
 
@@ -268,17 +265,17 @@ class DatabaseSeeder extends Seeder
         $this->command->info('  Password: 1234');
         $this->command->info('');
         $this->command->info('ORGANIZADORES:');
-        $this->command->info('  Email: organizador1@pickletorneos.com (Padel Center Rosario)');
-        $this->command->info('  Código de Referido: ' . $organizador1->codigo_referido);
+        $this->command->info('  Email: organizador1@pickletorneos.com (Pickle Center Rosario)');
+        $this->command->info('  Código de Referido: '.$organizador1->codigo_referido);
         $this->command->info('  Email: organizador2@pickletorneos.com (Complejo La Cancha)');
         $this->command->info('  Password: 1234');
         $this->command->info('');
         $this->command->info('JUGADORES (panel de jugador):');
-        $this->command->info('  Email: jugador1@pickletorneos.com (Carlos Rodríguez - Padel)');
-        $this->command->info('  Email: jugador2@pickletorneos.com (Ana Martínez - Padel)');
-        $this->command->info('  Email: jugador3@pickletorneos.com (Diego Fernández - Fútbol)');
+        $this->command->info('  Email: jugador1@pickletorneos.com (Carlos Rodríguez - Pickleball)');
+        $this->command->info('  Email: jugador2@pickletorneos.com (Ana Martínez - Pickleball)');
+        $this->command->info('  Email: jugador3@pickletorneos.com (Diego Fernández - Pickleball)');
         $this->command->info('  Password: 1234');
-        $this->command->info('  jugador1 y jugador2 están en torneos de padel generados por TorneoConEquiposSeeder');
+        $this->command->info('  jugador1 y jugador2 están en torneos generados por TorneoConEquiposSeeder');
         $this->command->info('');
     }
 }

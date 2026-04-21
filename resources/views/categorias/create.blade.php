@@ -24,29 +24,6 @@
         <form action="{{ route('categorias.store') }}" method="POST">
             @csrf
 
-            <!-- Deporte -->
-            <div class="mb-6">
-                <label for="deporte_id" class="block text-sm font-medium text-gray-700 mb-2">
-                    Deporte <span class="text-red-500">*</span>
-                </label>
-                <select
-                    id="deporte_id"
-                    name="deporte_id"
-                    required
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent @error('deporte_id') border-red-500 @enderror"
-                >
-                    <option value="">Seleccionar deporte</option>
-                    @foreach($deportes as $deporte)
-                        <option value="{{ $deporte->id }}" {{ old('deporte_id') == $deporte->id ? 'selected' : '' }}>
-                            {{ $deporte->nombre }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('deporte_id')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-
             <!-- Nombre de la Categoría -->
             <div class="mb-6">
                 <label for="nombre" class="block text-sm font-medium text-gray-700 mb-2">

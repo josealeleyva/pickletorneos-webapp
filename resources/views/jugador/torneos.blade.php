@@ -127,13 +127,6 @@
         {{-- Filtros --}}
         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 mb-4">
             <div class="flex flex-col sm:flex-row gap-3 mb-3">
-                <select id="filtro-deporte"
-                    class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
-                    <option value="">Todos los deportes</option>
-                    @foreach($deportes as $deporte)
-                        <option value="{{ $deporte->id }}">{{ $deporte->nombre }}</option>
-                    @endforeach
-                </select>
                 <input type="text" id="filtro-nombre" placeholder="Buscar por nombre, complejo o categoría..."
                     class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent">
             </div>
