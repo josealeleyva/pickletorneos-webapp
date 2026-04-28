@@ -26,6 +26,7 @@ class Torneo extends Model
         'precio_inscripcion',
         'formato_id',
         'estado',
+        'dupr_requerido',
     ];
 
     protected $guarded = [
@@ -43,6 +44,7 @@ class Torneo extends Model
         'fecha_fin' => 'date',
         'fecha_limite_inscripcion' => 'date',
         'precio_inscripcion' => 'decimal:2',
+        'dupr_requerido' => 'boolean',
     ];
 
     public function getDatosMail($partido_id, $equipo_id)
@@ -89,7 +91,7 @@ class Torneo extends Model
     public function categorias()
     {
         return $this->belongsToMany(Categoria::class, 'categoria_torneo')
-            ->withPivot('numero_grupos', 'tamanio_grupo_id', 'avance_grupos_id', 'cupos_categoria', 'campeon_id', 'edad_minima', 'edad_maxima', 'genero_permitido')
+            ->withPivot('numero_grupos', 'tamanio_grupo_id', 'avance_grupos_id', 'cupos_categoria', 'campeon_id', 'edad_minima', 'edad_maxima', 'genero_permitido', 'dupr_rating_min', 'dupr_rating_max')
             ->withTimestamps();
     }
 

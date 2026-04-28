@@ -25,6 +25,10 @@ class Jugador extends Model
         'user_id',
         'organizador_id',
         'auto_aceptar_invitaciones',
+        'dupr_id',
+        'rating_singles',
+        'rating_doubles',
+        'dupr_sincronizado_at',
     ];
 
     protected $guarded = [
@@ -34,6 +38,9 @@ class Jugador extends Model
     protected $casts = [
         'fecha_nacimiento' => 'date',
         'auto_aceptar_invitaciones' => 'boolean',
+        'rating_singles' => 'float',
+        'rating_doubles' => 'float',
+        'dupr_sincronizado_at' => 'datetime',
     ];
 
     protected $hidden = [

@@ -37,4 +37,10 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
 
+    'dupr' => [
+        'base_url' => env('DUPR_BASE_URL', 'https://uat.mydupr.com'),
+        'client_key' => env('DUPR_CLIENT_KEY'),
+        'client_secret' => env('DUPR_CLIENT_SECRET'),
+    ],
+
 ];

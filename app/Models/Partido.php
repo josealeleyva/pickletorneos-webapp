@@ -24,6 +24,10 @@ class Partido extends Model
         'observaciones',
         'notificado',
         'ultima_notificacion',
+        'dupr_partido_id',
+        'dupr_sincronizado',
+        'dupr_sincronizado_at',
+        'dupr_error',
     ];
 
     protected $guarded = [
@@ -42,6 +46,8 @@ class Partido extends Model
         'notificado' => 'boolean',
         'ultima_notificacion' => 'datetime',
         'updated_at' => 'datetime',
+        'dupr_sincronizado' => 'boolean',
+        'dupr_sincronizado_at' => 'datetime',
     ];
 
     // Relaciones

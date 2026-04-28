@@ -31,6 +31,8 @@ class User extends Authenticatable
         'referido_por_id',
         'total_referidos_activos',
         'google_id',
+        'dupr_access_token',
+        'dupr_token_expires_at',
     ];
 
     protected $guarded = [
@@ -50,6 +52,7 @@ class User extends Authenticatable
         'password' => 'hashed',
         'cuenta_activa' => 'boolean',
         'torneos_creados' => 'integer',
+        'dupr_token_expires_at' => 'datetime',
     ];
 
     protected $with = [
