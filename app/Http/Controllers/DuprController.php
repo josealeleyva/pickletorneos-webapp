@@ -49,6 +49,64 @@ class DuprController extends Controller
         return redirect()->route('jugador.perfil')->with('success_dupr', 'Cuenta DUPR vinculada correctamente.');
     }
 
+    public function autoconectar(): JsonResponse
+    {
+        $user = auth()->user();
+        $jugador = $user->jugador;
+
+        if (! $jugador) {
+            return response()->json(['encontrado' => false]);
+        }
+
+        $resultado = $this->duprService->buscarPorEmail($user->email);
+
+        if (! $resultado) {
+            return response()->json(['encontrado' => false]);
+        }
+
+        return response()->json([
+            'encontrado' => true,
+            'jugador' => [
+                'duprId' => $resultado['duprId'],
+                'fullName' => $resultado['fullName'],
+                'rating_singles' => $resultado['ratings']['singles']['rating'] ?? null,
+                'rating_doubles' => $resultado['ratings']['doubles']['rating'] ?? null,
+            ],
+        ]);
+    }
+
+    public function crear(): JsonResponse
+    {
+        $user = auth()->user();
+        $jugador = $user->jugador;
+
+        if (! $jugador) {
+            return response()->json(['vinculado' => false, 'mensaje' => 'No se encontró perfil de jugador.']);
+        }
+
+        $nombreCompleto = trim("{$user->name} {$user->apellido}");
+        $duprId = $this->duprService->invitarJugador($nombreCompleto, $user->email);
+
+        if (! $duprId) {
+            return response()->json([
+                'vinculado' => false,
+                'mensaje' => 'No pudimos crear tu cuenta automáticamente. Registrate en dupr.gg',
+                'redirect' => 'https://dupr.gg/signup',
+            ]);
+        }
+
+        $ratings = $this->duprService->obtenerRatingJugador($duprId);
+
+        $jugador->update([
+            'dupr_id' => $duprId,
+            'rating_singles' => $ratings['singles'] ?? null,
+            'rating_doubles' => $ratings['doubles'] ?? null,
+            'dupr_sincronizado_at' => now(),
+        ]);
+
+        return response()->json(['vinculado' => true]);
+    }
+
     public function desconectar(): RedirectResponse
     {
         $jugador = auth()->user()->jugador;

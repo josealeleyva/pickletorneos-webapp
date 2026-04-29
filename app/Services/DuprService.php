@@ -72,6 +72,35 @@ class DuprService
         ];
     }
 
+    public function buscarPorEmail(string $email): ?array
+    {
+        $hits = $this->buscarJugadores($email, 5);
+
+        if (empty($hits)) {
+            return null;
+        }
+
+        return $hits[0];
+    }
+
+    public function invitarJugador(string $nombre, string $email): ?string
+    {
+        $token = $this->obtenerToken();
+
+        $response = Http::withToken($token)
+            ->withHeaders(['accept' => 'application/json'])
+            ->post("{$this->baseUrl}/api/user/v1.0/invite", [
+                'fullName' => $nombre,
+                'email' => $email,
+            ]);
+
+        if ($response->failed()) {
+            return null;
+        }
+
+        return $response->json('duprId');
+    }
+
     public function crearPartido(array $payload): ?string
     {
         $token = $this->obtenerToken();
