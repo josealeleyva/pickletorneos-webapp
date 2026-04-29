@@ -77,6 +77,28 @@
                 @enderror
             </div>
 
+            <!-- Integración DUPR -->
+            <div class="mb-6" x-data="{ duprRequerido: {{ old('dupr_requerido', $torneo->dupr_requerido ?? false) ? 'true' : 'false' }} }">
+                <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-800">Integración DUPR</h3>
+                            <p class="text-xs text-gray-500 mt-0.5">Si lo activás, solo jugadores con cuenta DUPR vinculada podrán inscribirse.</p>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="dupr_requerido" value="1" class="sr-only peer"
+                                   x-model="duprRequerido"
+                                   {{ old('dupr_requerido', $torneo->dupr_requerido ?? false) ? 'checked' : '' }}>
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-brand-500 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600"></div>
+                        </label>
+                    </div>
+
+                    <div x-show="duprRequerido" x-cloak class="mt-3 text-xs text-brand-700 bg-brand-50 border border-brand-200 rounded p-3">
+                        Los campos de rating mínimo y máximo en cada categoría serán opcionales. Podés dejarlos en blanco para aceptar cualquier rating DUPR.
+                    </div>
+                </div>
+            </div>
+
             <!-- Configuración de Cupos por Categoría (Liga/Eliminación Directa) -->
             <div id="configuracion-cupos" class="hidden space-y-6">
                 <div class="bg-blue-50 border border-brand-200 rounded-lg p-4">
@@ -172,6 +194,34 @@
                                     <option value="mixto" {{ old('categorias.'.$index.'.genero_permitido') == 'mixto' ? 'selected' : '' }}>Mixto</option>
                                 </select>
                                 @error('categorias.'.$index.'.genero_permitido')
+                                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- DUPR rating min/max (visible solo si dupr_requerido está activo) --}}
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 dupr-rating-fields hidden">
+                            <div>
+                                <label for="dupr_rating_min_{{ $index }}" class="block text-xs font-medium text-gray-600 mb-1">Rating DUPR mínimo (opcional)</label>
+                                <input type="number" step="0.01" min="2" max="8"
+                                       id="dupr_rating_min_{{ $index }}"
+                                       name="categorias[{{ $index }}][dupr_rating_min]"
+                                       value="{{ old('categorias.'.$index.'.dupr_rating_min', $categoria->pivot->dupr_rating_min ?? '') }}"
+                                       placeholder="Ej: 3.50"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500">
+                                @error('categorias.'.$index.'.dupr_rating_min')
+                                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="dupr_rating_max_{{ $index }}" class="block text-xs font-medium text-gray-600 mb-1">Rating DUPR máximo (opcional)</label>
+                                <input type="number" step="0.01" min="2" max="8"
+                                       id="dupr_rating_max_{{ $index }}"
+                                       name="categorias[{{ $index }}][dupr_rating_max]"
+                                       value="{{ old('categorias.'.$index.'.dupr_rating_max', $categoria->pivot->dupr_rating_max ?? '') }}"
+                                       placeholder="Ej: 5.00"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500">
+                                @error('categorias.'.$index.'.dupr_rating_max')
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -331,6 +381,28 @@
                                 @error('categorias.'.$index.'.genero_permitido')
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                                 @enderror
+                            </div>
+                        </div>
+
+                        {{-- DUPR rating min/max --}}
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 dupr-rating-fields hidden">
+                            <div>
+                                <label for="gr_dupr_rating_min_{{ $index }}" class="block text-xs font-medium text-gray-600 mb-1">Rating DUPR mínimo (opcional)</label>
+                                <input type="number" step="0.01" min="2" max="8"
+                                       id="gr_dupr_rating_min_{{ $index }}"
+                                       name="categorias[{{ $index }}][dupr_rating_min]"
+                                       value="{{ old('categorias.'.$index.'.dupr_rating_min', $categoria->pivot->dupr_rating_min ?? '') }}"
+                                       placeholder="Ej: 3.50"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500">
+                            </div>
+                            <div>
+                                <label for="gr_dupr_rating_max_{{ $index }}" class="block text-xs font-medium text-gray-600 mb-1">Rating DUPR máximo (opcional)</label>
+                                <input type="number" step="0.01" min="2" max="8"
+                                       id="gr_dupr_rating_max_{{ $index }}"
+                                       name="categorias[{{ $index }}][dupr_rating_max]"
+                                       value="{{ old('categorias.'.$index.'.dupr_rating_max', $categoria->pivot->dupr_rating_max ?? '') }}"
+                                       placeholder="Ej: 5.00"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500">
                             </div>
                         </div>
                     </div>
@@ -546,6 +618,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (formatoChecked) {
         formatoChecked.dispatchEvent(new Event('change'));
         actualizarPreview();
+    }
+
+    // Toggle DUPR rating fields
+    function toggleDuprRatingFields(checked) {
+        document.querySelectorAll('.dupr-rating-fields').forEach(el => {
+            el.classList.toggle('hidden', !checked);
+        });
+    }
+
+    const duprCheckbox = document.querySelector('input[name="dupr_requerido"]');
+    if (duprCheckbox) {
+        duprCheckbox.addEventListener('change', () => toggleDuprRatingFields(duprCheckbox.checked));
+        toggleDuprRatingFields(duprCheckbox.checked);
     }
 });
 </script>
