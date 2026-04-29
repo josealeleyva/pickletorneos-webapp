@@ -74,6 +74,33 @@ class DuprController extends Controller
         return response()->json(['encontrado' => true, 'jugadores' => $jugadores]);
     }
 
+    public function verificarId(Request $request): JsonResponse
+    {
+        $duprId = $request->string('id')->toString();
+
+        if (strlen($duprId) < 3) {
+            return response()->json(['valido' => false]);
+        }
+
+        $perfil = $this->duprService->obtenerPerfilJugador($duprId);
+
+        if (! $perfil) {
+            return response()->json(['valido' => false, 'mensaje' => 'No se encontró ninguna cuenta con ese ID.']);
+        }
+
+        $ratings = $perfil['ratings'] ?? [];
+
+        return response()->json([
+            'valido' => true,
+            'jugador' => [
+                'duprId' => $duprId,
+                'fullName' => $perfil['fullName'] ?? $perfil['displayName'] ?? 'Jugador DUPR',
+                'rating_singles' => $ratings['singles']['rating'] ?? null,
+                'rating_doubles' => $ratings['doubles']['rating'] ?? null,
+            ],
+        ]);
+    }
+
     public function crear(): JsonResponse
     {
         $user = auth()->user();

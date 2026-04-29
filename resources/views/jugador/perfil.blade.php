@@ -128,6 +128,30 @@
                 mensajeError: '',
                 urlRegistro: 'https://dashboard.dupr.com/dashboard',
                 csrfToken: '{{ csrf_token() }}',
+                mostrarFormId: false,
+                duprIdManual: '',
+                errorId: '',
+                buscandoId: false,
+                async verificarId() {
+                    if (this.duprIdManual.trim().length < 3) return;
+                    this.buscandoId = true;
+                    this.errorId = '';
+                    try {
+                        const r = await fetch(`{{ route('dupr.verificar-id') }}?id=${encodeURIComponent(this.duprIdManual.trim())}`, {
+                            headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+                        });
+                        const data = await r.json();
+                        if (data.valido) {
+                            this.jugadores = [data.jugador];
+                            this.estado = 'encontrado';
+                        } else {
+                            this.errorId = data.mensaje || 'ID no encontrado.';
+                        }
+                    } catch (e) {
+                        this.errorId = 'Error de conexión.';
+                    }
+                    this.buscandoId = false;
+                },
                 async conectar() {
                     this.estado = 'buscando';
                     this.seleccionado = null;
@@ -249,6 +273,31 @@
                                 class="px-4 py-2.5 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
                             Ya me registré — intentar de nuevo
                         </button>
+                    </div>
+
+                    {{-- Fallback: ingreso por ID --}}
+                    <div class="pt-2 border-t border-gray-100">
+                        <button @click="mostrarFormId = !mostrarFormId" type="button"
+                                class="text-sm text-brand-600 hover:underline">
+                            ¿Sabés tu ID de DUPR?
+                        </button>
+                        <div x-show="mostrarFormId" x-transition class="mt-3 space-y-2">
+                            <p class="text-xs text-gray-500">Ingresá tu ID de DUPR para vincularlo directamente.</p>
+                            <div class="flex gap-2">
+                                <input type="text"
+                                       x-model="duprIdManual"
+                                       placeholder="ej: 0PDD24"
+                                       class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent uppercase"
+                                       @keydown.enter.prevent="verificarId()">
+                                <button @click="verificarId()" type="button"
+                                        :disabled="duprIdManual.trim().length < 3 || buscandoId"
+                                        class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-sm rounded-lg disabled:opacity-50 transition">
+                                    <span x-show="!buscandoId">Verificar</span>
+                                    <span x-show="buscandoId">...</span>
+                                </button>
+                            </div>
+                            <p x-show="errorId" class="text-xs text-red-600" x-text="errorId"></p>
+                        </div>
                     </div>
                 </div>
 

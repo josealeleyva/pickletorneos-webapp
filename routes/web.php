@@ -114,6 +114,7 @@ Route::middleware('auth')->prefix('jugador')->name('jugador.')->group(function (
 Route::middleware('auth')->prefix('dupr')->name('dupr.')->group(function () {
     Route::get('/buscar', [DuprController::class, 'buscar'])->name('buscar');
     Route::get('/autoconectar', [DuprController::class, 'autoconectar'])->name('autoconectar');
+    Route::get('/verificar-id', [DuprController::class, 'verificarId'])->name('verificar-id');
     Route::post('/vincular', [DuprController::class, 'vincular'])->name('vincular');
     Route::post('/crear', [DuprController::class, 'crear'])->name('crear');
     Route::post('/desconectar', [DuprController::class, 'desconectar'])->name('desconectar');

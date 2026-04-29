@@ -54,6 +54,22 @@ class DuprService
 
     public function obtenerRatingJugador(string $duprId): ?array
     {
+        $perfil = $this->obtenerPerfilJugador($duprId);
+
+        if (! $perfil) {
+            return null;
+        }
+
+        $ratings = $perfil['ratings'] ?? [];
+
+        return [
+            'singles' => $ratings['singles']['rating'] ?? null,
+            'doubles' => $ratings['doubles']['rating'] ?? null,
+        ];
+    }
+
+    public function obtenerPerfilJugador(string $duprId): ?array
+    {
         $token = $this->obtenerToken();
 
         $response = Http::withToken($token)
@@ -64,12 +80,7 @@ class DuprService
             return null;
         }
 
-        $ratings = $response->json('ratings', []);
-
-        return [
-            'singles' => $ratings['singles']['rating'] ?? null,
-            'doubles' => $ratings['doubles']['rating'] ?? null,
-        ];
+        return $response->json();
     }
 
     public function invitarJugador(string $nombre, string $email): ?string
