@@ -6,6 +6,7 @@ use App\Http\Controllers\CanchaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ComplejoDeportivoController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DuprController;
 use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\InvitacionController;
 use App\Http\Controllers\Jugador\DashboardController as JugadorDashboardController;
@@ -107,6 +108,13 @@ Route::middleware('auth')->prefix('jugador')->name('jugador.')->group(function (
     Route::put('/perfil', [JugadorPerfilController::class, 'update'])->name('perfil.update');
     Route::put('/perfil/password', [JugadorPerfilController::class, 'updatePassword'])->name('perfil.password');
     Route::post('/perfil/foto', [JugadorPerfilController::class, 'updateFoto'])->name('perfil.foto');
+});
+
+// RUTAS DUPR
+Route::middleware('auth')->prefix('dupr')->name('dupr.')->group(function () {
+    Route::get('/buscar', [DuprController::class, 'buscar'])->name('buscar');
+    Route::post('/vincular', [DuprController::class, 'vincular'])->name('vincular');
+    Route::post('/desconectar', [DuprController::class, 'desconectar'])->name('desconectar');
 });
 
 // RUTAS AUTENTICADAS (Dashboard)
