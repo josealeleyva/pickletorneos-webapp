@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Torneo;
+use App\Jobs\EnviarNotificacionPartido;
+use App\Models\AvanceGrupo;
 use App\Models\Llave;
 use App\Models\Partido;
-use App\Models\AvanceGrupo;
-use App\Jobs\EnviarNotificacionPartido;
+use App\Models\Torneo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class TorneoLlaveController extends Controller
 {
@@ -21,7 +21,7 @@ class TorneoLlaveController extends Controller
         $this->authorize('view', $torneo);
 
         // Verificar que el torneo use eliminación (con o sin grupos)
-        if (!$torneo->formato || $torneo->formato->esLiga()) {
+        if (! $torneo->formato || $torneo->formato->esLiga()) {
             return redirect()
                 ->route('torneos.show', $torneo)
                 ->with('error', 'Este torneo no utiliza formato de eliminación.');
@@ -113,13 +113,13 @@ class TorneoLlaveController extends Controller
     {
         $avanceGrupoId = $categoria->pivot->avance_grupos_id;
 
-        if (!$avanceGrupoId) {
+        if (! $avanceGrupoId) {
             return [];
         }
 
         $avanceGrupo = AvanceGrupo::find($avanceGrupoId);
 
-        if (!$avanceGrupo) {
+        if (! $avanceGrupo) {
             return [];
         }
 
@@ -169,7 +169,7 @@ class TorneoLlaveController extends Controller
 
         if ($cantidadMejores > 0 && $equiposRestantes->isNotEmpty()) {
             // Ordenar por: puntos desc, diferencia desc, pf desc
-            $mejores = $equiposRestantes->sortByDesc(function($item) {
+            $mejores = $equiposRestantes->sortByDesc(function ($item) {
                 return [$item['puntos'], $item['diferencia'], $item['pf']];
             })->take($cantidadMejores);
 
@@ -198,7 +198,7 @@ class TorneoLlaveController extends Controller
 
         foreach ($grupo->equipos as $equipo) {
             // ✅ OPTIMIZACIÓN: Filtrar partidos en memoria en lugar de hacer query
-            $partidosEquipo = $partidosDelGrupo->filter(function($partido) use ($equipo) {
+            $partidosEquipo = $partidosDelGrupo->filter(function ($partido) use ($equipo) {
                 return $partido->equipo1_id === $equipo->id || $partido->equipo2_id === $equipo->id;
             });
 
@@ -257,13 +257,14 @@ class TorneoLlaveController extends Controller
         }
 
         // Ordenar por: Puntos desc, Diferencia desc, PF desc
-        usort($posiciones, function($a, $b) {
+        usort($posiciones, function ($a, $b) {
             if ($a['puntos'] !== $b['puntos']) {
                 return $b['puntos'] - $a['puntos'];
             }
             if ($a['diferencia'] !== $b['diferencia']) {
                 return $b['diferencia'] - $a['diferencia'];
             }
+
             return $b['pf'] - $a['pf'];
         });
 
@@ -296,24 +297,24 @@ class TorneoLlaveController extends Controller
         try {
             // Calcular el punto de inicio para la programación
             // Buscar el último partido programado (de grupos o llaves previas)
-            $ultimoPartido = Partido::where(function($query) use ($torneo) {
+            $ultimoPartido = Partido::where(function ($query) use ($torneo) {
                 // Partidos de grupos del torneo
-                $query->whereIn('grupo_id', function($subQuery) use ($torneo) {
+                $query->whereIn('grupo_id', function ($subQuery) use ($torneo) {
                     $subQuery->select('id')
-                             ->from('grupos')
-                             ->where('torneo_id', $torneo->id);
+                        ->from('grupos')
+                        ->where('torneo_id', $torneo->id);
                 })
                 // O partidos de llaves del torneo
-                ->orWhereIn('llave_id', function($subQuery) use ($torneo) {
-                    $subQuery->select('id')
-                             ->from('llaves')
-                             ->where('torneo_id', $torneo->id);
-                });
+                    ->orWhereIn('llave_id', function ($subQuery) use ($torneo) {
+                        $subQuery->select('id')
+                            ->from('llaves')
+                            ->where('torneo_id', $torneo->id);
+                    });
             })
-            ->whereNotNull('fecha_hora')
-            ->orderBy('fecha_hora', 'desc')
-            ->orderBy('cancha_id', 'desc')
-            ->first();
+                ->whereNotNull('fecha_hora')
+                ->orderBy('fecha_hora', 'desc')
+                ->orderBy('cancha_id', 'desc')
+                ->first();
 
             // Obtener todas las canchas del complejo
             $canchas = $torneo->complejo->canchas()->get();
@@ -326,12 +327,12 @@ class TorneoLlaveController extends Controller
             $duracionPartido = 90; // 90 minutos por partido
 
             // Determinar punto de inicio
-            if ($ultimoPartido && $ultimoPartido->fecha_hora && !$canchas->isEmpty()) {
+            if ($ultimoPartido && $ultimoPartido->fecha_hora && ! $canchas->isEmpty()) {
                 // Calcular siguiente slot disponible después del último partido
                 $fechaActual = Carbon::parse($ultimoPartido->fecha_hora);
 
                 // Encontrar el índice de la cancha del último partido
-                $canchaIndex = $canchas->search(function($cancha) use ($ultimoPartido) {
+                $canchaIndex = $canchas->search(function ($cancha) use ($ultimoPartido) {
                     return $cancha->id === $ultimoPartido->cancha_id;
                 });
 
@@ -388,7 +389,7 @@ class TorneoLlaveController extends Controller
             DB::commit();
 
             $mjs = 'Llaves generadas exitosamente.';
-            if($torneo->formato && $torneo->formato->esEliminacionDirecta()) {
+            if ($torneo->formato && $torneo->formato->esEliminacionDirecta()) {
                 $mjs .= ' Recuerda volver al torneo y publicarlo';
             }
 
@@ -398,9 +399,10 @@ class TorneoLlaveController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()
                 ->route('torneos.llaves.index', $torneo)
-                ->with('error', 'Error al generar llaves: ' . $e->getMessage());
+                ->with('error', 'Error al generar llaves: '.$e->getMessage());
         }
     }
 
@@ -465,7 +467,6 @@ class TorneoLlaveController extends Controller
          * - Llave 7: E7 vs E8 -> juegan
          * - Llave 8: E9 vs E10 -> juegan
          */
-
         $byes = $potencia - $totalEquipos;
         $equiposConBye = $byes; // Equipos que avanzan directo
         $equiposQueJuegan = $totalEquipos - $equiposConBye; // Equipos que juegan en primera ronda
@@ -503,7 +504,7 @@ class TorneoLlaveController extends Controller
 
             // Solo crear llave si al menos uno de los equipos existe
             // (evitamos crear llaves BYE vs BYE)
-            if (!$equipo1 && !$equipo2) {
+            if (! $equipo1 && ! $equipo2) {
                 continue;
             }
 
@@ -517,7 +518,7 @@ class TorneoLlaveController extends Controller
             ]);
 
             // Crear partido automáticamente si ambos equipos están definidos
-            if ($equipo1 && $equipo2 && !$canchas->isEmpty()) {
+            if ($equipo1 && $equipo2 && ! $canchas->isEmpty()) {
                 // Verificar si se pasó del horario del día antes de programar
                 if ($fechaActual->hour >= $horaFin || ($fechaActual->hour === $horaFin - 1 && $fechaActual->minute > 30)) {
                     // Pasar al día siguiente
@@ -615,7 +616,7 @@ class TorneoLlaveController extends Controller
         $llave = $llave->fresh();
 
         // Si la llave tiene un equipo y el otro es null
-        if (($llave->equipo1_id && !$llave->equipo2_id) || (!$llave->equipo1_id && $llave->equipo2_id)) {
+        if (($llave->equipo1_id && ! $llave->equipo2_id) || (! $llave->equipo1_id && $llave->equipo2_id)) {
             // Verificar si es un BYE real o está esperando resultado
             $esByeReal = $this->verificarSiEsByeReal($llave);
 
@@ -647,12 +648,12 @@ class TorneoLlaveController extends Controller
             }
         }
         // Si ambos equipos están definidos, crear el partido
-        elseif ($llave->equipo1_id && $llave->equipo2_id && !$llave->partido) {
+        elseif ($llave->equipo1_id && $llave->equipo2_id && ! $llave->partido) {
             // Calcular fecha/hora para la próxima ronda (después del partido anterior)
             $fechaProximoPartido = $partidoAnterior->fecha_hora->copy()->addDays(2);
 
             $canchas = $torneo->complejo->canchas()->get();
-            if (!$canchas->isEmpty()) {
+            if (! $canchas->isEmpty()) {
                 Partido::create([
                     'llave_id' => $llave->id,
                     'equipo1_id' => $llave->equipo1_id,
@@ -688,18 +689,18 @@ class TorneoLlaveController extends Controller
             ? $llavesAnterioresOrdenadas->first()
             : $llavesAnterioresOrdenadas->last();
 
-        if (!$llaveQueDeberiaLlenar) {
+        if (! $llaveQueDeberiaLlenar) {
             return true; // BYE real por defecto si no hay llave anterior
         }
 
         // Si la llave anterior tiene ambos equipos null (BYE vs BYE), es BYE real
-        if (!$llaveQueDeberiaLlenar->equipo1_id && !$llaveQueDeberiaLlenar->equipo2_id) {
+        if (! $llaveQueDeberiaLlenar->equipo1_id && ! $llaveQueDeberiaLlenar->equipo2_id) {
             return true;
         }
 
         // Si la llave anterior tiene solo un equipo (el otro es BYE), es BYE real
-        if (($llaveQueDeberiaLlenar->equipo1_id && !$llaveQueDeberiaLlenar->equipo2_id) ||
-            (!$llaveQueDeberiaLlenar->equipo1_id && $llaveQueDeberiaLlenar->equipo2_id)) {
+        if (($llaveQueDeberiaLlenar->equipo1_id && ! $llaveQueDeberiaLlenar->equipo2_id) ||
+            (! $llaveQueDeberiaLlenar->equipo1_id && $llaveQueDeberiaLlenar->equipo2_id)) {
             return true;
         }
 
@@ -719,7 +720,7 @@ class TorneoLlaveController extends Controller
             ->orderBy('orden')
             ->first();
 
-        if (!$primeraRonda) {
+        if (! $primeraRonda) {
             return;
         }
 
@@ -736,7 +737,7 @@ class TorneoLlaveController extends Controller
         // Procesar cada llave de la primera ronda
         foreach ($llavesPrimeraRonda as $llave) {
             // Si la llave tiene un equipo y el otro es BYE (null)
-            if (($llave->equipo1_id && !$llave->equipo2_id) || (!$llave->equipo1_id && $llave->equipo2_id)) {
+            if (($llave->equipo1_id && ! $llave->equipo2_id) || (! $llave->equipo1_id && $llave->equipo2_id)) {
                 // Determinar el ganador (el equipo que no es BYE)
                 $ganadorId = $llave->equipo1_id ?? $llave->equipo2_id;
 
@@ -763,7 +764,7 @@ class TorneoLlaveController extends Controller
                             $proximaLlave = $proximaLlave->fresh();
 
                             // Si la próxima llave ahora tiene ambos equipos, programar partido
-                            if ($proximaLlave->equipo1_id && $proximaLlave->equipo2_id && !$proximaLlave->partido) {
+                            if ($proximaLlave->equipo1_id && $proximaLlave->equipo2_id && ! $proximaLlave->partido) {
                                 $llavesParaProgramar->push($proximaLlave);
                             }
                         }
@@ -833,7 +834,7 @@ class TorneoLlaveController extends Controller
      */
     private function nombreRonda($equipos)
     {
-        return match($equipos) {
+        return match ($equipos) {
             2 => 'Final',
             4 => 'Semifinal',
             8 => 'Cuartos de Final',
@@ -909,6 +910,7 @@ class TorneoLlaveController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()
                 ->route('torneos.llaves.index', $torneo)
                 ->with('error', 'Error al resetear llaves.');
@@ -930,10 +932,10 @@ class TorneoLlaveController extends Controller
         DB::beginTransaction();
         try {
             // Verificar que la llave tenga ambos equipos
-            if (!$llave->equipo1_id || !$llave->equipo2_id) {
+            if (! $llave->equipo1_id || ! $llave->equipo2_id) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'No se puede programar el partido hasta que ambos equipos estén definidos.'
+                    'message' => 'No se puede programar el partido hasta que ambos equipos estén definidos.',
                 ], 422);
             }
 
@@ -969,9 +971,10 @@ class TorneoLlaveController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
+
             return response()->json([
                 'success' => false,
-                'message' => 'Error al programar partido: ' . $e->getMessage()
+                'message' => 'Error al programar partido: '.$e->getMessage(),
             ], 500);
         }
     }
@@ -1001,10 +1004,10 @@ class TorneoLlaveController extends Controller
         try {
             $partido = $llave->partido;
 
-            if (!$partido) {
+            if (! $partido) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'No existe un partido programado para esta llave.'
+                    'message' => 'No existe un partido programado para esta llave.',
                 ], 422);
             }
 
@@ -1013,9 +1016,10 @@ class TorneoLlaveController extends Controller
                 $erroresValidacion = $this->validarJuegosFutbol($validated['juegos']);
                 if ($erroresValidacion) {
                     DB::rollBack();
+
                     return response()->json([
                         'success' => false,
-                        'message' => $erroresValidacion
+                        'message' => $erroresValidacion,
                     ], 422);
                 }
             }
@@ -1104,13 +1108,13 @@ class TorneoLlaveController extends Controller
                         $llaveTercerPuesto = $llaveTercerPuesto->fresh();
 
                         // Si ahora tiene ambos equipos, crear el partido automáticamente
-                        if ($llaveTercerPuesto->equipo1_id && $llaveTercerPuesto->equipo2_id && !$llaveTercerPuesto->partido) {
+                        if ($llaveTercerPuesto->equipo1_id && $llaveTercerPuesto->equipo2_id && ! $llaveTercerPuesto->partido) {
                             // Calcular fecha/hora para el partido de 3er puesto (un día antes de la final)
                             $proximaLlave = $llave->proximaLlave;
                             $fechaTercerPuesto = $partido->fecha_hora->copy()->addDays(1);
 
                             $canchas = $torneo->complejo->canchas()->get();
-                            if (!$canchas->isEmpty()) {
+                            if (! $canchas->isEmpty()) {
                                 Partido::create([
                                     'llave_id' => $llaveTercerPuesto->id,
                                     'equipo1_id' => $llaveTercerPuesto->equipo1_id,
@@ -1127,20 +1131,25 @@ class TorneoLlaveController extends Controller
 
             DB::commit();
 
+            if ($torneo->dupr_requerido) {
+                \App\Jobs\SincronizarResultadoDuprJob::dispatch($partido->id);
+            }
+
             // Intentar finalizar automáticamente si todos los partidos tienen resultado
             \App\Http\Controllers\TorneoController::intentarFinalizarAutomatico($torneo);
 
             return response()->json([
                 'success' => true,
-                'message' => $resultado['mensaje'], // ✅ ACTUALIZADO: Mensaje dinámico
+                'message' => $resultado['mensaje'],
                 'partido' => $partido->fresh(['equipo1', 'equipo2', 'equipoGanador', 'juegos']),
             ]);
 
         } catch (\Exception $e) {
             DB::rollBack();
+
             return response()->json([
                 'success' => false,
-                'message' => 'Error al cargar resultado: ' . $e->getMessage()
+                'message' => 'Error al cargar resultado: '.$e->getMessage(),
             ], 500);
         }
     }
@@ -1165,7 +1174,7 @@ class TorneoLlaveController extends Controller
         }
 
         // Verificar que la llave tiene partido con fecha programada
-        if (!$llave->partido || !$llave->partido->fecha_hora) {
+        if (! $llave->partido || ! $llave->partido->fecha_hora) {
             return response()->json(['error' => 'La llave no tiene partido programado.'], 400);
         }
 
@@ -1180,10 +1189,11 @@ class TorneoLlaveController extends Controller
                                                        $partido->updated_at->gt($partido->ultima_notificacion);
 
             // Aplicar cooldown solo si no fue modificado
-            if ($minutosDesdeUltimaNotificacion < 60 && !$partidoModificadoDespuesDeNotificacion) {
+            if ($minutosDesdeUltimaNotificacion < 60 && ! $partidoModificadoDespuesDeNotificacion) {
                 $minutosRestantes = 60 - $minutosDesdeUltimaNotificacion;
+
                 return response()->json([
-                    'error' => "Debes esperar {$minutosRestantes} minutos antes de enviar otra notificación para este partido."
+                    'error' => "Debes esperar {$minutosRestantes} minutos antes de enviar otra notificación para este partido.",
                 ], 429);
             }
         }
@@ -1228,7 +1238,7 @@ class TorneoLlaveController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => "Se enviaron {$notificacionesEnviadas} notificaciones exitosamente."
+            'message' => "Se enviaron {$notificacionesEnviadas} notificaciones exitosamente.",
         ]);
     }
 
@@ -1241,7 +1251,7 @@ class TorneoLlaveController extends Controller
 
         // Obtener todas las llaves con partidos programados
         $llaves = $torneo->llaves()
-            ->whereHas('partido', function($q) {
+            ->whereHas('partido', function ($q) {
                 $q->where('estado', 'programado')->whereNotNull('fecha_hora');
             })
             ->with(['equipo1.jugadores', 'equipo2.jugadores', 'partido'])
@@ -1258,7 +1268,7 @@ class TorneoLlaveController extends Controller
         $llavesOmitidas = 0;
 
         foreach ($llaves as $llave) {
-            if (!$llave->equipo1 || !$llave->equipo2 || !$llave->partido) {
+            if (! $llave->equipo1 || ! $llave->equipo2 || ! $llave->partido) {
                 continue;
             }
 
@@ -1273,8 +1283,9 @@ class TorneoLlaveController extends Controller
                                                            $partido->updated_at->gt($partido->ultima_notificacion);
 
                 // Aplicar cooldown solo si no fue modificado
-                if ($minutosDesdeUltimaNotificacion < 60 && !$partidoModificadoDespuesDeNotificacion) {
+                if ($minutosDesdeUltimaNotificacion < 60 && ! $partidoModificadoDespuesDeNotificacion) {
                     $llavesOmitidas++;
+
                     continue;
                 }
             }
@@ -1343,15 +1354,15 @@ class TorneoLlaveController extends Controller
         // Obtener todas las llaves programadas de la categoría con partidos
         $llaves = Llave::where('torneo_id', $torneo->id)
             ->where('categoria_id', $categoriaId)
-            ->whereHas('partido', function($query) {
+            ->whereHas('partido', function ($query) {
                 $query->where('estado', 'programado')
-                      ->whereNotNull('fecha_hora');
+                    ->whereNotNull('fecha_hora');
             })
             ->with(['equipo1.jugadores', 'equipo2.jugadores', 'partido'])
             ->get();
 
         foreach ($llaves as $llave) {
-            if (!$llave->partido || !$llave->equipo1 || !$llave->equipo2) {
+            if (! $llave->partido || ! $llave->equipo1 || ! $llave->equipo2) {
                 continue;
             }
 
@@ -1427,7 +1438,7 @@ class TorneoLlaveController extends Controller
                 ['ida', 'vuelta'],
                 ['ida', 'penales'],
             ];
-            if (!in_array($tipos, $secuenciasValidas)) {
+            if (! in_array($tipos, $secuenciasValidas)) {
                 return 'Secuencia de juegos inválida';
             }
         }

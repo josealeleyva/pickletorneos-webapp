@@ -166,6 +166,7 @@ class TorneoController extends Controller
 
         $validated = $request->validate([
             'formato_id' => 'required|exists:formatos_torneos,id',
+            'dupr_requerido' => 'nullable|boolean',
             'categorias' => 'required|array',
             'categorias.*.categoria_id' => 'required|exists:categorias,id',
             'categorias.*.numero_grupos' => 'nullable|integer|min:2|max:8',
@@ -175,6 +176,8 @@ class TorneoController extends Controller
             'categorias.*.edad_minima' => 'nullable|integer|min:1|max:99',
             'categorias.*.edad_maxima' => 'nullable|integer|min:1|max:99',
             'categorias.*.genero_permitido' => 'nullable|in:masculino,femenino,mixto',
+            'categorias.*.dupr_rating_min' => 'nullable|numeric|min:2|max:8',
+            'categorias.*.dupr_rating_max' => 'nullable|numeric|min:2|max:8',
         ]);
 
         // Verificar si el formato tiene grupos
@@ -194,8 +197,11 @@ class TorneoController extends Controller
             ]);
         }
 
-        // Actualizar formato del torneo
-        $torneo->update(['formato_id' => $validated['formato_id']]);
+        // Actualizar formato y configuración DUPR del torneo
+        $torneo->update([
+            'formato_id' => $validated['formato_id'],
+            'dupr_requerido' => $request->boolean('dupr_requerido'),
+        ]);
 
         // Sincronizar categorías con su configuración
         $syncData = [];
@@ -211,6 +217,8 @@ class TorneoController extends Controller
                     'edad_minima' => $categoriaData['edad_minima'] ?? null,
                     'edad_maxima' => $categoriaData['edad_maxima'] ?? null,
                     'genero_permitido' => $categoriaData['genero_permitido'] ?? null,
+                    'dupr_rating_min' => $categoriaData['dupr_rating_min'] ?? null,
+                    'dupr_rating_max' => $categoriaData['dupr_rating_max'] ?? null,
                 ];
             } else {
                 $syncData[$categoriaId] = [
@@ -221,6 +229,8 @@ class TorneoController extends Controller
                     'edad_minima' => $categoriaData['edad_minima'] ?? null,
                     'edad_maxima' => $categoriaData['edad_maxima'] ?? null,
                     'genero_permitido' => $categoriaData['genero_permitido'] ?? null,
+                    'dupr_rating_min' => $categoriaData['dupr_rating_min'] ?? null,
+                    'dupr_rating_max' => $categoriaData['dupr_rating_max'] ?? null,
                 ];
             }
         }

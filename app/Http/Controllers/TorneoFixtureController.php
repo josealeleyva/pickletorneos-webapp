@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Torneo;
-use App\Models\Partido;
 use App\Jobs\EnviarNotificacionPartido;
+use App\Models\Partido;
+use App\Models\Torneo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class TorneoFixtureController extends Controller
 {
@@ -32,8 +32,8 @@ class TorneoFixtureController extends Controller
 
         // Partidos por fecha
         $partidosPorFecha = $partidos
-            ->filter(fn($p) => $p->fecha_hora)
-            ->groupBy(fn($p) => $p->fecha_hora->format('Y-m-d'));
+            ->filter(fn ($p) => $p->fecha_hora)
+            ->groupBy(fn ($p) => $p->fecha_hora->format('Y-m-d'));
 
         $grupos = $torneo->grupos()->with(['equipos', 'categoria'])->orderBy('orden')->get();
         $canchas = $torneo->complejo->canchas()->get();
@@ -101,13 +101,14 @@ class TorneoFixtureController extends Controller
                     if ($a['diferencia_puntos'] !== $b['diferencia_puntos']) {
                         return $b['diferencia_puntos'] - $a['diferencia_puntos'];
                     }
+
                     return $b['pf'] - $a['pf'];
                 });
 
                 // Agrupar por categoría y grupo
                 $categoriaId = $grupo->categoria_id;
                 $categoriaNombre = $grupo->categoria ? $grupo->categoria->nombre : 'Sin categoría';
-                $clave = $categoriaId . '|' . $grupo->nombre;
+                $clave = $categoriaId.'|'.$grupo->nombre;
 
                 // Obtener información de avance de la categoría
                 $cantidadClasifican = 0;
@@ -174,13 +175,14 @@ class TorneoFixtureController extends Controller
                     if ($a['diferencia_puntos'] !== $b['diferencia_puntos']) {
                         return $b['diferencia_puntos'] - $a['diferencia_puntos'];
                     }
+
                     return $b['pf'] - $a['pf'];
                 });
 
                 // Obtener campeón guardado (si existe)
                 $campeonId = $categoria->pivot->campeon_id ?? null;
 
-                $clave = $categoria->id . '|' . $categoria->nombre;
+                $clave = $categoria->id.'|'.$categoria->nombre;
 
                 $tablaPosiciones[$clave] = [
                     'categoria_id' => $categoria->id,
@@ -342,6 +344,7 @@ class TorneoFixtureController extends Controller
                 foreach ($equipos as $equipo) {
                     if ($equipo->categoria_id !== $categoriaGrupo) {
                         DB::rollBack();
+
                         return redirect()
                             ->route('torneos.grupos.index', $torneo)
                             ->with('error', "Error: El equipo '{$equipo->nombre}' no pertenece a la categoría del {$grupo->nombre}.");
@@ -378,6 +381,7 @@ class TorneoFixtureController extends Controller
                         // Validación adicional: ambos equipos deben ser de la misma categoría
                         if ($equipos[$home]->categoria_id !== $equipos[$away]->categoria_id) {
                             DB::rollBack();
+
                             return redirect()
                                 ->route('torneos.grupos.index', $torneo)
                                 ->with('error', "Error: Los equipos '{$equipos[$home]->nombre}' y '{$equipos[$away]->nombre}' no pertenecen a la misma categoría.");
@@ -395,7 +399,7 @@ class TorneoFixtureController extends Controller
                 }
 
                 // Insertar partidos del grupo
-                if (!empty($partidos)) {
+                if (! empty($partidos)) {
                     Partido::insert($partidos);
                     $partidosGenerados += count($partidos);
                 }
@@ -408,6 +412,7 @@ class TorneoFixtureController extends Controller
                 ->with('success', "¡Fixture generado exitosamente! Se crearon {$partidosGenerados} partidos.");
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()
                 ->route('torneos.fixture.index', $torneo)
                 ->with('error', 'Error al generar el fixture. Por favor intenta nuevamente.');
@@ -485,7 +490,7 @@ class TorneoFixtureController extends Controller
                 }
 
                 // Insertar partidos de la categoría
-                if (!empty($partidos)) {
+                if (! empty($partidos)) {
                     Partido::insert($partidos);
                     $partidosGenerados += count($partidos);
                 }
@@ -498,6 +503,7 @@ class TorneoFixtureController extends Controller
                 ->with('success', "¡Fixture generado exitosamente! Se crearon {$partidosGenerados} partidos.");
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()
                 ->route('torneos.fixture.index', $torneo)
                 ->with('error', 'Error al generar el fixture. Por favor intenta nuevamente.');
@@ -586,11 +592,12 @@ class TorneoFixtureController extends Controller
                 if ($a['diferencia'] !== $b['diferencia']) {
                     return $b['diferencia'] - $a['diferencia'];
                 }
+
                 return $b['pf'] - $a['pf'];
             });
 
             // El primero de la tabla es el campeón
-            if (!empty($posiciones)) {
+            if (! empty($posiciones)) {
                 $campeonId = $posiciones[0]['equipo_id'];
 
                 // Guardar el campeón en la tabla pivot categoria_torneo
@@ -625,6 +632,7 @@ class TorneoFixtureController extends Controller
                 ->with('success', 'Fixture reseteado. Puedes generar uno nuevo.');
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()
                 ->route('torneos.fixture.index', $torneo)
                 ->with('error', 'Error al resetear el fixture.');
@@ -652,7 +660,7 @@ class TorneoFixtureController extends Controller
             $partidoPertenece = $torneo->partidos()->where('id', $partido->id)->exists();
         }
 
-        if (!$partidoPertenece) {
+        if (! $partidoPertenece) {
             return response()->json(['error' => 'El partido no pertenece a este torneo.'], 400);
         }
 
@@ -672,7 +680,7 @@ class TorneoFixtureController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Partido actualizado exitosamente.',
-            'partido' => $partido->load('cancha')
+            'partido' => $partido->load('cancha'),
         ]);
     }
 
@@ -693,12 +701,12 @@ class TorneoFixtureController extends Controller
             $partidoPertenece = $torneo->partidos()->where('id', $partido->id)->exists();
         }
 
-        if (!$partidoPertenece) {
+        if (! $partidoPertenece) {
             return response()->json(['error' => 'El partido no pertenece a este torneo.'], 400);
         }
 
         // Solo permitir cargar resultados en torneos en curso o finalizados
-        if (!in_array($torneo->estado, ['en_curso', 'finalizado'])) {
+        if (! in_array($torneo->estado, ['en_curso', 'finalizado'])) {
             return response()->json(['error' => 'Solo puedes cargar resultados en torneos en curso.'], 403);
         }
 
@@ -751,18 +759,23 @@ class TorneoFixtureController extends Controller
 
             DB::commit();
 
+            if ($torneo->dupr_requerido) {
+                \App\Jobs\SincronizarResultadoDuprJob::dispatch($partido->id);
+            }
+
             // Intentar finalizar automáticamente si todos los partidos tienen resultado
             \App\Http\Controllers\TorneoController::intentarFinalizarAutomatico($torneo);
 
             return response()->json([
                 'success' => true,
                 'message' => 'Resultado cargado exitosamente.',
-                'partido' => $partido->fresh(['equipo1', 'equipo2', 'equipoGanador', 'juegos'])
+                'partido' => $partido->fresh(['equipo1', 'equipo2', 'equipoGanador', 'juegos']),
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
+
             return response()->json([
-                'error' => 'Error al guardar el resultado: ' . $e->getMessage()
+                'error' => 'Error al guardar el resultado: '.$e->getMessage(),
             ], 500);
         }
     }
@@ -844,6 +857,7 @@ class TorneoFixtureController extends Controller
                 ->with('success', 'Partidos programados exitosamente con fechas, horarios y canchas.');
         } catch (\Exception $e) {
             DB::rollBack();
+
             return redirect()
                 ->route('torneos.fixture.index', $torneo)
                 ->with('error', 'Error al programar los partidos. Por favor intenta nuevamente.');
@@ -874,12 +888,12 @@ class TorneoFixtureController extends Controller
             $partidoPertenece = $torneo->partidos()->where('id', $partido->id)->exists();
         }
 
-        if (!$partidoPertenece) {
+        if (! $partidoPertenece) {
             return response()->json(['error' => 'El partido no pertenece a este torneo.'], 400);
         }
 
         // Verificar que el partido tiene fecha programada
-        if (!$partido->fecha_hora) {
+        if (! $partido->fecha_hora) {
             return response()->json(['error' => 'El partido no tiene fecha programada.'], 400);
         }
 
@@ -892,10 +906,11 @@ class TorneoFixtureController extends Controller
                                                        $partido->updated_at->gt($partido->ultima_notificacion);
 
             // Aplicar cooldown solo si no fue modificado
-            if ($minutosDesdeUltimaNotificacion < 60 && !$partidoModificadoDespuesDeNotificacion) {
+            if ($minutosDesdeUltimaNotificacion < 60 && ! $partidoModificadoDespuesDeNotificacion) {
                 $minutosRestantes = 60 - $minutosDesdeUltimaNotificacion;
+
                 return response()->json([
-                    'error' => "Debes esperar {$minutosRestantes} minutos antes de enviar otra notificación para este partido."
+                    'error' => "Debes esperar {$minutosRestantes} minutos antes de enviar otra notificación para este partido.",
                 ], 429);
             }
         }
@@ -940,7 +955,7 @@ class TorneoFixtureController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => "Se enviaron {$notificacionesEnviadas} notificaciones exitosamente."
+            'message' => "Se enviaron {$notificacionesEnviadas} notificaciones exitosamente.",
         ]);
     }
 
@@ -962,7 +977,7 @@ class TorneoFixtureController extends Controller
 
         // Verificar que la categoría pertenece al torneo
         $categoriaExiste = $torneo->categorias()->where('categorias.id', $validated['categoria_id'])->exists();
-        if (!$categoriaExiste) {
+        if (! $categoriaExiste) {
             return response()->json(['error' => 'La categoría no pertenece a este torneo.'], 400);
         }
 
@@ -972,11 +987,11 @@ class TorneoFixtureController extends Controller
             ->where('categoria_id', $validated['categoria_id'])
             ->first();
 
-        if (!$equipo) {
+        if (! $equipo) {
             return response()->json(['error' => 'El equipo no pertenece a esta categoría del torneo.'], 400);
         }
 
-        //verificar que hayan terminado todos los partidos de la categoria para poder marcar el campeon
+        // verificar que hayan terminado todos los partidos de la categoria para poder marcar el campeon
         $partidosPendientes = $torneo->partidos()
             ->where(function ($query) use ($equipo) {
                 $query->whereHas('equipo1', function ($q) use ($equipo) {
@@ -1000,7 +1015,7 @@ class TorneoFixtureController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => "Campeón marcado exitosamente: {$equipo->nombre}"
+            'message' => "Campeón marcado exitosamente: {$equipo->nombre}",
         ]);
     }
 
@@ -1038,8 +1053,9 @@ class TorneoFixtureController extends Controller
                                                            $partido->updated_at->gt($partido->ultima_notificacion);
 
                 // Aplicar cooldown solo si no fue modificado
-                if ($minutosDesdeUltimaNotificacion < 60 && !$partidoModificadoDespuesDeNotificacion) {
+                if ($minutosDesdeUltimaNotificacion < 60 && ! $partidoModificadoDespuesDeNotificacion) {
                     $partidosOmitidos++;
+
                     continue;
                 }
             }
