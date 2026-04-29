@@ -277,6 +277,123 @@
         @endif
     </div>
 
+    {{-- Card DUPR --}}
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4 md:p-6">
+        <h2 class="text-base md:text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-600 text-xs font-bold">D</span>
+            Cuenta DUPR
+        </h2>
+
+        @if(session('success_dupr'))
+            <div class="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700">
+                {{ session('success_dupr') }}
+            </div>
+        @endif
+        @if(session('error_dupr'))
+            <div class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700">
+                {{ session('error_dupr') }}
+            </div>
+        @endif
+
+        @if($jugador?->dupr_id)
+            {{-- Conectado --}}
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                            ✓ DUPR conectado
+                        </span>
+                        <span class="text-xs text-gray-500">ID: {{ $jugador->dupr_id }}</span>
+                    </div>
+                    <div class="flex gap-4 text-sm text-gray-700">
+                        <span><span class="font-medium">Singles:</span> {{ $jugador->rating_singles ?? '—' }}</span>
+                        <span><span class="font-medium">Dobles:</span> {{ $jugador->rating_doubles ?? '—' }}</span>
+                    </div>
+                    @if($jugador->dupr_sincronizado_at)
+                        <p class="text-xs text-gray-400 mt-1">Actualizado {{ $jugador->dupr_sincronizado_at->diffForHumans() }}</p>
+                    @endif
+                </div>
+                <form action="{{ route('dupr.desconectar') }}" method="POST" onsubmit="return confirm('¿Desvinculár cuenta DUPR?')">
+                    @csrf
+                    <button type="submit" class="px-4 py-2 text-sm border border-red-300 text-red-600 rounded-lg hover:bg-red-50 transition">
+                        Desconectar
+                    </button>
+                </form>
+            </div>
+        @else
+            {{-- No conectado --}}
+            <div x-data="{
+                busqueda: '',
+                resultados: [],
+                cargando: false,
+                seleccionado: null,
+                buscarEnDupr() {
+                    if (this.busqueda.length < 2) return;
+                    this.cargando = true;
+                    fetch(`{{ route('dupr.buscar') }}?q=${encodeURIComponent(this.busqueda)}`, {
+                        headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
+                    })
+                    .then(r => r.json())
+                    .then(data => { this.resultados = data.hits || []; this.cargando = false; })
+                    .catch(() => { this.cargando = false; });
+                }
+            }">
+                <p class="text-sm text-gray-600 mb-4">
+                    Vinculá tu cuenta DUPR para participar en torneos que lo requieran y para que tus resultados actualicen tu rating.
+                </p>
+
+                <div class="flex gap-2 mb-3">
+                    <input type="text"
+                           x-model="busqueda"
+                           @input.debounce.500ms="buscarEnDupr()"
+                           placeholder="Buscá tu nombre en DUPR..."
+                           class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent">
+                    <button @click="buscarEnDupr()" type="button"
+                            :disabled="busqueda.length < 2 || cargando"
+                            class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-sm rounded-lg disabled:opacity-50 transition">
+                        <span x-show="!cargando">Buscar</span>
+                        <span x-show="cargando">...</span>
+                    </button>
+                </div>
+
+                <div x-show="resultados.length > 0" class="border border-gray-200 rounded-lg divide-y divide-gray-100 mb-4">
+                    <template x-for="jugadorDupr in resultados" :key="jugadorDupr.duprId">
+                        <div class="flex items-center justify-between p-3 hover:bg-gray-50 cursor-pointer"
+                             :class="seleccionado?.duprId === jugadorDupr.duprId ? 'bg-brand-50 border-l-2 border-brand-500' : ''"
+                             @click="seleccionado = jugadorDupr">
+                            <div>
+                                <p class="text-sm font-medium text-gray-800" x-text="jugadorDupr.fullName"></p>
+                                <p class="text-xs text-gray-500">
+                                    ID: <span x-text="jugadorDupr.duprId"></span>
+                                    <span x-show="jugadorDupr.ratings?.doubles?.rating">
+                                        · Dobles: <span x-text="jugadorDupr.ratings?.doubles?.rating?.toFixed(2)"></span>
+                                    </span>
+                                </p>
+                            </div>
+                            <span x-show="seleccionado?.duprId === jugadorDupr.duprId"
+                                  class="text-brand-600 text-xs font-medium">✓ Soy yo</span>
+                        </div>
+                    </template>
+                </div>
+
+                <div x-show="resultados.length === 0 && busqueda.length >= 2 && !cargando"
+                     class="text-sm text-gray-500 mb-4">
+                    No se encontraron resultados para "<span x-text="busqueda"></span>".
+                </div>
+
+                <form x-show="seleccionado" action="{{ route('dupr.vincular') }}" method="POST" id="form-vincular-dupr">
+                    @csrf
+                    <input type="hidden" name="dupr_id" :value="seleccionado?.duprId">
+                    <input type="hidden" name="dupr_nombre" :value="seleccionado?.fullName">
+                    <button type="submit"
+                            class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg text-sm transition">
+                        Vincular cuenta seleccionada
+                    </button>
+                </form>
+            </div>
+        @endif
+    </div>
+
 </div>
 
 @push('scripts')
@@ -290,6 +407,7 @@
         }
         e.target.value = v;
     });
+
 </script>
 @endpush
 @endsection
