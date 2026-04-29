@@ -123,19 +123,21 @@
         @else
             <div x-data="{
                 estado: 'idle',
-                jugadorDupr: null,
+                jugadores: [],
+                seleccionado: null,
                 mensajeError: '',
-                urlRegistro: 'https://dupr.gg/signup',
+                urlRegistro: 'https://dashboard.dupr.com/dashboard',
                 csrfToken: '{{ csrf_token() }}',
                 async conectar() {
                     this.estado = 'buscando';
+                    this.seleccionado = null;
                     try {
                         const r = await fetch('{{ route('dupr.autoconectar') }}', {
                             headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
                         });
                         const data = await r.json();
                         if (data.encontrado) {
-                            this.jugadorDupr = data.jugador;
+                            this.jugadores = data.jugadores;
                             this.estado = 'encontrado';
                         } else {
                             this.estado = 'no_encontrado';
@@ -192,36 +194,40 @@
                     Buscando tu cuenta en DUPR...
                 </div>
 
-                {{-- Encontrado --}}
+                {{-- Encontrado: lista de candidatos --}}
                 <div x-show="estado === 'encontrado'" class="space-y-4">
-                    <div class="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-xl">
-                        <span class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-green-200 text-green-700 text-base font-bold flex-shrink-0">D</span>
-                        <div class="flex-1 min-w-0">
-                            <p class="text-sm font-semibold text-gray-800" x-text="jugadorDupr?.fullName"></p>
-                            <p class="text-xs text-gray-500 mt-0.5">
-                                ID: <span x-text="jugadorDupr?.duprId"></span>
-                                <span x-show="jugadorDupr?.rating_doubles">
-                                    · Dobles: <span x-text="jugadorDupr?.rating_doubles"></span>
-                                </span>
-                                <span x-show="jugadorDupr?.rating_singles">
-                                    · Singles: <span x-text="jugadorDupr?.rating_singles"></span>
-                                </span>
-                            </p>
-                        </div>
+                    <p class="text-sm text-gray-600">Encontramos estas cuentas con tu nombre. ¿Cuál es la tuya?</p>
+                    <div class="border border-gray-200 rounded-xl divide-y divide-gray-100">
+                        <template x-for="j in jugadores" :key="j.duprId">
+                            <div class="flex items-center justify-between p-3 hover:bg-gray-50 cursor-pointer rounded-xl"
+                                 :class="seleccionado?.duprId === j.duprId ? 'bg-green-50' : ''"
+                                 @click="seleccionado = j">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800" x-text="j.fullName"></p>
+                                    <p class="text-xs text-gray-500 mt-0.5">
+                                        ID: <span x-text="j.duprId"></span>
+                                        <span x-show="j.rating_doubles"> · Dobles: <span x-text="j.rating_doubles"></span></span>
+                                        <span x-show="j.rating_singles"> · Singles: <span x-text="j.rating_singles"></span></span>
+                                    </p>
+                                </div>
+                                <span x-show="seleccionado?.duprId === j.duprId"
+                                      class="text-green-600 text-xs font-semibold flex-shrink-0 ml-3">✓ Soy yo</span>
+                            </div>
+                        </template>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <form action="{{ route('dupr.vincular') }}" method="POST">
+                        <form x-show="seleccionado" action="{{ route('dupr.vincular') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="dupr_id" :value="jugadorDupr?.duprId">
-                            <input type="hidden" name="dupr_nombre" :value="jugadorDupr?.fullName">
+                            <input type="hidden" name="dupr_id" :value="seleccionado?.duprId">
+                            <input type="hidden" name="dupr_nombre" :value="seleccionado?.fullName">
                             <button type="submit"
                                     class="px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg text-sm transition">
-                                ✓ Sí, soy yo — Vincular cuenta
+                                ✓ Vincular esta cuenta
                             </button>
                         </form>
-                        <button @click="estado = 'idle'" type="button"
+                        <button @click="estado = 'no_encontrado'; seleccionado = null" type="button"
                                 class="px-4 py-2.5 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
-                            No soy yo
+                            No estoy en la lista
                         </button>
                     </div>
                 </div>
@@ -232,17 +238,17 @@
                         <svg class="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
-                        <p class="text-sm text-yellow-800">No encontramos una cuenta DUPR con tu email. ¿Querés crear una?</p>
+                        <p class="text-sm text-yellow-800">No encontramos tu cuenta DUPR. Si ya te registraste, volvé a intentarlo. Si no tenés cuenta, registrate primero en DUPR.</p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-3">
-                        <button @click="crear()" type="button"
-                                class="px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg text-sm transition">
-                            Crear cuenta DUPR
-                        </button>
-                        <a href="https://dupr.gg/signup" target="_blank"
-                           class="px-4 py-2.5 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-center">
-                            Registrarme en dupr.gg →
+                        <a href="https://dashboard.dupr.com/dashboard" target="_blank"
+                           class="px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg text-sm transition text-center">
+                            Registrarme en DUPR →
                         </a>
+                        <button @click="conectar()" type="button"
+                                class="px-4 py-2.5 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                            Ya me registré — intentar de nuevo
+                        </button>
                     </div>
                 </div>
 
@@ -256,12 +262,23 @@
                 </div>
 
                 {{-- Registro externo (creación automática no disponible) --}}
-                <div x-show="estado === 'registro_externo'" class="space-y-3">
-                    <p class="text-sm text-gray-700" x-text="mensajeError"></p>
-                    <a :href="urlRegistro" target="_blank"
-                       class="inline-block px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg text-sm transition">
-                        Ir a dupr.gg para registrarme →
-                    </a>
+                <div x-show="estado === 'registro_externo'" class="space-y-4">
+                    <div class="flex items-start gap-3 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
+                        <svg class="w-5 h-5 text-yellow-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="text-sm text-yellow-800" x-text="mensajeError"></p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a :href="urlRegistro" target="_blank"
+                           class="px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg text-sm transition text-center">
+                            Ir a DUPR para registrarme →
+                        </a>
+                        <button @click="conectar()" type="button"
+                                class="px-4 py-2.5 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
+                            Ya me registré — intentar de nuevo
+                        </button>
+                    </div>
                 </div>
 
                 {{-- Error --}}

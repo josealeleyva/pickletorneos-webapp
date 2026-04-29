@@ -52,27 +52,26 @@ class DuprController extends Controller
     public function autoconectar(): JsonResponse
     {
         $user = auth()->user();
-        $jugador = $user->jugador;
 
-        if (! $jugador) {
+        if (! $user->jugador) {
             return response()->json(['encontrado' => false]);
         }
 
-        $resultado = $this->duprService->buscarPorEmail($user->email);
+        $nombreCompleto = trim("{$user->name} {$user->apellido}");
+        $hits = $this->duprService->buscarJugadores($nombreCompleto, 5);
 
-        if (! $resultado) {
+        if (empty($hits)) {
             return response()->json(['encontrado' => false]);
         }
 
-        return response()->json([
-            'encontrado' => true,
-            'jugador' => [
-                'duprId' => $resultado['duprId'],
-                'fullName' => $resultado['fullName'],
-                'rating_singles' => $resultado['ratings']['singles']['rating'] ?? null,
-                'rating_doubles' => $resultado['ratings']['doubles']['rating'] ?? null,
-            ],
-        ]);
+        $jugadores = array_map(fn ($h) => [
+            'duprId' => $h['duprId'],
+            'fullName' => $h['fullName'],
+            'rating_singles' => $h['ratings']['singles']['rating'] ?? null,
+            'rating_doubles' => $h['ratings']['doubles']['rating'] ?? null,
+        ], $hits);
+
+        return response()->json(['encontrado' => true, 'jugadores' => $jugadores]);
     }
 
     public function crear(): JsonResponse

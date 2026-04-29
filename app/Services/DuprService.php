@@ -72,17 +72,6 @@ class DuprService
         ];
     }
 
-    public function buscarPorEmail(string $email): ?array
-    {
-        $hits = $this->buscarJugadores($email, 5);
-
-        if (empty($hits)) {
-            return null;
-        }
-
-        return $hits[0];
-    }
-
     public function invitarJugador(string $nombre, string $email): ?string
     {
         $token = $this->obtenerToken();
