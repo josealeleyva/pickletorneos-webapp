@@ -182,17 +182,25 @@
                                 @enderror
                             </div>
                             <div>
-                                <label for="genero_{{ $index }}" class="block text-xs font-medium text-gray-600 mb-1">Género permitido</label>
-                                <select
-                                    id="genero_{{ $index }}"
-                                    name="categorias[{{ $index }}][genero_permitido]"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 text-sm bg-white @error('categorias.'.$index.'.genero_permitido') border-red-500 @enderror"
-                                >
-                                    <option value="">Sin restricción</option>
-                                    <option value="masculino" {{ old('categorias.'.$index.'.genero_permitido') == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                    <option value="femenino" {{ old('categorias.'.$index.'.genero_permitido') == 'femenino' ? 'selected' : '' }}>Femenino</option>
-                                    <option value="mixto" {{ old('categorias.'.$index.'.genero_permitido') == 'mixto' ? 'selected' : '' }}>Mixto</option>
-                                </select>
+                                <p class="block text-xs font-medium text-gray-600 mb-2">Género permitido</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                        <input type="radio" name="categorias[{{ $index }}][genero_permitido]" value="" {{ old('categorias.'.$index.'.genero_permitido', '') == '' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                                        <span class="text-xs text-gray-700">Sin restricción</span>
+                                    </label>
+                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                        <input type="radio" name="categorias[{{ $index }}][genero_permitido]" value="masculino" {{ old('categorias.'.$index.'.genero_permitido') == 'masculino' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                                        <span class="text-xs text-gray-700">Masculino</span>
+                                    </label>
+                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                        <input type="radio" name="categorias[{{ $index }}][genero_permitido]" value="femenino" {{ old('categorias.'.$index.'.genero_permitido') == 'femenino' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                                        <span class="text-xs text-gray-700">Femenino</span>
+                                    </label>
+                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                        <input type="radio" name="categorias[{{ $index }}][genero_permitido]" value="mixto" {{ old('categorias.'.$index.'.genero_permitido') == 'mixto' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                                        <span class="text-xs text-gray-700">Mixto</span>
+                                    </label>
+                                </div>
                                 @error('categorias.'.$index.'.genero_permitido')
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                                 @enderror
@@ -367,17 +375,25 @@
                                 @enderror
                             </div>
                             <div>
-                                <label for="genero_{{ $index }}" class="block text-xs font-medium text-gray-600 mb-1">Género permitido</label>
-                                <select
-                                    id="genero_{{ $index }}"
-                                    name="categorias[{{ $index }}][genero_permitido]"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 text-sm bg-white @error('categorias.'.$index.'.genero_permitido') border-red-500 @enderror"
-                                >
-                                    <option value="">Sin restricción</option>
-                                    <option value="masculino" {{ old('categorias.'.$index.'.genero_permitido') == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                                    <option value="femenino" {{ old('categorias.'.$index.'.genero_permitido') == 'femenino' ? 'selected' : '' }}>Femenino</option>
-                                    <option value="mixto" {{ old('categorias.'.$index.'.genero_permitido') == 'mixto' ? 'selected' : '' }}>Mixto</option>
-                                </select>
+                                <p class="block text-xs font-medium text-gray-600 mb-2">Género permitido</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                        <input type="radio" name="categorias[{{ $index }}][genero_permitido]" value="" {{ old('categorias.'.$index.'.genero_permitido', '') == '' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                                        <span class="text-xs text-gray-700">Sin restricción</span>
+                                    </label>
+                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                        <input type="radio" name="categorias[{{ $index }}][genero_permitido]" value="masculino" {{ old('categorias.'.$index.'.genero_permitido') == 'masculino' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                                        <span class="text-xs text-gray-700">Masculino</span>
+                                    </label>
+                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                        <input type="radio" name="categorias[{{ $index }}][genero_permitido]" value="femenino" {{ old('categorias.'.$index.'.genero_permitido') == 'femenino' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                                        <span class="text-xs text-gray-700">Femenino</span>
+                                    </label>
+                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                        <input type="radio" name="categorias[{{ $index }}][genero_permitido]" value="mixto" {{ old('categorias.'.$index.'.genero_permitido') == 'mixto' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                                        <span class="text-xs text-gray-700">Mixto</span>
+                                    </label>
+                                </div>
                                 @error('categorias.'.$index.'.genero_permitido')
                                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                                 @enderror

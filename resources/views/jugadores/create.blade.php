@@ -130,16 +130,20 @@
                     <label for="genero" class="block text-sm font-medium text-gray-700 mb-2">
                         Género
                     </label>
-                    <select
-                        id="genero"
-                        name="genero"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white @error('genero') border-red-500 @enderror"
-                    >
-                        <option value="">Seleccionar...</option>
-                        <option value="masculino" {{ old('genero') == 'masculino' ? 'selected' : '' }}>Masculino</option>
-                        <option value="femenino" {{ old('genero') == 'femenino' ? 'selected' : '' }}>Femenino</option>
-                        <option value="otro" {{ old('genero') == 'otro' ? 'selected' : '' }}>Otro</option>
-                    </select>
+                    <div class="flex flex-wrap gap-4 pt-1">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="genero" value="masculino" {{ old('genero') == 'masculino' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                            <span class="text-sm text-gray-700">Masculino</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="genero" value="femenino" {{ old('genero') == 'femenino' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                            <span class="text-sm text-gray-700">Femenino</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="genero" value="otro" {{ old('genero') == 'otro' ? 'checked' : '' }} class="text-brand-600 focus:ring-brand-500">
+                            <span class="text-sm text-gray-700">Otro</span>
+                        </label>
+                    </div>
                     @error('genero')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror

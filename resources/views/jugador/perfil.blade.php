@@ -369,13 +369,20 @@
                 {{-- Género --}}
                 <div>
                     <label for="genero" class="block text-xs font-medium text-gray-500 mb-1">Género</label>
-                    <select id="genero" name="genero"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-brand-500 focus:border-transparent bg-white">
-                        <option value="">No especificado</option>
-                        <option value="masculino" @selected(old('genero', $jugador?->genero) === 'masculino')>Masculino</option>
-                        <option value="femenino"  @selected(old('genero', $jugador?->genero) === 'femenino')>Femenino</option>
-                        <option value="otro"      @selected(old('genero', $jugador?->genero) === 'otro')>Otro</option>
-                    </select>
+                    <div class="flex flex-wrap gap-4 pt-1">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="genero" value="masculino" @checked(old('genero', $jugador?->genero) === 'masculino') class="text-brand-600 focus:ring-brand-500">
+                            <span class="text-sm text-gray-700">Masculino</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="genero" value="femenino" @checked(old('genero', $jugador?->genero) === 'femenino') class="text-brand-600 focus:ring-brand-500">
+                            <span class="text-sm text-gray-700">Femenino</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="genero" value="otro" @checked(old('genero', $jugador?->genero) === 'otro') class="text-brand-600 focus:ring-brand-500">
+                            <span class="text-sm text-gray-700">Otro</span>
+                        </label>
+                    </div>
                 </div>
 
                 {{-- Deporte principal (oculto, Pickleball) --}}
