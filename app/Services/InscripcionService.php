@@ -48,7 +48,7 @@ class InscripcionService
             throw new \RuntimeException('Ya estás inscripto en este torneo.');
         }
 
-        $this->validarCondicionesJugador($lider, $categoriaConPivot);
+        $this->validarCondicionesJugador($lider, $categoriaConPivot, $torneo);
 
         $cuposDisponibles = $this->calcularCuposDisponibles($torneo, $categoriaConPivot);
 
@@ -115,12 +115,12 @@ class InscripcionService
             })
             ->get();
 
-        return $jugadores->filter(function (Jugador $jugador) use ($categoriaConPivot) {
-            return $this->jugadorCumpleCondiciones($jugador, $categoriaConPivot);
+        return $jugadores->filter(function (Jugador $jugador) use ($categoriaConPivot, $torneo) {
+            return $this->jugadorCumpleCondiciones($jugador, $categoriaConPivot, $torneo);
         })->values();
     }
 
-    public function validarCondicionesJugador(Jugador $jugador, Categoria $categoriaConPivot): void
+    public function validarCondicionesJugador(Jugador $jugador, Categoria $categoriaConPivot, ?Torneo $torneo = null): void
     {
         $generoPermitido = $categoriaConPivot->pivot->genero_permitido ?? null;
 
@@ -144,6 +144,29 @@ class InscripcionService
 
             if ($edadMaxima && $edad > $edadMaxima) {
                 throw new \RuntimeException("Debés tener como máximo {$edadMaxima} años para esta categoría.");
+            }
+        }
+
+        if ($torneo?->dupr_requerido && ! $jugador->dupr_id) {
+            throw new \RuntimeException('Este torneo requiere vincular tu cuenta DUPR. Podés hacerlo desde tu perfil.');
+        }
+
+        $ratingMin = $categoriaConPivot->pivot->dupr_rating_min ?? null;
+        $ratingMax = $categoriaConPivot->pivot->dupr_rating_max ?? null;
+
+        if ($ratingMin || $ratingMax) {
+            $rating = $jugador->rating_doubles;
+
+            if ($rating === null) {
+                throw new \RuntimeException('Tu cuenta DUPR no tiene rating registrado aún.');
+            }
+
+            if ($ratingMin && $rating < $ratingMin) {
+                throw new \RuntimeException("Tu rating DUPR ({$rating}) es menor al mínimo requerido ({$ratingMin}).");
+            }
+
+            if ($ratingMax && $rating > $ratingMax) {
+                throw new \RuntimeException("Tu rating DUPR ({$rating}) supera el máximo permitido ({$ratingMax}).");
             }
         }
     }
@@ -362,7 +385,7 @@ class InscripcionService
         $notificacion->usuarios()->attach($user->id, ['leida' => false]);
     }
 
-    private function jugadorCumpleCondiciones(Jugador $jugador, Categoria $categoriaConPivot): bool
+    private function jugadorCumpleCondiciones(Jugador $jugador, Categoria $categoriaConPivot, ?Torneo $torneo = null): bool
     {
         $generoPermitido = $categoriaConPivot->pivot->genero_permitido ?? null;
 
@@ -385,6 +408,29 @@ class InscripcionService
             }
 
             if ($edadMaxima && $edad > $edadMaxima) {
+                return false;
+            }
+        }
+
+        if ($torneo?->dupr_requerido && ! $jugador->dupr_id) {
+            return false;
+        }
+
+        $ratingMin = $categoriaConPivot->pivot->dupr_rating_min ?? null;
+        $ratingMax = $categoriaConPivot->pivot->dupr_rating_max ?? null;
+
+        if ($ratingMin || $ratingMax) {
+            $rating = $jugador->rating_doubles;
+
+            if ($rating === null) {
+                return false;
+            }
+
+            if ($ratingMin && $rating < $ratingMin) {
+                return false;
+            }
+
+            if ($ratingMax && $rating > $ratingMax) {
                 return false;
             }
         }
